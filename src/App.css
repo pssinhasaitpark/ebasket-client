@@ -1,0 +1,72 @@
+.carousel-control-prev-icon{
+    background-image: url(/src/assests/images/left.svg) !important;
+    color: black !important;
+    background-color: white !important;
+    position: absolute;
+    width: 3rem !important;
+    height: 3rem !important;
+    z-index: 999;
+    font-size: 1.5rem;
+    border-radius: 50%;
+  }
+
+  .carousel-control-next-icon {
+    background-image: url(/src/assests/images/right.svg) !important;
+    color: black !important;
+    background-color: white !important;
+    position: absolute;
+    width: 3rem !important;
+    height: 3rem !important;
+    z-index: 999;
+    font-size: 1.5rem;
+    border-radius: 50%;
+  }
+
+.carousel-control-prev , .carousel-control-next{
+    width: 7% !important;
+}
+
+.carousel-indicators .active {
+    background: #01664a !important;
+}
+
+.carousel-indicators [data-bs-target]{
+border : 0px !important;
+width: 40px !important;
+height: 5px !important;
+border-radius: 50px;  
+padding: 10px 30px;    
+}
+
+.shopnow-button{
+    font-size: 15px !important;
+    background-color: #01664a !important;
+    border-color: #01664a !important;
+    border-radius: 50px !important;  
+    padding: 10px 25px !important;    
+}
+
+.coupon_wrapper{
+    padding: 0 7%;
+}
+
+.coupon_item2, .coupon_item1, .coupon_item3{
+    padding: 3%;
+    background-color: #f7f7f7;
+    background-clip: content-box;
+}
+
+.coupon-img{
+    width: 100%;
+}
+
+.coupon-flex-img{
+    padding-right: 3%;
+}
+
+.coupon-discount{
+    color: green;
+    font-size: 22px;
+    font-weight: 700;
+    padding-bottom: 5px;
+}
