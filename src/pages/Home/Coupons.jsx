@@ -15,7 +15,7 @@ function Coupon() {
             <span className='coupon-discount'>15%</span>
             <p><ShopNow/></p>
            </div>
-           <div ><img className='coupon-img' src={image1} alt="" /></div> 
+           <div style={{display:'flex', justifyContent:'right'}}><img className='coupon-img' src={image1} alt="" /></div> 
         </Col>
         <Col xs={6} className="d-flex flex-column h-100">
           <Row className="flex-grow-1" >

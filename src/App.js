@@ -1,10 +1,11 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './pages/Home/Home';
+import Header  from './layout/Header.jsx';
 import React from 'react'
 import Login from './pages/Login'
-import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
+
 
 const App = () => {
   return (
@@ -13,6 +14,8 @@ const App = () => {
     <div>
       <Login/>
       <Home />
+      <Header/>
+
     </div>
   );
 }
