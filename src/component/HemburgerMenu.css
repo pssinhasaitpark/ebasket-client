@@ -27,7 +27,7 @@ a {
     height: 3px;
     margin-top: 7px;
     -webkit-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
+    /* transition: all 0.2s ease-in-out; */
   }
   
   #toggle1 {
@@ -54,6 +54,7 @@ a {
   #toggle1:checked ~ .menu1 {
     height: 340px;
   }
+
   
   
   /* Menu */
@@ -72,10 +73,10 @@ a {
     text-align: center;
     height: 0px;
     overflow: hidden;
-    transition: height .4s ease;
+    /* transition: height .4s ease; */
     z-index: 120;
     -webkit-transition: all 0.3s ease;
-    transition: all 0.3s ease;
+    /* transition: all 0.3s ease; */
   }
   
   .menu1 a:first-child {
@@ -97,10 +98,10 @@ a {
     background-color: #fff;
     color: rgb(61, 61, 61);
     -webkit-transition: all 0.3s ease;
-    transition: all 0.3s ease;
+    /* transition: all 0.3s ease; */
     background-color: #01664a;
     color: rgb(255 255 255);
-    transition: all 0.3s ease;
+    /* transition: all 0.3s ease; */
 
   }
 
