@@ -37,7 +37,7 @@ function Categories()
             );
             } ;
 
-
+          
         var settings = {
           dots: false,
           infinite: true,

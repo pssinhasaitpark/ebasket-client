@@ -29,6 +29,7 @@ const SignUpForm = () => {
   };
 
   return (
+    <>
     <Container className="col-md-6 mt-3">
       <div className="col-10 mx-auto card p-3">
         <h3 className="text-dark my-0 mb-3">Sign up With Us</h3>
@@ -169,6 +170,7 @@ const SignUpForm = () => {
         </a>
       </div>
     </Container>
+    </>
   );
 };
 

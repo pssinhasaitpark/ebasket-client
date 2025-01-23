@@ -5,6 +5,7 @@ import './Products.css'
 
 const ProductList = () => {
   return (
+    <>
     <div className="container section-content">
       <Row>
         <Col md={12}>
@@ -338,7 +339,9 @@ const ProductList = () => {
           </div>
         </Col>
       </Row>
+      
     </div>
+    </>
   );
 };
 
