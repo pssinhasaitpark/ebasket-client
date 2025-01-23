@@ -1,3 +1,175 @@
+.carousel-control-prev-icon{
+    background-image: url(/src/assests/images/left.svg) !important;
+    color: black !important;
+    background-color: white !important;
+    position: absolute;
+    width: 3rem !important;
+    height: 3rem !important;
+    z-index: 999;
+    font-size: 1.5rem;
+    border-radius: 50%;
+  }
+
+  .carousel-control-next-icon {
+    background-image: url(/src/assests/images/right.svg) !important;
+    color: black !important;
+    background-color: white !important;
+    position: absolute;
+    width: 3rem !important;
+    height: 3rem !important;
+    z-index: 999;
+    font-size: 1.5rem;
+    border-radius: 50%;
+  }
+
+.carousel-control-prev , .carousel-control-next{
+    width: 7% !important;
+    opacity: 1;;
+}
+
+.carousel-indicators .active {
+    background: #01664a !important;
+}
+
+.carousel-indicators [data-bs-target]{
+border : 0px !important;
+width: 40px !important;
+height: 5px !important;
+border-radius: 50px;  
+padding: 10px 30px;    
+opacity: 1;
+}
+
+@media  (max-width: 575px) {
+    .carousel-control-next, .carousel-control-prev{
+        display: none !important;
+    }
+  
+   }
+
+.shopnow-button{
+    font-size: 15px !important;
+    background-color: #01664a !important;
+    border-color: #01664a !important;
+    border-radius: 50px !important;  
+    padding: 10px 25px !important;    
+}
+
+.coupon_wrapper{
+    padding: 0 7%;
+}
+
+.coupon_item2, .coupon_item1, .coupon_item3{
+    padding-top: 20px;
+    background-color: #f7f7f7;
+    background-clip: content-box;
+}
+
+.coupon-img{
+    width: 85%;
+}
+
+.coupon-flex-img{
+    padding-right: 3%;
+    padding-bottom: 20px;
+}
+
+.coupon-discount{
+    color: green;
+    font-size: 22px;
+    font-weight: 700;
+    padding-bottom: 5px;
+}
+
+.coupon-right-content{
+    padding-top: 20px;
+}
+
+.coupon-img-animate  img{
+    padding-right: 2%;
+    transition: all 3s ease-in-out;
+}
+
+.coupon-img-animate:hover img{
+    transform: scale(1.15);
+}
+
+.coupon-img-animate2  img{
+    padding: 20px;
+    transition: all 3s ease-in-out;
+}
+
+.coupon-img-animate2:hover img{
+    transform: scale(1.10);
+}
+
+@media  (max-width: 767px) {
+    .coupon-section,
+    .col-6
+    {
+        width: 100% !important;
+        display: block !important;
+    }
+   }
+@media  (max-width: 480px){ 
+   .coupon-img{
+        width: 100%;
+    }
+    .coupon-img-animate2  img{
+        padding: 0%;
+    }
+    .coupon_wrapper{
+        padding: 0%;
+    }
+    .coupon-flex-img{
+        padding-left: 10px;
+        width: 30%;
+    }
+    .coupon-img2{
+        max-width: 94px;
+        height: 190px
+    }
+    }
+
+    .category-img{
+        border-radius: 50%;
+        padding: 10px;
+    }
+
+    .category-img-section{
+        padding: 10px;
+    }
+
+    .category-card{
+        justify-items: center;
+        padding: 40px 0px;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    .category-card:hover {
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        border-bottom:2px solid #01664a;
+    }
+    
+.slick-slide {
+    padding: 0px 10px; 
+  }
+
+  .Category-heading{
+    color: white;
+    font-size: 35px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 25px;
+    border-bottom: 1px solid white;
+    padding-bottom: 15px;
+  }
+  
+
+
+
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root{
@@ -17,3 +189,4 @@ body {
     line-height: 1.5;
   }
   
+
