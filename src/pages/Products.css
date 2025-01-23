@@ -1,0 +1,95 @@
+.product-list .list-card {
+    padding: 10px;
+    border: 1px solid #ececec;
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+    border-radius: 10px;
+    transition: all ease 0.5s;
+    height: 93%;
+    width: 90%;
+}
+
+.list-card .list-card-image {
+    position: relative;
+}
+
+.list-card .member-plan {
+    left: 8px;
+    top: 8px;
+}
+
+.list-card .member-plan .badge {
+    font-size: 13px;
+    padding: 7px 12px;
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+    border-radius: 50px;
+    background: #28a745 !important;
+}
+
+.list-card a {
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 15px;
+    text-overflow: ellipsis;
+    color: #333;
+    margin-bottom: 10px !important;
+    font-weight: 600;
+}
+
+.product-list .list-card-image > a {
+    text-align: center;
+    display: block;
+}
+
+.product-list .list-card-image img {
+    width: auto !important;
+    height: 200px;
+    min-height: inherit;
+    object-fit: contain;
+    max-height: inherit;
+    object-position: center;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.product-list .list-card-body {
+    position: relative;
+    padding-right: 0px;
+    padding-top: 10px;
+    text-align: center;
+    font-size: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #333;
+    margin-bottom: 10px !important;
+    font-weight: 600;
+}
+
+.product-list .list-card-body .pro-price {
+    position: static;
+    letter-spacing: 0.02em;
+    margin-bottom: 3px !important;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    color: #01664A;
+}
+
+.product-list .list-card-body  .pro-price s {
+    font-size: 13px;
+    color: #666666;
+    padding-left: 5px;
+}
+
+.product-list .list-card:hover {
+    box-shadow: 0 0px 20px 0 rgba(0, 0, 0, 0.2) !important;
+    transition: all ease 0.5s;
+}
+
+@media (max-width: 767px){
+    .product-list .list-card{
+    height: 100%;
+    width: 100%;
+    }
+}
