@@ -1,81 +1,305 @@
 .hamburger1 {
-    height: 32px;
-    margin: 7px;
-    display: -ms-grid;
-    display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    justify-items: center;
-    z-index: 120;
-  }
-  
-  .hamburger1 div {
-    background-color: rgb(61, 61, 61);
-    position: relative;
-    width: 40px;
-    height: 2px;
-    margin-top: 7px;
-    -webkit-transition: all 0.2s ease-in-out;
-    /* transition: all 0.2s ease-in-out; */
-  }
-  
-  #toggle1 {
-    display: none;
-  }
-  
-  #toggle1:checked + .hamburger1 .top {
-    -webkit-transform: rotate(-45deg);
-            transform: rotate(-45deg);
-    margin-top: 22.5px;
-  }
-  
-  #toggle1:checked + .hamburger1 .meat {
-    -webkit-transform: rotate(45deg);
-            transform: rotate(45deg);
-    margin-top: -5px;
-  }
-  
-  #toggle1:checked + .hamburger1 .bottom {
-    -webkit-transform: scale(0);
-            transform: scale(0);
-  }
-  
-  #toggle1:checked ~ .menu1 {
-    height: 340px;
-  }
-  ul.dropdown-menu.show{
-    min-width: 93px !important;
-  }
-    
+  height: 32px;
+  margin: 7px;
+  display: -ms-grid;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  justify-items: center;
+  z-index: 120;
+}
+
+.hamburger1 div {
+  background-color: rgb(61, 61, 61);
+  position: relative;
+  width: 32px;
+  height: 2px;
+  margin-top: 7px;
+  /* -webkit-transition: all 0.2s ease-in-out; */
+  /* transition: all 0.2s ease-in-out; */
+}
+
+#toggle1 {
+  display: none;
+}
+
+#toggle1:checked+.hamburger1 .top {
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  margin-top: 12.5px;
+}
+
+#toggle1:checked+.hamburger1 .meat {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  margin-top: -3px;
+}
+
+#toggle1:checked+.hamburger1 .bottom {
+  -webkit-transform: scale(0);
+  transform: scale(0);
+}
+
+#toggle1:checked~.menu1 {
+  height: 340px;
+}
+
+ul.dropdown-menu.show {
+  min-width: 93px !important;
+}
+
+a.link1 {
+  text-decoration: none;
+
+  color: gray;
+}
+
+.offcanvas-header {
+  background-color: #01664a !important;
+}
+
+.link1-div {
+  display: flex;
+  gap: 5px 19px;
+  padding: 10px 14px;
+
+}
+
+.link1-div .image img {
+  width: 12px;
+  height: 12px;
+  color: white;
+}
+
+.link1-div span {
+  font-size: 14px;
+}
+
+.link1-div:hover {
+  background-color: #01664a;
+  color: white;
+}
+
+.link1-div .image:hover {
+  color: wheat;
+}
+
+li.bottom:hover {
+  background-color: #01664a !important;
+  color: white !important;
+}
+
+li.bottom a:hover {
+  color: white !important;
+}
+
+.bottom-anchor {
+  text-decoration: none !important;
+}
+
 /* Ensure the dropdown menu is hidden by default */
 .menu-items {
+  display: none;
+}
+
+/* Display the menu when hovering over the parent container (Dropdown) */
+.dropdown:hover .menu-items {
+  display: block;
+}
+
+/* Optional: Styling to add a smoother hover transition */
+.menu-items {
+  display: none;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Make sure to adjust the z-index if necessary to bring the dropdown to the front */
+.dropdown-menu {
+  z-index: 999;
+}
+
+.search-bar-div {
+  position: relative;
+
+}
+
+.dropdown-menu[data-bs-popper] {
+  right: 10px !important;
+  left: 0px !important;
+}
+
+.search-icon {
+  position: absolute;
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap !important;
+  align-items: stretch;
+  width: 80% !important;
+  padding: 3px 10px;
+}
+
+.offcanvas.offcanvas-start.show {
+  width: 15%;
+}
+
+.hemburger-button {
+  margin-top: -12px;
+  margin-left: -17px;
+}
+
+.btn.show {
+  border: none !important;
+}
+
+button.btn.dropdown-toggle {
+  border: none;
+}
+
+.offcanvas {
+  max-width: 14% !important;
+}
+
+.offcanvas.close {
+  width: 300px;
+  /* Adjust this value as needed */
+}
+
+.search-bar-div .image img {
+  height: 36px !important;
+  width: 19px !important;
+  background: none;
+}
+
+/* ========searcch icon animation=== */
+/* Add initial styling for the image */
+.image img {
+  transition: transform 0.3s ease-in-out;
+  /* Smooth transition */
+}
+
+/* Apply the zoom-in effect when the icon is hovered */
+.image img:hover {
+  transform: scale(1.2);
+  /* Zooms in by 20% */
+}
+
+/* Apply zoom-in effect on load */
+.image img {
+  animation: zoomInOut 2.1s ease-in-out infinite;
+  /* Infinite loop to keep zoomed in */
+}
+
+.sidebar-bottom .bottom img {
+  color: #33ab5b !important;
+  height: 20px !important;
+  width: 20px !important;
+}
+
+.sidebar-bottom .bottom-home p {
+  color: #33ab5b;
+}
+
+.sidebar-bottom .bottom-home p:hover {
+  color: #fff !important;
+}
+
+button.btn-close {
+  display: none;
+}
+.list-group-item .version p{
+  text-align: center;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+}
+.dropdown-item:hover{
+  background-color: #007bff !important; 
+  color: white !important;
+}
+.language {
+  border-radius: 0px !important;
+}
+
+/* Define the zoom-in animation */
+@keyframes zoomInOut {
+  0% {
+    transform: scale(1, 1);
+  }
+
+  50% {
+    transform: scale(1.2, 1.2);
+  }
+
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+/* Define the zoom-in animation */
+@keyframes zoomIn {
+  0% {
+    transform: scale(0);
+    /* Start scaled down */
+  }
+
+  100% {
+    transform: scale(1);
+    /* End at normal size */
+  }
+}
+
+
+@media (max-width: 767px) {
+ 
+  .navbar{
+     background-color: #01664a; 
+   
+  }
+  .logo{
+    background-color: #fff;
+    padding: 7px 8px;
+    border-radius: 10px;
+    float: none !important;
+  }
+  .logo img{
+    width: -webkit-fill-available !important;
+  }
+ 
+  .form-container{
+    background-color:  #01664a;
+  }
+  .search-bar-div {
+    padding: 0px !important;
+    display:flex;
+    align-items: flex-start !important;
+  }
+  .hamburger1 div {
+    background-color: rgb(254, 254, 254);
+  }
+  li.nav-item{
     display: none;
   }
-  
-  /* Display the menu when hovering over the parent container (Dropdown) */
-  .dropdown:hover .menu-items {
-    display: block;
+  input.form-control{
+    background-color: #01664a;
   }
-  
-  /* Optional: Styling to add a smoother hover transition */
-  .menu-items {
-    display: none;
-    transition: all 0.3s ease-in-out;
+  .form-control:focus{
+    background-color: #01664a !important;
   }
-  
-  /* Make sure to adjust the z-index if necessary to bring the dropdown to the front */
-  .dropdown-menu {
-    z-index: 999;
-  }
-  .search-bar-div{
-    position: relative;
-    
-  }
-  .search-icon{
-position: absolute;
-  }
-@media  (max-width: 767px) {
-    ul.navbar-menu {
-        display: none !important;
-    }
-  
-   }
+  .offcanvas {
+    max-width: 80% !important;
+}
+.offcanvas.offcanvas-start.show{
+  width: 80% !important;
+}
+button.hemburger-button{
+  padding: 0px;
+}
+.input-group.form-container{
+  border-color:white !important;
+  border-radius: 12px !important;
+}
+}
+
+
+
