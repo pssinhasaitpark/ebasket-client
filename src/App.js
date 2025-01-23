@@ -12,9 +12,9 @@ const App = () => {
   
   
     <div>
-      <Login/>
+      {/* <Login/> */}
       <Home />
-      <Header/>
+      {/* <Header/> */}
 
     </div>
   );

@@ -1,0 +1,19 @@
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .main-contain{
+    margin-bottom: 25px;
+    border-bottom: 1px solid #D6E3EC;
+    padding-bottom: 15px;
+  }
+  
+  .main-heading{
+    font-size: 35px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  

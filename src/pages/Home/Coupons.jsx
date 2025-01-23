@@ -4,6 +4,7 @@ import ShopNow from '../../component/Shop_Now_Button';
 import image1 from '../../assests/images/coupon_left_banner.png';
 import image2 from '../../assests/images/coupon_right_up_banner.png';
 import image3 from '../../assests/images/coupon_right_down_banner.png';
+import './coupon.css'
 
 function Coupon() {
   return (
@@ -16,7 +17,7 @@ function Coupon() {
             <span className='coupon-discount'>15%</span>
             <p><ShopNow/></p>
            </div>
-           <div className='coupon-img-animate' style={{display:'flex', justifyContent:'right'}}><img className='coupon-img' src={image1} alt="" /></div> 
+           <div><div className='coupon-img-animate' style={{display:'flex', justifyContent:'right'}}><img className='coupon-img' src={image1} alt="" /></div></div> 
            </div>
         </Col>
         <Col xs={6} className="d-flex flex-column h-100">
@@ -31,11 +32,11 @@ function Coupon() {
             </Col>
           </Row>
           <Row className="flex-grow-1">
-            <Col className="d-flex coupon_item3" style={{alignItems:'center'}}>
+          <Col className="d-flex coupon_item3" style={{alignItems:'center'}}>
             <div className='coupon-img-animate2 coupon-flex-img' ><img className='coupon-img2' src={image3} alt="" /></div> 
             <div className='coupon-right-content'>
             <h3 style={{fontWeight:700}} className='pb-2'>30% off on our best products. Use code ENJOY30 in cart.</h3>
-            <span className='coupon-discount'>30%</span>
+            <span className='coupon-discount '>30%</span>
             <p className='mt-3'><ShopNow/></p>
            </div>
             </Col>

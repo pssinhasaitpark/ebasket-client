@@ -14,6 +14,7 @@ import flour from "../../assests/images/category-7.jpg"
 import left from "../../assests/images/left.svg"
 import right from "../../assests/images/right.svg"
 import banner from "../../assests/images/category-banner.jpeg"
+import './Top_category.css'
 
 function Categories() 
 {   
@@ -46,11 +47,46 @@ function Categories()
           slidesToShow: 4,
           slidesToScroll: 1,
           nextArrow: <SampleNextArrow to="next" />,
-          prevArrow: <SamplePrevArrow to="prev" />
+          prevArrow: <SamplePrevArrow to="prev" />,
+          responsive: [
+            {
+              breakpoint: 1199,  
+              settings: {
+                slidesToShow: 3, 
+                slidesToScroll: 1,
+              },
+            },
+            {
+              breakpoint: 977,  
+              settings: {
+                slidesToShow: 3, 
+                slidesToScroll: 1,
+                nextArrow:false,
+                prevArrow:false,
+              },
+            },
+            {
+              breakpoint: 768,  
+              settings: {
+                slidesToShow: 2, 
+                slidesToScroll: 1,
+                nextArrow:false,
+                prevArrow:false,
+              },
+            },
+            {
+              breakpoint: 291,  
+              settings: {
+                slidesToShow: 1, 
+                slidesToScroll: 1,
+                nextArrow:false,
+                prevArrow:false,
+              }
+            }]
 
         };
     return(
-            <div style={{ backgroundColor:'rgb(244, 244, 244)'}}><img src={banner} alt="" style={{width:'100%', height:'300px', marginBottom:'-270px'}} />
+            <div style={{ backgroundColor:'rgb(244, 244, 244)'}}><img src={banner} alt="" style={{width:'100%', height:'300px', marginBottom:'-270px', objectFit:'cover' }} />
              <div  className="pt-5" style={{padding:"0% 7%"}}>
                  <div className="Category-heading"><h3>TOP CATEGORIES</h3></div>
                     <div className="pb-5">
