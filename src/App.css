@@ -16,43 +16,4 @@ body {
     font-size: 16px;
     line-height: 1.5;
   }
-
-  #toggle1 {
-    display: none;
-  }
   
-  #toggle1:checked + .hamburger1 .top {
-    -webkit-transform: rotate(-45deg);
-            transform: rotate(-45deg);
-    margin-top: 22.5px;
-  }
-  
-  #toggle1:checked + .hamburger1 .meat {
-    -webkit-transform: rotate(45deg);
-            transform: rotate(45deg);
-    margin-top: -5px;
-  }
-  
-  #toggle1:checked + .hamburger1 .bottom {
-    -webkit-transform: scale(0);
-            transform: scale(0);
-  }
-  
-  #toggle1:checked ~ .menu1 {
-    height: 340px;
-  }
-
-  
-
-
-
-
-
-
-
-@media  (max-width: 767px) {
-    ul.navbar-menu {
-        display: none !important;
-    }
-  
-   }
