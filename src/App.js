@@ -12,11 +12,12 @@ import ProductDetail from "./pages/AddToCart.jsx";
 const App = () => {
   return (
     <div>
-      {/* <Header /> */}
-      {/* <Login /> */}
-      {/* <SignUpForm /> */}
-      {/* <Home /> */}
-      {/* <ProductList /> */}
+
+      <Header />
+      <Login />
+      <SignUpForm />
+      <Home />
+      <ProductList />
       <ProductDetail/>
     </div>
   );

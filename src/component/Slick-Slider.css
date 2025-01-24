@@ -1,0 +1,61 @@
+.Slick-img{
+    object-fit: cover;
+    border-radius: 10px;
+    max-height: 200px !important;
+}
+
+.Slick-img-section{
+    padding: 10px;
+}
+
+.slick-content{
+    width: 85%;
+}
+
+.actual-price{
+    padding-right: 10px;
+}
+
+.slick-title{
+    width: 100%;
+    overflow: hidden;
+    line-height: 1;
+    letter-spacing: 0.03em;
+    margin-bottom: 10px !important;
+}
+
+.title-link{
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #333333;
+}
+
+.slick-price{
+    color: #01664a;
+}
+
+
+.Slick-card{
+    justify-items: center;
+    padding: 10px 0px;
+    background-color: white;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid #ececec;
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+    border-radius: 10px;
+    transition: all ease 0.5s;}
+
+    .Slick-card:hover {
+        box-shadow: 0 0px 20px 0 rgba(0, 0, 0, 0.2) !important;
+        transition: all ease 0.5s;
+    }
+    
+.slick-slide {
+padding:  10px; 
+}
+
