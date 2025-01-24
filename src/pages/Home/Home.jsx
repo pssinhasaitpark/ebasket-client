@@ -5,10 +5,12 @@ import Categories from "./Top_categories";
 import Product from "./Our_product";
 import Selling from "./Most_selling";
 import All from "./all-products";
+import Header from "../../layout/Header";
 
 function Home() {
     return(
       <>
+        <Header/>
         <Slider />
         <Coupon />
         <Categories />

@@ -281,7 +281,7 @@ button.btn-close {
     display: none;
   }
   input.form-control{
-    background-color: #01664a;
+    /* background-color: #01664a; */
   }
   .form-control:focus{
     background-color: #01664a !important;
