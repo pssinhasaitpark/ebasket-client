@@ -87,6 +87,35 @@ opacity: 1 !important;
 /*  */
 
 
+.viewall-button{
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.05em;
+    font-weight: 500;   
+    background-color:#cc3838 !important;
+    color: #fff;
+    display: inline-block;
+    padding: 5px 15px;
+    border: 1px solid #cc3838 !important    ;
+    border-radius: 5px;
+    transition: all ease 0.5s;
+}
+
+.viewall-button:hover{
+    opacity: 0.8;
+    transition: all ease 0.5s;
+}
+
+/* For screen widths <= 768px (small screens) */
+@media (max-width: 768px) {
+    .viewall-button {
+        font-size: 13px !important;
+        padding: 3px 10px !important;
+    }
+}
+/*  */
+
+
 
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
