@@ -1,3 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+}
+.font-family{
+    font-family: 'Montserrat',sans-serif;
+}
+.font-sz{
+    font-size: 16px;
+}
+body {
+    font-family: 'Montserrat',sans-serif; /* Apply the Google Font */
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+
+
+
 .carousel-control-prev-icon{
     background-image: url(/src/assests/images/left.svg) !important;
     color: black !important;
@@ -117,24 +139,4 @@ opacity: 1 !important;
 
 
 
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
-:root{
-    padding: 0%;
-    margin: 0%;
-    box-sizing: border-box;
-}
-.font-family{
-    font-family: 'Montserrat',sans-serif;
-}
-.font-sz{
-    font-size: 16px;
-}
-body {
-    font-family: 'Montserrat',sans-serif; /* Apply the Google Font */
-    font-size: 16px;
-    line-height: 1.5;
-  }
-  
 

@@ -8,17 +8,19 @@ import "bootstrap/dist/js/bootstrap.min.js";
 import SignUpForm from "./pages/SignupForm.jsx";
 import ProductList from "./pages/Products.jsx";
 import ProductDetail from "./pages/AddToCart.jsx";
+import Footer from "./layout/Footer.jsx";
 
 const App = () => {
   return (
     <div>
 
       <Header />
-      <Login />
+      {/* <Login />
       <SignUpForm />
       <Home />
       <ProductList />
-      <ProductDetail/>
+      <ProductDetail/> */}
+      <Footer/>
     </div>
   );
 };

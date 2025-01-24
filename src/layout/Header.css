@@ -166,7 +166,7 @@ button.btn.dropdown-toggle {
   /* Adjust this value as needed */
 }
 
-.search-bar-div .image img {
+.search-bar-div .location-image img {
   height: 36px !important;
   width: 19px !important;
   background: none;
@@ -174,19 +174,19 @@ button.btn.dropdown-toggle {
 
 /* ========searcch icon animation=== */
 /* Add initial styling for the image */
-.image img {
+.location-image img {
   transition: transform 0.3s ease-in-out;
   /* Smooth transition */
 }
 
 /* Apply the zoom-in effect when the icon is hovered */
-.image img:hover {
+.location-image img:hover {
   transform: scale(1.2);
   /* Zooms in by 20% */
 }
 
 /* Apply zoom-in effect on load */
-.image img {
+.location-image img {
   animation: zoomInOut 2.1s ease-in-out infinite;
   /* Infinite loop to keep zoomed in */
 }
@@ -280,7 +280,7 @@ button.btn-close {
   li.nav-item{
     display: none;
   }
-  input.form-control{
+  input.form-control.input{
     background-color: #01664a;
   }
   .form-control:focus{
