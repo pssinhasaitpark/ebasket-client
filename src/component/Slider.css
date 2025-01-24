@@ -1,0 +1,18 @@
+.slider-heding {
+    /* color: #000; */
+    /* font-family: Jost; */
+    font-size: 15px;
+    font-style: normal;
+    /* font-weight: 500; */
+    line-height: normal;
+    text-transform: capitalize;
+  }
+  
+  .slider-img{
+    width: -webkit-fill-available;
+  }
+
+  /* .item-img{
+    border: 1px solid #080808;
+  } */
+  
