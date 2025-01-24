@@ -1,0 +1,154 @@
+.car-detail-inner {
+    background: #fff;
+    padding: 20px;
+    /* box-shadow: 0 4px 9px 0 rgb(0 0 0 / 9%); */
+}
+
+.car-del-top-section .product-detail .rent-cardet-right {
+    padding-left: 15px;
+}
+.rent-cardet-left .main-slider {
+    margin-bottom: 15px;
+}
+
+.rent-cardet-left  .product-image {
+    border-radius: .25rem;
+    text-align: center;
+}
+
+.rent-cardet-left .product-image img {
+    border: 1px solid rgba(0, 0, 0, .125);
+    object-fit: contain;
+    height: 380px;
+    width: auto !important;
+    display: inline-block;
+}
+
+.car-det-title h2 {
+    color: #000000;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 44px;
+    letter-spacing: -0.36px;
+    margin-bottom: 5px;
+}
+
+.rent-cardet-right .description p {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 26px;
+    letter-spacing: 0.04em;
+    color: #333;
+}
+
+.car-det-head .car-det-price span.price {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 33px;
+    letter-spacing: 0.03em;
+    color: #01664a;
+}
+
+.car-det-head .car-det-price span.price s {
+    font-size: 15px;
+    margin-left: 10px;
+    font-weight: 500;
+}
+
+.car-det-price .product_price_div .variant_quntity {
+    display: block;
+    color: #666666;
+    font-size: 14px;
+}
+
+.carrent-det-rg-inner h3 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.05em;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.label-with-borde {
+    display: flex;
+    padding: 5px 10px;
+    border: 2px solid #000; 
+    border-radius: 5px;
+  }
+
+  .quantity .product-item-box h3 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.count-number {
+    border-radius: 50px;
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid #c9c8d2;
+    display: block;
+}
+
+.count-number button.btn-sm.btn {
+    border: 0 !important;
+    /* background: none !important; */
+    /* border: 0; */
+    box-shadow: none !important;
+    background: none !important;
+    outline: none !important;
+}
+
+.product-detail-page .addtocart {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0px -8px;
+}
+
+.product-detail-page .addtocart .btnnn {
+    display: inline-block;
+    width: 42%;
+    border-radius: 50px;
+    padding: 14px;
+    font-size: 18px;
+}
+
+.product-detail-page .product-fav-share {
+    padding-bottom: 15px;
+    padding-top: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.product-detail-page .product-fav-share > div {
+    margin-right: 10px;
+}
+
+.product-detail-page .product-fav-share > div a {
+    background: #F0F0F0;
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    color: #4D4D4D;
+}
+
+.product-detail-page .product-fav-share > div .symbol-heart  {
+    font-size: 18px;
+    margin: -3px 4px 0px 0;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.product-detail-page .product-fav-share .share-btn a .social-icons{
+    font-size: 18px;
+    margin: -3px 4px 0px 0;
+    display: inline-block;
+    vertical-align: middle;
+}

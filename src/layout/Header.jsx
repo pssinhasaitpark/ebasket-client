@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import { Dropdown, Row, Col, Form, NavLink } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
 import Logo from '../asset/images/logo_web.png'
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import search from '../asset/images/search.svg'
@@ -14,52 +15,58 @@ import shopping from '../asset/images/shopping-cart.svg';
 import glob from '../asset/images/globe.svg'
 import downarrow from '../asset/images/chevron-down.svg'
 import './Header.css'
+// import { Button } from 'bootstrap/dist/js/bootstrap.min';
 const Header = () => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  return (
+ return (
     <>
 
-      <Navbar expand="lg" className="">
-        <div className="bg-transparent    text-dark container-fluid  ">
+      <Navbar expand="lg" className=" pb-0 navbar">
+        <div className="bg-transparent   text-dark container-fluid  ">
           <Container >
-            <Row className='align-items-center p-3'>
-              <Col lg={2} xs={4}>
-                <Navbar.Brand href="#home">
-                  <div className='fw-bold float-start fs-1 '>
+            <Row className='container-row align-items-center py-2'>
+              <Col lg={2} className='col-5 ps-0' >
+                <Navbar.Brand href="#home" className='m-0'>
+                  <div className='logo fw-bold   fs-1 '>
                     <img src={Logo} alt="" />
                   </div>
                 </Navbar.Brand>
               </Col>
 
-              <Col lg={3} xs={4} >
-                <div className='search-bar-div d-flex align-items-center mt-2'>
-                  
-                    <Form className='navbar-input ms-4 pt-1 '>
-                    <div className='search-icon '>
-                    <span>
-                      <img src={location} alt="" className='w-auto ms-1 mt-2' height="25" width="25" />
-                    </span>
-                     </div>
+              <Col lg={3} className='col-5 ps-0' >
+                <div className='search-bar-div d-flex align-items-center  py-2'>
+              <form action="
+              ">
 
-                      <Form.Control
+                  <div className="input-group form-container border border-success rounded-2">
+                    <div className="input-group-prepend">
+                      <span className="image">
+                        <img src={location} alt="search" className='' />
+                      </span>
+                    </div>
+                   
+                      <input
                         type="text"
+                        className="form-control border-0"
                         placeholder="Enter Your Location"
-                        aria-label="Disabled input example"
-                        className='border border-success p-2'
-                        // readOnly 
-                        />
-                    </Form>
-                  
+
+                      />
+                 
                   </div>
+                  
+
+
+                </form>
+                </div>
               </Col>
 
-              <Col lg={7} xs={4}>
-                <div className='d-flex align-items-center justify-content-end ps-5 pt-2'>
+              <Col lg={7} className='col-2'>
+                <div className='d-flex align-items-center  pt-2'>
 
-                  <ul className="navbar-menu navbar-nav mx-auto  mb-lg-0">
+                  <ul className="navbar-menu navbar-nav  mb-lg-0">
                     <li className="nav-item">
                       <div className='d-flex align-items-center me-2'>
                         <div>
@@ -92,8 +99,8 @@ const Header = () => {
                         </NavLink>
                         <div>
                           <Dropdown >
-                            <Dropdown.Toggle  className=' bg-transparent border-0' id="dropdown-basic">
-                              <a href="#" className='sign-in-btn'> 
+                            <Dropdown.Toggle className=' bg-transparent border-0 p-0' id="dropdown-basic">
+                              <a href="#" className='sign-in-btn'>
                                 <img src={downarrow} alt="" />
                               </a>
                             </Dropdown.Toggle>
@@ -131,13 +138,15 @@ const Header = () => {
                         <div>
                           <img src={glob} alt="" />
                         </div>
-                        <div>
+                        <div className='ms-2'>
                           <button className="btn  dropdown-toggle ps-0 " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span className='text-secondary'>
                             English
+                            </span>
                           </button>
-                          <ul className="dropdown-menu">
-                            <li><a className="dropdown-item " href="#">English</a></li>
-                            <li><a className="dropdown-item " href="#">Arabic</a></li>
+                          <ul className="language dropdown-menu m-0 p-0">
+                            <li><a className="dropdown-item m-0  " href="#">English</a></li>
+                            <li><a className="dropdown-item m-0" href="#">Arabic</a></li>
 
                           </ul>
                         </div>
@@ -145,88 +154,118 @@ const Header = () => {
                     </li>
 
                     <div>
+                    {/* <Button variant="primary" onClick={handleShow}>
+        Launch
+      </Button> */}
 
-
-                      <button onClick={handleShow} className='bg-transparent border-0'>
+                      <Button onClick={handleShow} className='hemburger-button bg-transparent border-0'>
                         <input id="toggle1" type="checkbox" />
                         <label class="hamburger1" for="toggle1">
                           <div class="top"></div>
                           <div class="meat"></div>
                           <div class="bottom"></div>
                         </label>
-                      </button>
-                      <Offcanvas show={show} onHide={handleClose}>
-                        <Offcanvas.Header closeButton className='bg-success'>
+                      </Button>
+                      <Offcanvas show={show} onHide={handleClose}  >
+                        <Offcanvas.Header closeButton >
                           <Offcanvas.Title className='text-white'>eBasket</Offcanvas.Title>
                         </Offcanvas.Header>
                         <Offcanvas.Body className='p-0'>
                           <div>
-                            <ul class="link-group ps-1 ">
+                            <ul class="link-group p-0 ">
 
-                              <li class="list-group-item py-2 border-bottom">
-                                <div className=''>
-                                  <a class="link1 text-decoration-none text-secondary" href="">
-                                    <div>
+                              <li class="list-group-item  border-bottom">
+                                <a class="link1" href="">
+                                  <div className='link1-div'>
+                                    <div className='image'>
                                       <img src={home} alt="" />
                                     </div>
-                                    Home Page</a>
-                                </div>
+                                    <span>
+
+                                      Home Page
+                                    </span>
+                                  </div>
+                                </a>
                               </li>
-                              <li class="list-group-item py-2 border-bottom">
-                                <div>
-                                  <a class="link1 text-decoration-none text-secondary" href="">
-                                    <div>
-                                      <img src={phone} alt="" />
+                              <li class="list-group-item border-bottom">
+                                <a class="link1 " href="">
+                                  <div className='link1-div'>
+                                    <div className='image'>
+                                      <img src={user} alt="" />
                                     </div>
-                                    Contact Us</a>
-                                </div>
+                                    <span>
+
+                                      Contact Us
+                                    </span>
+                                  </div>
+                                </a>
                               </li>
-                              <li class="list-group-item py-2 border-bottom">
-                                <div className='d-flex'>
-                                  <a class="link1 text-decoration-none text-secondary" href="">
-                                    <div>
-                                      <img src={phone} alt="" />
+                              <li class="list-group-item  border-bottom">
+                                <a class="link1 " href="">
+                                  <div className='link1-div'>
+                                    <div className='image'>
+                                      <img src={user} alt="" />
                                     </div>
-                                    Login</a>
-                                </div>
+                                    <span>
+
+                                      Login
+                                    </span>
+                                  </div>
+                                </a>
                               </li>
-                              <li class="list-group-item py-2 border-bottom">
-                                <div>
-                                  <a class="link1 text-decoration-none text-secondary" href="">
-                                    <div>
-                                      <img src={phone} alt="" />
+                              <li class="list-group-item  border-bottom">
+                                <a class="link1 " href="">
+                                  <div className='link1-div'>
+                                    <div className='image'>
+                                      <img src={user} alt="" />
                                     </div>
-                                    Register</a>
-                                </div>
+                                    <span>
+
+                                      Register
+                                    </span>
+                                  </div>
+                                </a>
                               </li>
-                              <li class="list-group-item py-4 border-bottom">
-                                <div>
+                              <li class="list-group-item border-bottom">
+                                <div className='version py-5'>
                                   <span >
-                                    <p className='text-center'>V:2.1</p>
+                                    <p >V:2.1</p>
                                   </span>
                                 </div>
                               </li>
                             </ul>
 
 
-                            <ul className='d-flex position-absolute bottom-0 border-top w-100 justify-content-evenly p-0'>
-                              <li class="list-group-item py-4 ">
-                                <div className='position-relative'>
-                                  <a href="#">
-                                    <div>
+                            <ul className='sidebar-bottom d-flex position-absolute bottom-0 border-top w-100  p-0 mb-0'>
+                              <li class="bottom list-group-item text-center w-50 p-2">
+                                <a href="#" className='text-decoration-none  text-secondary text-center'>
+                                  <div className='bottom-home position-relative'>
+                                    <div className=''>
                                       <img src={home} alt="" />
                                     </div>
-                                    <a class=" text-decoration-none text-secondary text-center p-2" href="">Home</a>
-                                  </a>
-                                </div>
-                              </li>
-                              <li class="list-group-item py-4 ">
-                                <div className='position-relative'>
-                                  <div>
-                                    <img src={phone} alt="" />
+
+                                    <p >
+                                      Home
+                                    </p>
+
                                   </div>
-                                  <a class=" text-decoration-none text-secondary text-center p-2" href="">Help</a>
-                                </div>
+                                </a>
+                              </li>
+                              <li class="bottom list-group-item text-center w-50 p-2">
+                                <a href="#" class=" text-decoration-none text-secondary text-center ">
+
+                                  <div className='position-relative'>
+                                    <div>
+                                      <img src={phone} alt="" />
+                                    </div>
+
+                                    <p>
+                                      Help
+                                    </p>
+
+
+                                  </div>
+                                </a>
                               </li>
                             </ul>
                           </div>
