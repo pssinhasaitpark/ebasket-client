@@ -8,17 +8,31 @@ import "bootstrap/dist/js/bootstrap.min.js";
 import SignUpForm from "./pages/SignupForm.jsx";
 import ProductList from "./pages/Products.jsx";
 import ProductDetail from "./pages/AddToCart.jsx";
+import Category from "./pages/Category/Category.jsx";
+import { useState, useEffect } from 'react';
+import LoadingSpinner from "./component/spinner";
+import Search from "./pages/Search/search-page.jsx";
+
 
 const App = () => {
+  const [loading, setLoading] = useState(true);
+    
+      useEffect(() => {
+        setTimeout(() => {
+          setLoading(false);
+        }, 4000);
+      }, []);
   return (
     <div>
-
-      <Header />
-      <Login />
-      <SignUpForm />
-      <Home />
-      <ProductList />
-      <ProductDetail/>
+       {loading && <LoadingSpinner />}
+      {/* <Header /> */}
+      {/* <Login /> */}
+      {/* <SignUpForm /> */}
+      {/* <Home /> */}
+      {/* <ProductList /> */}
+      {/* <ProductDetail/> */}
+      {/* <Category /> */}
+      <Search />
     </div>
   );
 };

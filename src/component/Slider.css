@@ -16,3 +16,9 @@
     border: 1px solid #080808;
   } */
   
+  @media (max-width: 768px) {
+    .arrows {
+        bottom: 10px;
+        translate: unset; /* Remove translate effect on small screens */
+    }
+}

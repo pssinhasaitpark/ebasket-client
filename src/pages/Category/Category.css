@@ -1,0 +1,89 @@
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.vandor-sidebar .vandorcat-list{
+    padding: 15px 10px;
+    margin: 0;
+    list-style-type: none;
+}
+
+.vandor-sidebar {
+        background: #FFFFFF;
+    border: 1px solid #EAEAEA;
+}
+
+.vandor-sidebar h3{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.03em;
+    color: #333333;
+    margin: 0;
+    padding: 15px 22px;
+    border-bottom: 1px solid #EAEAEA;
+}
+
+.vandor-sidebar .vandorcat-list li a span img {
+    max-width: 32px;
+    border-radius: 100px;
+    border: 1px solid #e8e8e8;
+    padding: 2px;
+    height: 32px;
+    object-fit: cover;
+    margin: 0px 8px;
+}
+
+.vandor-sidebar .vandorcat-list li a {
+    padding: 8px 4px;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 26px;  
+    letter-spacing: 0.03em;
+    color: #333333 !important;
+    display: block;
+    transition: all ease 0.5s;
+    -webkit-transition: all ease 0.5s;
+    -ms-transition: all ease 0.5s;
+    border-left: 0px solid transparent;
+    position: relative;
+    text-decoration: none;
+}
+
+.vandorcat-list li a .form-check-input:hover + .input-title {
+    padding-left: 5px;
+    transition: all ease 1s;
+    -webkit-transition: all ease 0.5s;
+    color: #01664a;
+}
+
+.vandorcat-list li a .input-title:hover{
+    padding-left: 10px;
+    transition: all ease 1s;
+    -webkit-transition: all ease 0.5s;
+    color: #01664a;
+}
+
+.vandor-sidebar .vandorcat-list li a .form-check-input{
+    margin: 0 0.3em 0 0;
+    overflow: hidden;
+    vertical-align: middle;
+    width: 1.3rem;
+    height: 1.3rem;
+}
+
+
+@media (max-width: 767px) {
+    .row {
+        display: block !important;
+    }
+}
