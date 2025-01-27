@@ -19,9 +19,11 @@
 }
 
 .Navbar{
+  background-color: white !important;
     display: flex;
     justify-content: center;
     margin-bottom: 40px;
+    flex-wrap: wrap;
 }
 
 .nav-txt{
@@ -41,14 +43,40 @@
     border-bottom:2px solid #01664a !important;
   }
 
-  .nav-content:not(:last-child) {
-    border-right: 2px solid  rgba(0, 0, 0, .075);
-    padding-right: 12px; 
+  .nav-content {
+    display: inline-flex; 
 }
+ 
 
   .nav-txt:hover{
     color: #01664a;
     border-bottom:2px solid #01664a;
     ;
   }
+
+  @media screen and (max-width: 767) {
+    .product-heading {
+        font-size: 25px;
+    }
+}
+
+  @media screen and (max-width: 575px) {
+    .product-heading {
+        font-size: 20px;
+    }
+}
+
+.nav-txt:before{
+position: absolute;
+content: "";
+right: -10px;
+top: 50%;
+-webkit-transform: translateY(-50%);
+-ms-transform: translateY(-50%);
+transform: translateY(-50%);
+height: 16px;
+width: 2px;
+background-color: #8cb2b2;
+opacity: 0.4;
+}
 

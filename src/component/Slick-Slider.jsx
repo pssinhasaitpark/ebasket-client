@@ -67,7 +67,7 @@ function Slick()
               },
             },
             {
-              breakpoint: 291,  
+              breakpoint: 320,  
               settings: {
                 slidesToShow: 1, 
                 slidesToScroll: 1,
@@ -79,9 +79,9 @@ function Slick()
         };
     return(
             
-             <div style={{padding:"0%"}}>
-                    <div className="pb-5">
-                        <Slider {...settings} style={{background:'transparent'}}>
+             <div>
+                    <div className="pb-5" style={{position:'relative'}}>
+                        <Slider {...settings} style={{background:'tranparent'}}>
                                 <div className="Slick-card">
                                   <div className="Slick-img-section"> <img className="Slick-img img-fluid" src={rice} alt=""  /></div>
                                   <div className="py-2 slick-content">
@@ -133,7 +133,7 @@ function Slick()
                                 <div className="Slick-card">
                                   <div className="Slick-img-section"> <img className="Slick-img img-fluid" src={rice} alt=""  /></div>
                                   <div className="py-2 slick-content">
-                                    <h6 className="mb-2 pt-2 slick-title"><a className="title-link">India Gate Premium Basmati Rice</a></h6>
+                                    <h6 className="mb-2 pt-2 slick-title"><a className="title-link">Sudhi</a></h6>
                                     <h6 className="mb-1 pt-2 slick-price"><span className="actual-price">$278.07</span><s>$299.00</s></h6>
                                   </div>
                                 </div>
