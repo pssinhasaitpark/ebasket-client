@@ -2,10 +2,12 @@ import React from 'react';
 import { Card, Badge, Row, Col } from 'react-bootstrap';
 import potatoImg from '../asset/images/t3.png'
 import './Products.css'
+import Header from '../layout/Header';
 
 const ProductList = () => {
   return (
     <>
+    <Header/>
     <div className="container section-content">
       <Row>
         <Col md={12}>
