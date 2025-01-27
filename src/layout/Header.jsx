@@ -72,7 +72,7 @@ const Header = () => {
                         <div>
                           <img src={search} alt="" />
                         </div>
-                        <NavLink to="/sign-in" className="nav-link " activeClassName="active">
+                        <NavLink to="{/sign-in}" className="nav-link " activeClassName="active">
                           Search
                         </NavLink>
                       </div>

@@ -28,7 +28,7 @@ const App = () => {
   return (
 <>
 
-      <Header />
+      {/* <Header /> */}
       {/* <Login />
       <SignUpForm />
       <Home />
@@ -52,7 +52,7 @@ const App = () => {
       {/* <Home /> */}
       {/* <ProductList /> */}
       {/* <ProductDetail/> */}
-      <Footer/>
+      {/* <Footer/> */}
       </div>
       
       </div>
