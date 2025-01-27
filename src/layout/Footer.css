@@ -1,0 +1,279 @@
+.footer-outer {
+    background-image: url('../asset/images/footer-bg.jpg');
+    /* background-color: black; */
+    /* opacity: 0.7; */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.footer:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.8
+}
+
+.footer-container {
+    position: relative;
+    z-index: 9;
+}
+
+/* .footer-outer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);  /* Black overlay with 50% opacity 
+    z-index: 1;
+  } */
+
+/* Container for the social links */
+.social-links {
+    text-align: center;
+    /* Center the content */
+    padding: 20px 0;
+    /* Padding for spacing */
+}
+
+/* Styling the unordered list */
+.social-list {
+    list-style-type: none;
+    /* Remove bullets from the list */
+    padding: 0;
+    /* Remove padding */
+    margin: 0;
+    /* Remove margin */
+    display: flex;
+    /* Flexbox to display icons in a row */
+    display: flex-start;
+    /* Center the list items */
+    gap: 20px;
+    /* Spacing between the icons */
+}
+
+/* Style for each list item */
+.social-list li {
+    display: inline-block;
+    /* Ensure the icons are inline */
+}
+
+/* Styling for the links (icons) */
+.social-list a {
+    color: #000;
+    /* Default icon color (black) */
+    text-decoration: none;
+    /* Remove underline */
+    transition: color 0.3s ease;
+    /* Smooth transition for color change */
+}
+
+.social-list li img {
+    height: 20px;
+    width: 22px;
+}
+
+/* Hover effect for the icons */
+.social-list a:hover {
+    color: #00aced;
+    /* Change to blue on hover (you can use any color you like) */
+}
+
+/* Optional: You can add a custom size for the icons */
+.social-list a svg {
+    transition: transform 0.3s ease;
+    /* Smooth scaling effect */
+}
+
+/* Optional: Add a scale effect on hover */
+.social-list a:hover svg {
+    transform: scale(1.1);
+    /* Slightly increase size on hover */
+}
+
+.social-list .image {
+
+    padding: 9px;
+    border-radius: 22px;
+
+}
+
+.social-list .image.instagram {
+    background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+    border-color: #3b5998;
+    padding: 9px;
+    border-radius: 22px;
+
+}
+
+.social-list .image.youtube {
+    background: #c4302b;
+    border-color: #c4302b
+}
+
+.social-list .image.twitter {
+    background: #1DA1F2;
+    border-color: #1DA1F2
+}
+
+.social-list .image.facebook {
+    background-color: #3b5998;
+    border-color: #3b5998;
+}
+
+.footer-upper-wrapper-left .para {
+    color: white;
+    font-size: 15px;
+    line-height: 2;
+    font-weight: 500;
+}
+
+.footer-upper-wrapper-mid .services-list {
+    list-style: none !important;
+}
+
+.footer-upper-wrapper-mid .services-list li {
+    margin-bottom: 14px;
+}
+
+.footer-upper-wrapper-mid .services-list li a {
+    color: white;
+    text-decoration: none !important;
+    font-weight: 500;
+    font-size: 16px
+}
+
+.contact-services div {
+    width: 14%;
+    height: 50%;
+    border-radius: 50%;
+}
+
+.footer-bottom {
+    position: relative;
+    z-index: 9;
+
+}
+
+.footer-bottom-wrapper {
+    background-color: #000;
+}
+
+.footer-bottom-wrapper .image img {
+    height: 40px;
+    width: 134px;
+}
+
+/* =========gpt============== */
+.services-heading{
+    position: relative;
+}
+.services-heading::after {
+    background: #01664a;
+    width: 50px;
+    height: 7px;
+    position: absolute;
+    content: "";
+    bottom: -7px;
+    left: -6px;
+    height: 5px;
+    border-radius: 50px
+}
+
+.services-heading::before {
+    position: absolute;
+    content: "";
+    /* top: 111%; */
+    left: 3%;
+    width: 100px;
+    height: 3px;
+    border-radius: 50px;
+    background: #fff;
+    bottom: -23%;
+}
+
+
+/* ============media============== */
+@media (max-width: 767px) {
+
+    .footer-upper-wrapper-left {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .footer-upper-wrapper-left .para {
+        text-align: center;
+    }
+
+    .footer-upper-wrapper-mid {
+        display: flex;
+        /* align-items: center; */
+        justify-content: center;
+        flex-direction: column;
+        text-align: center
+    }
+
+    .bottom-row {
+        flex-direction: column !important;
+    }
+
+    .bottom-row .bottom-col-left {
+        justify-content: center;
+
+    }
+
+    .bottom-row .bottom-col-right {
+
+        justify-content: center !important;
+    }
+
+    .footer-bottom-wrapper .image img {
+        height: 33px;
+        width: 117px
+    }
+
+    .contact-services div {
+        width: 14%;
+    }
+   
+    .services-heading::after {
+        background: #01664a;
+        width: 50px;
+        height: 7px;
+        position: absolute;
+        content: "";
+        bottom: -8px;
+        left: 84px ;
+        height: 5px;
+        border-radius: 50px;
+    }
+    .services-heading::after{
+        left: 144px;
+        width: 52px;
+        height: 5px;
+        bottom: -7px;
+        top: 27px;
+    }
+    .services-heading::before {
+        position: absolute;
+        content: "";
+        /* top: 111%; */
+        left: unset;
+        width: 100px;
+        height: 3px;
+        border-radius: 50px;
+        background: #fff;
+        bottom: -7px;
+    }
+    .contact-services img{
+        height: 24px;
+    }
+}

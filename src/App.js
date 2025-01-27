@@ -8,6 +8,7 @@ import "bootstrap/dist/js/bootstrap.min.js";
 import SignUpForm from "./pages/SignupForm.jsx";
 import ProductList from "./pages/Products.jsx";
 import ProductDetail from "./pages/AddToCart.jsx";
+import Footer from "./layout/Footer.jsx";
 import Category from "./pages/Category/Category.jsx";
 import { useState, useEffect } from 'react';
 import LoadingSpinner from "./component/spinner";
@@ -25,10 +26,18 @@ const App = () => {
         }, 3000);
       }, []);
   return (
-    <>
-    <div>
+<>
+
+      <Header />
+      {/* <Login />
+      <SignUpForm />
+      <Home />
+      <ProductList />
+      <ProductDetail/> */}
+   <div>
+
        {loading && <LoadingSpinner />}
-      <div>
+       <div>
       <Routes>
       <Route path="/" element={ <Home/> } />
         <Route path="/login" element={ <Login/> } />
@@ -37,8 +46,17 @@ const App = () => {
         <Route path="/productDetail" element={<ProductDetail/>}/>
         <Route path="/offers" element={<CouponsList/>}/>
       </Routes>
-    </div>
+      {/* <Header /> */}
+      {/* <Login /> */}
+      {/* <SignUpForm /> */}
+      {/* <Home /> */}
+      {/* <ProductList /> */}
+      {/* <ProductDetail/> */}
+      <Footer/>
       </div>
+      
+      </div>
+    
       </>
 
   );

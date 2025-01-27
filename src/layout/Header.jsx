@@ -43,14 +43,14 @@ const Header = () => {
 
                   <div className="input-group form-container border border-success rounded-2">
                     <div className="input-group-prepend">
-                      <span className="image">
+                      <span className="location-image">
                         <img src={location} alt="search" className='' />
                       </span>
                     </div>
                    
                       <input
                         type="text"
-                        className="form-control border-0"
+                        className="form-control input border-0"
                         placeholder="Enter Your Location"
 
                       />
@@ -63,8 +63,8 @@ const Header = () => {
                 </div>
               </Col>
 
-              <Col lg={7} className='col-2'>
-                <div className='d-flex align-items-center  pt-2'>
+              <Col lg={7} className='col-2 pe-0'>
+                <div className='d-flex align-items-center  justify-content-end pt-2 pr-0'>
 
                   <ul className="navbar-menu navbar-nav  mb-lg-0">
                     <li className="nav-item">
