@@ -7,6 +7,7 @@ import All from "./all-products";
 import React, { useState, useEffect } from 'react';
 import LoadingSpinner from "../../component/spinner";
 
+import Header from "../../layout/Header";
 
 function Home() {
     const [loading, setLoading] = useState(true);
@@ -19,6 +20,7 @@ function Home() {
     return(
       <>     
        {loading && <LoadingSpinner />}
+        <Header/>
         <Slider />
         <Coupon />
         <Categories />

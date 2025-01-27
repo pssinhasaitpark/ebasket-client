@@ -14,10 +14,11 @@
 .rent-cardet-left  .product-image {
     border-radius: .25rem;
     text-align: center;
+    border: 1px solid rgba(0, 0, 0, .125);
 }
 
 .rent-cardet-left .product-image img {
-    border: 1px solid rgba(0, 0, 0, .125);
+    /* border: 1px solid rgba(0, 0, 0, .125); */
     object-fit: contain;
     height: 380px;
     width: auto !important;
@@ -41,6 +42,13 @@
     letter-spacing: 0.04em;
     color: #333;
 }
+
+.attribute-options{
+    display: flex;
+    justify-content: left;
+}
+
+
 
 .car-det-head .car-det-price span.price {
     font-style: normal;
@@ -137,6 +145,7 @@
     font-weight: 500;
     line-height: 18px;
     color: #4D4D4D;
+    text-decoration: none;
 }
 
 .product-detail-page .product-fav-share > div .symbol-heart  {
@@ -151,4 +160,159 @@
     margin: -3px 4px 0px 0;
     display: inline-block;
     vertical-align: middle;
+}
+
+.product-detail-page .review-inner {
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+    padding: 15px;
+}
+
+.rental-detailed-ratings-and-reviews h3 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 34px;
+    letter-spacing: 0.03em;
+    color: #000000;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e8e8e8;
+    padding-bottom: 15px;
+}
+
+.customers-overview-list ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.customers-overview-list ul li {
+    margin: 0 0 10px 0;
+    padding: 0;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    color: #0D0D0D;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #f4f4f4;
+    padding-bottom: 10px;
+}
+
+.customers-overview-list ul li label {
+    margin: 0 10px 0 0;
+    color: #0D0D0D;
+    font-weight: 500;
+}
+
+.store-info .shipping-detail .shipping-details-bottom-border img {
+    max-width: 40px;
+}
+
+.more-from-store h3 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    letter-spacing: 0.03em;
+    color: #000000;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.more-from-store .store-product {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #E5EAF1;
+}
+
+.more-from-store .store-product .product-content {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.more-from-store .store-product .product-content .store-image {
+    width: 100px;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ececec;
+    box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
+}
+
+.more-from-store .store-product .product-content .store-image img {
+    height: 90px;
+    object-fit: cover;
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+.more-from-store .store-product .product-content .product-detail {
+    padding-left: 10px;
+}
+
+.more-from-store .store-product .product-detail .product-name {
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.more-from-store .store-product .product-detail .strike-price {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+}
+
+.more-from-store .store-product .product-detail .strike-price strike {
+    margin-right: 10px;
+}
+
+.related_products .title {
+    margin-bottom: 25px;
+    border-bottom: 1px solid #D6E3EC;
+    padding-bottom: 15px;
+}
+
+.related_products .title h3 {
+    letter-spacing: 0.03em;
+    color: #000000;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 32px;
+}
+
+.related_products .see-all {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+}
+
+.products_buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.related_products .title  .btn-btn-link {
+    background: #058810;
+    color: #d7dfd2;
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 5px;
+    transition: all ease 0.5s;
+    display: flex;
+    justify-content: flex-end;
+    text-decoration: none;
+}
+
+@media (max-width: 767px){
+    .product-detail-page .addtocart .btnnn{
+        width: auto;
+    }
 }

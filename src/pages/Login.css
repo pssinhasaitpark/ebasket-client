@@ -1,10 +1,20 @@
-.btn-colors{
+.input_heading {
+    color: rgba(78, 78, 78, 0.788) !important;
+  }
+  
+  .inputes-box {
+    font-size: 15px !important;
+    border-bottom: 1px solid rgb(160 160 160 / 30%) !important;
+    outline: none !important;
+  }
+  
+  .btnn-colors {
     background: #01664a;
     text-transform: uppercase;
     color: #ffffff;
-}
-
-.or-line:before {
+  }
+  
+  .or-line:before {
     position: absolute;
     height: 1px;
     background: #ccc;
@@ -14,39 +24,22 @@
     top: 0;
     bottom: 0;
     content: "";
-}
-
-.or-line {
+  }
+  
+  .or-line {
     text-align: center;
     position: relative;
-}
-
-.or-line span {
+  }
+  
+  .or-line span {
     position: absolute;
-    top: -10px; 
-    background-color: white; 
-    padding: 0 4px; 
+    top: -10px;
+    background-color: white;
+    padding: 0 4px;
     color: #01664a;
   }
-
+  
   .form-control:focus {
-    box-shadow: none!important;
+    box-shadow: none !important;
   }
-.lines::before{
-    height: 1px;
-    background: #ccc;
-    left: 0;
-    right: 0;
-    margin: auto;
-    top: 0;
-    bottom: 0;
-    content: "";
-}
-
-.select_Country_color{
-    color: #999!important;
-
-}
-.input_type_color{
-    color: #999!important;
-}
+  

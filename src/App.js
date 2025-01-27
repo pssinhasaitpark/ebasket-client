@@ -13,6 +13,8 @@ import { useState, useEffect } from 'react';
 import LoadingSpinner from "./component/spinner";
 import Search from "./pages/Search/search-page.jsx";
 
+import { Route, Routes } from "react-router-dom";
+import CouponsList from "./component/Offers.jsx";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -20,20 +22,25 @@ const App = () => {
       useEffect(() => {
         setTimeout(() => {
           setLoading(false);
-        }, 4000);
+        }, 3000);
       }, []);
   return (
+    <>
     <div>
        {loading && <LoadingSpinner />}
-      {/* <Header /> */}
-      {/* <Login /> */}
-      {/* <SignUpForm /> */}
-      {/* <Home /> */}
-      {/* <ProductList /> */}
-      {/* <ProductDetail/> */}
-      {/* <Category /> */}
-      <Search />
+      <div>
+      <Routes>
+      <Route path="/" element={ <Home/> } />
+        <Route path="/login" element={ <Login/> } />
+        <Route path="/signup" element={ <SignUpForm/> } />
+        <Route path="/productList" element={<ProductList />}/>
+        <Route path="/productDetail" element={<ProductDetail/>}/>
+        <Route path="/offers" element={<CouponsList/>}/>
+      </Routes>
     </div>
+      </div>
+      </>
+
   );
 };
 
