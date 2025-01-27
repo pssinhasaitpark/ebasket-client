@@ -28,7 +28,7 @@ const App = () => {
   return (
 <>
 
-      <Header />
+     
       {/* <Login />
       <SignUpForm />
       <Home />
