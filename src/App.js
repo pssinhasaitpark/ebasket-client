@@ -9,10 +9,12 @@ import SignUpForm from "./pages/SignupForm.jsx";
 import ProductList from "./pages/Products.jsx";
 import ProductDetail from "./pages/AddToCart.jsx";
 import Footer from "./layout/Footer.jsx";
+import { Route, Routes } from "react-router-dom";
+import CouponsList from "./component/Offers.jsx";
 
 const App = () => {
   return (
-    <div>
+<>
 
       <Header />
       {/* <Login />
@@ -20,8 +22,24 @@ const App = () => {
       <Home />
       <ProductList />
       <ProductDetail/> */}
+      <Routes>
+      <Route path="/" element={ <Home/> } />
+        <Route path="/login" element={ <Login/> } />
+        <Route path="/signup" element={ <SignUpForm/> } />
+        <Route path="/productList" element={<ProductList />}/>
+        <Route path="/productDetail" element={<ProductDetail/>}/>
+        <Route path="/offers" element={<CouponsList/>}/>
+      </Routes>
+      {/* <Header /> */}
+      {/* <Login /> */}
+      {/* <SignUpForm /> */}
+      {/* <Home /> */}
+      {/* <ProductList /> */}
+      {/* <ProductDetail/> */}
       <Footer/>
-    </div>
+      
+</>
+
   );
 };
 

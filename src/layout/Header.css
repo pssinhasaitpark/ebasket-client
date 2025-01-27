@@ -280,8 +280,13 @@ button.btn-close {
   li.nav-item{
     display: none;
   }
+
   input.form-control.input{
     background-color: #01664a;
+
+  input.form-control{
+    /* background-color: #01664a; */
+
   }
   .form-control:focus{
     background-color: #01664a !important;
@@ -303,3 +308,4 @@ button.hemburger-button{
 
 
 
+}
