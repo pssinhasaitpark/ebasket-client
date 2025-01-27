@@ -90,6 +90,7 @@ function Categories()
              <div  className="pt-5" style={{padding:"0% 7%"}}>
                  <div className="Category-heading"><h3>TOP CATEGORIES</h3></div>
                     <div className="pb-5">
+                    <Container>
                         <Slider {...settings} style={{background:'transparent'}}>
                                 <div className="category-card"> <img className="category-img img-fluid" src={salt  } alt=""  style={{width:"120px", height:"120px", objectFit:"cover"}}/><h4 className="pt-3">Salt & Sugar</h4><h6 className="pt-1">(7 items)</h6></div>
                                 <div className="category-card"> <img className="category-img img-fluid" src={snacks} alt=""  style={{width:"120px", height:"120px", objectFit:"cover"}}/><h4 className="pt-3">Snacks & Dry Fruits</h4><h6 className="pt-1">(7 items)</h6></div>
@@ -99,7 +100,8 @@ function Categories()
                                 <div className="category-card"> <img className="category-img img-fluid" src={pulses} alt=""  style={{width:"120px", height:"120px", objectFit:"cover"}}/><h4 className="pt-3">Pulses</h4><h6 className="pt-1">(6 items)</h6></div>
                                 <div className="category-card"> <img className="category-img img-fluid " src={flour} alt=""  style={{width:"120px", height:"120px", objectFit:"cover"}}/><h4 className="pt-3">Flour</h4><h6 className="pt-1">(6 items)</h6></div>
                         </Slider>
-                
+                        </Container>
+
                     </div>
              </div>
             </div>

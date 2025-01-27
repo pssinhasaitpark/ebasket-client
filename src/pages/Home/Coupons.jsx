@@ -1,7 +1,7 @@
 import React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 import ShopNow from '../../component/Shop_Now_Button';
-import image1 from '../../assests/images/coupon_left_banner.png';
+import image1 from '../../assests/images/coupon_left_banner1.png';
 import image2 from '../../assests/images/coupon_right_up_banner.png';
 import image3 from '../../assests/images/coupon_right_down_banner.png';
 import './coupon.css'
@@ -9,6 +9,8 @@ import './coupon.css'
 function Coupon() {
   return (
     <div className="coupon_wrapper pt-5 pb-5">
+      <Container>
+
       <Row className="coupon-section h-100" style={{alignItems:'center', display:'flex'}}>
         <Col xs={6} className="coupon_item2">
            <div style={{padding:'20px'}}>
@@ -43,6 +45,7 @@ function Coupon() {
           </Row>
         </Col>
       </Row>
+      </Container>
     </div>
   );
 };

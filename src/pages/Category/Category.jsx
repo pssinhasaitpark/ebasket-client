@@ -11,7 +11,7 @@ function Category() {
     <div className='pt-4 pb-4'>
     <Container>
       <div className='main-contain'><h3 className='main-heading'>ITEMS</h3></div>
-      <div className='row'>
+      <div className='category-row'>
         <div className='col-md-3'>
               <div className='Category-list'>
                 <div className='vandor-sidebar'>

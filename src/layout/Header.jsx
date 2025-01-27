@@ -27,7 +27,7 @@ const Header = () => {
       <Navbar expand="lg" className=" pb-0 navbar">
         <div className="bg-transparent   text-dark container-fluid  ">
           <Container >
-            <Row className='container-row align-items-center py-2'>
+            <Row className='header-container-row d-flex align-items-center py-2'>
               <Col lg={2} className='col-5 ps-0' >
                 <Navbar.Brand href="#home" className='m-0'>
                   <div className='logo fw-bold   fs-1 '>
@@ -38,8 +38,7 @@ const Header = () => {
 
               <Col lg={3} className='col-5 ps-0' >
                 <div className='search-bar-div d-flex align-items-center  py-2'>
-              <form action="
-              ">
+              <form className='header-search-form'>
 
                   <div className="input-group form-container border border-success rounded-2">
                     <div className="input-group-prepend">

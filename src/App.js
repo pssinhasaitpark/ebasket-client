@@ -16,6 +16,12 @@ import Search from "./pages/Search/search-page.jsx";
 
 import { Route, Routes } from "react-router-dom";
 import CouponsList from "./component/Offers.jsx";
+import Refund from "./pages/Refund.jsx";
+import Privacy from "./pages/Privacy.jsx";
+import Termofuse from "./pages/Termofuse.jsx";
+import Help from "./pages/Help.jsx";
+import About from "./pages/About.jsx";
+import Setlocation from "./pages/Setlocation.jsx";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -28,16 +34,9 @@ const App = () => {
   return (
 <>
 
-      <Header />
-      {/* <Login />
-      <SignUpForm />
-      <Home />
-      <ProductList />
-      <ProductDetail/> */}
-   <div>
 
        {loading && <LoadingSpinner />}
-       <div>
+     
       <Routes>
       <Route path="/" element={ <Home/> } />
         <Route path="/login" element={ <Login/> } />
@@ -45,6 +44,17 @@ const App = () => {
         <Route path="/productList" element={<ProductList />}/>
         <Route path="/productDetail" element={<ProductDetail/>}/>
         <Route path="/offers" element={<CouponsList/>}/>
+        <Route path="/refund" element={<Refund/>}/>
+        <Route path="/privacy" element={<Privacy/>}/>
+        <Route path="/terms" element={<Termofuse/>}/>
+        <Route path="/help" element={<Help/>}/>
+        <Route path="/aboutus" element={<About/>}/>
+        <Route path="/setlocation" element={<Setlocation/>}/>
+
+
+
+
+
       </Routes>
       {/* <Header /> */}
       {/* <Login /> */}
@@ -53,10 +63,6 @@ const App = () => {
       {/* <ProductList /> */}
       {/* <ProductDetail/> */}
       <Footer/>
-      </div>
-      
-      </div>
-    
       </>
 
   );

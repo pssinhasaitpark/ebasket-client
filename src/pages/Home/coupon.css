@@ -9,7 +9,7 @@
 }
 
 .coupon-img{
-    width: 85%;
+    width: 92%;
 }
 
 /* .coupon-flex-img{
@@ -33,7 +33,7 @@
 }
 
 .coupon-img-animate:hover img{
-    transform: scale(1.15);
+    transform: scale(1.10);
 }
 
 .coupon-img-animate2  img{
