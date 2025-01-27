@@ -17,11 +17,13 @@
 }
 
 .slick-title{
+    display: block;
     width: 100%;
     overflow: hidden;
     line-height: 1;
     letter-spacing: 0.03em;
     margin-bottom: 10px !important;
+    white-space: nowrap; /* Prevents text wrapping */
 }
 
 .title-link{
@@ -32,10 +34,15 @@
     font-weight: 600;
     text-decoration: none;
     color: #333333;
+    display: block;
 }
 
 .slick-price{
     color: #01664a;
+    display: block;
+     white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
 }
 
 
@@ -58,4 +65,13 @@
 .slick-slide {
 padding:  10px; 
 }
+.slick-list {
+    margin-right: 0 !important;
+}
+
+.arrows {
+    width: 6%; /* Adjust the size of the arrows */
+}
+
+
 

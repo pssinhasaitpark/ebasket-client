@@ -1,0 +1,16 @@
+.food_search {
+    border-radius: 0.25rem;
+  }
+  
+  .input_search {
+    height: 40px;
+    font-size: 1rem;
+  }
+  
+  .search_food_btn {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
