@@ -1,4 +1,4 @@
-p{
+.privacy-container p{
     color: #333;
     letter-spacing: 0.3px;
     font-size: 18px;
@@ -6,7 +6,7 @@ p{
     font-weight: 400;
     line-height: 27px
 }
-h4{
+.privacy-container h4{
     font-weight: 600 !important;
     margin-bottom: 20px;
 }

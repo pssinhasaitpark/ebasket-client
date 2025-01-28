@@ -4,7 +4,7 @@ import './Privacy.css'
 const Privacy = () => {
   return (
    <>
-   <div className='my-5'>
+   <div className='privacy-container my-5'>
    <Container>
      <h4>Privacy Policy</h4>
       <p>

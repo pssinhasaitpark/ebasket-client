@@ -13,7 +13,6 @@ import Category from "./pages/Category/Category.jsx";
 import { useState, useEffect } from 'react';
 import LoadingSpinner from "./component/spinner";
 import Search from "./pages/Search/search-page.jsx";
-
 import { Route, Routes } from "react-router-dom";
 import CouponsList from "./component/Offers.jsx";
 import Refund from "./pages/Refund.jsx";
@@ -25,45 +24,45 @@ import Setlocation from "./pages/Setlocation.jsx";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
-    
-      useEffect(() => {
-        setTimeout(() => {
-          setLoading(false);
-        }, 3000);
-      }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  }, []);
   return (
-<>
+    <>
+      {/* <Login />
+      <SignUpForm />
+      <Home />
+      <ProductList />
+      <ProductDetail/> */}
+      <div>
+        {loading && <LoadingSpinner />}
 
-
-       {loading && <LoadingSpinner />}
-     
-      <Routes>
-      <Route path="/" element={ <Home/> } />
-        <Route path="/login" element={ <Login/> } />
-        <Route path="/signup" element={ <SignUpForm/> } />
-        <Route path="/productList" element={<ProductList />}/>
-        <Route path="/productDetail" element={<ProductDetail/>}/>
-        <Route path="/offers" element={<CouponsList/>}/>
-        <Route path="/refund" element={<Refund/>}/>
-        <Route path="/privacy" element={<Privacy/>}/>
-        <Route path="/terms" element={<Termofuse/>}/>
-        <Route path="/help" element={<Help/>}/>
-        <Route path="/aboutus" element={<About/>}/>
-        <Route path="/setlocation" element={<Setlocation/>}/>
-
-
-
-
-
-      </Routes>
-      {/* <Header /> */}
-      {/* <Login /> */}
-      {/* <SignUpForm /> */}
-      {/* <Home /> */}
-      {/* <ProductList /> */}
-      {/* <ProductDetail/> */}
-      <Footer/>
-      </>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUpForm />} />
+          <Route path="/productList" element={<ProductList />} />
+          <Route path="/productDetail" element={<ProductDetail />} />
+          <Route path="/offers" element={<CouponsList />} />
+          <Route path="/refund" element={<Refund />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Termofuse />} />
+          <Route path="/help" element={<Help />} />
+          <Route path="/aboutus" element={<About />} />
+          <Route path="/setlocation" element={<Setlocation />} />
+        </Routes>
+        {/* <Header /> */}
+        {/* <Login /> */}
+        {/* <SignUpForm /> */}
+        {/* <Home /> */}
+        {/* <ProductList /> */}
+        {/* <ProductDetail/> */}
+        <Footer />
+      </div>
+    </>
 
   );
 };

@@ -6,7 +6,7 @@ const Refund = () => {
     return (
         <>
         <Header/>
-          <div className='my-5'>
+          <div className='refund-container my-5'>
 
             <Container>
                 <p>

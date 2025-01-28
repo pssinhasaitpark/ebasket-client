@@ -4,7 +4,7 @@ import './Termofuse.css'
 const Termofuse = () => {
     return (
         <>
-            <div className='my-5'>
+            <div className='term-of-use my-5'>
                 <Container>
                     <h4>Terms & Conditions</h4>
                     <p>
