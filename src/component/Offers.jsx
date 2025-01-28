@@ -31,7 +31,7 @@ const CouponsList = () => {
       <div id="" className="res-search-list">
         <Row className="mt-4">
           {/* Coupon 1 */}
-          <Col xs={12}>
+          <Col  xs={12}>
             <Card className="bg-white px-4 py-3 border rounded-lg mb-3 shadow-sm transactions-list-wrap ">
               <Row className="d-flex align-items-center transactions-list">
                 <Col xs="auto">

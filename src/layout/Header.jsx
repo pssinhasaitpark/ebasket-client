@@ -14,6 +14,7 @@ import offer from '../asset/images/discount.png'
 import shopping from '../asset/images/shopping-cart.svg';
 import glob from '../asset/images/globe.svg'
 import downarrow from '../asset/images/chevron-down.svg'
+import GooglePlacesAutocomplete from 'react-google-autocomplete';
 import './Header.css'
 // import { Button } from 'bootstrap/dist/js/bootstrap.min';
 const Header = () => {
@@ -21,6 +22,8 @@ const Header = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  
  return (
     <>
 
@@ -54,7 +57,20 @@ const Header = () => {
                         placeholder="Enter Your Location"
 
                       />
-                 
+
+                    
+                    {/* <GooglePlacesAutocomplete
+                      apiKey="AIzaSyAcwKFufS7wlIdt8u8hv_lJirS5UY6mWpE" 
+                      
+                      onPlaceSelected={(place) => {
+                        console.log(place); 
+                      }}
+                      className="form-control input border-0"
+                      placeholder="Enter Your Location"
+                    /> */}
+
+                    {/* Suggestions dropdown */}
+    
                   </div>
                   
 
