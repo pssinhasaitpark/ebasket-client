@@ -1,6 +1,6 @@
-.coupon_wrapper{
+/* .coupon_wrapper{
     padding: 0 7%;
-}
+} */
 
 .coupon_item2, .coupon_item1, .coupon_item3{
     padding-top: 20px;
@@ -28,12 +28,12 @@
 }
 
 .coupon-img-animate  img{
-    padding-right: 2%;
+    padding-top: 12px;
     transition: all 3s ease-in-out;
 }
 
 .coupon-img-animate:hover img{
-    transform: scale(1.15);
+    transform: scale(1.12);
 }
 
 .coupon-img-animate2  img{

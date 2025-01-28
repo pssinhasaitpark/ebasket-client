@@ -28,7 +28,11 @@ const App = () => {
   return (
 <>
 
+<<<<<<< HEAD
+      {/* <Header /> */}
+=======
      
+>>>>>>> 56e12b9bd48d9ccacfc15849c425133f76e822d9
       {/* <Login />
       <SignUpForm />
       <Home />
@@ -52,7 +56,7 @@ const App = () => {
       {/* <Home /> */}
       {/* <ProductList /> */}
       {/* <ProductDetail/> */}
-      <Footer/>
+      {/* <Footer/> */}
       </div>
       
       </div>
