@@ -254,11 +254,12 @@ button.btn-close {
  
   .navbar{
      background-color: #01664a; 
+     padding-bottom: 10px !important;
    
   }
   .logo{
     background-color: #fff;
-    padding: 7px 8px;
+    padding: 0px 6px 5px 6px;
     border-radius: 10px;
     float: none !important;
   }
@@ -284,6 +285,7 @@ button.btn-close {
   input.form-control.input{
     background-color: #01664a;
 
+    }
   input.form-control{
     /* background-color: #01664a; */
 
@@ -303,9 +305,13 @@ button.hemburger-button{
 .input-group.form-container{
   border-color:white !important;
   border-radius: 12px !important;
+  padding: 0px 6px !important;
 }
+.header-container-row{
+  display: flex !important;
 }
-
-
-
+.header-search-form{
+  display: flex;
+  justify-content: end;
+}
 }
