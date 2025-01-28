@@ -83,7 +83,7 @@
 
 
 @media (max-width: 767px) {
-    .row {
+    .category-row{
         display: block !important;
     }
 }

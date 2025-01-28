@@ -1,0 +1,27 @@
+.set-location-main-container
+{
+    background: #1F1F1F;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+.set-location-services{
+    padding: 42px 22px;
+  background: #262626;
+  border-radius: 30px  !important;
+  height: 100%;
+}
+.set-location-services h3{
+    font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+.set-location-services p{
+font-weight: 400;
+  font-size: 15px;
+  line-height: 22px;
+  text-align: center;
+  letter-spacing: 0.03em;
+  color: #F0E2DE;
+}

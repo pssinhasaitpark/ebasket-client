@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import rice from "../assests/images/Basmati.jpg"
 import left from "../assests/images/left.svg"
 import right from "../assests/images/right.svg"
+import Container from 'react-bootstrap/Container';  
 import './Slick-Slider.css'
 
 function Slick() 
@@ -78,9 +79,11 @@ function Slick()
 
         };
     return(
+      <div>
             
-             <div>
                     <div className="pb-5" style={{position:'relative'}}>
+                      <Container>
+
                         <Slider {...settings} style={{background:'tranparent'}}>
                                 <div className="Slick-card">
                                   <div className="Slick-img-section"> <img className="Slick-img img-fluid" src={rice} alt=""  /></div>
@@ -139,6 +142,7 @@ function Slick()
                                 </div>
                                 </Slider>
                 
+                      </Container>
                     </div>
              </div>
     );
