@@ -35,7 +35,10 @@ const App = () => {
     <>
 
       {/* <Header /> */}
+<<<<<<< HEAD
+=======
 
+>>>>>>> 114893ce85389f714d131c66f7fb186a815d5458
       {/* <Login />
       <SignUpForm />
       <Home />
