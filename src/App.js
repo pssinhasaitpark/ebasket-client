@@ -25,6 +25,7 @@ import Setlocation from "./pages/Setlocation.jsx";
 const App = () => {
   const [loading, setLoading] = useState(true);
 
+
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
@@ -32,6 +33,9 @@ const App = () => {
   }, []);
   return (
     <>
+
+      {/* <Header /> */}
+
       {/* <Login />
       <SignUpForm />
       <Home />
@@ -39,6 +43,7 @@ const App = () => {
       <ProductDetail/> */}
       <div>
         {loading && <LoadingSpinner />}
+
 
         <Routes>
           <Route path="/" element={<Home />} />
@@ -61,6 +66,27 @@ const App = () => {
         {/* <ProductList /> */}
         {/* <ProductDetail/> */}
         <Footer />
+
+       {loading && <LoadingSpinner />}
+       <div>
+      <Routes>
+      <Route path="/" element={ <Home/> } />
+        <Route path="/login" element={ <Login/> } />
+        <Route path="/signup" element={ <SignUpForm/> } />
+        <Route path="/productList" element={<ProductList />}/>
+        <Route path="/productDetail" element={<ProductDetail/>}/>
+        <Route path="/offers" element={<CouponsList/>}/>
+      </Routes>
+      {/* <Header /> */}
+      {/* <Login /> */}
+      {/* <SignUpForm /> */}
+      {/* <Home /> */}
+      {/* <ProductList /> */}
+      {/* <ProductDetail/> */}
+      {/* <Footer/> */}
+      </div>
+      
+
       </div>
     </>
 
