@@ -44,7 +44,6 @@ const App = () => {
       <div>
         {loading && <LoadingSpinner />}
 
-
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -66,25 +65,6 @@ const App = () => {
         {/* <ProductList /> */}
         {/* <ProductDetail/> */}
         <Footer />
-
-       {loading && <LoadingSpinner />}
-       <div>
-      <Routes>
-      <Route path="/" element={ <Home/> } />
-        <Route path="/login" element={ <Login/> } />
-        <Route path="/signup" element={ <SignUpForm/> } />
-        <Route path="/productList" element={<ProductList />}/>
-        <Route path="/productDetail" element={<ProductDetail/>}/>
-        <Route path="/offers" element={<CouponsList/>}/>
-      </Routes>
-      {/* <Header /> */}
-      {/* <Login /> */}
-      {/* <SignUpForm /> */}
-      {/* <Home /> */}
-      {/* <ProductList /> */}
-      {/* <ProductDetail/> */}
-      {/* <Footer/> */}
-      </div>
       
 
       </div>
