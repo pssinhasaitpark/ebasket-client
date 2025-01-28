@@ -14,7 +14,7 @@ import offer from '../asset/images/discount.png'
 import shopping from '../asset/images/shopping-cart.svg';
 import glob from '../asset/images/globe.svg'
 import downarrow from '../asset/images/chevron-down.svg'
-import GooglePlacesAutocomplete from 'react-google-autocomplete';
+// import GooglePlacesAutocomplete from 'react-google-autocomplete';
 import './Header.css'
 // import { Button } from 'bootstrap/dist/js/bootstrap.min';
 const Header = () => {

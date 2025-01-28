@@ -2,8 +2,13 @@
     padding: 0 7%;
 } */
 
-.coupon_item2, .coupon_item1, .coupon_item3{
+  .coupon_item3{
     padding-top: 20px;
+    background-color: #f7f7f7;
+    background-clip: content-box;
+}
+
+.coupon_item1, .coupon_item2{
     background-color: #f7f7f7;
     background-clip: content-box;
 }
@@ -17,10 +22,12 @@
 } */
 
 .coupon-discount{
+    margin-bottom: 15px !important;
     color: green;
     font-size: 22px;
     font-weight: 700;
     padding-bottom: 5px;
+
 }
 
 .coupon-right-content{
@@ -30,6 +37,8 @@
 .coupon-img-animate  img{
     padding-top: 12px;
     transition: all 3s ease-in-out;
+    height: 230px;
+    max-width: 100%;
 }
 
 .coupon-img-animate:hover img{
@@ -47,6 +56,15 @@
     transform: scale(1.10);
 }
 
+.left-banner{
+    padding: 20px;
+}
+
+.banner-heading{
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
 @media  (max-width: 767px) {
     .coupon-section,
     .col-6
@@ -54,7 +72,23 @@
         width: 100% !important;
         display: block !important;
     }
-   }
+    .banner-heading{
+        font-size: 20px;
+    }
+    .coupon-discount{
+        font-size: 16px;
+    }
+    .coupon_item1{
+        padding-top: 20px;
+    }
+    .coupon-img-animate2  img{
+        margin-right: 12px;
+        margin-left: 10px;
+    }
+    
+    }
+
+
 @media  (max-width: 480px){ 
    .coupon-img{
         width: 100%;

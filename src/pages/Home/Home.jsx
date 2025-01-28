@@ -21,15 +21,16 @@ function Home() {
     return(
       <>     
      
-       {/* {loading && <LoadingSpinner />}
+       {loading && <LoadingSpinner />}
         <Header/>
         <Slider />
         <Coupon />
         <Categories />
         <Product />
         <Selling />
-        <All /> */}
-        <Search />
+        <All />
+        {/* <Search /> */}
+      
 
       </>
     );
