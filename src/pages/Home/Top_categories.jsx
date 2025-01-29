@@ -68,7 +68,7 @@ function Categories()
             {
               breakpoint: 768,  
               settings: {
-                slidesToShow: 2, 
+                slidesToShow: 1, 
                 slidesToScroll: 1,
                 nextArrow:false,
                 prevArrow:false,
@@ -87,7 +87,9 @@ function Categories()
         };
     return(
             <div style={{ backgroundColor:'rgb(244, 244, 244)'}}><img src={banner} alt="" style={{width:'100%', height:'300px', marginBottom:'-270px', objectFit:'cover' }} />
-             <div  className="pt-5" style={{padding:"0% 7%"}}>
+            {/* // <div  className="image-bfr"> */}
+            {/* // <div className="category-section"> */}
+              <div  className="pt-5 container section-container">
                  <div className="Category-heading"><h3>TOP CATEGORIES</h3></div>
                     <div className="pb-5">
                     <Container>
@@ -103,7 +105,9 @@ function Categories()
                         </Container>
 
                     </div>
-             </div>
+              </div>
+              {/* // </div> */}
+            {/* // </div> */}
             </div>
     );
 }

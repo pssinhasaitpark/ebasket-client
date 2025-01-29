@@ -140,11 +140,14 @@ opacity: 1 !important;
         font-size: 13px !important;
         padding: 3px 10px !important;
     }
+    .slick-next::before, .slick-prev::before{
+        display: none;
+    }
 }
 /*  */
 
-.slick-arrow{
+/* .slick-arrow{
     box-shadow: 0.125rem 0.25rem rgba(0, 0, 0, .075) !important;
 
-}
+} */
 

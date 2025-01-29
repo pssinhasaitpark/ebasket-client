@@ -1,14 +1,20 @@
 import React from 'react';
 import './search-page.css'
-import { FaSearch } from 'react-icons/fa';
+import { IoSearchOutline } from "react-icons/io5"
 import { FormControl, Container } from 'react-bootstrap';
-import { Form, Col, InputGroup } from 'react-bootstrap'; // Assuming you're using react-bootstrap
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Assuming you're using FontAwesome
+import ProductList from '../Products';
+import nothing from '../../assests/images/no-result.png'
+import { FiHome } from "react-icons/fi";
+
 
 
 function Search() {
-  return (
-    <Container>
+  
+  const style = { color: "#01664a", size: "10px" }
+   return (
+   <div className='search-page'>
+    <div className='container section-content py-5'>
+      <div>
       <div className="mb-4 d-flex align-items-center search-bar">
         <FormControl
           className="food_search border-right-0 form-control form-control-lg input_search"
@@ -17,22 +23,29 @@ function Search() {
           style={{ width: '100%' }} 
         />
         <div
-          // variant="outline-primary"
-          // className="p-0 ml-2"
-          // style={{
-          //   height: '100%',
-          //   borderRadius: '0.25rem', 
-          //   display: 'flex',
-          //   justifyContent: 'center',
-          //   alignItems: 'center',
-          // }}
+          variant="outline-primary"
+          className="p-0 ml-2 search-icon"
         >
-          <FaSearch />
+          <IoSearchOutline style={style}/>
         </div>
       </div>
-
-    </Container>
-    
+      </div>
+      <div>
+        <ul className='nav seachpage-list'>
+          <li className='nav-item'>
+            <a href="" className='nav-link Home-Tab'>
+            <FiHome className='home-icon' />
+              <span className='product-count'>Items (41)</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div className='text-center py-5' style={{display:'none'}}>
+        <img src={nothing} alt="" />
+      </div>
+      {/* <ProductList /> */}
+    </div>
+    </div>
   );
 }
 
