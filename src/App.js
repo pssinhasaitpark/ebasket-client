@@ -22,6 +22,7 @@ import Help from "./pages/Help.jsx";
 import About from "./pages/About.jsx";
 import Setlocation from "./pages/Setlocation.jsx";
 
+
 const App = () => {
   const [loading, setLoading] = useState(true);
 
@@ -86,7 +87,7 @@ const App = () => {
       {/* <Home /> */}
       {/* <ProductList /> */}
       {/* <ProductDetail/> */}
-      <Footer/>
+      {/* <Footer/> */}
       </div>
       
         {loading && <LoadingSpinner />}
@@ -104,6 +105,7 @@ const App = () => {
           <Route path="/help" element={<Help />} />
           <Route path="/aboutus" element={<About />} />
           <Route path="/setlocation" element={<Setlocation />} />
+          <Route path="/categories" element={<Category />} />
         </Routes>
         {/* <Header /> */}
         {/* <Login /> */}
