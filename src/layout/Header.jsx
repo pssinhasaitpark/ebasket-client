@@ -32,7 +32,7 @@ const Header = () => {
           <Container >
             <Row className='header-container-row d-flex align-items-center py-2'>
               <Col lg={2} className='col-5 ps-0' >
-                <Navbar.Brand href="#home" className='m-0'>
+                <Navbar.Brand href="/" className='m-0'>
                   <div className='logo fw-bold   fs-1 '>
                     <img src={Logo} alt="" />
                   </div>
@@ -169,10 +169,7 @@ const Header = () => {
                     </li>
 
                     <div>
-                    {/* <Button variant="primary" onClick={handleShow}>
-        Launch
-      </Button> */}
-
+                   
                       <Button onClick={handleShow} className='hemburger-button bg-transparent border-0'>
                         <input id="toggle1" type="checkbox" />
                         <label class="hamburger1" for="toggle1">

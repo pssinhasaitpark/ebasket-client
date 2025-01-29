@@ -4,7 +4,7 @@ import './Help.css'
 const Help = () => {
   return (
     <>
-        <div className='my-5'>
+        <div className='help-container my-5'>
                 <Container>
                     <h4>Support</h4>
                     <p>

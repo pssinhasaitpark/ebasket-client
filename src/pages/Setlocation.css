@@ -1,23 +1,22 @@
-.set-location-main-container
+.set-location-upper-container
 {
-    background: #1F1F1F;
   padding-top: 80px;
   padding-bottom: 80px;
 }
-.set-location-services{
+.set-location-bottom-container .set-location-services{
     padding: 42px 22px;
   background: #262626;
   border-radius: 30px  !important;
   height: 100%;
 }
-.set-location-services h3{
+.set-location-bottom-container .set-location-services h3{
     font-weight: 600;
   font-size: 20px;
   line-height: 30px;
   text-align: center;
   letter-spacing: 0.05em;
 }
-.set-location-services p{
+.set-location-bottom-container .set-location-services p{
 font-weight: 400;
   font-size: 15px;
   line-height: 22px;
@@ -25,3 +24,77 @@ font-weight: 400;
   letter-spacing: 0.03em;
   color: #F0E2DE;
 }
+.set-location-bottom-container {
+  background: black;
+  padding: 80px 0px;
+}
+
+.set-location-upper-container h1{
+  font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 51px;
+    letter-spacing: 0.03em;
+    color: #000000;
+    margin-bottom: 23px
+}
+.set-location-upper-container p{
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+letter-spacing: 0.05em;
+color: #505056;
+margin-bottom: 35px;
+}
+.set-location-btn{
+  /* padding: 0px; */
+  margin-top: 30px;
+  font-size: 13px;
+  font-weight: 500;
+  background: #33ab5b;
+  border-color: #EC9378;
+  color: white;
+  padding:5px 10px;
+  border-radius: 3px;
+  border: 1px solid transparent
+}
+.set-location-header-logo{
+  background-color: #FAFAFA;
+ padding:  19px 0px 15px 0px;
+ 
+}
+
+
+::-webkit-scrollbar {
+  width: 4px;
+  background-color: #ffffff;}
+
+  @media (max-width: 767px){
+    .set-location-upper-container .image {
+      padding: 40px 0px !important;
+    }
+    .set-location-upper-container .image img{
+  max-width: -webkit-fill-available !important;
+    }
+    .set-location-services{
+      margin-bottom: 15px !important;
+      height: auto !important;
+      padding: 20px 20px !important;
+    }
+    .set-location-btn{
+      background: #33ab5b;
+      border-color: #EC9378
+    }
+    .set-location-upper-container  h1 {
+      font-size: 28px;
+      line-height: 1.2;
+  }
+
+.set-location-header-logo {
+  background-color: #ffffff;
+  padding: 29px 0px 0px 0px;
+}
+  }

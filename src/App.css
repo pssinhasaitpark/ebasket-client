@@ -19,7 +19,9 @@ body {
   
   *{
     font-family: 'Montserrat',sans-serif !important; /* Apply the Google Font */
-   
+    margin: 0px;
+    padding: 0px;
+    
   }
 
 
