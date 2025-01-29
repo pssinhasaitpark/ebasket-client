@@ -40,6 +40,7 @@ const App = () => {
       <Home />
       <ProductList />
       <ProductDetail/> */}
+      
       <div>
         {loading && <LoadingSpinner />}
 
@@ -68,6 +69,7 @@ const App = () => {
         {/* <ProductDetail/> */}
         {/* <Footer /> */}
 
+
        {loading && <LoadingSpinner />}
        <div>
       {/* <Routes>
@@ -84,7 +86,7 @@ const App = () => {
       {/* <Home /> */}
       {/* <ProductList /> */}
       {/* <ProductDetail/> */}
-      {/* <Footer/> */}
+      <Footer/>
       </div>
       
 

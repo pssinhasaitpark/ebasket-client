@@ -46,7 +46,7 @@ function Coupon() {
               </Row>
             </Col>
           </Row>
-        </Container>
+        </Container>        
         </div>
       </>
       );

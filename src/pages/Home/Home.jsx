@@ -30,8 +30,6 @@ function Home() {
         <Selling />
         <All />
         {/* <Search /> */}
-      
-
       </>
     );
 }
