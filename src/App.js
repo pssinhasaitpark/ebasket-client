@@ -34,13 +34,6 @@ const App = () => {
   return (
     <>
 
-      {/* <Header /> */}
-
-      {/* <Login />
-      <SignUpForm />
-      <Home />
-      <ProductList />
-      <ProductDetail/> */}
       <div>
         {loading && <LoadingSpinner />}
 
@@ -65,7 +58,6 @@ const App = () => {
         {/* <ProductList /> */}
         {/* <ProductDetail/> */}
         <Footer />
-      
 
       </div>
     </>
