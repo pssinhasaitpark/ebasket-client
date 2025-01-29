@@ -4,7 +4,7 @@ import facebook from '../asset/images/facebook.svg'
 import insta from '../asset/images/instagram.svg'
 import twitter from '../asset/images/twitter.svg'
 import youtube from '../asset/images/youtube.svg'
-import Logo from '../asset/images/logo_web.png'
+import Logo from '../asset/images/ebakset-footer-logo.png'
 import mail from '../asset/images/mail.svg'
 import call from '../asset/images/phone-call.svg'
 import search from '../asset/images/searchfooter.svg'
@@ -20,10 +20,10 @@ const Footer = () => {
 
                         <Container className='footer-container'>
                             {/* Upper Part (Logo and Links) */}
-                            <Row className="mb-4 border-bottom ">
+                            <Row className="mb-4 border-bottom py-4">
                                 <Col md={6}>
                                     <div className='footer-upper-wrapper-left'>
-                                        <div className='image mb-1'>
+                                        <div className='logo-image mb-1'>
                                             <img src={
                                                 Logo} alt="" />
                                         </div>
@@ -83,7 +83,7 @@ const Footer = () => {
                             </Row>
 
                             {/* Mid Part (Services) */}
-                            <Row className="mb-4 ">
+                            <Row className="mb-4 py-4">
                                 <Col lg={4}>
                                     <div className='contact-services d-flex justify-content-center text-center flex-column align-items-center'>
                                         <div className='p-2 bg-white mb-3 '>

@@ -134,7 +134,10 @@
     line-height: 2;
     font-weight: 500;
 }
-
+.footer-upper-wrapper-left .logo-image img{
+    height: 23px;
+    width: 100px;
+}
 .footer-upper-wrapper-mid .services-list {
     list-style: none !important;
 }
@@ -151,7 +154,7 @@
 }
 
 .contact-services div {
-    width: 14%;
+    width: 12%;
     height: 50%;
     border-radius: 50%;
 }

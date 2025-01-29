@@ -34,38 +34,30 @@ const App = () => {
   return (
     <>
 
-      {/* <Header /> */}
-<<<<<<< HEAD
-=======
-
->>>>>>> 114893ce85389f714d131c66f7fb186a815d5458
-      {/* <Login />
-      <SignUpForm />
-      <Home />
-      <ProductList />
-      <ProductDetail/> */}
-      
       <div>
+        {loading && <LoadingSpinner />}
 
-       {loading && <LoadingSpinner />}
-       <div>
-      <Routes>
-      <Route path="/" element={ <Home/> } />
-        <Route path="/login" element={ <Login/> } />
-        <Route path="/signup" element={ <SignUpForm/> } />
-        <Route path="/productList" element={<ProductList />}/>
-        <Route path="/productDetail" element={<ProductDetail/>}/>
-        <Route path="/offers" element={<CouponsList/>}/>
-      </Routes>
-      {/* <Header /> */}
-      {/* <Login /> */}
-      {/* <SignUpForm /> */}
-      {/* <Home /> */}
-      {/* <ProductList /> */}
-      {/* <ProductDetail/> */}
-      <Footer/>
-      </div>
-      
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUpForm />} />
+          <Route path="/productList" element={<ProductList />} />
+          <Route path="/productDetail" element={<ProductDetail />} />
+          <Route path="/offers" element={<CouponsList />} />
+          <Route path="/refund" element={<Refund />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Termofuse />} />
+          <Route path="/help" element={<Help />} />
+          <Route path="/aboutus" element={<About />} />
+          <Route path="/setlocation" element={<Setlocation />} />
+        </Routes>
+        {/* <Header /> */}
+        {/* <Login /> */}
+        {/* <SignUpForm /> */}
+        {/* <Home /> */}
+        {/* <ProductList /> */}
+        {/* <ProductDetail/> */}
+        <Footer />
 
       </div>
     </>
