@@ -44,31 +44,8 @@ const App = () => {
       <Home />
       <ProductList />
       <ProductDetail/> */}
+      
       <div>
-        {loading && <LoadingSpinner />}
-
-
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUpForm />} />
-          <Route path="/productList" element={<ProductList />} />
-          <Route path="/productDetail" element={<ProductDetail />} />
-          <Route path="/offers" element={<CouponsList />} />
-          <Route path="/refund" element={<Refund />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/terms" element={<Termofuse />} />
-          <Route path="/help" element={<Help />} />
-          <Route path="/aboutus" element={<About />} />
-          <Route path="/setlocation" element={<Setlocation />} />
-        </Routes>
-        {/* <Header /> */}
-        {/* <Login /> */}
-        {/* <SignUpForm /> */}
-        {/* <Home /> */}
-        {/* <ProductList /> */}
-        {/* <ProductDetail/> */}
-        <Footer />
 
        {loading && <LoadingSpinner />}
        <div>
@@ -86,7 +63,7 @@ const App = () => {
       {/* <Home /> */}
       {/* <ProductList /> */}
       {/* <ProductDetail/> */}
-      {/* <Footer/> */}
+      <Footer/>
       </div>
       
 
