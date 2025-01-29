@@ -23,8 +23,8 @@ const Header = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  
- return (
+
+  return (
     <>
 
       <Navbar expand="lg" className=" pb-0 navbar">
@@ -41,15 +41,15 @@ const Header = () => {
 
               <Col lg={3} className='col-5 ps-0' >
                 <div className='search-bar-div d-flex align-items-center  py-2'>
-              <form className='header-search-form'>
+                  <form className='header-search-form'>
 
-                  <div className="input-group form-container border border-success rounded-2">
-                    <div className="input-group-prepend">
-                      <span className="location-image">
-                        <img src={location} alt="search" className='' />
-                      </span>
-                    </div>
-                   
+                    <div className="input-group form-container border border-success rounded-2">
+                      <div className="input-group-prepend">
+                        <span className="location-image">
+                          <img src={location} alt="search" className='' />
+                        </span>
+                      </div>
+
                       <input
                         type="text"
                         className="form-control input border-0"
@@ -57,8 +57,8 @@ const Header = () => {
 
                       />
 
-                    
-                    {/* <GooglePlacesAutocomplete
+
+                      {/* <GooglePlacesAutocomplete
                       apiKey="AIzaSyAcwKFufS7wlIdt8u8hv_lJirS5UY6mWpE" 
                       
                       onPlaceSelected={(place) => {
@@ -68,13 +68,13 @@ const Header = () => {
                       placeholder="Enter Your Location"
                     /> */}
 
-                    {/* Suggestions dropdown */}
-    
-                  </div>
-                  
+                      {/* Suggestions dropdown */}
+
+                    </div>
 
 
-                </form>
+
+                  </form>
                 </div>
               </Col>
 
@@ -112,8 +112,15 @@ const Header = () => {
                         <NavLink to="/sign-in" className="nav-link " activeClassName="active">
                           Sign In
                         </NavLink>
-                        <div>
-                          <Dropdown >
+
+                     
+
+                      </div>
+                    </li>
+
+                     <li className="nav-item ms-1">
+                     <div className='main-div'>
+                          {/* <Dropdown >
                             <Dropdown.Toggle className=' bg-transparent border-0 p-0' id="dropdown-basic">
                               <a href="#" className='sign-in-btn'>
                                 <img src={downarrow} alt="" />
@@ -132,11 +139,33 @@ const Header = () => {
 
 
                             </Dropdown.Menu>
-                          </Dropdown>
-                        </div>
-                      </div>
-                    </li>
+                          </Dropdown> */}
+                          
+                          <div className="dropdown-container">
+                            {/* Down Arrow Icon */}
+                            <div className="dropdown-icon">
+                            <a href="#">
+                                <img src={downarrow} alt="" />
+                              </a>
+                              {/* Dropdown Menu */}
+                              <div className='dropdown-menuu'>
+                    
+                              <a href="#/action-1">Delivery Support</a>
+                              <a href="#/action-2">Contact Us</a>
+                              <a href="#/action-3">About us</a>
+                              <a href="#/action-3">Help</a>
+                              <a href="#/action-3">Term of use</a>
+                              <a href="#/action-3">Privacy policy</a>
+                              <a href="#/action-3">Refund policy</a>
 
+
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+
+                     </li>
                     <li className="nav-item">
                       <div className='d-flex align-items-center me-2'>
                         <div>
@@ -156,7 +185,7 @@ const Header = () => {
                         <div className='ms-2'>
                           <button className="btn  dropdown-toggle ps-0 " type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <span className='text-secondary'>
-                            English
+                              English
                             </span>
                           </button>
                           <ul className="language dropdown-menu m-0 p-0">
@@ -169,7 +198,7 @@ const Header = () => {
                     </li>
 
                     <div>
-                   
+
                       <Button onClick={handleShow} className='hemburger-button bg-transparent border-0'>
                         <input id="toggle1" type="checkbox" />
                         <label class="hamburger1" for="toggle1">

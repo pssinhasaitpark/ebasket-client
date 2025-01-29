@@ -9,6 +9,7 @@ import LoadingSpinner from "../../component/spinner";
 import { Route, Routes } from "react-router-dom";
 import Header from "../../layout/Header";
 import Search from "../Search/search-page";
+import TopCategories from "./demoCategory";
 
 function Home() {
     const [loading, setLoading] = useState(true);
@@ -25,7 +26,9 @@ function Home() {
         <Header/>
         <Slider />
         <Coupon />
-        <Categories />
+        {/* <Categories /> */}
+        <TopCategories/>
+
         <Product />
         <Selling />
         <All />

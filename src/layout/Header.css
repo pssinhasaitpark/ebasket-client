@@ -98,35 +98,35 @@ li.bottom a:hover {
 }
 
 /* Ensure the dropdown menu is hidden by default */
-.menu-items {
+/* .menu-items {
   display: none;
-}
+} */
 
 /* Display the menu when hovering over the parent container (Dropdown) */
-.dropdown:hover .menu-items {
+/* .dropdown:hover .menu-items {
   display: block;
-}
+} */
 
 /* Optional: Styling to add a smoother hover transition */
-.menu-items {
+/* .menu-items {
   display: none;
   transition: all 0.3s ease-in-out;
-}
+} */
 
 /* Make sure to adjust the z-index if necessary to bring the dropdown to the front */
-.dropdown-menu {
+/* .dropdown-menu {
   z-index: 999;
-}
+} */
 
 .search-bar-div {
   position: relative;
 
 }
 
-.dropdown-menu[data-bs-popper] {
+/* .dropdown-menu[data-bs-popper] {
   right: 10px !important;
   left: 0px !important;
-}
+} */
 
 .search-icon {
   position: absolute;
@@ -214,14 +214,80 @@ button.btn-close {
   font-size: 13px !important;
   font-weight: 700 !important;
 }
-.dropdown-item:hover{
+/* .dropdown-item:hover{
   background-color: #007bff !important; 
   color: white !important;
-}
+} */
 .language {
   border-radius: 0px !important;
 }
+/* ================================================ */
+ /* Dropdown Container */
+ .dropdown-container {
+  position: relative;
+  display: inline-block;
+}
 
+/* Down Arrow Icon */
+.dropdown-icon {
+  cursor: pointer;
+  font-size: 20px;
+  padding: 3px 13px 0px 0px;
+  position: relative;
+}
+
+/* Dropdown Menu */
+.dropdown-menuu {
+  position: absolute;
+  top: 110%;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-width: 150px;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+  font-size: 13px;
+    border-radius: 6px;
+    margin: 1px 0;
+    font-weight: 500;
+    right:0px;
+}
+
+/* Float Left */
+.dropdown-menuu.left {
+  left: 0;
+}
+
+/* Float Right */
+.dropdown-menuu.right {
+  right: 0;
+}
+
+/* Show Dropdown Menu on Hover */
+.dropdown-container:hover .dropdown-menuu {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Dropdown Links */
+.dropdown-menuu a {
+  display: block;
+  padding:9px 10px 10px 14px;
+  text-decoration: none;
+  color: #333;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.dropdown-menuu a:hover {
+  background-color: #f1f1f1;
+}
+.nav-item .main-div{
+  margin-left: -8px;
+}
 /* Define the zoom-in animation */
 @keyframes zoomInOut {
   0% {
@@ -260,7 +326,7 @@ button.btn-close {
   }
   .logo{
     background-color: #fff;
-    padding: 0px 6px 5px 6px;
+    padding: 0px 10px 5px 10px;
     border-radius: 10px;
     float: none !important;
   }

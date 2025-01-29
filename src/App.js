@@ -21,6 +21,8 @@ import Termofuse from "./pages/Termofuse.jsx";
 import Help from "./pages/Help.jsx";
 import About from "./pages/About.jsx";
 import Setlocation from "./pages/Setlocation.jsx";
+import Categories from "./pages/Home/demoCategory.jsx";
+import TopCategories from "./pages/Home/demoCategory.jsx";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -32,7 +34,8 @@ const App = () => {
     }, 3000);
   }, []);
   return (
- 
+ <>
+
     <div>
 
       {/* <Header /> */}
@@ -42,7 +45,7 @@ const App = () => {
       <ProductList />
       <ProductDetail/> */}
       
-        {loading && <LoadingSpinner />}
+        {/* {loading && <LoadingSpinner />}
 
 
         <Routes>
@@ -60,7 +63,7 @@ const App = () => {
           <Route path="/setlocation" element={<Setlocation />} />
           <Route path="/searchpage" element={<Search />} />
           
-        </Routes>
+        </Routes> */}
         {/* <Header /> */}
         {/* <Login /> */}
         {/* <SignUpForm /> */}
@@ -70,8 +73,8 @@ const App = () => {
         {/* <Footer /> */}
 
 
-       {loading && <LoadingSpinner />}
-       <div>
+       {/* {loading && <LoadingSpinner />}
+       <div> */}
       {/* <Routes>
       <Route path="/" element={ <Home/> } />
         <Route path="/login" element={ <Login/> } />
@@ -86,8 +89,8 @@ const App = () => {
       {/* <Home /> */}
       {/* <ProductList /> */}
       {/* <ProductDetail/> */}
-      <Footer/>
-      </div>
+      {/* <Footer/> */}
+      
       
         {loading && <LoadingSpinner />}
 
@@ -105,7 +108,7 @@ const App = () => {
           <Route path="/aboutus" element={<About />} />
           <Route path="/setlocation" element={<Setlocation />} />
         </Routes>
-        {/* <Header /> */}
+        <Header />
         {/* <Login /> */}
         {/* <SignUpForm /> */}
         {/* <Home /> */}
@@ -115,7 +118,7 @@ const App = () => {
 
       </div>
 
-
+      </>
   );
 };
 
