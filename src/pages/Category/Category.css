@@ -1,15 +1,21 @@
-.container {
+/* .container {
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
-}
+} */
 
-.row{
+/* .row{
     display: flex;
     flex-wrap: wrap;
+} */
+
+.check-boxes{
+    padding-right: 8px ;
+    padding-left: 8px ;
 }
+
 
 .vandor-sidebar .vandorcat-list{
     padding: 15px 10px;
@@ -38,9 +44,10 @@
     border-radius: 100px;
     border: 1px solid #e8e8e8;
     padding: 2px;
+    width: 32px;
     height: 32px;
     object-fit: cover;
-    margin: 0px 8px;
+    margin: 0px 10px;
 }
 
 .vandor-sidebar .vandorcat-list li a {
@@ -64,6 +71,7 @@
     transition: all ease 1s;
     -webkit-transition: all ease 0.5s;
     color: #01664a;
+    font-weight: 700;
 }
 
 .vandorcat-list li a .input-title:hover{
@@ -71,6 +79,7 @@
     transition: all ease 1s;
     -webkit-transition: all ease 0.5s;
     color: #01664a;
+    font-weight: 700;
 }
 
 .vandor-sidebar .vandorcat-list li a .form-check-input{
@@ -79,11 +88,13 @@
     vertical-align: middle;
     width: 1.3rem;
     height: 1.3rem;
+    border: 1px solid rgba(25, 23, 17, .48);
+
 }
 
 
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
     .category-row{
         display: block !important;
     }
-}
+} */

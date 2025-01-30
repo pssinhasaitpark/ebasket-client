@@ -24,6 +24,7 @@ import Setlocation from "./pages/Setlocation.jsx";
 import Categories from "./pages/Home/demoCategory.jsx";
 import TopCategories from "./pages/Home/demoCategory.jsx";
 
+
 const App = () => {
   const [loading, setLoading] = useState(true);
 
@@ -36,8 +37,9 @@ const App = () => {
   return (
     <>
 
-      <div>
+      <div>  
         {loading && <LoadingSpinner />}
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -51,8 +53,10 @@ const App = () => {
           <Route path="/help" element={<Help />} />
           <Route path="/aboutus" element={<About />} />
           <Route path="/setlocation" element={<Setlocation />} />
+          <Route path="/categories" element={<Category />} />
         </Routes>
-        <Header />
+
+
         <Footer />
 
       </div>
