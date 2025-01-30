@@ -80,11 +80,43 @@
     font-size: 13px;
     color: #666666;
     padding-left: 5px;
+    text-align: center;
 }
 
 .product-list .list-card:hover {
     box-shadow: 0 0px 20px 0 rgba(0, 0, 0, 0.2) !important;
     transition: all ease 0.5s;
+}
+
+.item-img{
+height: 200px;
+object-fit: contain;
+}
+
+.product-desc{
+    text-align: center;
+}
+
+.product-title{
+    display: block;
+    color: black;
+    text-decoration: none;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
+
+.products-price{
+    color: #01664A;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.02em;
+}
+
+.orignal-price{
+    font-size: 13px;
+    color: #666666;
+    padding-left: 5px;
 }
 
 @media (max-width: 767px){
