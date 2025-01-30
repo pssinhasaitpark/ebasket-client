@@ -23,6 +23,9 @@ import About from "./pages/About.jsx";
 import Setlocation from "./pages/Setlocation.jsx";
 import Categories from "./pages/Home/demoCategory.jsx";
 import TopCategories from "./pages/Home/demoCategory.jsx";
+import ContactUs from "./pages/Contactus.jsx";
+import Profile from "./pages/Profile.jsx";
+import AddressForm from "./pages/DeliveryAddress.jsx";
 
 
 const App = () => {
@@ -32,7 +35,7 @@ const App = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 1000);
   }, []);
   return (
     <>
@@ -44,7 +47,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUpForm />} />
-          <Route path="/productList" element={<ProductList />} />
+          <Route path="/productlist" element={<ProductList />} />
           <Route path="/productDetail" element={<ProductDetail />} />
           <Route path="/offers" element={<CouponsList />} />
           <Route path="/refund" element={<Refund />} />
@@ -54,6 +57,11 @@ const App = () => {
           <Route path="/aboutus" element={<About />} />
           <Route path="/setlocation" element={<Setlocation />} />
           <Route path="/categories" element={<Category />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/contactus" element={<ContactUs/>} />
+          <Route path="/profile" element={<Profile/>} />
+          <Route path="/delivery-address" element={<AddressForm/>} />
+
         </Routes>
 
 

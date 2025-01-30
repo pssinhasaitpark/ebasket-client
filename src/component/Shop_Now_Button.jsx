@@ -1,7 +1,10 @@
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 function ShopNow(){
     return(
-<Button className='shopnow-button' variant="primary">Shop Now</Button>
+        <Link  to={'/productlist'}>
+<Button className='shopnow-button' variant="primary" >Shop Now</Button>
+</Link>
 )}
 
 export default ShopNow;

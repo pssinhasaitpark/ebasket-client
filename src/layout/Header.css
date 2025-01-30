@@ -51,7 +51,7 @@ ul.dropdown-menu.show {
 a.link1 {
   text-decoration: none;
 
-  color: gray;
+  color: #343a40;
 }
 
 .offcanvas-header {
@@ -72,7 +72,8 @@ a.link1 {
 }
 
 .link1-div span {
-  font-size: 14px;
+  font-size: 13px;
+  
 }
 
 .link1-div:hover {
@@ -275,7 +276,7 @@ button.btn-close {
 /* Dropdown Links */
 .dropdown-menuu a {
   display: block;
-  padding:9px 10px 10px 14px;
+  padding:9px 10px 5px 14px;
   text-decoration: none;
   color: #333;
   font-size: 13px;

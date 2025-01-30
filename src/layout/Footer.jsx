@@ -11,6 +11,7 @@ import search from '../asset/images/searchfooter.svg'
 import app from '../asset/images/appstore.png'
 import playmarket from '../asset/images/playmarket.png'
 import './Footer.css'
+import { Link } from 'react-router-dom';
 const Footer = () => {
     return (
         <>
@@ -64,9 +65,9 @@ const Footer = () => {
                                     <div className='footer-upper-wrapper-mid'>
                                         <h5 className='text-white mb-3 services-heading'>SERVICES</h5>
                                         <ul className="services-list p-0">
-                                            <li><a href="/service1">Contact us</a></li>
-                                            <li><a href="/service2">Term & Condition</a></li>
-                                            <li><a href="/service3">About us</a></li>
+                                            <li><Link to={'/contactus'} href="">Contact us</Link></li>
+                                            <li><Link to={'/terms'} href="">Term & Condition</Link></li>
+                                            <li><Link to={'/aboutus'} href="">About us</Link></li>
                                         </ul>
                                     </div>
                                 </Col>
@@ -74,9 +75,9 @@ const Footer = () => {
                                     <div className='footer-upper-wrapper-mid '>
                                         <h5 className='text-white mb-3 services-heading'>FOR USERS</h5>
                                         <ul className="services-list p-0">
-                                            <li><a href="/service1">User Login</a></li>
-                                            <li><a href="/service2">User Register</a></li>
-                                            <li><a href="/service3">User Profile</a></li>
+                                            <li><Link href="" to="/login">User Login</Link></li>
+                                            <li><Link href="" to="/signup">User Register</Link></li>
+                                            <li><Link href="" to="/profile">User Profile</Link></li>
                                         </ul>
                                     </div>
                                 </Col>
