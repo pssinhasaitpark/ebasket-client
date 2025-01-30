@@ -62,13 +62,7 @@ const App = () => {
           <Route path="/searchpage" element={<Search />} />
           
         </Routes>
-        {/* <Header /> */}
-        {/* <Login /> */}
-        {/* <SignUpForm /> */}
-        {/* <Home /> */}
-        {/* <ProductList /> */}
-        {/* <ProductDetail/> */}
-        {/* <Footer /> */}
+   
 
 
        {loading && <LoadingSpinner />}
@@ -113,6 +107,8 @@ const App = () => {
         {/* <Home /> */}
         {/* <ProductList /> */}
         {/* <ProductDetail/> */}
+  
+      
         <Footer />
 
       </div>
