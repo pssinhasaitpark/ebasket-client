@@ -42,15 +42,15 @@ padding-bottom: 15px;
     
 }
 
-/* .image-bfr{
+.image-bfr{
     max-height: 300px;
     height: 100%;
     width: 100%;
     object-fit: cover;
     overflow: hidden !important;
-} */
+}
 
-.category-section::before{
+.category-section:before{
     content: "";
     position: absolute;
     content: url(../../assests/images/category-banner.jpeg);

@@ -21,6 +21,8 @@ import Termofuse from "./pages/Termofuse.jsx";
 import Help from "./pages/Help.jsx";
 import About from "./pages/About.jsx";
 import Setlocation from "./pages/Setlocation.jsx";
+import Categories from "./pages/Home/demoCategory.jsx";
+import TopCategories from "./pages/Home/demoCategory.jsx";
 
 
 const App = () => {
@@ -33,57 +35,9 @@ const App = () => {
     }, 3000);
   }, []);
   return (
- 
-    <div>
+    <>
 
-      {/* <Header /> */}
-      {/* <Login />
-      <SignUpForm />
-      <Home />
-      <ProductList />
-      <ProductDetail/> */}
-      
-        {loading && <LoadingSpinner />}
-
-
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUpForm />} />
-          <Route path="/productList" element={<ProductList />} />
-          <Route path="/productDetail" element={<ProductDetail />} />
-          <Route path="/offers" element={<CouponsList />} />
-          <Route path="/refund" element={<Refund />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/terms" element={<Termofuse />} />
-          <Route path="/help" element={<Help />} />
-          <Route path="/aboutus" element={<About />} />
-          <Route path="/setlocation" element={<Setlocation />} />
-          <Route path="/searchpage" element={<Search />} />
-          
-        </Routes>
-   
-
-
-       {loading && <LoadingSpinner />}
-       <div>
-      {/* <Routes>
-      <Route path="/" element={ <Home/> } />
-        <Route path="/login" element={ <Login/> } />
-        <Route path="/signup" element={ <SignUpForm/> } />
-        <Route path="/productList" element={<ProductList />}/>
-        <Route path="/productDetail" element={<ProductDetail/>}/>
-        <Route path="/offers" element={<CouponsList/>}/>
-      </Routes> */}
-      {/* <Header /> */}
-      {/* <Login /> */}
-      {/* <SignUpForm /> */}
-      {/* <Home /> */}
-      {/* <ProductList /> */}
-      {/* <ProductDetail/> */}
-      {/* <Footer/> */}
-      </div>
-      
+      <div>  
         {loading && <LoadingSpinner />}
 
         <Routes>
@@ -101,19 +55,13 @@ const App = () => {
           <Route path="/setlocation" element={<Setlocation />} />
           <Route path="/categories" element={<Category />} />
         </Routes>
-        {/* <Header /> */}
-        {/* <Login /> */}
-        {/* <SignUpForm /> */}
-        {/* <Home /> */}
-        {/* <ProductList /> */}
-        {/* <ProductDetail/> */}
-  
-      
+
+
         <Footer />
 
       </div>
 
-
+    </>
   );
 };
 
