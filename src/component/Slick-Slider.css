@@ -75,3 +75,6 @@ padding:  10px;
 
 
 
+.slick-arrow{
+    display: none !important;
+}

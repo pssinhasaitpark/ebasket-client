@@ -34,66 +34,10 @@ const App = () => {
     }, 3000);
   }, []);
   return (
- <>
+    <>
 
-    <div>
-
-      {/* <Header /> */}
-      {/* <Login />
-      <SignUpForm />
-      <Home />
-      <ProductList />
-      <ProductDetail/> */}
-      
-        {/* {loading && <LoadingSpinner />}
-
-
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUpForm />} />
-          <Route path="/productList" element={<ProductList />} />
-          <Route path="/productDetail" element={<ProductDetail />} />
-          <Route path="/offers" element={<CouponsList />} />
-          <Route path="/refund" element={<Refund />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/terms" element={<Termofuse />} />
-          <Route path="/help" element={<Help />} />
-          <Route path="/aboutus" element={<About />} />
-          <Route path="/setlocation" element={<Setlocation />} />
-          <Route path="/searchpage" element={<Search />} />
-          
-        </Routes> */}
-        {/* <Header /> */}
-        {/* <Login /> */}
-        {/* <SignUpForm /> */}
-        {/* <Home /> */}
-        {/* <ProductList /> */}
-        {/* <ProductDetail/> */}
-        {/* <Footer /> */}
-
-
-       {/* {loading && <LoadingSpinner />}
-       <div> */}
-      {/* <Routes>
-      <Route path="/" element={ <Home/> } />
-        <Route path="/login" element={ <Login/> } />
-        <Route path="/signup" element={ <SignUpForm/> } />
-        <Route path="/productList" element={<ProductList />}/>
-        <Route path="/productDetail" element={<ProductDetail/>}/>
-        <Route path="/offers" element={<CouponsList/>}/>
-      </Routes> */}
-      {/* <Header /> */}
-      {/* <Login /> */}
-      {/* <SignUpForm /> */}
-      {/* <Home /> */}
-      {/* <ProductList /> */}
-      {/* <ProductDetail/> */}
-      {/* <Footer/> */}
-      
-      
+      <div>
         {loading && <LoadingSpinner />}
-
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -109,16 +53,11 @@ const App = () => {
           <Route path="/setlocation" element={<Setlocation />} />
         </Routes>
         <Header />
-        {/* <Login /> */}
-        {/* <SignUpForm /> */}
-        {/* <Home /> */}
-        {/* <ProductList /> */}
-        {/* <ProductDetail/> */}
         <Footer />
 
       </div>
 
-      </>
+    </>
   );
 };
 
