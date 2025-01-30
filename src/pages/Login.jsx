@@ -16,6 +16,8 @@ import * as Yup from "yup";
 import axios from "axios"; 
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const validationSchema = Yup.object({
   phoneNumber: Yup.string()
@@ -51,13 +53,13 @@ const Login = () => {
       if (response.data.message) {
 
         setIsOtpVisible(true);
-        setSuccess("OTP sent successfully.");
+       toast.success("OTP sent successfully.");
         console.log("API Response:", response.data);
       } else {
-        setError("Failed to send OTP. Please try again.");
+        toast.error("Failed to send OTP. Please try again.");
       }
     } catch (error) {
-      setError("An error occurred while sending OTP. Please try again.");
+      toast.error("An error occurred while sending OTP. Please try again.");
       console.error("API Error:", error);
     } finally {
       setSubmitting(false);
@@ -73,13 +75,14 @@ const Login = () => {
     try {
       const response = await axios.post("http://192.168.0.111:3001/user/verifyotp", otpData);
       if (response.data.message) {
-        setSuccess("OTP verified successfully. You are now logged in.");
-        naviagte("/home")
+        toast.success("OTP verified successfully. You are now logged in.");
+        naviagte("/")
+        toast.success("You are LoggedIn !!!!!!!")
       } else {
-        setError("Invalid OTP. Please try again.");
+        toast.error("Invalid OTP. Please try again.");
       }
     } catch (error) {
-      setError("An error occurred while verifying OTP. Please try again.");
+      toast.error("An error occurred while verifying OTP. Please try again.");
       console.error("API Error:", error);
     }
   };
@@ -87,7 +90,7 @@ const Login = () => {
   return (
     <Container>
       <Row className="justify-content-center mt-5">
-        <Col md={6}>
+        <Col md={6} className="login_page">
           <Card className="p-3">
             <h3 className="text-dark mb-3">Login</h3>
             <p className="text-muted">Sign in to continue</p>
@@ -166,7 +169,7 @@ const Login = () => {
                     </Form.Group>
 
                    
-                    <div className="d-flex justify-content-center btnn-colors p-1 mt-4">
+                    <div className="d-flex justify-content-center btnn-colors p-3 mt-4">
                       <Button
                         className="border-0 bg-transparent text-white btnn-colors w-100 text-uppercase"
                         type="submit"
@@ -183,10 +186,10 @@ const Login = () => {
                     </div>
 
                    
-                    <div className="d-flex justify-content-center btnn-colors mt-5">
+                    <div className="d-flex justify-content-center btnn-colors mt-5 mb-4 p-3">
                       <a
                         href="/signup"
-                        className="p-2 btn text-white w-100 text-uppercase"
+                        className="btn text-white w-100 text-uppercase"
                       >
                         SIGN UP
                       </a>
@@ -222,6 +225,7 @@ const Login = () => {
           </Card>
         </Col>
       </Row>
+       <ToastContainer />
     </Container>
   );
 };

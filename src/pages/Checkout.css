@@ -1,0 +1,36 @@
+.checkout-left {
+    padding-left: 75px;
+}
+
+.checkout-left-box {
+    position: relative;
+}
+
+.checkout-left h6 {
+    font-weight: 700 !important;
+    color: #333333;
+    font-size: 18px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.checkout-payment-options .custom-control {
+    padding-left: 2.5rem;
+}
+
+.checkout-left-box .raj-cart-item:before {
+    content: "";
+    width: 0px;
+    border: 1px dashed #b5b5b5;
+    left: -42px;
+    top: 0;
+    bottom: -25px;
+    display: inline-block;
+    position: absolute;
+}
+.raj-cart-item .raj-cart-item-profile {
+    display: table !important;
+    width: 100% !important;
+    text-align: center;
+}
+
