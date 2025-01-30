@@ -92,7 +92,8 @@ const SignUpForm = () => {
 
       if (response.data.message) {
         toast.success("OTP resent successfully.");
-        navigate("/home");
+        navigate("/");
+        toast.success("You are registered !!!!!!!")
       } else {
         toast.error("Failed to resend OTP. Please try again.");
       }
@@ -104,7 +105,7 @@ const SignUpForm = () => {
 
   return (
     <Container className="col-md-6 mt-3">
-      <div className="col-10 mx-auto card p-3">
+      <div className="col-10 mx-auto  cardss border p-3">
         <h3 className="text-dark my-0 mb-3">Sign up With Us</h3>
         <p className="text-50">Sign up to continue</p>
 
@@ -208,6 +209,10 @@ const SignUpForm = () => {
                         isInvalid={touched.address && errors.address}
                         required
                       />
+                       <span class="locate-me" onclick="getCurrentLocation()">
+                                    <img src="https://emartweb.siswebapp.com/img/locatleme-icon.png" />
+                                    Locate Me
+                                </span>
                       <Form.Control.Feedback type="invalid">{errors.address}</Form.Control.Feedback>
                     </div>
                   </Form.Group>
@@ -231,7 +236,7 @@ const SignUpForm = () => {
 
               {!showOtp ? (
                 <Button
-                  className="w-100 btn-lg p-3 send_Otp_button"
+                  className="w-100 btn-lg p-3 send_Otp_button mt-3"
                   type="submit"
                   disabled={isSubmitting}
                 >
@@ -258,7 +263,7 @@ const SignUpForm = () => {
                 </div>
               )}
 
-              <div className="new-acc d-flex align-items-center justify-content-center mt-4 mb-3">
+              <div className="new-acc d-flex align-items-center justify-content-center mt-4 mb-2">
                 <a href="/login">
                   <p className="text-center m-0">Already an account? SIGN IN</p>
                 </a>
@@ -268,7 +273,7 @@ const SignUpForm = () => {
         </Formik>
       </div>
 
-      {/* Toast container to show success/error messages */}
+   
       <ToastContainer />
     </Container>
   );

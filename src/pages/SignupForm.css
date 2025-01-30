@@ -1,10 +1,11 @@
-.card {
+.cardss {
   background-color: #fff;
   border-radius: 10px;
   padding: 30px;
+ width: 65%;
 }
 
-.card .btn {
+.cardss.btn {
   margin-top: 20px;
 }
 
@@ -55,6 +56,8 @@
   border: 2px solid rgb(34, 32, 32) !important;
 }
 
+
+
 .send_Otp_button {
   background: #01664a !important;
 }
@@ -65,8 +68,8 @@
 
 .locate-me {
   position: absolute;
-  right: 21px;
-  top: 05px;
+  right: 38px;
+  top: 02px;
   /* bottom: 25px; */
   line-height: 56px;
   font-size: 14px;
@@ -74,3 +77,28 @@
   color: #505056;
   cursor: pointer;
 }
+
+@media (max-width: 767px) {
+  .address_input{
+    font-size :12px
+  }
+  .locate-me {
+    position: absolute;
+    right: 29px;
+    top: -2px;
+    /* bottom: 25px; */
+    line-height: 56px;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    color: #505056;
+    cursor: pointer;
+}
+.cardss {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 30px;
+  width: 100%;
+}
+}
+
+

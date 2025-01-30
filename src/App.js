@@ -23,6 +23,7 @@ import About from "./pages/About.jsx";
 import Setlocation from "./pages/Setlocation.jsx";
 import Categories from "./pages/Home/demoCategory.jsx";
 import TopCategories from "./pages/Home/demoCategory.jsx";
+import Checkout from "./pages/Checkout.jsx";
 
 
 const App = () => {
@@ -39,7 +40,7 @@ const App = () => {
 
       <div>  
         {loading && <LoadingSpinner />}
-
+         <Checkout/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -54,6 +55,7 @@ const App = () => {
           <Route path="/aboutus" element={<About />} />
           <Route path="/setlocation" element={<Setlocation />} />
           <Route path="/categories" element={<Category />} />
+          {/* <Route path="/gokuls" element={<Checkout />} /> */}
         </Routes>
 
 

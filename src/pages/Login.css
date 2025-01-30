@@ -1,3 +1,8 @@
+.login_page{
+width: 65%;
+}
+
+
 .input_heading {
     color: rgba(78, 78, 78, 0.788) !important;
   }
@@ -12,6 +17,14 @@
     background: #01664a;
     text-transform: uppercase;
     color: #ffffff;
+    font-weight: 700;
+  }
+
+  .btnn-colors  a {
+    background: #01664a;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-weight: 700;
   }
   
   .or-line:before {
@@ -41,5 +54,11 @@
   
   .form-control:focus {
     box-shadow: none !important;
+  }
+
+  @media (max-width: 767px) {
+    .login_page{
+      width: 100%;
+      }
   }
   
