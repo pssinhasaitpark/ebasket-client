@@ -1,0 +1,15 @@
+    .sticky_sidebar {
+        position: sticky;
+        top: 15px;
+    }
+    
+.user-wallet-amount{
+    color: #01664a !important;
+}
+.form-btn{
+    background-color: #01664a !important;
+}
+label.form-label {
+    font-size: 14px;
+    font-weight: normal;
+}
