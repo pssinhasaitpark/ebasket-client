@@ -151,7 +151,7 @@ function Category() {
             </div>
           </div>
           <div className='col-md-9 col-sm-8'>
-            <ProductList selectedCategories={selectedCategories} selectedBrands={selectedBrands} />
+            <ProductList />
             {/* <Row className="mt-5">
         {items.length > 0 && items.map((item, index) => (
           <Col key={index} md={4} className="pb-3">
