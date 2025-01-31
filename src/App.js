@@ -28,11 +28,16 @@ import Profile from "./pages/Profile.jsx";
 import AddressForm from "./pages/DeliveryAddress.jsx";
 
 import Checkout from "./pages/Checkout.jsx";
+
+import OrderTabs from "./pages/MyOrder.jsx";
+
+
 import Setlocation from "./pages/Setlocation.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import Transcation from './pages/Transaction.jsx'
 import PayWallet from "./pages/PayWallet.jsx";
 import Success from "./pages/Success.jsx";
+
 
 
 const App = () => {
@@ -46,8 +51,13 @@ const App = () => {
     }, 1000)
 
   }, []);
+ 
   return (
     <>
+      <div>  
+        {loading && <LoadingSpinner />}
+        
+
       {/*  <AddressLoader/> */}
       <div>
         {loading && (<LoadingSpinner />) 
@@ -69,6 +79,12 @@ const App = () => {
           <Route path="/categories" element={<Category />} />
 
           <Route path="/search" element={<Search />} />
+
+          <Route path="/contactus" element={<ContactUs/>} />
+          <Route path="/profile" element={<Profile/>} />
+          <Route path="/delivery-address" element={<AddressForm/>} />
+          <Route path="/checkout" element={<Checkout/>} />
+          <Route path="/myorder" element={<OrderTabs/>}/>
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/delivery-address" element={<AddressForm />} />
@@ -79,15 +95,16 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
 
 
+
         </Routes>
 
 
         {/* <Footer /> */}
-
       </div>
-
-    </>
+      </div>
+      </>
+     
   );
-};
+}
 
 export default App;
