@@ -1,0 +1,8 @@
+
+@media (max-width: 767px){
+    .not-found-div{
+        position: relative !important;
+        top: 30px;
+        bottom: 0px;
+    }
+}

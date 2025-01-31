@@ -1,0 +1,33 @@
+
+.transaction-container{
+    display: flex;
+    justify-content: center;
+    background-color: #01664a !important;
+    height: auto ;
+}
+
+.transaction-btn{
+    background-color: #ffffff !important;
+    border-color: #ffffff !important;
+    text-transform: uppercase;
+    font-size: 16px;
+    padding: 28px 16px;
+    font-weight: 600;
+    color: black !important;
+}
+
+.modal-content{
+    width: 60% !important;
+   
+}
+.modal-dialog.modal-lg.modal-dialog-centered {
+    justify-content: center;
+}
+.transaction-number{
+    position: relative;
+}
+.currentCurrency{
+    position: absolute;
+    left: 6px;
+    top: 6px;
+}

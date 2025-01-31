@@ -5,7 +5,7 @@ import Product from "./Our_product";
 import Selling from "./Most_selling";
 import All from "./all-products";
 import React, { useState, useEffect } from 'react';
-import LoadingSpinner from "../../component/spinner";
+import {LoadingSpinner} from "../../component/spinner";
 import { Route, Routes } from "react-router-dom";
 import Header from "../../layout/Header";
 import Search from "../Search/search-page";
@@ -17,7 +17,7 @@ function Home() {
     useEffect(() => {
       setTimeout(() => {
         setLoading(false);
-      }, 4000);
+      }, 2000);
     }, []);
     return(
       <>     
