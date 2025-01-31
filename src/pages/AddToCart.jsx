@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 import {
   Row,
@@ -23,17 +25,40 @@ import ProductList from "./Products";
 import Header from "../layout/Header";
 
 const ProductDetailPage = () => {
+  const { id } = useParams(); 
   const [quantity, setQuantity] = useState(1);
+  const [productData, setProductData] = useState(null);
+  const [loading, setLoading] = useState(true); 
+
+  useEffect(() => {
+    const fetchProductData = async () => {
+      try {
+        const response = await axios.get(`http://192.168.0.111:3001/items/itembyid/${id}`);
+        setProductData(response.data.product); 
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching product data:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchProductData();
+  }, [id]);
+
 
   const handleIncrease = () => {
     setQuantity(quantity + 1);
   };
 
   const handleDecrease = () => {
-    if (quantity > 1) {
+    if (quantity > 0) {
       setQuantity(quantity - 1);
     }
   };
+
+  if (loading) return <div>Loading...</div>;
+
+  if (!productData) return <div>Product not found!</div>;
 
   return (
     <>
@@ -49,10 +74,10 @@ const ProductDetailPage = () => {
                     <div className="slick-track">
                       <div className="product-image ">
                         <img
-                          alt="Product"
+                          alt="productData.itemDetails.name"
                           className="img-fluid item-img w-100"
-                          src="https://firebasestorage.googleapis.com/v0/b/ebasket-85209.appspot.com/o/images%2Findiagate%20basmatirice_1720521733059.jpg?alt=media&token=b7aadf24-0253-4ee0-a788-bbc29818e64f"
-                        />
+                          src={`http://192.168.0.111:3001${productData.itemDetails.mediaFiles[0]?.url}`}
+                          />
                       </div>
                     </div>
                   </div>
@@ -66,18 +91,18 @@ const ProductDetailPage = () => {
                   <div className="car-det-head mb-3">
                     <div className="car-det-head-top">
                       <div className="car-det-title">
-                        <h2>Potatoes</h2>
+                        <h2>{productData.itemDetails.name}</h2>
                       </div>
                       <div className="description mt-2 mb-3">
-                        <p>Potatoes</p>
+                        <p>{productData.itemDetails.description || 'No description available'}</p>
                       </div>
                       <div className="car-det-price ml-auto">
                         <div className="product_price_div">
                           <span className="price">
-                            $49.00 <s>$50.00</s>
+                          ${productData.itemDetails.price}<s>${productData.itemDetails.price + 10}</s>
                           </span>
                           <div className="variant_quntity">
-                            Quantity left: Unlimited
+                            Quantity left: {productData.itemDetails.itemQuantity || 'Unlimited'}
                           </div>
                         </div>
                       </div>
@@ -85,7 +110,7 @@ const ProductDetailPage = () => {
                   </div>
 
                   <div className="brand mt-2 mb-3">
-                    <h3>Brand | Amul</h3>
+                    <h3>Brand | {productData.itemDetails.brand?.title || 'Unknown'}</h3>
                   </div>
 
                   <div className="attributes mt-2 mb-0">
@@ -93,8 +118,7 @@ const ProductDetailPage = () => {
                       <div className="attribute_list">
                         <h3 className="attribute-label">Weight</h3>
                         <div className="attribute-options gap-3">
-                          <div className="border p-2">3kgs</div>
-                          <div className="border p-2">5kgs</div>
+                          <div className="border p-2">{productData?.itemDetails?.variants[0]?.variantQuantity}</div>
                         </div>
                       </div>
                     </div>
@@ -107,10 +131,10 @@ const ProductDetailPage = () => {
                         <span className="count-number">
                           <div class="ml-auto">
                             <span class="count-number">
-                              <button class="btn-sm left dec btn btn-outline-secondary food_count_decrese">
+                              <button class="btn-sm left dec btn btn-outline-secondary food_count_decrese" onClick={handleDecrease}>
                                 <FaMinus />
                               </button>
-                              <button class="btn-sm right inc btn btn-outline-secondary">
+                              <button class="btn-sm right inc btn btn-outline-secondary" onClick={handleIncrease}>
                                 <FaPlus />
                               </button>
                             </span>
@@ -165,51 +189,51 @@ const ProductDetailPage = () => {
                         <ul>
                           <li>
                             <label>Brand:</label>
-                            <span className="brand">Amul</span>
+                            <span className="brand">{productData.itemDetails.brand?.title}</span>
                           </li>
                           <li>
                             <label>Category:</label>
                             <span className="cat_name">
-                              Vegetables & Fruits
+                            {productData.itemDetails.category?.name}
                             </span>
                           </li>
                           <li>
                             <label>Shelf Life:</label>
-                            <span className="shelf_life">3 months</span>
+                            <span className="shelf_life">{productData.generalInformation?.shelfLife}</span>
                           </li>
                           <li>
                             <label>Country:</label>
-                            <span className="country">India</span>
+                            <span className="country">{productData.generalInformation?.country}</span>
                           </li>
                           <li>
                             <label>FSSAI License:</label>
                             <span className="fssai_license">
-                              10225632541200
+                            {productData.generalInformation?.fssaiLicense}
                             </span>
                           </li>
                           <li>
                             <label>Expiry Date:</label>
-                            <span className="expiry_date">Mar 8, 2024</span>
+                            <span className="expiry_date">{productData.generalInformation?.expiryDate}</span>
                           </li>
                           <li>
                             <label>Packaging Type:</label>
-                            <span className="packaging_type">packet</span>
+                            <span className="packaging_type">{productData.generalInformation?.packagingType}</span>
                           </li>
                           <li>
                             <label>Seller FSSAI:</label>
-                            <span className="seller_fssai">13526352333</span>
+                            <span className="seller_fssai">{productData.generalInformation?.sellerFSSAI}</span>
                           </li>
                           <li>
                             <label>HSN Code:</label>
-                            <span className="hsn_code">HSN001</span>
+                            <span className="hsn_code">{productData.itemDetails.HSNCode}</span>
                           </li>
                           <li>
                             <label>Unit:</label>
-                            <span className="unit">KG</span>
+                            <span className="unit">{productData.itemDetails.unit}</span>
                           </li>
                           <li>
                             <label>Disclaimer:</label>
-                            <span className="disclaimer">testing</span>
+                            <span className="disclaimer">{productData.generalInformation?.disclaimer}</span>
                           </li>
                         </ul>
                       </div>

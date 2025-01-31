@@ -1,4 +1,4 @@
-import React from "react";
+import React , { useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -8,9 +8,23 @@ import left from "../assests/images/left.svg"
 import right from "../assests/images/right.svg"
 import Container from 'react-bootstrap/Container';  
 import './Slick-Slider.css'
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchItems } from "../store/slices/products-slice";
+
 
 function Slick() 
-{   
+{     
+  const dispatch = useDispatch();
+  const items = useSelector(state => state.items.items);
+
+   useEffect(() => {
+          dispatch(fetchItems());
+      }, [dispatch]);
+
+ useEffect(() => {
+    console.log('Items:', items);
+  }, [items]);
+
     const SamplePrevArrow = (props) => {
         const { className, style, onClick } = props;
         return(
@@ -80,66 +94,35 @@ function Slick()
         };
     return(
       <div>
-            
                     <div className="pb-5" style={{position:'relative'}}>
                       <Container>
-
                         <Slider {...settings} style={{background:'tranparent'}}>
-                                <div className="Slick-card">
-                                  <div className="Slick-img-section"> <img className="Slick-img img-fluid" src={rice} alt=""  /></div>
-                                  <div className="py-2 slick-content">
-                                    <h6 className="mb-2 pt-2 slick-title"><a className="title-link">India Gate Premium Basmati Rice</a></h6>
-                                    <h6 className="mb-1 pt-2 slick-price"><span className="actual-price">$278.07</span><s>$299.00</s></h6>
-                                  </div>
+                        {items.length > 0 && items.map((item, index) => (
+                            item.publish && (
+                              <div key={index} className="Slick-card">
+                                <div className="Slick-img-section">
+                                  <img
+                                    className="Slick-img img-fluid"
+                                    src={
+                                      item.itemDetails.mediaFiles && item.itemDetails.mediaFiles[0]?.url
+                                        ? `http://192.168.0.111:3001${item.itemDetails.mediaFiles[0].url}`
+                                        : rice 
+                                    }
+                                    alt={item.itemDetails.name}
+                                  />
                                 </div>
-                                <div className="Slick-card">
-                                  <div className="Slick-img-section"> <img className="Slick-img img-fluid" src={rice} alt=""  /></div>
-                                  <div className="py-2 slick-content">
-                                    <h6 className="mb-2 pt-2 slick-title"><a className="title-link">India Gate Premium Basmati Rice</a></h6>
-                                    <h6 className="mb-1 pt-2 slick-price"><span className="actual-price">$278.07</span><s>$299.00</s></h6>
-                                  </div>
+                                <div className="py-2 slick-content">
+                                  <h6 className="mb-2 pt-2 slick-title">
+                                    <a className="title-link">{item.itemDetails.name}</a>
+                                  </h6>
+                                  <h6 className="mb-1 pt-2 slick-price">
+                                    <span className="actual-price">${item.itemDetails.price}</span>
+                                    <s>${item.itemDetails.discountedPrice || item.itemDetails.price}</s>
+                                  </h6>
                                 </div>
-                                <div className="Slick-card">
-                                  <div className="Slick-img-section"> <img className="Slick-img img-fluid" src={rice} alt=""  /></div>
-                                  <div className="py-2 slick-content">
-                                    <h6 className="mb-2 pt-2 slick-title"><a className="title-link">India Gate Premium Basmati Rice</a></h6>
-                                    <h6 className="mb-1 pt-2 slick-price"><span className="actual-price">$278.07</span><s>$299.00</s></h6>
-                                  </div>
-                                </div>
-                                <div className="Slick-card">
-                                  <div className="Slick-img-section"> <img className="Slick-img img-fluid" src={rice} alt=""  /></div>
-                                  <div className="py-2 slick-content">
-                                    <h6 className="mb-2 pt-2 slick-title"><a className="title-link">India Gate Premium Basmati Rice</a></h6>
-                                    <h6 className="mb-1 pt-2 slick-price"><span className="actual-price">$278.07</span><s>$299.00</s></h6>
-                                  </div>
-                                </div>
-                                <div className="Slick-card">
-                                  <div className="Slick-img-section"> <img className="Slick-img img-fluid" src={rice} alt=""  /></div>
-                                  <div className="py-2 slick-content">
-                                    <h6 className="mb-2 pt-2 slick-title"><a className="title-link">India Gate Premium Basmati Rice</a></h6>
-                                    <h6 className="mb-1 pt-2 slick-price"><span className="actual-price">$278.07</span><s>$299.00</s></h6>
-                                  </div>
-                                </div>
-                                <div className="Slick-card">
-                                  <div className="Slick-img-section"> <img className="Slick-img img-fluid" src={rice} alt=""  /></div>
-                                  <div className="py-2 slick-content">
-                                    <h6 className="mb-2 pt-2 slick-title"><a className="title-link">India Gate Premium Basmati Rice</a></h6>
-                                    <h6 className="mb-1 pt-2 slick-price"><span className="actual-price">$278.07</span><s>$299.00</s></h6>
-                                  </div>
-                                </div> <div className="Slick-card">
-                                  <div className="Slick-img-section"> <img className="Slick-img img-fluid" src={rice} alt=""  /></div>
-                                  <div className="py-2 slick-content">
-                                    <h6 className="mb-2 pt-2 slick-title"><a className="title-link">India Gate Premium Basmati Rice</a></h6>
-                                    <h6 className="mb-1 pt-2 slick-price"><span className="actual-price">$278.07</span><s>$299.00</s></h6>
-                                  </div>
-                                </div>
-                                <div className="Slick-card">
-                                  <div className="Slick-img-section"> <img className="Slick-img img-fluid" src={rice} alt=""  /></div>
-                                  <div className="py-2 slick-content">
-                                    <h6 className="mb-2 pt-2 slick-title"><a className="title-link">Sudhi</a></h6>
-                                    <h6 className="mb-1 pt-2 slick-price"><span className="actual-price">$278.07</span><s>$299.00</s></h6>
-                                  </div>
-                                </div>
+                              </div>
+                            )
+                          ))}
                                 </Slider>
                 
                       </Container>

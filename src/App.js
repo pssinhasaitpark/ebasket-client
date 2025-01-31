@@ -45,13 +45,13 @@ const App = () => {
 
       <div>  
         {loading && <LoadingSpinner />}
-         <Checkout/>
+         {/* <Checkout/> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUpForm />} />
           <Route path="/productlist" element={<ProductList />} />
-          <Route path="/productDetail" element={<ProductDetail />} />
+          <Route path="/productDetail/:id" element={<ProductDetail />} />
           <Route path="/offers" element={<CouponsList />} />
           <Route path="/refund" element={<Refund />} />
           <Route path="/privacy" element={<Privacy />} />
