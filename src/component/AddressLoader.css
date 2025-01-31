@@ -1,0 +1,11 @@
+.spinner {
+   
+    position: absolute;
+    top: 5%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-size: 100%;
+    width: 110px;
+    height: 73px
+}

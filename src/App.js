@@ -11,7 +11,7 @@ import ProductDetail from "./pages/AddToCart.jsx";
 import Footer from "./layout/Footer.jsx";
 import Category from "./pages/Category/Category.jsx";
 import { useState, useEffect } from 'react';
-import LoadingSpinner from "./component/spinner";
+import {LoadingSpinner, AddressLoader} from "./component/spinner";
 import Search from "./pages/Search/search-page.jsx";
 import { Route, Routes } from "react-router-dom";
 import CouponsList from "./component/Offers.jsx";
@@ -20,7 +20,7 @@ import Privacy from "./pages/Privacy.jsx";
 import Termofuse from "./pages/Termofuse.jsx";
 import Help from "./pages/Help.jsx";
 import About from "./pages/About.jsx";
-import Setlocation from "./pages/Setlocation.jsx";
+
 import Categories from "./pages/Home/demoCategory.jsx";
 import TopCategories from "./pages/Home/demoCategory.jsx";
 import ContactUs from "./pages/Contactus.jsx";
@@ -28,25 +28,41 @@ import Profile from "./pages/Profile.jsx";
 import AddressForm from "./pages/DeliveryAddress.jsx";
 
 import Checkout from "./pages/Checkout.jsx";
+
 import OrderTabs from "./pages/MyOrder.jsx";
+
+
+import Setlocation from "./pages/Setlocation.jsx";
+import NotFound from "./pages/NotFound.jsx";
+import Transcation from './pages/Transaction.jsx'
+import PayWallet from "./pages/PayWallet.jsx";
+import Success from "./pages/Success.jsx";
 
 
 
 const App = () => {
+  
   const [loading, setLoading] = useState(true);
-
-
   useEffect(() => {
+
     setTimeout(() => {
       setLoading(false);
-    }, 1000);
+      
+    }, 1000)
+
   }, []);
+ 
   return (
     <>
-
       <div>  
         {loading && <LoadingSpinner />}
         
+
+      {/*  <AddressLoader/> */}
+      <div>
+        {loading && (<LoadingSpinner />) 
+         }
+        {/* <Checkout/> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -63,20 +79,32 @@ const App = () => {
           <Route path="/categories" element={<Category />} />
 
           <Route path="/search" element={<Search />} />
+
           <Route path="/contactus" element={<ContactUs/>} />
           <Route path="/profile" element={<Profile/>} />
           <Route path="/delivery-address" element={<AddressForm/>} />
           <Route path="/checkout" element={<Checkout/>} />
           <Route path="/myorder" element={<OrderTabs/>}/>
+          <Route path="/contactus" element={<ContactUs />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/delivery-address" element={<AddressForm />} />
+          <Route path="/transaction" element={<Transcation />} />
+          <Route path="/pay-wallet" element={<PayWallet/>}/>
+          <Route path="/success" element={<Success/>}/>
+
+          <Route path="*" element={<NotFound />} />
+
+
+
         </Routes>
 
 
-        <Footer />
-
+        {/* <Footer /> */}
       </div>
-
-    </>
+      </div>
+      </>
+     
   );
-};
+}
 
 export default App;
