@@ -11,6 +11,9 @@
 .font-sz{
     font-size: 16px;
 }
+.bg-color{
+    background-color: #01664a;
+}
 body {
     font-family: 'Montserrat',sans-serif; /* Apply the Google Font */
     font-size: 16px;
