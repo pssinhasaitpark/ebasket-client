@@ -28,6 +28,7 @@ import Profile from "./pages/Profile.jsx";
 import AddressForm from "./pages/DeliveryAddress.jsx";
 
 import Checkout from "./pages/Checkout.jsx";
+import OrderTabs from "./pages/MyOrder.jsx";
 
 
 
@@ -45,7 +46,7 @@ const App = () => {
 
       <div>  
         {loading && <LoadingSpinner />}
-         <Checkout/>
+        
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -65,7 +66,8 @@ const App = () => {
           <Route path="/contactus" element={<ContactUs/>} />
           <Route path="/profile" element={<Profile/>} />
           <Route path="/delivery-address" element={<AddressForm/>} />
-
+          <Route path="/checkout" element={<Checkout/>} />
+          <Route path="/myorder" element={<OrderTabs/>}/>
         </Routes>
 
 
