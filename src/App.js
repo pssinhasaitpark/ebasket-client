@@ -27,6 +27,9 @@ import ContactUs from "./pages/Contactus.jsx";
 import Profile from "./pages/Profile.jsx";
 import AddressForm from "./pages/DeliveryAddress.jsx";
 
+import Checkout from "./pages/Checkout.jsx";
+
+
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -42,7 +45,7 @@ const App = () => {
 
       <div>  
         {loading && <LoadingSpinner />}
-
+         <Checkout/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -57,6 +60,7 @@ const App = () => {
           <Route path="/aboutus" element={<About />} />
           <Route path="/setlocation" element={<Setlocation />} />
           <Route path="/categories" element={<Category />} />
+
           <Route path="/search" element={<Search />} />
           <Route path="/contactus" element={<ContactUs/>} />
           <Route path="/profile" element={<Profile/>} />
