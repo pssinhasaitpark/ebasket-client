@@ -40,6 +40,8 @@ import Success from "./pages/Success.jsx";
 
 
 
+
+
 const App = () => {
   
   const [loading, setLoading] = useState(true);
@@ -86,17 +88,16 @@ const App = () => {
           <Route path="/transaction" element={<Transcation />} />
           <Route path="/pay-wallet" element={<PayWallet/>}/>
           <Route path="/success" element={<Success/>}/>
-
+          {/* <Route path="/pay" element={<PaymentButton/>}/> */}
           <Route path="*" element={<NotFound />} />
-
+  
 
 
         </Routes>
-
+  
 
         {/* <Footer /> */}
       </div>
-      
       </>
      
   );
