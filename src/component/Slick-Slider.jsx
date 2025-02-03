@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchItems } from "../store/slices/products-slice";
 
 
-function Slick() 
+function Slick({category}) 
 {     
   const dispatch = useDispatch();
   const items = useSelector(state => state.items.items);
@@ -21,9 +21,19 @@ function Slick()
           dispatch(fetchItems());
       }, [dispatch]);
 
- useEffect(() => {
-    console.log('Items:', items);
-  }, [items]);
+      const filteredItems = items.filter(item => {
+        if (!category) {
+            return true; // Show all items if no category is selected
+        }
+        // Filter items by the selected category
+        return item.itemDetails.category && item.itemDetails.category.name.toLowerCase() === category.toLowerCase();
+    });
+    
+    
+
+//  useEffect(() => {
+//     console.log('Items:', items);
+//   }, [items]);
 
     const SamplePrevArrow = (props) => {
         const { className, style, onClick } = props;
@@ -97,32 +107,41 @@ function Slick()
                     <div className="pb-5" style={{position:'relative'}}>
                       <Container>
                         <Slider {...settings} style={{background:'tranparent'}}>
-                        {items.length > 0 && items.map((item, index) => (
-                            item.publish && (
-                              <div key={index} className="Slick-card">
-                                <div className="Slick-img-section">
-                                  <img
-                                    className="Slick-img img-fluid"
-                                    src={
-                                      item.itemDetails.mediaFiles && item.itemDetails.mediaFiles[0]?.url
-                                        ? `http://192.168.0.111:3001${item.itemDetails.mediaFiles[0].url}`
-                                        : rice 
-                                    }
-                                    alt={item.itemDetails.name}
-                                  />
+                        {filteredItems && filteredItems.length > 0 ? (
+                          filteredItems.map((item) => {
+                          {
+                              return (
+                                <div key={item._id} className="Slick-card">
+                                  <div className="Slick-img-section">
+                                    <img
+                                      className="Slick-img img-fluid"
+                                      src={
+                                        item.itemDetails.mediaFiles && item.itemDetails.mediaFiles[0]?.url
+                                          ? `http://192.168.0.111:3001${item.itemDetails.mediaFiles[0].url}`
+                                          : rice
+                                      }
+                                      alt={item.itemDetails.name}
+                                    />
+                                  </div>
+                                  <div className="py-2 slick-content">
+                                    <h6 className="mb-2 pt-2 slick-title">
+                                      <a className="title-link">{item.itemDetails.name}</a>
+                                    </h6>
+                                    <h6 className="mb-1 pt-2 slick-price">
+                                      <span className="actual-price">${item.itemDetails.price}</span>
+                                      <s>${item.itemDetails.discountedPrice || item.itemDetails.price}</s>
+                                    </h6>
+                                  </div>
                                 </div>
-                                <div className="py-2 slick-content">
-                                  <h6 className="mb-2 pt-2 slick-title">
-                                    <a className="title-link">{item.itemDetails.name}</a>
-                                  </h6>
-                                  <h6 className="mb-1 pt-2 slick-price">
-                                    <span className="actual-price">${item.itemDetails.price}</span>
-                                    <s>${item.itemDetails.discountedPrice || item.itemDetails.price}</s>
-                                  </h6>
-                                </div>
-                              </div>
-                            )
-                          ))}
+                              );
+                            }
+                            return null;
+                          })
+                        ) : (
+                          <p>No products available</p>
+                        )}
+
+
                                 </Slider>
                 
                       </Container>

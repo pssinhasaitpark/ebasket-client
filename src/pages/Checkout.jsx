@@ -1,4 +1,4 @@
-import React from "react";
+import React , { useEffect, useState } from "react";
 import {
   Container,
   Row,
@@ -21,6 +21,77 @@ import './Checkout.css'
 import discountImg from '../asset/images/discountss.png'
 
 const Checkout = () => {
+  const [cart, setCart] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [totalDiscount, setTotalDiscount] = useState(0);
+  const [deliveryCharges, setDeliveryCharges] = useState(0); 
+  const [finalAmount, setFinalAmount] = useState(0);
+  
+  useEffect(() => {
+    const savedCart = JSON.parse(localStorage.getItem("cart"));
+    if (savedCart) {
+      setCart(savedCart);
+    }
+  }, []);
+
+  useEffect(() => {
+    let total = 0;
+    let discount = 0;
+
+    cart.forEach((item) => {
+      const itemPrice = item.itemDetails.price * item.quantity; 
+      const itemDiscount = ((item.itemDetails.discount / 100) * item.itemDetails.price) * item.quantity || 0; 
+
+      total += itemPrice;
+      discount += itemDiscount;
+    });
+
+    const discountedPrice = total - discount;
+    const finalAmount = discountedPrice; 
+
+    setTotalPrice(total);
+    setTotalDiscount(discount);
+    setFinalAmount(finalAmount);
+  }, [cart, deliveryCharges]);
+
+  const CGST =  totalPrice * 0.05;
+  const GST = 10;
+  const TotalAmount = finalAmount + CGST + GST + deliveryCharges;
+
+
+  // Log the cart details for debugging
+  useEffect(() => {
+    console.log("Cart Products: ", cart);
+  }, [cart]);
+
+  // Handle increment of product quantity in the cart
+  const handleIncrement = (productId) => {
+    const updatedCart = cart.map((item) =>
+      item._id === productId ? { ...item, quantity: item.quantity + 1 } : item
+    );
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
+  // Handle decrement of product quantity in the cart
+  const handleDecrement = (productId) => {
+    const updatedCart = cart.map((item) =>
+      item._id === productId && item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : item
+    );
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
+  // Handle removal of a product from the cart
+  const handleRemoveItem = (productId) => {
+    const updatedCart = cart.filter((item) => item._id !== productId);
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
+  // Calculate the total quantity of products in the cart
+  const totalQuantity = cart.reduce((acc, item) => acc + item.quantity, 0);
+
   return (
     <div className="rajj-checkout">
       <Container className="position-relative">
@@ -267,43 +338,56 @@ const Checkout = () => {
                 <h3 className="font-weight-bold h6 w-100">Cart</h3>
               </div>
 
-  
+  {/* item-starts   */}
               <div className="bg-white p-3 sidebar-item-list">
                 <h6 className="pb-3">Items</h6>
-                <div className="product-item gold-members row align-items-center py-2 border mb-2 rounded-lg m-0" id="item_669de52f3449f">
-                  <div className="media align-items-center col-md-6">
-                    <img
-                      src="https://firebasestorage.googleapis.com/v0/b/ebasket-85209.appspot.com/o/images%2Fhigh_protein_1721623950600.jpg?alt=media&token=a228f1cf-867f-4c34-a7af-eb6dc4e29c3d"
-                      className="img-responsive img-rounded"
-                      style={{ maxHeight: '40px', maxWidth: '25px' }}
-                      alt="product"
-                    />
-                    <div className="media-body">
-                      <div className="m-0 product-name">HIGH-PROTEIN FLOUR</div>
-                    </div>
-                  </div>
+                <div >
+               
 
-           
-                  <div className="d-flex align-items-center count-number-box col-md-5">
+<div className="product-item gold-members row align-items-center py-2  mb-2 rounded-lg m-0" id="item_669de52f3449f">
+        {cart.length > 0 ? (
+          cart.map((item) => (
+            <div key={item._id} className="d-flex w-100 media align-items-center col-md-6 mb-2 border checkout-added-products">
+              <img
+                src= {`http://192.168.0.111:3001${item.itemDetails.mediaFiles[0]?.url}`}
+                className="img-responsive img-rounded order-img"
+                style={{ maxHeight: '40px', maxWidth: '25px' }}
+                alt="product"
+              />
+              <div className="media-body">
+                <div className="m-0 product-name">{item.itemDetails.name}</div>
+              </div>
+              <div className="d-flex align-items-center count-number-box col-md-5">
                     <span className="count-number float-right">
-                      <Button variant="outline-secondary" size="sm" className="dec">
-                        <FaMinus />
+                      <Button variant="outline-secondary" size="sm" className="dec" onClick={() => handleDecrement(item._id)}>
+                        <FaMinus className="decreased-button"/>
                       </Button>
-                      {/* <input className="count-number-input" type="text" readOnly value="1" /> */}
-                      <Button variant="outline-secondary" size="sm" className="inc">
-                        <FaPlus />
+                      <span className="particular-product-quantity">{item.quantity}</span>
+                      <Button variant="outline-secondary" size="sm" className="inc" onClick={() => handleIncrement(item._id)}>
+                        <FaPlus className="increased-button"/>
                       </Button>
                     </span>
                     <p className="text-gray mb-0 float-right ml-3 text-muted small">
                       <span className="currency-symbol-left">$</span>
-                      <span className="cart_iteam_total_669de52f3449f">153.00</span>
+                      <span className="cart_iteam_total_669de52f3449f">{item.itemDetails.price * item.quantity}</span>
                     </p>
-                  </div>
+              
+              </div>
+              <div className="close remove_item col-md-1 remove-button">
+                    <FaTimes onClick={() => handleRemoveItem(item._id)} />
+              </div>
+            </div>
+          ))
+        ) : (
+          <p>No items in the cart.</p>
+        )}
+      </div>  
+
+           
+                  
 
           
-                   <div className="close remove_item col-md-1">
-                    <FaTimes />
-                  </div>
+                  
                 </div>
               </div>
 
@@ -335,13 +419,13 @@ const Checkout = () => {
                 </div>
               </div>
 
-        
+        {/* totaling */}
               <div className="bg-white p-3 clearfix btm-total">
                 <p className="mb-2">
                   Sub Total
                   <span className="float-right">
                     <span className="currency-symbol-left">$</span>
-                    153.00
+                    {totalPrice}
                   </span>
                 </p>
                 <hr />
@@ -349,11 +433,11 @@ const Checkout = () => {
                   CGST (5%)
                   <span className="float-right text-dark">
                     <span className="currency-symbol-left">$</span>
-                    7.65
+                    {CGST}
                   </span>
                 </p>
                 <p className="mb-2">
-                  GST
+                  GST ( $ 10.00 )
                   <span className="float-right text-dark">
                     <span className="currency-symbol-left">$</span>
                     10.00
@@ -364,7 +448,7 @@ const Checkout = () => {
                   Delivery Charge
                   <span className="float-right text-dark">
                     <span className="currency-symbol-left">$</span>
-                    1,008.56 (336.19Km)
+                      0                  
                   </span>
                 </p>
                 <hr />
@@ -372,7 +456,7 @@ const Checkout = () => {
                   Total
                   <p className="float-right">
                     <span className="currency-symbol-left">$</span>
-                    1,179.21
+                    {TotalAmount}
                   </p>
                 </h6>
               </div>
@@ -380,7 +464,7 @@ const Checkout = () => {
            
               <div className="p-3 text-center">
                 <Button  block size="lg" className="pay_now_buttons border-0 text-center">
-                  Pay <span className="currency-symbol-left">$</span>1,179.21 <FaArrowRight />
+                  Pay <span className="currency-symbol-left">$</span>{TotalAmount}<FaArrowRight />
                 </Button>
               </div>
             </div>
