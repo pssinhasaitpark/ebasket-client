@@ -15,9 +15,9 @@ const ProductList = () => {
     dispatch(fetchItems());
   }, [dispatch]);
 
-  useEffect(() => {
-    console.log('Items:', items);
-  }, [items]);
+  // useEffect(() => {
+  //   console.log('Items:', items);
+  // }, [items]);
 
   const handleCardClick = async (id) => {
     try {
@@ -41,13 +41,13 @@ const ProductList = () => {
   return (
     <>
       <div className="container section-content">
-        <Row className="mt-5">
+        <Row className="mt-5 product-list">
           {items.length > 0 &&
             items.map((item, index) => {
               const id = item?._id; 
-              console.log('Item ID:', id);
+              // console.log('Item ID:', id);
                 return (
-                <Col key={index} md={4} className="pb-3">
+                <Col key={index} md={4} className="pb-3 product-list">
                   <Card
                     className="list-card position-relative"
                     onClick={() => handleCardClick(id)} 

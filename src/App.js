@@ -71,7 +71,7 @@ const App = () => {
           <Route path="/help" element={<Help />} />
           <Route path="/aboutus" element={<About />} />
           <Route path="/setlocation" element={<Setlocation />} />
-          <Route path="/categories" element={<Category />} />
+          <Route path="/categories/:id" element={<Category />} />
 
           <Route path="/search" element={<Search />} />
 
@@ -96,7 +96,7 @@ const App = () => {
 
         {/* <Footer /> */}
       </div>
-      </div>
+      
       </>
      
   );
