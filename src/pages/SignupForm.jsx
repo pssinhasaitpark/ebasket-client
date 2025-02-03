@@ -245,7 +245,7 @@ const SignUpForm = () => {
               ) : (
                 <div>
                   <Button
-                    className="w-100 btn-lg p-3 send_Otp_button"
+                    className="w-100 btn-lg p-3 send_Otp_button mt-2"
                     type="button"
                     onClick={() => verifyOtp(values)}
                     disabled={isSubmitting}
@@ -253,7 +253,7 @@ const SignUpForm = () => {
                     Verify OTP
                   </Button>
                   <Button
-                    className="w-100 btn-lg p-3 send_Otp_button"
+                    className="w-100 btn-lg p-3 send_Otp_button mt-2"
                     type="button"
                     onClick={() => resendOtp(values)}
                     disabled={isSubmitting}
