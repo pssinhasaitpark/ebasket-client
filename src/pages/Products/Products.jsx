@@ -6,10 +6,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchItems } from '../../store/slices/products-slice';
 import { useNavigate } from 'react-router-dom';
 
-const ProductList = ({items}) => {
+const ProductList = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { itemss, loading, error } = useSelector((state) => state.items);
+  const { items, loading, error } = useSelector((state) => state.items);
 
   useEffect(() => {
     dispatch(fetchItems());
@@ -41,13 +41,13 @@ const ProductList = ({items}) => {
   return (
     <>
       <div className="container section-content">
-        <Row className="mt-5 product-list">
+        <Row className="mt-5">
           {items.length > 0 &&
             items.map((item, index) => {
               const id = item?._id; 
-              // console.log('Item ID:', id);
+              console.log('Item ID:', id);
                 return (
-                <Col key={index} md={4} className="pb-3 product-list">
+                <Col key={index} md={4} className="pb-3">
                   <Card
                     className="list-card position-relative"
                     onClick={() => handleCardClick(id)} 
