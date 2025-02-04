@@ -59,12 +59,10 @@ const Checkout = () => {
   const TotalAmount = finalAmount + CGST + GST + deliveryCharges;
 
 
-  // Log the cart details for debugging
   useEffect(() => {
     console.log("Cart Products: ", cart);
   }, [cart]);
 
-  // Handle increment of product quantity in the cart
   const handleIncrement = (productId) => {
     const updatedCart = cart.map((item) =>
       item._id === productId ? { ...item, quantity: item.quantity + 1 } : item
@@ -73,7 +71,6 @@ const Checkout = () => {
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
-  // Handle decrement of product quantity in the cart
   const handleDecrement = (productId) => {
     const updatedCart = cart.map((item) =>
       item._id === productId && item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : item
@@ -82,14 +79,12 @@ const Checkout = () => {
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
-  // Handle removal of a product from the cart
   const handleRemoveItem = (productId) => {
     const updatedCart = cart.filter((item) => item._id !== productId);
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
-  // Calculate the total quantity of products in the cart
   const totalQuantity = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
@@ -391,7 +386,7 @@ const Checkout = () => {
                 </div>
               </div>
 
-      
+      {/* {apply coupons} */}
               <div className="bg-white px-3 clearfix">
   <div className="pb-3">
     <div className="inputss-group input-group-sm mb-2 d-flex">
