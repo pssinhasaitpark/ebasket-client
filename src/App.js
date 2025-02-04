@@ -30,25 +30,21 @@ import NotFound from "./pages/NotFound/NotFound.jsx";
 import Transcation from './pages/transaction/Transaction.jsx'
 import PayWallet from "./pages/paywallet/PayWallet.jsx";
 import Success from "./pages/success/Success.jsx";
-import TopCategories from "./component/TopCategory.jsx";
-import Slick from "./component/Slick-Slider.jsx";
 
-import Categories from "./pages/Home/demoCategory.jsx";
-import TopCategories from "./pages/Home/demoCategory.jsx";
-import ContactUs from "./pages/Contactus.jsx";
-import Profile from "./pages/Profile.jsx";
-import AddressForm from "./pages/DeliveryAddress.jsx";
+// import ContactUs from "./pages/Contactus.jsx";
+// import Profile from "./pages/Profile.jsx";
+// import AddressForm from "./pages/DeliveryAddress.jsx";
 
-import Checkout from "./pages/Checkout.jsx";
+// import Checkout from "./pages/Checkout.jsx";
 
-import OrderTabs from "./pages/MyOrder.jsx";
+// import OrderTabs from "./pages/MyOrder.jsx";
 
 
-import Setlocation from "./pages/Setlocation.jsx";
-import NotFound from "./pages/NotFound.jsx";
-import Transcation from './pages/Transaction.jsx'
-import PayWallet from "./pages/PayWallet.jsx";
-import Success from "./pages/Success.jsx";
+// import Setlocation from "./pages/Setlocation.jsx";
+// import NotFound from "./pages/NotFound.jsx";
+// import Transcation from './pages/Transaction.jsx'
+// import PayWallet from "./pages/PayWallet.jsx";
+// import Success from "./pages/Success.jsx";
 import WishlistPage from "./pages/FavoriteItems.jsx";
 
 
