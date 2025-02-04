@@ -59,7 +59,7 @@ function Search() {
         </div>
       
         
-        <ProductList items={filteredItems} />
+        <ProductList itemss={filteredItems} />
       </div>
     </div>
   );
