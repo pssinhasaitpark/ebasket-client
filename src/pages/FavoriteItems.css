@@ -8,13 +8,13 @@
     gap: 20px;
   }
   
-  .wishlist-item {
+  /* .wishlist-item {
     width: 200px;
     border: 1px solid #ddd;
     padding: 10px;
     border-radius: 8px;
     background-color: #fff;
-  }
+  } */
   
   .wishlist-item-img {
     width: 100%;
@@ -53,3 +53,21 @@
   .heart{
     color: #ff1a1a;
   }
+
+  .list-card .member-plan2 {
+    right: 8px;
+    top: 8px;
+}
+
+.list-card .member-plan2 .badge {
+    font-size: 13px;
+    padding: 7px 12px;
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+    background: white !important;
+}
+
+.favourites-heading{
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 30px !important;
+}

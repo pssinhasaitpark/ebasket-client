@@ -24,6 +24,7 @@ import "./AddToCart.css";
 import ProductList from "../pages/Products/Products";
 import Header from "../layout/Header";
 import LikeButton from '../component/LikeButton';
+import Selling from "../component/Most_selling";
 
 const ProductDetailPage = () => {
   const { id } = useParams(); 
@@ -31,6 +32,12 @@ const ProductDetailPage = () => {
   const [productData, setProductData] = useState(null);
   const [loading, setLoading] = useState(true); 
   const [cart, setCart] = useState([]);
+  const [selectedVariant, setSelectedVariant] = useState(null);
+  const [selectedVariantIndex, setSelectedVariantIndex] = useState(0); 
+  const [variantQuantity, setVariantQuantity] = useState(1);
+  const [totalPrice, setTotalPrice] = useState(null);
+  const [totalImage, settotalImage] = useState(null);
+
 
 
   useEffect(() => {
@@ -39,6 +46,9 @@ const ProductDetailPage = () => {
         const response = await axios.get(`http://192.168.0.111:3001/items/itembyid/${id}`);
         setProductData(response.data.product); 
         setLoading(false);
+        if (response.data.product.itemDetails.variants.length > 0) {
+          setSelectedVariant(response.data.product.itemDetails.variants[0]);
+        }
       } catch (error) {
         console.error("Error fetching product data:", error);
         setLoading(false);
@@ -48,15 +58,35 @@ const ProductDetailPage = () => {
     fetchProductData();
   }, [id]);
 
-
-  const handleIncrease = () => {
-    setQuantity(quantity + 1);
+  const handleVariantClick = (variants, index) => {
+    setSelectedVariantIndex(index);
+    const newTotalPrice = productData.itemDetails.price * variants.variantQuantity;
+    setTotalPrice(newTotalPrice);
+    localStorage.setItem('selectedVariant', JSON.stringify({
+      variantQuantity: variants.variantQuantity
+  }));
   };
 
-  const handleDecrease = () => {
-    if (quantity > 0) {
-      setQuantity(quantity - 1);
+  const handleVariantImageClick = (variants, index) => {
+    setSelectedVariantIndex(index);
+    const newtotalImage = variants.variantImage;
+    settotalImage(newtotalImage);
+  }
+
+
+
+  const handleIncrement = () => {
+    setQuantity((prevQuantity) => prevQuantity + 1);
+  };
+
+  const handleDecrement = () => {
+    if (quantity > 1) {
+      setQuantity((prevQuantity) => prevQuantity - 1);
     }
+  };
+
+  const handleVariantChange = (variant) => {
+    setSelectedVariant(variant); 
   };
 
   if (loading) return <div>Loading...</div>;
@@ -75,7 +105,7 @@ const ProductDetailPage = () => {
         cartItem._id === product._id
           ? {
               ...cartItem,
-              quantity: cartItem.quantity + 1,
+              quantity: cartItem.quantity + quantity,
             }
           : cartItem
       );
@@ -84,7 +114,7 @@ const ProductDetailPage = () => {
         ...cart,
         {
           ...product,
-          quantity: 1,
+          quantity: quantity,
         },
       ];
     }
@@ -95,10 +125,6 @@ const ProductDetailPage = () => {
   
     console.log("Updated Cart:", updatedCart);
   };
-
-
-  
-  
 
   return (
     <>
@@ -116,13 +142,30 @@ const ProductDetailPage = () => {
                         <img
                           alt="productData.itemDetails.name"
                           className="img-fluid item-img w-100"
-                          src={`http://192.168.0.111:3001${productData.itemDetails.mediaFiles[0]?.url}`}
+                          src={totalImage ? `http://192.168.0.111:3001${totalImage}` : `http://192.168.0.111:3001${productData?.itemDetails?.mediaFiles[0]?.url}`}
                           />
                       </div>
                     </div>
                   </div>
                   <div className="nav-slider slick-initialized slick-slider mt-3">
-                    <Slider />
+                    <div className="variant-images mt-3"> 
+                      <div className="d-flex flex-wrap">
+                        {productData.itemDetails.variants.map((variants , index) => (
+                          <div
+                            key={index}
+                            className="p-1 border variant-item"
+                            onClick={() => handleVariantChange(variants)}
+                          >
+                            <img
+                              src={`http://192.168.0.111:3001${variants.variantImage}`}
+                              alt={variants.variantName}
+                              className="img-fluid cart-slider-img"
+                              onClick={() => handleVariantImageClick(variants, index)}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </Col>
@@ -138,9 +181,18 @@ const ProductDetailPage = () => {
                       </div>
                       <div className="car-det-price ml-auto">
                         <div className="product_price_div">
-                          <span className="price">
-                          ${productData.itemDetails.price}<s>${productData.itemDetails.price + 10}</s>
-                          </span>
+                        <div className="price-section">
+                            {totalPrice !== null ? (
+                              <span className="price">
+                                ${totalPrice}
+                              </span>
+                            ) : (
+                              <span className="price">
+                                ${productData.itemDetails.price}
+                                <s>${productData.itemDetails.price + 10}</s>
+                              </span>
+                            )}
+                        </div>
                           <div className="variant_quntity">
                             Quantity left: {productData.itemDetails.itemQuantity || 'Unlimited'}
                           </div>
@@ -158,8 +210,15 @@ const ProductDetailPage = () => {
                       <div className="attribute_list">
                         <h3 className="attribute-label">Weight</h3>
                         <div className="attribute-options gap-3">
-                          <div className="border p-2">{productData?.itemDetails?.variants[0]?.variantQuantity}</div>
-                        </div>
+                        {productData.itemDetails.variants.map((variants, index)  => (
+                          <div 
+                             key={index} 
+                             className="border p-2" 
+                             onClick={() => handleVariantClick(variants, index)}> 
+                                    {variants.variantQuantity} kg
+                          </div>
+                        ))}
+                      </div>
                       </div>
                     </div>
                   </div>
@@ -171,10 +230,11 @@ const ProductDetailPage = () => {
                         <span className="count-number">
                           <div class="ml-auto">
                             <span class="count-number">
-                              <button class="btn-sm left dec btn btn-outline-secondary food_count_decrese" onClick={handleDecrease}>
+                              <button class="btn-sm left dec btn btn-outline-secondary food_count_decrese" onClick={handleDecrement}>
                                 <FaMinus />
                               </button>
-                              <button class="btn-sm right inc btn btn-outline-secondary" onClick={handleIncrease}>
+                              <span className="particular-product-quantity">{quantity}</span>
+                              <button class="btn-sm right inc btn btn-outline-secondary" onClick={handleIncrement}>
                                 <FaPlus />
                               </button>
                             </span>
@@ -195,9 +255,9 @@ const ProductDetailPage = () => {
 
                   <div className="product-fav-share">
                     <div className="add-to-favorite">
-                      <a href="#" className="loginAlert count">
+                      <a href="#" className="loginAlert count d-flex">
                         <LikeButton productId={productData._id} />
-                         Add To Wishlist
+                        <span>Add To Wishlist</span>
                       </a>
                     </div>
                     <div className="share-btn">

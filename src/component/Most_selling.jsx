@@ -12,6 +12,8 @@ import './Most_selling.css'
 import img1 from '../asset/images/offer-banner1.png';
 import img2 from '../asset/images/offer-banner2.png';
 import img3 from '../asset/images/offer-banner3.png';
+import { Link } from 'react-router-dom';
+
 
 
 
@@ -98,13 +100,13 @@ function Selling() {
                     <div className="pb-5">
                         <Slider {...settings} style={{background:'transparent'}}>
                                 <div className="offer-banner">
-                                  <div className="offer-banner"> <img className="Slick-img img-fluid" src={img1} alt=""  /></div>
+                                  <div className="offer-banner"><Link to="/productDetail/679c7c534456add4ab25c58d" > <img className="Slick-img img-fluid" src={img1} alt=""  /></Link></div>
                                 </div>
                                 <div className="offer-banner">
-                                  <div className=""> <img className="Slick-img img-fluid" src={img2} alt=""  /></div>
+                                  <div className=""> <Link to="/productDetail/679c79d94456add4ab25c549" ><img className="Slick-img img-fluid" src={img2} alt=""  /></Link></div>
                                 </div>
                                 <div className="offer-banner">
-                                  <div className="offer-banner"> <img className="Slick-img img-fluid" src={img3} alt=""  /></div>
+                                  <div className="offer-banner"> <Link to="/productDetail/679cb174ef263441c922a28d" ><img className="Slick-img img-fluid" src={img3} alt=""  /></Link></div>
                                 </div>
                         </Slider>
                 
