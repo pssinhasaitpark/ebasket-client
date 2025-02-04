@@ -1,12 +1,12 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Home from "./pages/Home/Home";
+import Home from "./pages/home/Home.jsx";
 import Header from "./layout/Header.jsx";
 import React from "react";
-import Login from "./pages/Login";
+import Login from "./pages/auth/Login.jsx";
 import "bootstrap/dist/js/bootstrap.min.js";
-import SignUpForm from "./pages/SignupForm.jsx";
-import ProductList from "./pages/Products.jsx";
+import SignUpForm from "./pages/auth/SignupForm.jsx";
+import ProductList from "./pages/Products/Products.jsx";
 import ProductDetail from "./pages/AddToCart.jsx";
 import Footer from "./layout/Footer.jsx";
 import Category from "./pages/Category/Category.jsx";
@@ -14,29 +14,25 @@ import { useState, useEffect } from 'react';
 import {LoadingSpinner, AddressLoader} from "./component/spinner";
 import Search from "./pages/Search/search-page.jsx";
 import { Route, Routes } from "react-router-dom";
-import CouponsList from "./component/Offers.jsx";
-import Refund from "./pages/Refund.jsx";
-import Privacy from "./pages/Privacy.jsx";
-import Termofuse from "./pages/Termofuse.jsx";
-import Help from "./pages/Help.jsx";
-import About from "./pages/About.jsx";
+import CouponsList from "./pages/offers/Offers.jsx";
+import Refund from "./pages/refund/Refund.jsx";
+import Privacy from "./pages/privacy/Privacy.jsx";
+import Termofuse from "./pages/termofuse/Termofuse.jsx";
+import Help from "./pages/help/Help.jsx";
+import About from "./pages/about/About.jsx";
+import ContactUs from "./pages/contactus/Contactus.jsx";
+import Profile from "./pages/profie/Profile.jsx";
+import AddressForm from "./pages/deliveryaddress/DeliveryAddress.jsx";
+import Checkout from "./pages/checkout/Checkout.jsx";
+import OrderTabs from "./pages/MyOrders/MyOrder.jsx";
+import Setlocation from "./pages/setlocation/Setlocation.jsx";
+import NotFound from "./pages/NotFound/NotFound.jsx";
+import Transcation from './pages/transaction/Transaction.jsx'
+import PayWallet from "./pages/paywallet/PayWallet.jsx";
+import Success from "./pages/success/Success.jsx";
+import TopCategories from "./component/TopCategory.jsx";
+import Slick from "./component/Slick-Slider.jsx";
 
-import Categories from "./pages/Home/demoCategory.jsx";
-import TopCategories from "./pages/Home/demoCategory.jsx";
-import ContactUs from "./pages/Contactus.jsx";
-import Profile from "./pages/Profile.jsx";
-import AddressForm from "./pages/DeliveryAddress.jsx";
-
-import Checkout from "./pages/Checkout.jsx";
-
-import OrderTabs from "./pages/MyOrder.jsx";
-
-
-import Setlocation from "./pages/Setlocation.jsx";
-import NotFound from "./pages/NotFound.jsx";
-import Transcation from './pages/Transaction.jsx'
-import PayWallet from "./pages/PayWallet.jsx";
-import Success from "./pages/Success.jsx";
 
 
 
@@ -54,10 +50,13 @@ const App = () => {
  
   return (
     <> 
+    
       {/*  <AddressLoader/> */}
       <div>
         {loading && (<LoadingSpinner />) 
          }
+
+    
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -82,7 +81,8 @@ const App = () => {
           <Route path="/myorder" element={<OrderTabs/>}/>
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/delivery-address" element={<AddressForm />} />
+          <Route path="/support" element={< AddressForm/>} />
+      
           <Route path="/transaction" element={<Transcation />} />
           <Route path="/pay-wallet" element={<PayWallet/>}/>
           <Route path="/success" element={<Success/>}/>
@@ -94,8 +94,8 @@ const App = () => {
         </Routes>
 
 
-        {/* <Footer /> */}
-      </div>
+        <Footer />
+      
       </div>
       </>
      

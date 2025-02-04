@@ -3,9 +3,9 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import rice from "../assests/images/Basmati.jpg"
-import left from "../assests/images/left.svg"
-import right from "../assests/images/right.svg"
+import rice from "../asset/images/Basmati.jpg"
+import left from "../asset/images/left.svg"
+import right from "../asset/images/right.svg"
 import Container from 'react-bootstrap/Container';  
 import './Slick-Slider.css'
 import { useDispatch, useSelector } from 'react-redux';

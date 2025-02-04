@@ -30,7 +30,7 @@ body {
 
 
 .carousel-control-prev-icon{
-    background-image: url(/src/assests/images/left.svg) !important;
+    background-image: url(../src/asset/images/left.svg) !important;
     color: black !important;
     background-color: white !important;
     position: absolute;
@@ -42,7 +42,7 @@ body {
   }
 
   .carousel-control-next-icon {
-    background-image: url(/src/assests/images/right.svg) !important;
+    background-image: url(../src/asset/images/right.svg) !important;
     color: black !important;
     background-color: white !important;
     position: absolute;
