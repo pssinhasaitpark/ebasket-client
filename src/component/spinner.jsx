@@ -1,5 +1,5 @@
 import React from 'react';
-import spinner from '../assests/images/spinner.gif'; 
+import spinner from '../asset/images/spinner.gif'; 
 import './LoadingSpiner.css'; 
 import './AddressLoader.css';
 import addspinner from '../asset/images/address-loading-loader.gif'

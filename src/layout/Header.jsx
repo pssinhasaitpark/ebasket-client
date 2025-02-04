@@ -26,6 +26,7 @@ const Header = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
   const navigate = useNavigate();
   const isSignedIn = useSelector((state) => state.auth.isSignedIn);
   const dispatch = useDispatch();
@@ -41,7 +42,7 @@ const Header = () => {
   return (
     <>
 
-      <Navbar expand="lg" className=" pb-0 navbar">
+      <Navbar expand="lg" className=" pb-0 pt-0 navbar">
         <div className="bg-transparent   text-dark container-fluid  ">
           <Container >
             <Row className='header-container-row d-flex align-items-center py-2'>
@@ -103,7 +104,7 @@ const Header = () => {
                             <img src={search} alt="" />
                           </div>
                           <Link
-                           
+
                             to={'/search'}
                             className="nav-link "
                             activeClassName="active"
@@ -119,7 +120,7 @@ const Header = () => {
                           <div>
                             <img src={offer} alt="" />
                           </div>
-                          <Link  to={"/offers"} className="nav-link " activeClassName="active">
+                          <Link to={"/offers"} className="nav-link " activeClassName="active">
                             Offers
                           </Link>
                         </div>
@@ -152,7 +153,7 @@ const Header = () => {
                               {/* Dropdown Menu */}
                               <div className='dropdown-menuu'>
 
-                                <Link to={'/support'}  href="">Delivery Support</Link>
+                                <Link to={'/support'} href="">Delivery Support</Link>
                                 <Link to={'/contactus'} href="">Contact Us</Link>
                                 <Link to={'/aboutus'} href="">About us</Link>
                                 <Link to={'/help'} href="">Help</Link>
@@ -172,11 +173,11 @@ const Header = () => {
                           <div>
                             <img src={shopping} alt="" />
                           </div>
-                          <NavLink 
-                          onClick={() => navigate(isSignedIn ? '/cart' : '/login')} 
-                      
-                          className="nav-link "
-                           activeClassName="active">
+                          <NavLink
+                            onClick={() => navigate(isSignedIn ? '/checkout' : '/login')}
+
+                            className="nav-link "
+                            activeClassName="active">
                             Cart
                           </NavLink>
                         </div>
@@ -188,7 +189,7 @@ const Header = () => {
                             <img src={glob} alt="" />
                           </div>
                           <div className='ms-2'>
-                            <button className="btn  dropdown-toggle ps-0 " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button className="language-btn btn  dropdown-toggle ps-0 " type="button" data-bs-toggle="dropdown" aria-expanded="false">
                               <span className='text-secondary'>
                                 English
                               </span>
@@ -205,12 +206,13 @@ const Header = () => {
                       <div>
 
                         <Button onClick={handleShow} className='hemburger-button bg-transparent border-0'>
-                          <input id="toggle1" type="checkbox" />
-                          <label class="hamburger1" for="toggle1">
+                          
+                          <div className={`hamburger1 ${show ? 'open' : ''}`}>
                             <div class="top"></div>
                             <div class="meat"></div>
                             <div class="bottom"></div>
-                          </label>
+                          </div>
+                       
                         </Button>
                         <Offcanvas show={show} onHide={handleClose}  >
                           <Offcanvas.Header closeButton >
@@ -284,7 +286,7 @@ const Header = () => {
 
                               <ul className='sidebar-bottom d-flex position-absolute bottom-0 border-top w-100  p-0 mb-0'>
                                 <li class="bottom list-group-item text-center w-50 p-2">
-                                  <Link to={'/'} href="" className='text-decoration-none  text-secondary text-center'  onClick={() => navigate('/')}>
+                                  <Link to={'/'} href="" className='text-decoration-none  text-secondary text-center' onClick={() => navigate('/')}>
                                     <div className='bottom-home position-relative'>
                                       <div className=''>
                                         <img src={home} alt="" />
@@ -333,7 +335,7 @@ const Header = () => {
                             <div>
                               <img src={search} alt="" />
                             </div>
-                            <Link  to={'/search'} className="nav-link " activeClassName="active">
+                            <Link to={'/search'} className="nav-link " activeClassName="active">
                               Search
                             </Link>
                           </div>
@@ -344,7 +346,7 @@ const Header = () => {
                             <div>
                               <img src={offer} alt="" />
                             </div>
-                            <Link  to={"/offers"} className="nav-link " activeClassName="active">
+                            <Link to={"/offers"} className="nav-link " activeClassName="active">
                               Offers
                             </Link>
                           </div>
@@ -360,7 +362,7 @@ const Header = () => {
                               </div>
                             </a>
 
-                            <Link  to={'/profile'} className="nav-link " activeClassName="active">
+                            <Link to={'/profile'} className="nav-link " activeClassName="active">
                               Hii <span>Rajveer</span>
                             </Link>
 
@@ -407,7 +409,7 @@ const Header = () => {
                             <div>
                               <img src={shopping} alt="" />
                             </div>
-                            <Link  to={"/cart"} className="nav-link " activeClassName="active">
+                            <Link to={"/checkout"} className="nav-link " activeClassName="active">
                               Cart
                             </Link>
                           </div>
@@ -419,7 +421,7 @@ const Header = () => {
                               <img src={glob} alt="" />
                             </div>
                             <div className='ms-2'>
-                              <button className="btn  dropdown-toggle ps-0 " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              <button className="language-btn btn dropdown-toggle ps-0 " type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <span className='text-secondary'>
                                   English
                                 </span>
@@ -436,12 +438,12 @@ const Header = () => {
                         <div>
 
                           <Button onClick={handleShow} className='hemburger-button bg-transparent border-0'>
-                            <input id="toggle1" type="checkbox" />
-                            <label class="hamburger1" for="toggle1">
+                     
+                            <div className={`hamburger1 ${show ? 'open' : ''}`}>
                               <div class="top"></div>
                               <div class="meat"></div>
                               <div class="bottom"></div>
-                            </label>
+                            </div>
                           </Button>
                           <Offcanvas show={show} onHide={handleClose}  >
                             <Offcanvas.Header closeButton >
@@ -523,13 +525,13 @@ const Header = () => {
                                         </div>
                                         <span>
 
-                                         Profile
+                                          Profile
                                         </span>
                                       </div>
                                     </Link>
                                   </li>
                                   <li class="list-group-item border-bottom">
-                                    <Link   to={'/contactus'} class="link1 " href="">
+                                    <Link to={'/contactus'} class="link1 " href="">
                                       <div className='link1-div'>
                                         <div className='image'>
                                           <img src={user} alt="" />
@@ -541,7 +543,7 @@ const Header = () => {
                                       </div>
                                     </Link>
                                   </li>
-                               
+
                                   <li class="list-group-item  border-bottom">
                                     <Link class="link1 " href="" to='/'>
                                       <div className='link1-div'>

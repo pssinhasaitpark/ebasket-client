@@ -21,7 +21,7 @@ import {
 import p1_img from "../asset/images/t2.png";
 import Slider from "../component/Slider";
 import "./AddToCart.css";
-import ProductList from "./Products";
+import ProductList from "../pages/Products/Products";
 import Header from "../layout/Header";
 import LikeButton from '../component/LikeButton';
 
