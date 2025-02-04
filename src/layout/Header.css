@@ -1,3 +1,11 @@
+.hamburger-button {
+  display: inline-block;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
 .hamburger1 {
   height: 32px;
   margin: 7px;
@@ -19,31 +27,37 @@
   /* transition: all 0.2s ease-in-out; */
 }
 
-#toggle1 {
-  display: none;
+.hamburger1 .top {
+  transform: rotate(0);
+  margin-top: 6;
 }
 
-#toggle1:checked+.hamburger1 .top {
-  /* -webkit-transform: rotate(-45deg); */
-  transform: rotate(-45deg);
-  margin-top: 12.5px;
+.hamburger1 .meat {
+  transform: rotate(0);
+  margin-top: 6;
 }
 
-#toggle1:checked+.hamburger1 .meat {
-  /* -webkit-transform: rotate(45deg); */
-  transform: rotate(45deg);
-  margin-top: -3px;
+.hamburger1 .bottom {
+  transform: scale(1);
 }
 
-#toggle1:checked+.hamburger1 .bottom {
-  /* -webkit-transform: scale(0); */
-  transform: scale(0);
+/* When the button is clicked (Hamburger is open), it transforms into a cross */
+.hamburger1.open .top {
+  transform: rotate(45deg); /* Top bar rotates */
+  margin-top: 17px; /* Adjust top position */
 }
 
-#toggle1:checked~.menu1 {
-  height: 340px;
+.hamburger1.open .meat {
+  transform: rotate(-45deg); /* Middle bar rotates */
+  margin-top: 0px; /* Adjust middle position */
 }
 
+.hamburger1.open .bottom {
+  transform: scale(0); /* Bottom bar disappears */
+}
+/* ============= */
+
+/* ============== */
 ul.dropdown-menu.show {
   min-width: 93px !important;
 }
@@ -98,26 +112,6 @@ li.bottom a:hover {
   text-decoration: none !important;
 }
 
-/* Ensure the dropdown menu is hidden by default */
-/* .menu-items {
-  display: none;
-} */
-
-/* Display the menu when hovering over the parent container (Dropdown) */
-/* .dropdown:hover .menu-items {
-  display: block;
-} */
-
-/* Optional: Styling to add a smoother hover transition */
-/* .menu-items {
-  display: none;
-  transition: all 0.3s ease-in-out;
-} */
-
-/* Make sure to adjust the z-index if necessary to bring the dropdown to the front */
-/* .dropdown-menu {
-  z-index: 999;
-} */
 
 .search-bar-div {
   position: relative;
@@ -288,6 +282,16 @@ button.btn-close {
 }
 .nav-item .main-div{
   margin-left: -8px;
+}
+.navbar-menu .nav-item .nav-link{
+  font-weight: 500 !important;
+}
+button.language-btn{
+  background: none  !important;
+}
+button.language-btn span{
+  font-weight: 500 !important;
+  font-size: 13px !important;
 }
 /* Define the zoom-in animation */
 @keyframes zoomInOut {

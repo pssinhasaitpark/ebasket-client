@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import './search-page.css';
 import { IoSearchOutline } from "react-icons/io5";
 import { FormControl, Container } from 'react-bootstrap';
-import ProductList from '../Products';
-import nothing from '../../assests/images/no-result.png';
+import ProductList from '../../pages/Products/Products';
+import nothing from '../../asset/images/no-result.png'
+// import ProductList from '../Products';
+// import nothing from '../../assests/images/no-result.png';
 import { FiHome } from "react-icons/fi";
 import { useSelector } from 'react-redux';
 

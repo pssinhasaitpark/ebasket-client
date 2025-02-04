@@ -21,8 +21,9 @@ import {
 import p1_img from "../asset/images/t2.png";
 import Slider from "../component/Slider";
 import "./AddToCart.css";
-import ProductList from "./Products";
+import ProductList from "../pages/Products/Products";
 import Header from "../layout/Header";
+import LikeButton from '../component/LikeButton';
 
 const ProductDetailPage = () => {
   const { id } = useParams(); 
@@ -94,6 +95,9 @@ const ProductDetailPage = () => {
   
     console.log("Updated Cart:", updatedCart);
   };
+
+
+  
   
 
   return (
@@ -192,7 +196,8 @@ const ProductDetailPage = () => {
                   <div className="product-fav-share">
                     <div className="add-to-favorite">
                       <a href="#" className="loginAlert count">
-                        <FaHeart className="symbol-heart" /> Add To Wishlist
+                        <LikeButton productId={productData._id} />
+                         Add To Wishlist
                       </a>
                     </div>
                     <div className="share-btn">
