@@ -37,6 +37,7 @@ import NotFound from "./pages/NotFound.jsx";
 import Transcation from './pages/Transaction.jsx'
 import PayWallet from "./pages/PayWallet.jsx";
 import Success from "./pages/Success.jsx";
+import WishlistPage from "./pages/FavoriteItems.jsx";
 
 
 
@@ -88,6 +89,7 @@ const App = () => {
           <Route path="/transaction" element={<Transcation />} />
           <Route path="/pay-wallet" element={<PayWallet/>}/>
           <Route path="/success" element={<Success/>}/>
+          <Route path="/favorite-products" element={<WishlistPage/>}/>
           {/* <Route path="/pay" element={<PaymentButton/>}/> */}
           <Route path="*" element={<NotFound />} />
   
