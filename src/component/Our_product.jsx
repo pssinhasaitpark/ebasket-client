@@ -1,7 +1,7 @@
 import React from 'react';
 import Slick from '../component/Slick-Slider';
-import React , { useState } from 'react';
-import Slick from '../../component/Slick-Slider';
+import { useState } from 'react';
+
 
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import './Our_product.css'
