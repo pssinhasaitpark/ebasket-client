@@ -1,6 +1,12 @@
 .Slick-img {
     object-fit: cover !important;
     border-radius: 10px !important;
+}
+
+.Slick-img {
+    object-fit: cover;
+    border-radius: 10px;
+    height: 200px;
     max-height: 200px !important;
 }
 
@@ -19,6 +25,7 @@
 .slick-title {
     display: block;
     width: 100%;
+
     overflow: hidden;
     line-height: 1;
     letter-spacing: 0.03em;
@@ -34,7 +41,7 @@
     font-size: 18px;
     font-weight: 600;
     text-decoration: none;
-    color: #333333;
+    color: black;
     display: block;
 }
 
@@ -44,11 +51,16 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 600;
 }
 
 
 .Slick-card {
     justify-items: center;
+    height: 100%;
     padding: 10px 0px;
     background-color: white;
     cursor: pointer;

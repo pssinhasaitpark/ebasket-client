@@ -33,6 +33,25 @@ import Success from "./pages/success/Success.jsx";
 import TopCategories from "./component/TopCategory.jsx";
 import Slick from "./component/Slick-Slider.jsx";
 
+import Categories from "./pages/Home/demoCategory.jsx";
+import TopCategories from "./pages/Home/demoCategory.jsx";
+import ContactUs from "./pages/Contactus.jsx";
+import Profile from "./pages/Profile.jsx";
+import AddressForm from "./pages/DeliveryAddress.jsx";
+
+import Checkout from "./pages/Checkout.jsx";
+
+import OrderTabs from "./pages/MyOrder.jsx";
+
+
+import Setlocation from "./pages/Setlocation.jsx";
+import NotFound from "./pages/NotFound.jsx";
+import Transcation from './pages/Transaction.jsx'
+import PayWallet from "./pages/PayWallet.jsx";
+import Success from "./pages/Success.jsx";
+import WishlistPage from "./pages/FavoriteItems.jsx";
+
+
 
 
 
@@ -70,7 +89,7 @@ const App = () => {
           <Route path="/help" element={<Help />} />
           <Route path="/aboutus" element={<About />} />
           <Route path="/setlocation" element={<Setlocation />} />
-          <Route path="/categories" element={<Category />} />
+          <Route path="/categories/:id" element={<Category />} />
 
           <Route path="/search" element={<Search />} />
 
@@ -86,16 +105,18 @@ const App = () => {
           <Route path="/transaction" element={<Transcation />} />
           <Route path="/pay-wallet" element={<PayWallet/>}/>
           <Route path="/success" element={<Success/>}/>
-
+          <Route path="/favorite-products" element={<WishlistPage/>}/>
+          {/* <Route path="/pay" element={<PaymentButton/>}/> */}
           <Route path="*" element={<NotFound />} />
-
+  
 
 
         </Routes>
+  
 
 
-        <Footer />
-      
+        {/* <Footer /> */}
+
       </div>
       </>
      

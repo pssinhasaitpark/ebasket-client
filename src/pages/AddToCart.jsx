@@ -23,12 +23,15 @@ import Slider from "../component/Slider";
 import "./AddToCart.css";
 import ProductList from "../pages/Products/Products";
 import Header from "../layout/Header";
+import LikeButton from '../component/LikeButton';
 
 const ProductDetailPage = () => {
   const { id } = useParams(); 
   const [quantity, setQuantity] = useState(1);
   const [productData, setProductData] = useState(null);
   const [loading, setLoading] = useState(true); 
+  const [cart, setCart] = useState([]);
+
 
   useEffect(() => {
     const fetchProductData = async () => {
@@ -59,6 +62,43 @@ const ProductDetailPage = () => {
   if (loading) return <div>Loading...</div>;
 
   if (!productData) return <div>Product not found!</div>;
+
+  const handleAddToCart = (product) => {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  
+    const existingItemIndex = cart.findIndex((cartItem) => cartItem._id === product._id);
+  
+    let updatedCart;
+  
+    if (existingItemIndex >= 0) {
+      updatedCart = cart.map((cartItem) =>
+        cartItem._id === product._id
+          ? {
+              ...cartItem,
+              quantity: cartItem.quantity + 1,
+            }
+          : cartItem
+      );
+    } else {
+      updatedCart = [
+        ...cart,
+        {
+          ...product,
+          quantity: 1,
+        },
+      ];
+    }
+  
+    setCart(updatedCart);
+  
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  
+    console.log("Updated Cart:", updatedCart);
+  };
+
+
+  
+  
 
   return (
     <>
@@ -145,7 +185,7 @@ const ProductDetailPage = () => {
                   </div>
 
                   <div className="addtocart mt-2 mb-3 gap-3">
-                    <Button variant="dark" className="btnnn " size="lg">
+                    <Button variant="dark" className="btnnn " size="lg" onClick={() => handleAddToCart(productData)}>
                       <FaShoppingCart /> Add to Cart
                     </Button>
                     <Button variant="success" className="btnnn" size="lg">
@@ -156,7 +196,8 @@ const ProductDetailPage = () => {
                   <div className="product-fav-share">
                     <div className="add-to-favorite">
                       <a href="#" className="loginAlert count">
-                        <FaHeart className="symbol-heart" /> Add To Wishlist
+                        <LikeButton productId={productData._id} />
+                         Add To Wishlist
                       </a>
                     </div>
                     <div className="share-btn">

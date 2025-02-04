@@ -6,24 +6,25 @@ import Viewall from '../component/view_all-button';
 
 
 function All() {
+    
   return (
     <div className='pt-4 pb-4'>
     <Container>
         <div className='titlebar-contain'><h5 className='title-heading'>Rice</h5><span><Viewall/></span></div>
         <div>
-            <Slick/>
+            <Slick category="rice"/>
         </div>
         <div className='titlebar-contain'><h5 className='title-heading'>Pulses</h5><span><Viewall/></span></div>
         <div>
-            <Slick/>
+            <Slick category="pulses"/>
         </div>
         <div className='titlebar-contain'><h5 className='title-heading'>Flour</h5><span><Viewall/></span></div>
         <div>
-            <Slick/>
+            <Slick category="dryfruits"/>
         </div>
         <div className='titlebar-contain'><h5 className='title-heading'>Salt & Sugar</h5><span><Viewall/></span></div>
         <div>
-            <Slick/>
+            <Slick category=""/>
         </div>
     </Container>
     </div>
