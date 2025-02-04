@@ -6,18 +6,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchItems } from '../store/slices/products-slice';
 import { useNavigate } from 'react-router-dom';
 
-const ProductList = () => {
+const ProductList = ({items}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { items, loading, error } = useSelector((state) => state.items);
+  const { itemss, loading, error } = useSelector((state) => state.items);
 
   useEffect(() => {
     dispatch(fetchItems());
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   console.log('Items:', items);
-  // }, [items]);
+  useEffect(() => {
+    console.log('Items:', items);
+  }, [items]);
 
   const handleCardClick = async (id) => {
     try {
