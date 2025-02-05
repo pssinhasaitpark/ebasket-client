@@ -97,6 +97,12 @@ const ProductDetailPage = () => {
   };
 
 
+  // const productName = productData.itemDetails.name || "";
+  // const firstWord = productName.split(" ")[0];
+
+
+  
+
   
   
 
@@ -397,7 +403,7 @@ const ProductDetailPage = () => {
                   </Button>
                 </Col>
                 </div>
-                {/* <ProductList/> */}
+                {/* <ProductList firstWord={firstWord} /> */}
               </Row>
              
             </div>
