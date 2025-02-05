@@ -127,14 +127,13 @@ const ProductDetailPage = () => {
     console.log("Updated Cart:", updatedCart);
   };
 
+
   // const productName = productData.itemDetails.name || "";
   // const firstWord = productName.split(" ")[0];
 
 
   
 
-  
-  
 
 
   return (
