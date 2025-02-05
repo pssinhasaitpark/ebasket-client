@@ -31,19 +31,22 @@ const App = () => {
 
     <>
       {/* <DemoHeader/> */}
+   
       <Header/>
-         {/* <Checkout/> */}
         {loading && (<LoadingSpinner />)
         }
         <>
-         
+          {isSignedIn ? (
+            <>
               <PublicRoutes />
               <ProtectedRoutes />
-          
-            
-          
+            </>
+          ) : (
+            <PublicRoutes />
+          )}
         </>
        <Footer /> 
+         
 
     </>
   );
