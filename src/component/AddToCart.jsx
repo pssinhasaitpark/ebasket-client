@@ -25,7 +25,8 @@ import ProductList from "../pages/Products/Products";
 import Header from "../layout/Header";
 import LikeButton from '../component/LikeButton';
 import Selling from "../component/Most_selling";
-// import LikeButton from './LikeButton';
+import { Link } from "react-router-dom";
+
 
 const ProductDetailPage = () => {
   const { id } = useParams(); 
@@ -62,7 +63,10 @@ const ProductDetailPage = () => {
     setSelectedVariantIndex(index);
     const newTotalPrice = productData.itemDetails.price * variants.variantQuantity;
     setTotalPrice(newTotalPrice);
+    
+    
     localStorage.setItem('selectedVariant', JSON.stringify({
+      productId: productData._id,
       variantQuantity: variants.variantQuantity
   }));
   };
@@ -95,9 +99,9 @@ const ProductDetailPage = () => {
 
   const handleAddToCart = (product) => {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const storedVariant = JSON.parse(localStorage.getItem('selectedVariant')) || {};
   
     const existingItemIndex = cart.findIndex((cartItem) => cartItem._id === product._id);
-  
     let updatedCart;
   
     if (existingItemIndex >= 0) {
@@ -106,6 +110,9 @@ const ProductDetailPage = () => {
           ? {
               ...cartItem,
               quantity: cartItem.quantity + quantity,
+              variantQuantity: storedVariant.productId === product._id
+              ? storedVariant.variantQuantity 
+              : cartItem.variantQuantity,
             }
           : cartItem
       );
@@ -115,6 +122,9 @@ const ProductDetailPage = () => {
         {
           ...product,
           quantity: quantity,
+          variantQuantity: storedVariant.productId === product._id
+          ? storedVariant.variantQuantity 
+          : null, 
         },
       ];
     }
@@ -257,7 +267,9 @@ const ProductDetailPage = () => {
                       <FaShoppingCart /> Add to Cart
                     </Button>
                     <Button variant="success" className="btnnn" size="lg">
+                    <Link className="button-routes" to="/checkout">
                       <FaShoppingCart /> Buy Now
+                    </Link>
                     </Button>
                   </div>
 

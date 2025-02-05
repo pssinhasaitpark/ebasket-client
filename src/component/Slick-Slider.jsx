@@ -11,6 +11,7 @@ import './Slick-Slider.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchItems } from "../store/slices/products-slice";
 import useProductNavigation from "../hooks/useProductNavigation";
+import sorry from "../asset/images/no-result copy.png"
 
 
 function Slick({category}) 
@@ -24,9 +25,9 @@ function Slick({category})
 
       const filteredItems = items.filter(item => {
         if (!category) {
-            return true; // Show all items if no category is selected
+            return true;
         }
-        // Filter items by the selected category
+     
         return item.itemDetails.category && item.itemDetails.category.name.toLowerCase() === category.toLowerCase();
     });
     
@@ -107,11 +108,12 @@ function Slick({category})
       <div>
                     <div className="pb-5" style={{position:'relative'}}>
                       <Container>
+                      {filteredItems && filteredItems.length > 0 ?(
                         <Slider {...settings} style={{background:'tranparent'}}>
                         {filteredItems && filteredItems.length > 0 ? (
                           filteredItems.map((item) => {
                           {
-                              return (
+                              return (<div>
                                 <div key={item._id} className="Slick-card" onClick={() => handleCardClick(item._id)}>
                                   <div className="Slick-img-section">
                                     <img
@@ -134,16 +136,16 @@ function Slick({category})
                                     </h6>
                                   </div>
                                 </div>
+                                </div>
                               );
                             }
                             return null;
                           })
                         ) : (
-                          <p>No products available</p>
+                          <p></p>
                         )}
 
-
-                                </Slider>
+                                </Slider>):(<p className="no-products"><img src={sorry} alt="" /></p>) }
                 
                       </Container>
                     </div>

@@ -22,9 +22,7 @@ function TopCategories() {
     return <p>Loading categories</p>;
   }
 
-  if (categoryError) {
-    return <p>Error: {categoryError}</p>;
-  }
+  
 
   const SamplePrevArrow = (props) => {
     const { className, style, onClick } = props;

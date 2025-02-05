@@ -33,22 +33,17 @@ const App = () => {
       {/* <DemoHeader/> */}
    
       <Header/>
-         
         {loading && (<LoadingSpinner />)
         }
         <>
-          {/* {isSignedIn ? (
+          {isSignedIn ? (
             <>
               <PublicRoutes />
               <ProtectedRoutes />
             </>
           ) : (
-
             <PublicRoutes />
-          )} */}
-
-<PublicRoutes />
-<ProtectedRoutes />
+          )}
         </>
        <Footer /> 
          
