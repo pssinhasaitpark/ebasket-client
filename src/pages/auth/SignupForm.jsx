@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form, Col, Row, Container, Dropdown } from "react-bootstrap";
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./SignupForm.css";
+import { LoadingSpinner } from "../../component/spinner";
 
 const validationSchema = Yup.object({
   fullName: Yup.string().required("Full name is required"),
@@ -25,7 +26,8 @@ const SignUpForm = () => {
   const [showOtp, setShowOtp] = useState(false);
   const [otp, setOtp] = useState("");
   const [selectedCountryCode, setSelectedCountryCode] = useState("+91");
-
+  const [loadingOtp, setLoadingOtp] = useState(false);  // State to track OTP loading
+ 
   const navigate = useNavigate();
 
   const handleCountrySelect = (countryCode) => {
@@ -33,6 +35,7 @@ const SignUpForm = () => {
   };
 
   const sendOTP = async (values, { setSubmitting }) => {
+    setLoadingOtp(true); // Start loading when OTP is being sent
     const userData = {
       fullName: values.fullName,
       phoneNumber: selectedCountryCode + values.phoneNumber,
@@ -53,11 +56,14 @@ const SignUpForm = () => {
       toast.error("An error occurred while signing up. Please try again.");
       console.error("API Error:", error.response || error.message);
     } finally {
+      setLoadingOtp(false); // Stop loading when response is received
       setSubmitting(false);
+      
     }
   };
 
   const verifyOtp = async (values) => {
+    setLoadingOtp(true); // Start loading when OTP is being verified
     const otpData = { otp };
 
     try {
@@ -72,7 +78,10 @@ const SignUpForm = () => {
     } catch (error) {
       toast.error("An error occurred while verifying OTP. Please try again.");
       console.error("API Error:", error.response || error.message);
+    }finally {
+      setLoadingOtp(false); // Stop loading when response is received
     }
+    
   };
 
   const handleOtpChange = (e) => {
@@ -80,6 +89,7 @@ const SignUpForm = () => {
   };
 
   const resendOtp = async (values) => {
+    setLoadingOtp(true); // Start loading when OTP is being resent
     const userData = {
       fullName: values.fullName,
       phoneNumber: selectedCountryCode + values.phoneNumber,
@@ -100,6 +110,8 @@ const SignUpForm = () => {
     } catch (error) {
       toast.error("An error occurred while resending OTP. Please try again.");
       console.error("API Error:", error.response || error.message);
+    }finally {
+      setLoadingOtp(false); // Stop loading when response is received
     }
   };
 
@@ -108,7 +120,10 @@ const SignUpForm = () => {
       <div className="col-10 mx-auto  cardss border p-3">
         <h3 className="text-dark my-0 mb-3">Sign up With Us</h3>
         <p className="text-50">Sign up to continue</p>
-
+   {/* Show loader if loading state is true */}
+   {loadingOtp ? (
+          <LoadingSpinner /> // You can create a loader in the "spinner" component
+        ) : (
         <Formik
           initialValues={{
             fullName: "",
@@ -238,9 +253,12 @@ const SignUpForm = () => {
                 <Button
                   className="w-100 btn-lg p-3 send_Otp_button mt-3"
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || loadingOtp} // Disable if loading
                 >
-                  Send OTP
+                  {loadingOtp ? (<LoadingSpinner/>):(
+                   " Send OTP"
+                  )}
+                  
                 </Button>
               ) : (
                 <div>
@@ -248,17 +266,22 @@ const SignUpForm = () => {
                     className="w-100 btn-lg p-3 send_Otp_button mt-2"
                     type="button"
                     onClick={() => verifyOtp(values)}
-                    disabled={isSubmitting}
+                    disabled={isSubmitting|| loadingOtp} // Disable if loading
                   >
-                    Verify OTP
+                     {loadingOtp ? (<LoadingSpinner/>):(
+                   "Verify OTP"
+                  )}
+                  
                   </Button>
                   <Button
                     className="w-100 btn-lg p-3 send_Otp_button mt-2"
                     type="button"
                     onClick={() => resendOtp(values)}
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || loadingOtp} // Disable if loading}
                   >
-                    Resend OTP
+                    {loadingOtp ? (<LoadingSpinner/>):(
+                   "Resend"
+                  )}
                   </Button>
                 </div>
               )}
@@ -271,6 +294,7 @@ const SignUpForm = () => {
             </Form>
           )}
         </Formik>
+        )}
       </div>
 
    

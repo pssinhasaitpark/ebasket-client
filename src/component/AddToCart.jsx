@@ -19,12 +19,13 @@ import {
   FaShareAlt,
 } from "react-icons/fa";
 import p1_img from "../asset/images/t2.png";
-import Slider from "../component/Slider";
+import Slider from "./Slider";
 import "./AddToCart.css";
 import ProductList from "../pages/Products/Products";
 import Header from "../layout/Header";
 import LikeButton from '../component/LikeButton';
 import Selling from "../component/Most_selling";
+import LikeButton from './LikeButton';
 
 const ProductDetailPage = () => {
   const { id } = useParams(); 
@@ -125,6 +126,16 @@ const ProductDetailPage = () => {
   
     console.log("Updated Cart:", updatedCart);
   };
+
+  // const productName = productData.itemDetails.name || "";
+  // const firstWord = productName.split(" ")[0];
+
+
+  
+
+  
+  
+
 
   return (
     <>
@@ -457,7 +468,7 @@ const ProductDetailPage = () => {
                   </Button>
                 </Col>
                 </div>
-                {/* <ProductList/> */}
+                {/* <ProductList firstWord={firstWord} /> */}
               </Row>
              
             </div>

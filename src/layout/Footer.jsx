@@ -16,7 +16,7 @@ const Footer = () => {
     return (
         <>
             <div>
-                <footer className='footer position-relative'>
+                <footer className='footer position-relative mt-4'>
                     <div className='footer-outer py-5'>
 
                         <Container className='footer-container'>
