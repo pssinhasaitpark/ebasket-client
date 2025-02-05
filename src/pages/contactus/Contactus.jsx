@@ -16,7 +16,7 @@ const ContactUs = () => {
 
   return (
     <>
-     <Header/>
+     {/* <Header/> */}
     <Container>
       <Row className="justify-content-center my-5 ">
         <Col md={6} className='shadow-sm p-4'>

@@ -12,7 +12,7 @@ const CouponsList = () => {
 
   return (
     <>
-    <Header/>
+  
     <div className="container mt-3">
       <div className="transactions-banner p-4 rounded">
         <Row className="align-items-center text-left">

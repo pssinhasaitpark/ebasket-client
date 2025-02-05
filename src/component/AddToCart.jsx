@@ -25,7 +25,7 @@ import ProductList from "../pages/Products/Products";
 import Header from "../layout/Header";
 import LikeButton from '../component/LikeButton';
 import Selling from "../component/Most_selling";
-import LikeButton from './LikeButton';
+// import LikeButton from './LikeButton';
 
 const ProductDetailPage = () => {
   const { id } = useParams(); 
