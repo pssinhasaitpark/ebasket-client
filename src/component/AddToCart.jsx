@@ -19,11 +19,11 @@ import {
   FaShareAlt,
 } from "react-icons/fa";
 import p1_img from "../asset/images/t2.png";
-import Slider from "../component/Slider";
+import Slider from "./Slider";
 import "./AddToCart.css";
 import ProductList from "../pages/Products/Products";
 import Header from "../layout/Header";
-import LikeButton from '../component/LikeButton';
+import LikeButton from './LikeButton';
 
 const ProductDetailPage = () => {
   const { id } = useParams(); 

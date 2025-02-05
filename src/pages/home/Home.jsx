@@ -23,7 +23,7 @@ function Home() {
       <>     
      
        {loading && <LoadingSpinner />}
-        <Header/>
+        {/* <Header/> */}
         <Slider />
         <Coupon />
         <TopCategories />
