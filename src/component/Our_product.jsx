@@ -8,7 +8,7 @@ import './Our_product.css'
 
 
 function Product() {
-    const [selectedCategory, setSelectedCategory] = useState('');
+    const [selectedCategory, setSelectedCategory] = useState('rice');
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category); 
@@ -17,13 +17,73 @@ function Product() {
     <div className='pt-4 pb-4'>
     <Container>
         <div className='product-contain'><h3 className='product-heading'>OUR PRODUCTS</h3></div>
-        <Navbar className='Navbar'>
-            <Nav.Link className='nav-content'  onClick={() => handleCategoryClick('rice')}> <a className='nav-txt nav-txt-1' href="#action1">RICE</a></Nav.Link>
-            <Nav.Link className='nav-content'  onClick={() => handleCategoryClick('pulses')}><a className='nav-txt' href="product"> PULSES</a></Nav.Link>
-            <Nav.Link className='nav-content'  onClick={() => handleCategoryClick('flour')}><a className='nav-txt' href="#action2"> FLOUR</a></Nav.Link>
-            <Nav.Link className='nav-content'  onClick={() => handleCategoryClick('saltandsugar')}><a className='nav-txt' href="#action2"> SALT & SUGAR</a></Nav.Link>
-            <Nav.Link className='nav-content'  onClick={() => handleCategoryClick('snacksanddrinks')}><a className='nav-txt' href="#action2">  SNACKS & DRINKS</a></Nav.Link>
-            <Nav.Link className='nav-content'  onClick={() => handleCategoryClick('oilsanddryfruits')} ><a className='nav-txt' href="#action2">  OILS & DRY FRUITS</a></Nav.Link>
+        <Navbar className="Navbar">
+          <Nav.Link
+            className="nav-content"
+            onClick={() => handleCategoryClick('rice')}
+          >
+            <a
+              className={`nav-txt ${selectedCategory === 'rice' ? 'act' : ''}`}
+              href="#action1"
+            >
+              RICE
+            </a>
+          </Nav.Link>
+          <Nav.Link
+            className="nav-content"
+            onClick={() => handleCategoryClick('pulses')}
+          >
+            <a
+              className={`nav-txt ${selectedCategory === 'pulses' ? 'act' : ''}`}
+              href="#action2"
+            >
+              PULSES
+            </a>
+          </Nav.Link>
+          <Nav.Link
+            className="nav-content"
+            onClick={() => handleCategoryClick('flour')}
+          >
+            <a
+              className={`nav-txt ${selectedCategory === 'flour' ? 'act' : ''}`}
+              href="#action3"
+            >
+              FLOUR
+            </a>
+          </Nav.Link>
+          <Nav.Link
+            className="nav-content"
+            onClick={() => handleCategoryClick('saltandsugar')}
+          >
+            <a
+              className={`nav-txt ${selectedCategory === 'saltandsugar' ? 'act' : ''}`}
+              href="#action4"
+            >
+              SALT & SUGAR
+            </a>
+          </Nav.Link>
+          <Nav.Link
+            className="nav-content"
+            onClick={() => handleCategoryClick('snacksanddrinks')}
+          >
+            <a
+              className={`nav-txt ${selectedCategory === 'snacksanddrinks' ? 'act' : ''}`}
+              href="#action5"
+            >
+              SNACKS & DRINKS
+            </a>
+          </Nav.Link>
+          <Nav.Link
+            className="nav-content"
+            onClick={() => handleCategoryClick('oilsanddryfruits')}
+          >
+            <a
+              className={`nav-txt ${selectedCategory === 'oilsanddryfruits' ? 'act' : ''}`}
+              href="#action6"
+            >
+              OILS & DRY FRUITS
+            </a>
+          </Nav.Link>
         </Navbar>
         <div>
             <Slick category={selectedCategory} />

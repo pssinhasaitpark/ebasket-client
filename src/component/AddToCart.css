@@ -320,6 +320,11 @@
     margin-right: 8px;
 }
 
+.button-routes{
+    color: white;
+    text-decoration: none;
+}
+
 @media (max-width: 767px){
     .product-detail-page .addtocart .btnnn{
         width: auto;

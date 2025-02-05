@@ -26,6 +26,14 @@ const Checkout = () => {
   const [totalDiscount, setTotalDiscount] = useState(0);
   const [deliveryCharges, setDeliveryCharges] = useState(0); 
   const [finalAmount, setFinalAmount] = useState(0);
+  const [SelectedVariant, setSelectedVariant] = useState(0);
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('Razorpay'); 
+
+  const handlePaymentMethodChange = (event) => {
+    setSelectedPaymentMethod(event.target.value);
+  };
+
+
   
   useEffect(() => {
     const savedCart = JSON.parse(localStorage.getItem("cart"));
@@ -33,10 +41,11 @@ const Checkout = () => {
       setCart(savedCart);
     }
 
-    // const storedVariant = localStorage.getItem('selectedVariant');
-    // if (storedVariant) {
-    //   setSelectedVariant(JSON.parse(storedVariant)); 
-    // }
+    const storedVariant = localStorage.getItem('selectedVariant');
+    if (storedVariant) {
+      const parsedVariant = JSON.parse(storedVariant);
+      setSelectedVariant(parsedVariant);
+    }
   }, []);
 
  
@@ -170,7 +179,8 @@ const Checkout = () => {
                       name="payment_method"
                       id="razorpay"
                       value="RazorPay"
-                      checked
+                      checked={selectedPaymentMethod === 'RazorPay'} 
+                      onChange={handlePaymentMethodChange}
                     />
                     <input type="hidden"  value="true" />
                    
@@ -183,6 +193,8 @@ const Checkout = () => {
                       name="payment_method"
                       id="stripe"
                       value="Stripe"
+                      checked={selectedPaymentMethod === 'Stripe'} 
+                      onChange={handlePaymentMethodChange} 
                     />
                     <input type="hidden" id="isStripeEnabled" value="true" />
                   </div>
@@ -190,10 +202,12 @@ const Checkout = () => {
                   <div className="custom-control custom-radio border-bottom py-2" id="stripe_box">
                     <Form.Check
                       type="radio"
-                      label="Stripe"
+                      label="Paypal"
                       name="payment_method"
-                      id="stripe"
-                      value="Stripe"
+                      id="Paypal"
+                      value="Paypal"
+                      checked={selectedPaymentMethod === 'Paypal'} 
+                      onChange={handlePaymentMethodChange}
                     />
                     <input type="hidden" id="isStripeEnabled" value="true" />
                   </div>
@@ -201,10 +215,12 @@ const Checkout = () => {
                   <div className="custom-control custom-radio border-bottom py-2" id="stripe_box">
                     <Form.Check
                       type="radio"
-                      label="Stripe"
+                      label="Payfast"
                       name="payment_method"
-                      id="stripe"
-                      value="Stripe"
+                      id="Payfast"
+                      value="Payfast"
+                      checked={selectedPaymentMethod === 'Payfast'} 
+                      onChange={handlePaymentMethodChange}
                     />
                     <input type="hidden" id="isStripeEnabled" value="true" />
                   </div>
@@ -212,10 +228,12 @@ const Checkout = () => {
                   <div className="custom-control custom-radio border-bottom py-2" id="stripe_box">
                     <Form.Check
                       type="radio"
-                      label="Stripe"
+                      label="PayStack"
                       name="payment_method"
-                      id="stripe"
-                      value="Stripe"
+                      id="PayStack"
+                      value="PayStack"
+                      checked={selectedPaymentMethod === 'PayStack'} 
+                      onChange={handlePaymentMethodChange}
                     />
                     <input type="hidden" id="isStripeEnabled" value="true" />
                   </div>
@@ -223,10 +241,12 @@ const Checkout = () => {
                   <div className="custom-control custom-radio border-bottom py-2" id="stripe_box">
                     <Form.Check
                       type="radio"
-                      label="Stripe"
+                      label="flutterWave"
                       name="payment_method"
-                      id="stripe"
-                      value="Stripe"
+                      id="flutterWave"
+                      value="flutterWave"
+                      checked={selectedPaymentMethod === 'flutterWave'} 
+                      onChange={handlePaymentMethodChange}
                     />
                     <input type="hidden" id="isStripeEnabled" value="true" />
                   </div>
@@ -234,10 +254,12 @@ const Checkout = () => {
                   <div className="custom-control custom-radio border-bottom py-2" id="stripe_box">
                     <Form.Check
                       type="radio"
-                      label="Stripe"
+                      label="MercadoPago"
                       name="payment_method"
-                      id="stripe"
-                      value="Stripe"
+                      id="MercadoPago"
+                      value="MercadoPago"
+                      checked={selectedPaymentMethod === 'MercadoPago'} 
+                      onChange={handlePaymentMethodChange}
                     />
                     <input type="hidden" id="isStripeEnabled" value="true" />
                   </div>
@@ -245,10 +267,12 @@ const Checkout = () => {
                   <div className="custom-control custom-radio border-bottom py-2" id="stripe_box">
                     <Form.Check
                       type="radio"
-                      label="Stripe"
+                      label="Xendit"
                       name="payment_method"
-                      id="stripe"
-                      value="Stripe"
+                      id="Xendit"
+                      value="Xendit"
+                      checked={selectedPaymentMethod === 'Xendit'} 
+                      onChange={handlePaymentMethodChange}
                     />
                     <input type="hidden" id="isStripeEnabled" value="true" />
                   </div>
@@ -256,10 +280,12 @@ const Checkout = () => {
                   <div className="custom-control custom-radio border-bottom py-2" id="stripe_box">
                     <Form.Check
                       type="radio"
-                      label="Stripe"
+                      label="MidTrans"
                       name="payment_method"
-                      id="stripe"
-                      value="Stripe"
+                      id="MidTrans"
+                      value="MidTrans"
+                      checked={selectedPaymentMethod === 'MidTrans'} 
+                      onChange={handlePaymentMethodChange}
                     />
                     <input type="hidden" id="isStripeEnabled" value="true" />
                   </div>
@@ -267,10 +293,12 @@ const Checkout = () => {
                   <div className="custom-control custom-radio border-bottom py-2" id="stripe_box">
                     <Form.Check
                       type="radio"
-                      label="Stripe"
+                      label="OrangePay"
                       name="payment_method"
-                      id="stripe"
-                      value="Stripe"
+                      id="OrangePay"
+                      value="OrangePay"
+                      checked={selectedPaymentMethod === 'OrangePay'} 
+                      onChange={handlePaymentMethodChange}
                     />
                     <input type="hidden" id="isStripeEnabled" value="true" />
                   </div>
@@ -278,10 +306,25 @@ const Checkout = () => {
                   <div className="custom-control custom-radio border-bottom py-2" id="stripe_box">
                     <Form.Check
                       type="radio"
-                      label="Stripe"
+                      label="Cash on Delivery"
                       name="payment_method"
-                      id="stripe"
-                      value="Stripe"
+                      id="COD"
+                      value="COD"
+                      checked={selectedPaymentMethod === 'COD'} 
+                      onChange={handlePaymentMethodChange}
+                    />
+                    <input type="hidden" id="isStripeEnabled" value="true" />
+                  </div>
+
+                  <div className="custom-control custom-radio border-bottom py-2" id="stripe_box">
+                    <Form.Check
+                      type="radio"
+                      label="Wallet (You have)"
+                      name="payment_method"
+                      id="Wallet"
+                      value="Wallet"
+                      checked={selectedPaymentMethod === 'Wallet'} 
+                      onChange={handlePaymentMethodChange}
                     />
                     <input type="hidden" id="isStripeEnabled" value="true" />
                   </div>
@@ -351,7 +394,7 @@ const Checkout = () => {
         {cart.length > 0 ? (
           cart.map((item) => (
             <div key={item._id} className="d-flex w-100 media align-items-center col-md-6 mb-2 border checkout-added-products">
-              <img
+             <div className="w-100"> <div className="d-flex"><img
                 src= {`http://192.168.0.111:3001${item.itemDetails.mediaFiles[0]?.url}`}
                 className="img-responsive img-rounded order-img"
                 style={{ maxHeight: '40px', maxWidth: '25px' }}
@@ -359,6 +402,8 @@ const Checkout = () => {
               />
               <div className="media-body">
                 <div className="m-0 product-name">{item.itemDetails.name}</div>
+              </div></div>{ item.variantQuantity > 0 ? 
+                 <div className="extra-weight"><span className="extra-weight-heading">weight: </span>{item.variantQuantity} kg</div> : null}
               </div>
               <div className="d-flex align-items-center count-number-box col-md-5">
                     <span className="count-number float-right">
@@ -379,6 +424,8 @@ const Checkout = () => {
               <div className="close remove_item col-md-1 remove-button">
                     <FaTimes onClick={() => handleRemoveItem(item._id)} />
               </div>
+              
+           
             </div>
           ))
         ) : (

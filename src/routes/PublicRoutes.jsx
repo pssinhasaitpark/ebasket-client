@@ -28,7 +28,7 @@ const PublicRoutes = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUpForm />} />
             <Route path="/productlist" element={<ProductList />} />
-            {/* <Route path="/products/:id" element={<ProductDetailPage />} /> */}
+            <Route path="/productDetail/:id" element={<ProductDetailPage />} />
             <Route path="/offers" element={<CouponsList />} />
             <Route path="/refund" element={<Refund />} />
             <Route path="/privacy" element={<Privacy />} />

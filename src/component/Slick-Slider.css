@@ -94,3 +94,10 @@
 .slick-arrow {
     display: none !important;
 }
+
+.no-products{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0%;
+    height:324.5px;
+}

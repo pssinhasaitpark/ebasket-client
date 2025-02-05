@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import PublicRoutes from "./routes/PublicRoutes.jsx";
 import ProtectedRoutes from "./routes/ProtectedRoutes.jsx";
 import DemoHeader from "./layout/Demo.jsx";
+import Checkout from "./pages/checkout/Checkout.jsx";
 
 
 
@@ -31,19 +32,16 @@ const App = () => {
     <>
       {/* <DemoHeader/> */}
       <Header/>
-         
+         {/* <Checkout/> */}
         {loading && (<LoadingSpinner />)
         }
         <>
-          {isSignedIn ? (
-            <>
+         
               <PublicRoutes />
               <ProtectedRoutes />
-            </>
-          ) : (
-
-            <PublicRoutes />
-          )}
+          
+            
+          
         </>
        <Footer /> 
 
