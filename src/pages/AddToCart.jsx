@@ -126,6 +126,15 @@ const ProductDetailPage = () => {
     console.log("Updated Cart:", updatedCart);
   };
 
+
+
+  // const productName = productData.itemDetails.name || "";
+  // const firstWord = productName.split(" ")[0];
+
+
+  
+
+
   return (
     <>
     <Header/>
@@ -457,7 +466,7 @@ const ProductDetailPage = () => {
                   </Button>
                 </Col>
                 </div>
-                {/* <ProductList/> */}
+                {/* <ProductList firstWord={firstWord} /> */}
               </Row>
              
             </div>
