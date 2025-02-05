@@ -10,6 +10,7 @@ const ProductList = ({  itemss,firstWord}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { items, loading, error } = useSelector((state) => state.items);
+  
 
   useEffect(() => {
     dispatch(fetchItems());
