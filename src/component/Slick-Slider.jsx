@@ -10,13 +10,14 @@ import Container from 'react-bootstrap/Container';
 import './Slick-Slider.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchItems } from "../store/slices/products-slice";
+import useProductNavigation from "../hooks/useProductNavigation";
 
 
 function Slick({category}) 
 {     
   const dispatch = useDispatch();
   const items = useSelector(state => state.items.items);
-
+  const handleCardClick = useProductNavigation();
    useEffect(() => {
           dispatch(fetchItems());
       }, [dispatch]);
@@ -111,7 +112,7 @@ function Slick({category})
                           filteredItems.map((item) => {
                           {
                               return (
-                                <div key={item._id} className="Slick-card">
+                                <div key={item._id} className="Slick-card" onClick={() => handleCardClick(item._id)}>
                                   <div className="Slick-img-section">
                                     <img
                                       className="Slick-img img-fluid"

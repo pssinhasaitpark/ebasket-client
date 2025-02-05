@@ -32,7 +32,15 @@ const Checkout = () => {
     if (savedCart) {
       setCart(savedCart);
     }
+
+    // const storedVariant = localStorage.getItem('selectedVariant');
+    // if (storedVariant) {
+    //   setSelectedVariant(JSON.parse(storedVariant)); 
+    // }
   }, []);
+
+ 
+
 
   useEffect(() => {
     let total = 0;

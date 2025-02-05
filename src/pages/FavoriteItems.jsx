@@ -36,9 +36,9 @@ const WishlistPage = () => {
   if (productDetails.length === 0) return <div>Your wishlist is empty.</div>;
 
   return (
-    <Container>
-      <div className="wishlist-page">
-        <h2>Your Wishlist</h2>
+    <Container className='py-5'>
+      <div className="">
+        <h2 className='favourites-heading mb-3'>Favorite Items</h2>
         <Row className="mt-5 wishlist-products">
           {productDetails.length > 0 &&
             productDetails.map((product, index) => {
@@ -49,7 +49,7 @@ const WishlistPage = () => {
                     className="list-card position-relative"
                   >
                     <div className="list-card-image">
-                      <div className="member-plan position-absolute">
+                      <div className="member-plan2 position-absolute">
                       <Badge className="badge" pill variant="dark">
                          <HeartButton productId={product._id} />
                       </Badge>

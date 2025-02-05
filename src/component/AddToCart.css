@@ -311,6 +311,15 @@
     text-decoration: none;
 }
 
+.cart-slider-img{
+    height: 72px;
+    object-fit: cover;
+}
+
+.variant-item{
+    margin-right: 8px;
+}
+
 @media (max-width: 767px){
     .product-detail-page .addtocart .btnnn{
         width: auto;

@@ -15,10 +15,8 @@ const LikeButton = ({ productId }) => {
       updatedWishlist.push(productId);
     }
 
-    // Update the localStorage
     localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
 
-    // Toggle the state
     setIsLiked(!isLiked);
   };
 
@@ -27,7 +25,7 @@ const LikeButton = ({ productId }) => {
       <FaHeart
         className={`symbol-heart ${isLiked ? 'liked' : ''}`}
         onClick={toggleLike}
-        style={{ color: isLiked ? 'red' : 'black' }}
+        style={{ color: isLiked ? 'red' : '' }}
       />
     </div>
   );
