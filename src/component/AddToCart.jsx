@@ -25,7 +25,7 @@ import ProductList from "../pages/Products/Products";
 import Header from "../layout/Header";
 import LikeButton from '../component/LikeButton';
 import Selling from "../component/Most_selling";
-import LikeButton from './LikeButton';
+// import LikeButton from './LikeButton';
 
 const ProductDetailPage = () => {
   const { id } = useParams(); 
@@ -38,7 +38,6 @@ const ProductDetailPage = () => {
   const [variantQuantity, setVariantQuantity] = useState(1);
   const [totalPrice, setTotalPrice] = useState(null);
   const [totalImage, settotalImage] = useState(null);
-
 
 
   useEffect(() => {
@@ -138,7 +137,6 @@ const ProductDetailPage = () => {
 
   return (
     <>
-    <Header/>
     <div className="product-detail-page mb-4">
       <Container className="pt-5 position-relative">
         <div className="car-detail-inner">

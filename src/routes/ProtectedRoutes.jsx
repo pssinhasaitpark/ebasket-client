@@ -13,10 +13,10 @@ import Transcation from '../pages/transaction/Transaction'
 const ProtectedRoutes = () => {
     const isSignedIn = useSelector((state) => state.auth.isSignedIn);
 
-    if (!isSignedIn) {
-        // Redirect to login if not signed in
-        return <Navigate to="/login" />;
-    }
+    // if (!isSignedIn) {
+    //     // Redirect to login if not signed in
+    //     return <Navigate to="/login" />;
+    // }
 
     return (
         <>
