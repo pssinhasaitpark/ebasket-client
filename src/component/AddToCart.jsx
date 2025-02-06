@@ -25,7 +25,6 @@ import ProductList from "../pages/Products/Products";
 import Header from "../layout/Header";
 import LikeButton from '../component/LikeButton';
 import Selling from "../component/Most_selling";
-import { Link } from "react-router-dom";
 
 
 const ProductDetailPage = () => {

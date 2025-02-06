@@ -18,6 +18,9 @@ import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useDispatch , useSelector} from 'react-redux';
+import { signIn } from '../../store/slices/authSlice';
+
 
 const validationSchema = Yup.object({
   phoneNumber: Yup.string()
@@ -27,12 +30,14 @@ const validationSchema = Yup.object({
 });
 
 const Login = () => {
+ 
   const [country, setCountry] = useState("+91");
   const [isOtpVisible, setIsOtpVisible] = useState(false);
   const [otp, setOtp] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
+  const dispatch = useDispatch();
   const naviagte=useNavigate()
 
   const handleCountrySelect = (countryCode) => {
@@ -71,13 +76,15 @@ const Login = () => {
       // phoneNumber: country + values.phoneNumber,
       otp: otp,
     };
-
     try {
       const response = await axios.post("http://192.168.0.111:3001/user/verifyotp", otpData);
       if (response.data.message) {
         toast.success("OTP verified successfully. You are now logged in.");
-        naviagte("/")
+        naviagte("/");
         toast.success("You are LoggedIn !!!!!!!")
+        
+        dispatch(signIn(true)); // Dispatch the signIn action
+        
       } else {
         toast.error("Invalid OTP. Please try again.");
       }

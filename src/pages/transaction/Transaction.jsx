@@ -153,7 +153,7 @@ const Transcation = (props) => {
                                     Close
                                 </Button>
                                 <Button type="submit" variant="primary" className="form-btn w-50">
-                                    Save
+                                    Next
                                 </Button>
                             </div>
                         </Form>
@@ -193,10 +193,14 @@ function Wallet() {
             <div>
 
                 <Container>
-                    <div className='transaction-container rounded p-5'>
+                    <div className='transaction-container rounded p-5 mt-4'>
 
-                        <Row className='address-addon w-25'>
+                        <Row className=' text-center'>
 
+                            <Col>
+                            <h3 className='font-weight-bold h4 text-light'>Wallet Amount : $ {0}</h3>
+                            </Col>
+                            <Col>
                             <Button className='transaction-btn' onClick={() => setModalShow(true)}>
                                 Add Wallet Amount
                             </Button>
@@ -206,6 +210,7 @@ function Wallet() {
                                 onHide={() => setModalShow(false)}
                                 validationSchema={validationSchema} // Pass validation schema if you have one
                             />
+                                </Col>
                         </Row>
                     </div>
                     <div className='d-flex justify-content-between mt-4'>
