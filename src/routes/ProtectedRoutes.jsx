@@ -12,11 +12,17 @@ import WishlistPage from "../pages/FavoriteItems";
 import Transcation from '../pages/transaction/Transaction'
 import Login from "../pages/auth/Login";
 const ProtectedRoutes = () => {
+
     // const isSignedIn = useSelector((state) => state.auth.isSignedIn);
      
     // if (!isSignedIn) {
     //     console.log('1234567890',isSignedIn);
         
+
+    const isSignedIn = useSelector((state) => state.auth.isSignedIn);
+
+    // if (!isSignedIn) {
+
     //     // Redirect to login if not signed in
     //     return <Navigate to="/login" />;
     // }

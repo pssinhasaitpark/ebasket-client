@@ -38,10 +38,10 @@
     position: relative; 
   }
 
-  .nav-txt-1{
+  /* .nav-txt-1{
     color: #01664a !important;
     border-bottom:2px solid #01664a !important;
-  }
+  } */
 
   .nav-content {
     display: inline-flex; 
@@ -51,7 +51,16 @@
   .nav-txt:hover{
     color: #01664a;
     border-bottom:2px solid #01664a;
-    ;
+    
+  }
+
+  /* .nav-txt:focus, .nav-txt:active{
+    color: #01664a;
+    border-bottom:2px solid #01664a;
+  } */
+  .nav-txt.act{
+    color: #01664a;
+    border-bottom:2px solid #01664a;
   }
 
   @media screen and (max-width: 767) {
