@@ -2,8 +2,10 @@ import Carousel from 'react-bootstrap/Carousel';
 import home_hero_slider1 from '../asset/images/home_hero_slider-image_1.png';
 import home_hero_slider2 from '../asset/images/home_hero_slider-image_2.png';
 import home_hero_slider3 from '../asset/images/home_hero_slider-image_3.png';
+import { useNavigate } from 'react-router-dom';
 
 function Slider() {
+  const navigate = useNavigate();
   return (
     <Carousel>
       <Carousel.Item>
@@ -11,6 +13,7 @@ function Slider() {
           className="d-block w-100"
           src={home_hero_slider1}
           alt="First slide"
+          onClick={ ()=> navigate('/productlist')}
         />
       </Carousel.Item>
       <Carousel.Item>
@@ -18,6 +21,7 @@ function Slider() {
           className="d-block w-100"
           src={home_hero_slider2}
           alt="Second slide"
+          onClick={ ()=> navigate('/productlist')}
         />
       </Carousel.Item>
       <Carousel.Item>
@@ -25,6 +29,7 @@ function Slider() {
           className="d-block w-100"
           src={home_hero_slider3} 
           alt="Third slide"
+          onClick={ ()=> navigate('/productlist')}
         />
       </Carousel.Item>
     </Carousel>

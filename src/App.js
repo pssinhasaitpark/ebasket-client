@@ -11,14 +11,17 @@ import PublicRoutes from "./routes/PublicRoutes.jsx";
 import ProtectedRoutes from "./routes/ProtectedRoutes.jsx";
 import DemoHeader from "./layout/Demo.jsx";
 import Checkout from "./pages/checkout/Checkout.jsx";
+import { Route, Routes } from "react-router-dom";
+import NotFound from "./pages/NotFound/NotFound.jsx";
+import Map from "./component/Map.jsx";
 
 
 
 
 const App = () => {
   const isSignedIn = useSelector((state) => state.auth.isSignedIn);
-  console.log("check",isSignedIn);
-  
+  console.log("check", isSignedIn);
+
   const [loading, setLoading] = useState(true);
   useEffect(() => {
 
@@ -33,32 +36,27 @@ const App = () => {
 
     <>
       {/* <DemoHeader/> */}
-   
-      <Header/>
-        {loading && (<LoadingSpinner />)
-        }
-        <>
-        {isSignedIn ? (<>
-          <PublicRoutes />
-          <ProtectedRoutes />
-        </>):(
+
+      <Header />
+      {loading && (<LoadingSpinner />)
+      }
+      <>
+
+
+        {isSignedIn ? (
+          <>
+            <PublicRoutes />
+            <ProtectedRoutes />
+          </>
+        ) : (
           <PublicRoutes />
         )}
-              
-      
-         
+        
+      </>
 
-          {isSignedIn ? (
-            <>
-              <PublicRoutes />
-              <ProtectedRoutes />
-            </>
-          ) : (
-            <PublicRoutes />
-          )}
-        </>
-       <Footer /> 
-         
+      
+      <Footer />
+
 
     </>
   );

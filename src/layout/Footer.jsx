@@ -11,8 +11,16 @@ import search from '../asset/images/searchfooter.svg'
 import app from '../asset/images/appstore.png'
 import playmarket from '../asset/images/playmarket.png'
 import './Footer.css'
-import { Link } from 'react-router-dom';
+import { Link , useNavigate} from 'react-router-dom';
+import { useSelector } from 'react-redux';
 const Footer = () => {
+    const navigate = useNavigate();
+      const isSignedIn = useSelector((state) => state.auth.isSignedIn);
+  
+    const handleProfileClick = () => {
+      navigate(isSignedIn ? '/profile' : '/login');
+    };
+    
     return (
         <>
             <div>
@@ -33,25 +41,25 @@ const Footer = () => {
                                             <ul className="social-list">
                                                 <li>
                                                     <div className='image facebook'>
-                                                      <a href="#"><img src={facebook} alt="" /></a>
+                                                      <a href="https://www.facebook.com/"><img src={facebook} alt="" /></a>
 
                                                     </div>
                                                 </li>
                                                 <li>
                                                 <div className='image instagram'>
-                                                      <a href="#"><img src={insta} alt="" /></a>
+                                                      <a href="https://www.instagram.com/"><img src={insta} alt="" /></a>
 
                                                     </div>
                                                 </li>
                                                 <li>
                                                 <div className='image youtube'>
-                                                      <a href="#"><img src={youtube} alt="" /></a>
+                                                      <a href="https://www.youtube.com/"><img src={youtube} alt="" /></a>
 
                                                     </div>
                                                 </li>
                                                 <li>
                                                 <div className='image twitter'>
-                                                      <a href="#"><img src={twitter} alt="" /></a>
+                                                      <a href="https://www.twitter.com/"><img src={twitter} alt="" /></a>
 
                                                     </div>
                                                 </li>
@@ -65,7 +73,7 @@ const Footer = () => {
                                     <div className='footer-upper-wrapper-mid'>
                                         <h5 className='text-white mb-3 services-heading'>SERVICES</h5>
                                         <ul className="services-list p-0">
-                                            <li><Link to={'/contactus'} href="">Contact us</Link></li>
+                                            <li><Link to={'/contactus'} href="" >Contact us</Link></li>
                                             <li><Link to={'/terms'} href="">Term & Condition</Link></li>
                                             <li><Link to={'/aboutus'} href="">About us</Link></li>
                                         </ul>
@@ -77,11 +85,13 @@ const Footer = () => {
                                         <ul className="services-list p-0">
                                             <li><Link href="" to="/login">User Login</Link></li>
                                             <li><Link href="" to="/signup">User Register</Link></li>
-                                            <li><Link href="" to="/profile">User Profile</Link></li>
+                                            <li><a href="" onClick={handleProfileClick}
+                                            >User Profile</a></li>
                                         </ul>
                                     </div>
                                 </Col>
                             </Row>
+                            
 
                             {/* Mid Part (Services) */}
                             <Row className="mb-4 py-4">

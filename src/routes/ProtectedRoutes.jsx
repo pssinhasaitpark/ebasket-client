@@ -17,15 +17,18 @@ const ProtectedRoutes = () => {
      
     // if (!isSignedIn) {
     //     console.log('1234567890',isSignedIn);
+    //   const [isSignedIn, setisSignedIn] = useState(false);
         
 
     const isSignedIn = useSelector((state) => state.auth.isSignedIn);
+   console.log("protected route" ,isSignedIn);
+   
+   
+    if (!isSignedIn) {
 
-    // if (!isSignedIn) {
-
-    //     // Redirect to login if not signed in
-    //     return <Navigate to="/login" />;
-    // }
+        // Redirect to login if not signed in
+        return <Navigate to="/login" element={<Login/>}/>;
+    }
 
     return (
         <>
@@ -38,6 +41,7 @@ const ProtectedRoutes = () => {
             <Route path="/pay-wallet" element={<PayWallet />} />
             <Route path="/success" element={<Success />} />
             <Route path="/favorite-products" element={<WishlistPage />} />
+            
             </Routes>
         </>
     );

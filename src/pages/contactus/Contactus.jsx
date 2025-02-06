@@ -4,6 +4,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import './Contactus.css'
 import Header from '../../layout/Header';
+import Map from '../../component/Map';
 const ContactUs = () => {
 
   // Validation Schema with Yup
@@ -104,6 +105,9 @@ const ContactUs = () => {
         </Col>
       </Row>
     </Container>
+    <div>
+      <Map/>
+    </div>
     </>
   );
 };
