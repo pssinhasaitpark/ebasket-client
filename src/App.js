@@ -36,14 +36,14 @@ const App = () => {
         {loading && (<LoadingSpinner />)
         }
         <>
-          {isSignedIn ? (
+          {/* {isSignedIn ? ( */}
             <>
               <PublicRoutes />
               <ProtectedRoutes />
             </>
-          ) : (
-            <PublicRoutes />
-          )}
+          {/* ) : ( */}
+            {/* <PublicRoutes />
+          )} */}
         </>
        <Footer /> 
          

@@ -7,6 +7,8 @@ import {
   Card,
   Button,
   Form,
+  Badge,
+  Image,
   InputGroup,
 } from "react-bootstrap";
 import {
@@ -18,7 +20,10 @@ import {
   FaClock,
 } from "react-icons/fa";
 import './Checkout.css'
-import discountImg from '../../asset/images/discountss.png'
+import { ImCopy } from "react-icons/im";
+import { useDispatch, useSelector } from 'react-redux';
+import { getCoupons } from '../../store/slices/coupons.slice';
+import discountImg from '../../asset/images/discount-icon.png'
 
 const Checkout = () => {
   const [cart, setCart] = useState([]);
@@ -28,12 +33,29 @@ const Checkout = () => {
   const [finalAmount, setFinalAmount] = useState(0);
   const [SelectedVariant, setSelectedVariant] = useState(0);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('Razorpay'); 
+  const { coupons } = useSelector((state) => state.coupons);
+  const dispatch = useDispatch();
+  const [CGST, setCGST] = useState(0); 
+  const [GST, setGST] = useState(0); 
+  const [couponCode, setCouponCode] = useState("");
+  const [appliedCoupon, setAppliedCoupon] = useState(null);
+  const [totalAmount, setTotalAmount] = useState(0);
+
+
+  useEffect(() => {
+    dispatch(getCoupons());
+  }, [dispatch]);
+
+
+  const copyToClipboard = (code) => {
+    navigator.clipboard.writeText(code);
+    setCouponCode(code);
+  };
+
 
   const handlePaymentMethodChange = (event) => {
     setSelectedPaymentMethod(event.target.value);
   };
-
-
   
   useEffect(() => {
     const savedCart = JSON.parse(localStorage.getItem("cart"));
@@ -56,29 +78,59 @@ const Checkout = () => {
     let discount = 0;
 
     cart.forEach((item) => {
-      const itemPrice = item.itemDetails.price * item.quantity; 
-      const itemDiscount = ((item.itemDetails.discount / 100) * item.itemDetails.price) * item.quantity || 0; 
+      const itemPrice = item.itemDetails.price * item.quantity;
+      const itemDiscount = ((item.itemDetails.discount / 100) * item.itemDetails.price) * item.quantity || 0;
 
       total += itemPrice;
       discount += itemDiscount;
     });
 
     const discountedPrice = total - discount;
-    const finalAmount = discountedPrice; 
+    const finalAmount = discountedPrice;
 
     setTotalPrice(total);
     setTotalDiscount(discount);
     setFinalAmount(finalAmount);
+
+    const cgst = discountedPrice * 0.05; 
+    const gst = discountedPrice * 0.10;  
+
+    setCGST(cgst);
+    setGST(gst);
+
+    const calculatedTotalAmount = discountedPrice + cgst + gst + deliveryCharges;
+    setTotalAmount(calculatedTotalAmount);
+
   }, [cart, deliveryCharges]);
 
-  const CGST =  totalPrice * 0.05;
-  const GST = 10;
-  const TotalAmount = finalAmount + CGST + GST + deliveryCharges;
+  const applyCoupon = () => {
+    const matchedCoupon = coupons.find((coupon) => coupon.code === couponCode);
+
+    if (matchedCoupon) {
+      const couponDiscount = (matchedCoupon.discount / 100) * totalPrice;
+      setAppliedCoupon(matchedCoupon);
+      setTotalDiscount(couponDiscount);
+
+      const discountedPriceAfterCoupon = totalPrice - couponDiscount;
+
+      const cgstAfterCoupon = discountedPriceAfterCoupon * 0.05; 
+      const gstAfterCoupon = discountedPriceAfterCoupon * 0.10;  
+
+      setCGST(cgstAfterCoupon);
+      setGST(gstAfterCoupon);
+
+      const calculatedTotalAmount = discountedPriceAfterCoupon + cgstAfterCoupon + gstAfterCoupon + deliveryCharges;
+      setTotalAmount(calculatedTotalAmount);
+
+      setFinalAmount(discountedPriceAfterCoupon);
+    } else {
+      alert("Invalid Coupon Code");
+    }
+  };
+
+  const showTotalDiscount = couponCode && appliedCoupon;
 
 
-  useEffect(() => {
-    console.log("Cart Products: ", cart);
-  }, [cart]);
 
   const handleIncrement = (productId) => {
     const updatedCart = cart.map((item) =>
@@ -332,48 +384,30 @@ const Checkout = () => {
               </Accordion>
 
               <div className="add-note" id="coupon-div">
-                <h3>Available Coupon</h3>
-                <div className="foodies-detail-coupon">
-                  <div id="coupon_list">
-                    <div className="copupon-list">
-                      <ul>
-                        <li
-                          className="coupon_code_list d-flex flex-column"
-                          data-code="OFFER15"
-                          value="OFFER15"
-                        >
-                          <div className="d-flex">
-                          <img src={discountImg} alt="" height="20px" width="20px"/>
-                          <span className="per-off">15% OFF</span>
-                          </div>
-                          <span>OFFER15 | Valid till 2025-06-13</span>
-                        </li>
-                        <li
-                          className="coupon_code_list d-flex flex-column"
-                          data-code="MEGA20"
-                          value="MEGA20"
-                        >
-                          <div className="d-flex">
-                          <img src={discountImg} alt="" height="20px" width="20px"/>
-                          <span className="per-off">20% OFF</span>
-                          </div>
-                          <span>MEGA20 | Valid till 2025-12-31</span>
-                        </li>
-                        <li
-                          className="coupon_code_list d-flex flex-column"
-                          data-code="ENJOY30"
-                          value="ENJOY30"
-                        >
-                          <div className="d-flex">
-                          <img src={discountImg} alt="" height="20px" width="20px"/>
-                          <span className="per-off">30% OFF</span>
-                          </div>
-                          <span>ENJOY30 | Valid till 2025-12-31</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
+                <h3>Available Coupons</h3>
+                <div id="" className="res-search-list">
+        {coupons.map((coupon) => (
+        <Col className='transactions-list-wrap mt-4' xs={12} key={coupon._id}>
+          <a className='checkout-page-coupon-link' href="#" onClick={() => copyToClipboard(coupon.code)}>
+          <Card className="checkout-page-coupons-card bg-white px-4 py-3 rounded-lg mb-3 shadow-sm h-100">
+            <Row className="  gold-members d-flex align-items-center transactions-list">
+              <span className=" d-flex coupons-per-off">
+                <Image
+                  className="discount-img img-fluid "
+                  style={{ width: '65px', height: '65px' }}
+                  src={discountImg} 
+                />
+                <span className="">{coupon.discount}{coupon.discountType === 'Percent' ? '%' : ''} OFF</span>
+              </span>
+              <span className="mb-0 checkout-page-coupons-line badge bg-transparent text-black">{coupon.code} | Valid till {coupon.expiresAt.split('T')[0]}</span>
+            </Row>
+          </Card>
+          </a>
+        </Col>
+        ))}
+          
+        
+      </div>
               </div>
             </div>
           </Col>
@@ -450,9 +484,11 @@ const Checkout = () => {
         className="form-control"
         id="coupon_code"
         placeholder="Enter Promo Code"
+        value={couponCode}
+        onChange={(e) => setCouponCode(e.target.value)}
       />
       <div className="input-group-append">
-        <button className="btn btn-success" id="apply-coupon-code">
+        <button className="btn btn-success" id="apply-coupon-code"  onClick={applyCoupon}>
          %Apply
         </button>
       </div>
@@ -479,18 +515,29 @@ const Checkout = () => {
                   </span>
                 </p>
                 <hr />
+                {showTotalDiscount && (
+                  <p className="mb-2">
+                    Total Discount ({appliedCoupon.discount} %)
+                    <span className="float-right Total-Discount">
+                      <span className="currency-symbol-left">( - $</span>
+                      {totalDiscount.toFixed(2)} )
+                    </span>
+                    <hr />
+                  </p>
+                )}
+                
                 <p className="mb-2">
                   CGST (5%)
                   <span className="float-right text-dark">
                     <span className="currency-symbol-left">$</span>
-                    {CGST}
+                    {CGST.toFixed(2)}
                   </span>
                 </p>
                 <p className="mb-2">
-                  GST ( $ 10.00 )
+                  GST ( 10% )
                   <span className="float-right text-dark">
                     <span className="currency-symbol-left">$</span>
-                    10.00
+                    {GST.toFixed(2)}
                   </span>
                 </p>
                 <hr />
@@ -506,7 +553,7 @@ const Checkout = () => {
                   Total
                   <p className="float-right">
                     <span className="currency-symbol-left">$</span>
-                    {TotalAmount}
+                    {totalAmount.toFixed(2)}
                   </p>
                 </h6>
               </div>
@@ -514,7 +561,7 @@ const Checkout = () => {
            
               <div className="p-3 text-center">
                 <Button  block size="lg" className="pay_now_buttons border-0 text-center">
-                  Pay <span className="currency-symbol-left">$</span>{TotalAmount}<FaArrowRight />
+                  Pay <span className="currency-symbol-left">$</span>{totalAmount.toFixed(2)}<FaArrowRight />
                 </Button>
               </div>
             </div>

@@ -10,9 +10,12 @@ import { fetchBrands } from '../../store/slices/brands-slice';
 import { useLocation } from "react-router-dom";
 import { fetchItems } from '../../store/slices/products-slice';
 import potatoImg from '../../asset/images/t3.png';
+import useProductNavigation from "../../hooks/useProductNavigation";
+
 
 function Category() {
     const dispatch = useDispatch();
+    const handleCardClick = useProductNavigation();
 
     const items = useSelector(state => state.items.items);
     const categories = useSelector(state => state.categories.categories);
@@ -142,7 +145,7 @@ function Category() {
                             ) : (
                                 filteredItems.map((item, index) => (
                                     <Col key={index} md={4} className="pb-3">
-                                        <Card className="list-card position-relative">
+                                        <Card className="list-card position-relative" onClick={() => handleCardClick(item._id)}>
                                             <div className="list-card-image">
                                                 <div className="member-plan position-absolute">
                                                     <Badge className="badge" pill variant="dark">-2%</Badge>
