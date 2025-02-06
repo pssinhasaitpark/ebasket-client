@@ -10,10 +10,19 @@ import PayWallet from "../pages/paywallet/PayWallet";
 import Success from "../pages/success/Success";
 import WishlistPage from "../pages/FavoriteItems";
 import Transcation from '../pages/transaction/Transaction'
+import Login from "../pages/auth/Login";
 const ProtectedRoutes = () => {
+
+    // const isSignedIn = useSelector((state) => state.auth.isSignedIn);
+     
+    // if (!isSignedIn) {
+    //     console.log('1234567890',isSignedIn);
+        
+
     const isSignedIn = useSelector((state) => state.auth.isSignedIn);
 
     // if (!isSignedIn) {
+
     //     // Redirect to login if not signed in
     //     return <Navigate to="/login" />;
     // }
@@ -24,7 +33,7 @@ const ProtectedRoutes = () => {
             <Route path="/profile" element={<Profile />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/delivery-address" element={<AddressForm />} />
-            <Route path="/myorder" element={<OrderTabs />} />
+            <Route path="/orders" element={<OrderTabs />} />
             <Route path="/transaction" element={<Transcation />} />
             <Route path="/pay-wallet" element={<PayWallet />} />
             <Route path="/success" element={<Success />} />

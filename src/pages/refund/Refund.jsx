@@ -5,7 +5,7 @@ import './Refund.css'
 const Refund = () => {
     return (
         <>
-        <Header/>
+    
           <div className='refund-container my-5'>
 
             <Container>

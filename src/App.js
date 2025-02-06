@@ -17,6 +17,8 @@ import Checkout from "./pages/checkout/Checkout.jsx";
 
 const App = () => {
   const isSignedIn = useSelector((state) => state.auth.isSignedIn);
+  console.log("check",isSignedIn);
+  
   const [loading, setLoading] = useState(true);
   useEffect(() => {
 
@@ -25,25 +27,23 @@ const App = () => {
 
     }, 1000)
 
-  }, []);
+  }, [loading]);
 
   return (
 
     <>
-      {/* <DemoHeader/> */}
    
       <Header/>
         {loading && (<LoadingSpinner />)
         }
         <>
           {/* {isSignedIn ? ( */}
-            <>
-              <PublicRoutes />
-              <ProtectedRoutes />
-            </>
-          {/* ) : ( */}
-            {/* <PublicRoutes />
-          )} */}
+        {isSignedIn ? (<>
+          <PublicRoutes />
+          <ProtectedRoutes />
+        </>):(
+          <PublicRoutes />
+        )}
         </>
        <Footer /> 
          
