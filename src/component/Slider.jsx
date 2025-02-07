@@ -39,6 +39,7 @@ export default function SimpleSlider() {
     dots: false,
     infinite: true,
     speed: 500,
+    
     slidesToShow: 4,
     slidesToScroll: 1,
     // nextArrow: <SampleNextArrow to="next" />,

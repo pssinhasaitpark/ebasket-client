@@ -78,8 +78,13 @@ const Login = () => {
     };
     try {
       const response = await axios.post("http://192.168.0.111:3001/user/verifyotp", otpData);
+      console.log('reponse--', response);
+      
       if (response.data.message) {
         toast.success("OTP verified successfully. You are now logged in.");
+       
+      
+
         naviagte("/");
         toast.success("You are LoggedIn !!!!!!!")
         

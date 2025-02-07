@@ -72,6 +72,7 @@ const SignUpForm = () => {
       if (response.data.message) {
         toast.success("OTP verified successfully. You are now signed up!");
         navigate("/home");
+        
       } else {
         toast.error("Invalid OTP. Please try again.");
       }

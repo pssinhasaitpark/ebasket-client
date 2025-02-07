@@ -13,14 +13,17 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { persistor } from './store/store.js';
 import DemoHeader from "./layout/Demo.jsx";
 import Checkout from "./pages/checkout/Checkout.jsx";
+import { Route, Routes } from "react-router-dom";
+import NotFound from "./pages/NotFound/NotFound.jsx";
+import Map from "./component/Map.jsx";
 
 
 
 
 const App = () => {
   const isSignedIn = useSelector((state) => state.auth.isSignedIn);
-  console.log("check",isSignedIn);
-  
+  console.log("check", isSignedIn);
+
   const [loading, setLoading] = useState(true);
   useEffect(() => {
 

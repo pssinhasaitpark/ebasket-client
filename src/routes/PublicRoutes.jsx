@@ -16,8 +16,11 @@ import Search from "../pages/Search/search-page";
 import ContactUs from "../pages/contactus/Contactus";
 import ProductList from "../pages/Products/Products";
 import ProductDetailPage from "../component/AddToCart";
+
 import ProtectedRoutes from "./ProtectedRoutes";
 import { useSelector } from "react-redux";
+
+import FaqPage from "../pages/faq-support/Faq";
 
 
 const PublicRoutes = () => {
@@ -55,6 +58,8 @@ const PublicRoutes = () => {
             <Route path="/categories/:id" element={<Category />} />
             <Route path="/search" element={<Search />} />
             <Route path="/contactus" element={<ContactUs />} />
+            <Route path="/support" element={<FaqPage/>}/>
+            
 
             </Routes>
         </>
