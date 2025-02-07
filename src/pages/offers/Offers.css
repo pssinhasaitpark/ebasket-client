@@ -28,7 +28,7 @@
 }
 
 .media-body {
-
+    padding: 0;
     flex: 1;
 }
 
@@ -58,8 +58,12 @@
 }
 
 .transactions-list .media-body .offercoupan .badge a{
-    color: #33ab5b;
     text-decoration: none !important;
+}
+
+.copy-link{
+    color: #01664a !important;
+
 }
 
 .transactions-list .media-body .offer-des {
@@ -89,6 +93,13 @@
     text-transform: uppercase;
 }
 
+.total-percent{
+    flex: 0;
+}
+
+.coupon-img{
+    margin-right: 1rem !important;
+}
 
 @media screen and (max-width: 767px) {
     .res-search-list .transactions-list-wrap {
