@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import './FavoriteItems.css';
 import { Container, Row, Col, Card, Badge } from 'react-bootstrap';
 import { FaHeart } from 'react-icons/fa';
+import empty from "../asset/images/empty wishlist.png"
+import sorry from "../asset/images/no-result copy.png"
+
 
 const WishlistPage = () => {
   const [wishlist, setWishlist] = useState([]);
@@ -33,7 +36,7 @@ const WishlistPage = () => {
   }, []); 
 
   if (loading) return <div>Loading wishlist...</div>;
-  if (productDetails.length === 0) return <div>Your wishlist is empty.</div>;
+  if (productDetails.length === 0) return <Container className='py-5 mb-3'><div><h2 className='favourites-heading'>Favorite Items</h2><p className="no-products"><img src={sorry} alt="" /></p></div></Container>;
 
   return (
     <Container className='py-5'>

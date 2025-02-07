@@ -28,13 +28,10 @@ const PrivateNavbar = () => {
     const navigate = useNavigate();
     const isSignedIn = useSelector((state) => state.auth.isSignedIn);
     const dispatch = useDispatch();
-  
-    const handleSignIn = () => {
-      dispatch(signIn()); // Update Redux state to signed in
-    };
+
   
     const handleSignOut = () => {
-      dispatch(signOut()); // Update Redux state to signed out
+      dispatch(signOut());
     };
   return (
    <>

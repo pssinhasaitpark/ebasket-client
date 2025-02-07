@@ -11,24 +11,17 @@ import Success from "../pages/success/Success";
 import WishlistPage from "../pages/FavoriteItems";
 import Transcation from '../pages/transaction/Transaction'
 import Login from "../pages/auth/Login";
+import PublicRoutes from "./PublicRoutes";
 const ProtectedRoutes = () => {
 
     // const isSignedIn = useSelector((state) => state.auth.isSignedIn);
-     
-    // if (!isSignedIn) {
-    //     console.log('1234567890',isSignedIn);
-        
-
-    const isSignedIn = useSelector((state) => state.auth.isSignedIn);
 
     // if (!isSignedIn) {
-
-    //     // Redirect to login if not signed in
     //     return <Navigate to="/login" />;
-    // }
+    //   }
 
     return (
-        <>
+        <> 
             <Routes>
             <Route path="/profile" element={<Profile />} />
             <Route path="/checkout" element={<Checkout />} />

@@ -24,6 +24,7 @@ import "./AddToCart.css";
 import ProductList from "../pages/Products/Products";
 import Header from "../layout/Header";
 import LikeButton from '../component/LikeButton';
+import sorry from "../asset/images/no-result copy.png"
 import Selling from "../component/Most_selling";
 
 
@@ -94,7 +95,7 @@ const ProductDetailPage = () => {
 
   if (loading) return <div>Loading...</div>;
 
-  if (!productData) return <div>Product not found!</div>;
+  if (!productData) return <Container className='py-5 mb-3'><p className="no-products"><img src={sorry} alt="" /></p></Container>;
 
   const handleAddToCart = (product) => {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
