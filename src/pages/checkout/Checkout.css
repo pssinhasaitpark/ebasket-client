@@ -317,6 +317,39 @@
     font-weight: 500;
 }
 
+.discount-img{
+    height: 23px !important;
+    width: 23px !important;
+    margin-right: 10px !important;
+}
+
+.coupons-per-off{
+    font-size: 17px !important;
+    margin-bottom: 10px !important;
+    color: #676771 !important;
+    font-weight: 600;
+}
+
+.checkout-page-coupons-line{
+    font-size: 13px !important;
+    margin-bottom: 10px !important;
+    color: #676771 !important;
+    text-align: left;
+}
+
+
+.checkout-page-coupons-card{
+    border: 1px dashed #ccc;
+}
+
+.checkout-page-coupon-link{
+    text-decoration: none;
+}
+
+.Total-Discount{
+    color: red;
+}
+
 @media (max-width: 767px){
     .checkout-left-inner {
         padding-left: 0px

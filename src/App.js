@@ -32,30 +32,18 @@ const App = () => {
   return (
 
     <>
-      {/* <DemoHeader/> */}
    
       <Header/>
         {loading && (<LoadingSpinner />)
         }
         <>
+          {/* {isSignedIn ? ( */}
         {isSignedIn ? (<>
           <PublicRoutes />
           <ProtectedRoutes />
         </>):(
           <PublicRoutes />
         )}
-              
-      
-         
-
-          {isSignedIn ? (
-            <>
-              <PublicRoutes />
-              <ProtectedRoutes />
-            </>
-          ) : (
-            <PublicRoutes />
-          )}
         </>
        <Footer /> 
          

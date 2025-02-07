@@ -45,31 +45,28 @@ const CouponsList = () => {
       </div>
 
       <div id="" className="res-search-list">
-        <Row className="mt-4">
         {coupons.map((coupon) => (
-        <Col xs={12} key={coupon._id}>
-          <Card className="bg-white px-4 py-3 border rounded-lg mb-3 shadow-sm transactions-list-wrap">
-            <Row className="d-flex align-items-center transactions-list">
-              <Col xs="auto">
+        <Col className='transactions-list-wrap mt-4' xs={12} key={coupon._id}>
+          <Card className="bg-white px-4 py-3 border rounded-lg mb-3 shadow-sm h-100">
+            <Row className="gold-members d-flex align-items-center transactions-list">
+              
                 <Image
-                  className="mr-3 rounded-circle img-fluid"
+                  className=" p-0 rounded-circle img-fluid coupon-img"
                   style={{ width: '65px', height: '65px' }}
                   src={coupon.image} 
                 />
-              </Col>
-              <Col>
+              
                 <div className="media-body">
                   <h6 className="date">Expires At: {new Date(coupon.expiresAt).toLocaleString()}</h6>
                   <div className="offercoupan">
                     <Badge className="mb-0 badge bg-transparent text-black">{coupon.code}</Badge>
-                    <a href="#" onClick={() => copyToClipboard(coupon.code)}>
+                    <a className='copy-link' href="#" onClick={() => copyToClipboard(coupon.code)}>
                       <ImCopy />
                     </a>
                   </div>
                   <p className="offer-des mt-2">{coupon.description}</p>
                 </div>
-              </Col>
-              <Col className="d-flex justify-content-end align-items-center">
+              <Col className="d-flex justify-content-end align-items-center total-percent">
                 <span className="price font-weight-bold h4">{coupon.discount}{coupon.discountType === 'Percent' ? '%' : ''}</span>
               </Col>
             </Row>
@@ -77,7 +74,7 @@ const CouponsList = () => {
         </Col>
         ))}
           
-        </Row>
+        
       </div>
 
       <Row className="fu-loadmore-btn">
