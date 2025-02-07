@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import { Dropdown, Row, Col, Form, NavLink } from 'react-bootstrap';
+import {  Col, } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import search from '../asset/images/search.svg'
@@ -13,25 +13,22 @@ import glob from '../asset/images/globe.svg'
 import downarrow from '../asset/images/chevron-down.svg'
 // import GooglePlacesAutocomplete from 'react-google-autocomplete';
 import '../layout/Header.css'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { signIn, signOut } from '../store/slices/authSlice';
+import {  signOut } from '../store/slices/authSlice';
 
 
 const PrivateNavbar = () => {
     const username = useSelector((state) => state.auth.username); // Get username from Redux
+    console.log("username-",username);
+    
     const [show, setShow] = useState(false);
   
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-  
-    const navigate = useNavigate();
-    const isSignedIn = useSelector((state) => state.auth.isSignedIn);
+
     const dispatch = useDispatch();
   
-    const handleSignIn = () => {
-      dispatch(signIn()); // Update Redux state to signed in
-    };
   
     const handleSignOut = () => {
       dispatch(signOut()); // Update Redux state to signed out
@@ -96,7 +93,7 @@ const PrivateNavbar = () => {
                                 </a>
                                 {/* Dropdown Menu */}
                                 <div className='dropdown-menuu'>
-                                  <Link href="" to={'/myaccount'} >My Account</Link>
+                                  <Link href="" to={'/profile'} >My Account</Link>
                                   <Link href="" to={'/notification'} >Notification</Link>
                                   <Link href="" to={'/support'} >Delivery Support</Link>
                                   <Link href="" to={'/contactus'}  >Contact Us</Link>
@@ -105,7 +102,7 @@ const PrivateNavbar = () => {
                                   <Link href="" to={'/terms'} >Term of use</Link>
                                   <Link href="" to={'/privacy'} >Privacy policy</Link>
                                   <Link href="" to={'/refund'} >Refund policy</Link>
-                                  <Link href="" to={'/signup'} onClick={handleSignOut}>Logout</Link>
+                                  <Link href="" to={'/login'} onClick={handleSignOut}>Logout</Link>
 
 
                                 </div>
@@ -257,7 +254,7 @@ const PrivateNavbar = () => {
                                   </li>
 
                                   <li class="list-group-item  border-bottom"onClick={handleClose}>
-                                    <Link class="link1 " href=""  to={'/signup'} onClick={handleSignOut}>
+                                    <Link class="link1 " href=""  to={'/login'} onClick={handleSignOut}>
                                       <div className='link1-div'>
                                         <div className='image'>
                                           <img src={user} alt="" />
