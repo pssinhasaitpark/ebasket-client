@@ -52,7 +52,7 @@ body {
     font-size: 1.5rem;
     border-radius: 50%;
   }
-
+  
 .carousel-control-prev , .carousel-control-next{
     width: 7% !important;
     opacity: 1 !important;
