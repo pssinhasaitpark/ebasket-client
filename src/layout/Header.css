@@ -362,10 +362,10 @@ input.form-control.input::placeholder {
     display: none;
   }
 
-  input.form-control.input{
+  /* input.form-control.input{
     background-color: #01664a;
 
-    }
+    } */
   input.form-control{
     /* background-color: #01664a; */
 
@@ -386,6 +386,7 @@ button.hemburger-button{
   border-color:white !important;
   border-radius: 12px !important;
   padding: 0px 6px !important;
+  background-color: white;
 }
 .header-container-row{
   display: flex !important;
@@ -394,4 +395,5 @@ button.hemburger-button{
   display: flex;
   justify-content: end;
 }
+
 }

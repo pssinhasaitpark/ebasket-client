@@ -28,10 +28,10 @@ const PrivateNavbar = () => {
     const handleShow = () => setShow(true);
 
     const dispatch = useDispatch();
-  
+
   
     const handleSignOut = () => {
-      dispatch(signOut()); // Update Redux state to signed out
+      dispatch(signOut());
     };
   return (
    <>

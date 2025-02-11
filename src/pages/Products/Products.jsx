@@ -5,6 +5,7 @@ import './Products.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchItems } from '../../store/slices/products-slice';
 import { useNavigate } from 'react-router-dom';
+import sorry from '../../asset/images/no-result copy.png'
 
 
 
@@ -19,9 +20,9 @@ const ProductList = ({  itemss,firstWord}) => {
     dispatch(fetchItems());
   }, [dispatch]);
 
-  useEffect(() => {
-    console.log('Items:', items);
-  }, [items]);
+  // useEffect(() => {
+  //   console.log('Items:', items);
+  // }, [items]);
 
   const handleCardClick = async (id) => {
     try {
@@ -33,25 +34,9 @@ const ProductList = ({  itemss,firstWord}) => {
     }
   };
 
-  // const fi = itemss?.length > 0 ? itemss : items;
   const fi = (itemss?.length > 0 && Array.isArray(itemss)) ? itemss : (Array.isArray(items) ? items : [firstWord]);
-  console.log("firstWordss:", firstWord); 
   const filteredItem = items?.find(item => item?.itemDetails?.name === firstWord);
-  console.log('Filtered Itemsss:', filteredItem);
-
   
-
-  
-
-
-  if (loading) {
-    return <p>Loading items...</p>;
-  }
-
-  if (error) {
-    return <p>Error: {error}</p>;
-  }
-
   return (
     <div className="container section-content">
       <Row className="mt-5 product-list">
@@ -105,7 +90,7 @@ const ProductList = ({  itemss,firstWord}) => {
             );
           })
         ) : (
-          <p>No products available.</p>
+          <p className="no-products"><img src={sorry} alt="" /></p>
         )}
       </Row>
     </div>

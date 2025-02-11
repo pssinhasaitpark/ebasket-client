@@ -129,7 +129,7 @@ const SignUpForm = () => {
         <p className="text-50">Sign up to continue</p>
    {/* Show loader if loading state is true */}
    {loadingOtp ? (
-          <LoadingSpinner /> // You can create a loader in the "spinner" component
+          <LoadingSpinner/> // You can create a loader in the "spinner" component
         ) : (
         <Formik
           initialValues={{
