@@ -9,6 +9,10 @@ import "react-toastify/dist/ReactToastify.css";
 import "./SignupForm.css";
 import { LoadingSpinner } from "../../component/spinner";
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+
+
 const validationSchema = Yup.object({
   fullName: Yup.string().required("Full name is required"),
   phoneNumber: Yup.string()
@@ -22,7 +26,9 @@ const validationSchema = Yup.object({
   }),
 });
 
+
 const SignUpForm = () => {
+ 
   const [showOtp, setShowOtp] = useState(false);
   const [otp, setOtp] = useState("");
   const [selectedCountryCode, setSelectedCountryCode] = useState("+91");
@@ -44,8 +50,8 @@ const SignUpForm = () => {
     };
 
     try {
-      const response = await axios.post("http://192.168.0.111:3001/user/signup", userData);
-
+      const response = await axios.post(`${BASE_URL}/user/signup`, userData);
+      
       if (response.data.message) {
         setShowOtp(true);
         toast.success("OTP sent successfully.");
@@ -67,11 +73,11 @@ const SignUpForm = () => {
     const otpData = { otp };
 
     try {
-      const response = await axios.post("http://192.168.0.111:3001/user/verifyotp", otpData);
+      const response = await axios.post(`${BASE_URL}/user/verifyotp`, otpData);
 
       if (response.data.message) {
         toast.success("OTP verified successfully. You are now signed up!");
-        navigate("/home");
+        navigate("/");
         
       } else {
         toast.error("Invalid OTP. Please try again.");
@@ -99,7 +105,7 @@ const SignUpForm = () => {
     };
 
     try {
-      const response = await axios.post("http://192.168.0.111:3001/user/verifyotp", userData);
+      const response = await axios.post(`${BASE_URL}/user/verifyotp`, userData);
 
       if (response.data.message) {
         toast.success("OTP resent successfully.");

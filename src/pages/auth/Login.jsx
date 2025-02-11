@@ -22,6 +22,8 @@ import { useDispatch , useSelector} from 'react-redux';
 import { signIn } from '../../store/slices/authSlice';
 
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 const validationSchema = Yup.object({
   phoneNumber: Yup.string()
     .matches(/^\d{10}$/, "Phone number must be 10 digits")
@@ -53,7 +55,7 @@ const Login = () => {
     };
 
     try {
-      const response = await axios.post("http://192.168.0.111:3001/user/signin", userData);
+      const response = await axios.post(`${BASE_URL}/user/signin`, userData);
       console.log("resss",response)
       if (response.data.message) {
 
@@ -77,7 +79,7 @@ const Login = () => {
       otp: otp,
     };
     try {
-      const response = await axios.post("http://192.168.0.111:3001/user/verifyotp", otpData);
+      const response = await axios.post(`${BASE_URL}/user/verifyotp`, otpData);
       console.log('reponse--', response);
       
       if (response.data.message) {

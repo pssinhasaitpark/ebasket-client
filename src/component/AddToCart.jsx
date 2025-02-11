@@ -27,7 +27,7 @@ import LikeButton from '../component/LikeButton';
 import sorry from "../asset/images/no-result copy.png"
 import Selling from "../component/Most_selling";
 
-
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 const ProductDetailPage = () => {
   const { id } = useParams(); 
   const [quantity, setQuantity] = useState(1);
@@ -44,7 +44,7 @@ const ProductDetailPage = () => {
   useEffect(() => {
     const fetchProductData = async () => {
       try {
-        const response = await axios.get(`http://192.168.0.111:3001/items/itembyid/${id}`);
+        const response = await axios.get(`${BASE_URL}/items/itembyid/${id}`);
         setProductData(response.data.product); 
         setLoading(false);
         if (response.data.product.itemDetails.variants.length > 0) {

@@ -1,4 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+
 const initialState = {
   brands: [],
   loading: false,
@@ -8,7 +12,7 @@ const initialState = {
 export const fetchBrands = createAsyncThunk(
   'brands/fetchBrands',
   async () => {
-    const response = await fetch('http://192.168.0.111:3001/brands/allbrands'); 
+    const response = await fetch(`${BASE_URL}/brands/allbrands`); 
     const data = await response.json();
     return data.brands; 
   }
