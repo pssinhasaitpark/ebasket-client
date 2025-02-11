@@ -61,7 +61,7 @@ const WishlistPage = () => {
                       </div>
                       <a href="#">
                         <Card.Img
-                          src={`http://192.168.0.111:3001${product.itemDetails.mediaFiles[0]?.url}`}
+                          src={`${BASE_URL}${product.itemDetails.mediaFiles[0]?.url}`}
                           variant="top"
                           className="img-fluid item-img w-100"
                           alt={product.itemDetails.name}

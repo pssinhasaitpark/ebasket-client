@@ -59,7 +59,7 @@ const ProductList = ({  itemss,firstWord}) => {
                       <Card.Img
                         src={
                           item.itemDetails?.mediaFiles[0]?.url
-                            ? `http://192.168.0.111:3001${item.itemDetails.mediaFiles[0].url}`
+                            ? `${BASE_URL}${item.itemDetails.mediaFiles[0].url}`
                             : potatoImg
                         }
                         variant="top"

@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategories } from '../store/slices/categories-slice';
 import sorry from "../asset/images/no-result copy.png"
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 function TopCategories() {
 
@@ -109,7 +110,7 @@ function TopCategories() {
               <Link to={`/categories/${category._id}`} className="category-card">
                   <img
                     className="category-img img-fluid"
-                    src={category.image ? `http://192.168.0.111:3001${category.image}` : snacks} 
+                    src={category.image ? `${BASE_URL}${category.image}` : snacks} 
                     alt={category.name}
                   />
                   <h4 className="pt-3">{category.name}</h4>
