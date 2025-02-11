@@ -37,7 +37,7 @@ const App = () => {
   return (
     <>
 
-    {/* <PersistGate loading={null} persistor={persistor}> */}
+    <PersistGate loading={null} persistor={persistor}>
       <Header/>
         {loading && (<LoadingSpinner />)
         }
@@ -54,7 +54,7 @@ const App = () => {
 
        <Footer /> 
          
-       {/* </PersistGate> */}
+       </PersistGate>
 
     
 
