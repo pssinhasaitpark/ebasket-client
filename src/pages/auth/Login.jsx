@@ -84,9 +84,6 @@ const Login = () => {
       
       if (response.data.message) {
         toast.success("OTP verified successfully. You are now logged in.");
-       
-      
-
         naviagte("/");
         toast.success("You are LoggedIn !!!!!!!")
         

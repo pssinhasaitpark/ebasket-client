@@ -37,41 +37,25 @@ const App = () => {
   return (
     <>
 
-    <PersistGate loading={null} persistor={persistor}>
+    {/* <PersistGate loading={null} persistor={persistor}> */}
       <Header/>
         {loading && (<LoadingSpinner />)
         }
-        <>
+        {/* <>
         {isSignedIn ? (<>
           <PublicRoutes />
           <ProtectedRoutes />
         </>):(
           <PublicRoutes />
         )}
-
-{/* <PublicRoutes />
-<ProtectedRoutes /> */}
-
-        </>
-       <Footer /> 
-         
-       </PersistGate>
-
-        {loading && (<LoadingSpinner />)}
-        
-        <>
-        <Header/>
-        {isSignedIn ? 
-        (<> 
+        </> */}
           <PublicRoutes />
           <ProtectedRoutes />
-         </>):
-         (
-           <PublicRoutes /> 
-         )
-         } 
+
+       <Footer /> 
          
-        </>
+       {/* </PersistGate> */}
+
     
 
     </>
