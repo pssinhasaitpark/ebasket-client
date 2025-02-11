@@ -3,6 +3,8 @@ import './FavoriteItems.css';
 import { Container, Row, Col, Card, Badge } from 'react-bootstrap';
 import { FaHeart } from 'react-icons/fa';
 
+
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 const WishlistPage = () => {
   const [wishlist, setWishlist] = useState([]);
   const [productDetails, setProductDetails] = useState([]);
@@ -15,7 +17,7 @@ const WishlistPage = () => {
 
       try {
         const productPromises = storedWishlist.map(async (productId) => {
-          const response = await fetch(`http://192.168.0.111:3001/items/itembyid/${productId}`);
+          const response = await fetch(`${BASE_URL}/items/itembyid/${productId}`);
           const data = await response.json();
           return data.product; 
         });

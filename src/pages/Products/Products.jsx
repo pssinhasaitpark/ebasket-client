@@ -6,6 +6,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchItems } from '../../store/slices/products-slice';
 import { useNavigate } from 'react-router-dom';
 
+
+
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 const ProductList = ({  itemss,firstWord}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -22,7 +25,7 @@ const ProductList = ({  itemss,firstWord}) => {
 
   const handleCardClick = async (id) => {
     try {
-      const response = await fetch(`http://192.168.0.111:3001/items/itembyid/${id}`);
+      const response = await fetch(`${BASE_URL}/items/itembyid/${id}`);
       const productDetails = await response.json();
       navigate(`/productDetail/${id}`, { state: { productDetails } });
     } catch (error) {
