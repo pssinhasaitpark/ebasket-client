@@ -8,9 +8,9 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./SignupForm.css";
 import { LoadingSpinner } from "../../component/spinner";
-
+import { signUp } from '../../store/slices/authSlice'; // Import the signUp action
+import { useDispatch, useSelector } from "react-redux";
 const BASE_URL = process.env.REACT_APP_BASE_URL;
-
 
 
 const validationSchema = Yup.object({
@@ -28,12 +28,13 @@ const validationSchema = Yup.object({
 
 
 const SignUpForm = () => {
- 
+  
+const username = useSelector((state) => state.auth.username); // Get username from Redux
   const [showOtp, setShowOtp] = useState(false);
   const [otp, setOtp] = useState("");
   const [selectedCountryCode, setSelectedCountryCode] = useState("+91");
   const [loadingOtp, setLoadingOtp] = useState(false);  // State to track OTP loading
- 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleCountrySelect = (countryCode) => {
@@ -77,6 +78,9 @@ const SignUpForm = () => {
 
       if (response.data.message) {
         toast.success("OTP verified successfully. You are now signed up!");
+        dispatch(signUp({ username :values.fullName }));
+        console.log("suerma" ,username);
+        
         navigate("/");
         
       } else {

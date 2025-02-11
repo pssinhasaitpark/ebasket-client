@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 import {
@@ -10,6 +10,7 @@ import {
   FormControl,
   Card,
   Container,
+  NavLink,
 } from "react-bootstrap";
 import {
   FaMinus,
@@ -26,6 +27,7 @@ import Header from "../layout/Header";
 import LikeButton from '../component/LikeButton';
 import sorry from "../asset/images/no-result copy.png"
 import Selling from "../component/Most_selling";
+import { useDispatch,useSelector } from "react-redux";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const ProductDetailPage = () => {
@@ -39,7 +41,10 @@ const ProductDetailPage = () => {
   const [variantQuantity, setVariantQuantity] = useState(1);
   const [totalPrice, setTotalPrice] = useState(null);
   const [totalImage, settotalImage] = useState(null);
-
+ 
+  const navigate = useNavigate();
+  const isSignedIn = useSelector((state) => state.auth.isSignedIn);
+ 
 
   useEffect(() => {
     const fetchProductData = async () => {
@@ -263,13 +268,13 @@ const ProductDetailPage = () => {
                   </div>
 
                   <div className="addtocart mt-2 mb-3 gap-3">
-                    <Button variant="dark" className="btnnn " size="lg" onClick={() => handleAddToCart(productData)}>
+                    <Button variant="dark" className="btnnn " size="lg" onClick={() =>navigate(isSignedIn ? handleAddToCart(productData) :'/login') }>
                       <FaShoppingCart /> Add to Cart
                     </Button>
                     <Button variant="success" className="btnnn" size="lg">
-                    <Link className="button-routes" to="/checkout">
+                    <NavLink className="button-routes"  onClick={() => navigate(isSignedIn ? '/checkout' : '/login')}>
                       <FaShoppingCart /> Buy Now
-                    </Link>
+                    </NavLink>
                     </Button>
                   </div>
 

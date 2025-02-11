@@ -32,7 +32,7 @@ const validationSchema = Yup.object({
 });
 
 const Login = () => {
- 
+  
   const [country, setCountry] = useState("+91");
   const [isOtpVisible, setIsOtpVisible] = useState(false);
   const [otp, setOtp] = useState("");
@@ -77,6 +77,7 @@ const Login = () => {
     const otpData = {
       // phoneNumber: country + values.phoneNumber,
       otp: otp,
+      
     };
     try {
       const response = await axios.post(`${BASE_URL}/user/verifyotp`, otpData);
@@ -84,6 +85,7 @@ const Login = () => {
       
       if (response.data.message) {
         toast.success("OTP verified successfully. You are now logged in.");
+    
         naviagte("/");
         toast.success("You are LoggedIn !!!!!!!")
         
