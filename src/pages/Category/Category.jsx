@@ -13,7 +13,7 @@ import potatoImg from '../../asset/images/t3.png';
 import useProductNavigation from "../../hooks/useProductNavigation";
 import sorry from '../../asset/images/no-result copy.png'
 
-
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 function Category() {
     const dispatch = useDispatch();
     const handleCardClick = useProductNavigation();
@@ -96,7 +96,7 @@ function Category() {
                                                     />
                                                     <span className='input-title'>
                                                         <img
-                                                            src={category.image ? `http://192.168.0.111:3001${category.image}` : rice}
+                                                            src={category.image ? `${BASE_URL}${category.image}` : rice}
                                                             alt={category.name}
                                                         />
                                                         {category.name}
@@ -126,7 +126,7 @@ function Category() {
                                                     />
                                                     <span className='input-title'>
                                                         <img
-                                                            src={brand.image ? `http://192.168.0.111:3001${brand.image}` : amul}
+                                                            src={brand.image ? `${BASE_URL}${brand.image}` : amul}
                                                             alt={brand.title}
                                                         />
                                                         {brand.title}
@@ -153,7 +153,7 @@ function Category() {
                                                 </div>
                                                 <a href="#">
                                                     <Card.Img
-                                                        src={item.itemDetails.mediaFiles[0]?.url ? `http://192.168.0.111:3001${item.itemDetails.mediaFiles[0].url}` : potatoImg}
+                                                        src={item.itemDetails.mediaFiles[0]?.url ? `${BASE_URL}${item.itemDetails.mediaFiles[0].url}` : potatoImg}
                                                         variant="top"
                                                         className="img-fluid item-img w-100"
                                                         alt={item.itemDetails.name}

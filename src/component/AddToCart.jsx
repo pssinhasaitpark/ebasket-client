@@ -160,7 +160,7 @@ const ProductDetailPage = () => {
                         <img
                           alt="productData.itemDetails.name"
                           className="img-fluid item-img w-100"
-                          src={totalImage ? `http://192.168.0.111:3001${totalImage}` : `http://192.168.0.111:3001${productData?.itemDetails?.mediaFiles[0]?.url}`}
+                          src={totalImage ? `${BASE_URL}${totalImage}` : `${BASE_URL}${productData?.itemDetails?.mediaFiles[0]?.url}`}
                           />
                       </div>
                     </div>
@@ -175,7 +175,7 @@ const ProductDetailPage = () => {
                             onClick={() => handleVariantChange(variants)}
                           >
                             <img
-                              src={`http://192.168.0.111:3001${variants.variantImage}`}
+                              src={`${BASE_URL}${variants.variantImage}`}
                               alt={variants.variantName}
                               className="img-fluid cart-slider-img"
                               onClick={() => handleVariantImageClick(variants, index)}

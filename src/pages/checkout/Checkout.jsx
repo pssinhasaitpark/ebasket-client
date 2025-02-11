@@ -25,6 +25,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getCoupons } from '../../store/slices/coupons.slice';
 import discountImg from '../../asset/images/discount-icon.png'
 
+
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 const Checkout = () => {
   const [cart, setCart] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -429,7 +431,7 @@ const Checkout = () => {
           cart.map((item) => (
             <div key={item._id} className="d-flex w-100 media align-items-center col-md-6 mb-2 border checkout-added-products">
              <div className="w-100"> <div className="d-flex"><img
-                src= {`http://192.168.0.111:3001${item.itemDetails.mediaFiles[0]?.url}`}
+                src= {`${BASE_URL}${item.itemDetails.mediaFiles[0]?.url}`}
                 className="img-responsive img-rounded order-img"
                 style={{ maxHeight: '40px', maxWidth: '25px' }}
                 alt="product"

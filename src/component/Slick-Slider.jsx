@@ -13,7 +13,7 @@ import { fetchItems } from "../store/slices/products-slice";
 import useProductNavigation from "../hooks/useProductNavigation";
 import sorry from "../asset/images/no-result copy.png"
 
-
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 function Slick({category}) 
 {     
   const dispatch = useDispatch();
@@ -120,7 +120,7 @@ function Slick({category})
                                       className="Slick-img img-fluid"
                                       src={
                                         item.itemDetails.mediaFiles && item.itemDetails.mediaFiles[0]?.url
-                                          ? `http://192.168.0.111:3001${item.itemDetails.mediaFiles[0].url}`
+                                          ? `${BASE_URL}${item.itemDetails.mediaFiles[0].url}`
                                           : rice
                                       }
                                       alt={item.itemDetails.name}
