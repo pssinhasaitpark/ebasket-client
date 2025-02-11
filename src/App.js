@@ -16,7 +16,7 @@ import Checkout from "./pages/checkout/Checkout.jsx";
 import { Route, Routes } from "react-router-dom";
 import NotFound from "./pages/NotFound/NotFound.jsx";
 import Map from "./component/Map.jsx";
-
+import Transcation from './pages/transaction/Transaction.jsx'
 
 
 
@@ -35,8 +35,8 @@ const App = () => {
   }, [loading]);
 
   return (
-
     <>
+
     <PersistGate loading={null} persistor={persistor}>
       <Header/>
         {loading && (<LoadingSpinner />)
@@ -56,6 +56,24 @@ const App = () => {
        <Footer /> 
          
        </PersistGate>
+
+        {loading && (<LoadingSpinner />)}
+        
+        <>
+        <Header/>
+        {isSignedIn ? 
+        (<> 
+          <PublicRoutes />
+          <ProtectedRoutes />
+         </>):
+         (
+           <PublicRoutes /> 
+         )
+         } 
+         
+        </>
+    
+
     </>
   );
 }

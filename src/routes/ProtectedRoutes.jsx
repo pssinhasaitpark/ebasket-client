@@ -27,15 +27,15 @@ const ProtectedRoutes = () => {
     //   const [isSignedIn, setisSignedIn] = useState(false);
         
 
-    const isSignedIn = useSelector((state) => state.auth.isSignedIn);
-   console.log("protected route" ,isSignedIn);
+//     const isSignedIn = useSelector((state) => state.auth.isSignedIn);
+//    console.log("protected route" ,isSignedIn);
    
    
-    if (!isSignedIn) {
+//     if (!isSignedIn) {
 
-        // Redirect to login if not signed in
-        return <Navigate to="/login" element={<Login/>}/>;
-    }
+//         // Redirect to login if not signed in
+//         return <Navigate to="/login" element={<Login/>}/>;
+//     }
 
 
     return (

@@ -8,8 +8,9 @@ import location from '../../asset/images/deliverylocation.png'
 import edit from '../../asset/images/edit.png'
 import bin from '../../asset/images/bin.png'
 import './Transaction.css'
-const Transcation = (props) => {
 
+const Transcation = (props) => {
+   
     // Validation schema using Yup
     const validationSchema = Yup.object({
 
@@ -43,6 +44,7 @@ const Transcation = (props) => {
                     }}
                     validationSchema={props.validationSchema}
                     onSubmit={(values) => {
+                      
                         console.log('Form Submitted with values:', values);
                     }}
                 >
@@ -64,6 +66,7 @@ const Transcation = (props) => {
                                         value={values.landmark}
                                         onChange={handleChange}
                                         onBlur={handleBlur}
+                                        min={0}
                                     />
                                 </div>
                             </Form.Group>
@@ -152,7 +155,10 @@ const Transcation = (props) => {
                                 <Button type="button" className="form-btn w-50 close-btn" onClick={props.onHide}>
                                     Close
                                 </Button>
-                                <Button type="submit" variant="primary" className="form-btn w-50">
+                                <Button type="submit" variant="primary" className="form-btn w-50"
+                                
+                                >
+                                    
                                     Next
                                 </Button>
                             </div>
@@ -173,7 +179,9 @@ const Transcation = (props) => {
 
 
 function Wallet() {
+   
     const [loading, setLoading] = useState(true);
+    
     useEffect(() => {
 
         setTimeout(() => {
@@ -182,6 +190,9 @@ function Wallet() {
         }, 1000)
 
     }, []);
+    
+  
+
     const [modalShow, setModalShow] = React.useState(false);
 
     // You can define the validation schema here or import it if needed
@@ -195,7 +206,7 @@ function Wallet() {
                 <Container>
                     <div className='transaction-container rounded p-5 mt-4'>
 
-                        <Row className=' text-center'>
+                        <Row className=' text-center flex-column'>
 
                             <Col>
                             <h3 className='font-weight-bold h4 text-light'>Wallet Amount : $ {0}</h3>
@@ -208,6 +219,7 @@ function Wallet() {
                             <Transcation
                                 show={modalShow}
                                 onHide={() => setModalShow(false)}
+                               
                                 validationSchema={validationSchema} // Pass validation schema if you have one
                             />
                                 </Col>
@@ -219,7 +231,9 @@ function Wallet() {
                         </Button>
                             
                             
-                        <Button  className='bg-transparent text-success border-dark shadow-sm'>
+                        <Button  className='bg-transparent text-success border-dark shadow-sm'
+                        
+                        >
                             Next 
                         </Button>
 

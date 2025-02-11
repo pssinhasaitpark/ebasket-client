@@ -59,6 +59,7 @@ const PublicRoutes = () => {
             <Route path="/search" element={<Search />} />
             <Route path="/contactus" element={<ContactUs />} />
             <Route path="/support" element={<FaqPage/>}/>
+            <Route path="*"/>
             
 
             </Routes>
