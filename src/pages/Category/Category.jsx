@@ -11,6 +11,7 @@ import { useLocation } from "react-router-dom";
 import { fetchItems } from '../../store/slices/products-slice';
 import potatoImg from '../../asset/images/t3.png';
 import useProductNavigation from "../../hooks/useProductNavigation";
+import sorry from '../../asset/images/no-result copy.png'
 
 
 function Category() {
@@ -141,7 +142,7 @@ function Category() {
                     <div className='col-md-9 col-sm-8'>
                         <Row className="mt-5">
                             {filteredItems.length === 0 ? (
-                                <p>No items match your filter criteria.</p>
+                               <p className="no-products"><img src={sorry} alt="" /></p>
                             ) : (
                                 filteredItems.map((item, index) => (
                                     <Col key={index} md={4} className="pb-3">

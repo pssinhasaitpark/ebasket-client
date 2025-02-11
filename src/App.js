@@ -9,6 +9,8 @@ import { LoadingSpinner, AddressLoader } from "./component/spinner";
 import { useSelector } from "react-redux";
 import PublicRoutes from "./routes/PublicRoutes.jsx";
 import ProtectedRoutes from "./routes/ProtectedRoutes.jsx";
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistor } from './store/store.js';
 import DemoHeader from "./layout/Demo.jsx";
 import Checkout from "./pages/checkout/Checkout.jsx";
 import { Route, Routes } from "react-router-dom";
@@ -34,6 +36,27 @@ const App = () => {
 
   return (
     <>
+
+    <PersistGate loading={null} persistor={persistor}>
+      <Header/>
+        {loading && (<LoadingSpinner />)
+        }
+        <>
+        {isSignedIn ? (<>
+          <PublicRoutes />
+          <ProtectedRoutes />
+        </>):(
+          <PublicRoutes />
+        )}
+
+{/* <PublicRoutes />
+<ProtectedRoutes /> */}
+
+        </>
+       <Footer /> 
+         
+       </PersistGate>
+
         {loading && (<LoadingSpinner />)}
         
         <>
@@ -50,6 +73,7 @@ const App = () => {
          
         </>
     
+
     </>
   );
 }

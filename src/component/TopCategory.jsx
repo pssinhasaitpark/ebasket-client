@@ -9,6 +9,8 @@ import './TopCategory.css'
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategories } from '../store/slices/categories-slice';
+import sorry from "../asset/images/no-result copy.png"
+
 
 function TopCategories() {
 
@@ -92,7 +94,8 @@ function TopCategories() {
 
   };
   return (
-    
+        <div>
+            { categories.length>0 ? (
        <div className="top-category-container">
 
     
@@ -101,7 +104,7 @@ function TopCategories() {
           <div className="Category-heading"><h3>TOP CATEGORIES</h3></div>
           <div className="pb-5">
             <Slider {...settings} style={{ background: 'transparent' }}>
-            {categories.map((category) => (
+            { categories.map((category) => (
              category.publish && (
               <Link to={`/categories/${category._id}`} className="category-card">
                   <img
@@ -113,14 +116,18 @@ function TopCategories() {
                   <h6 className="pt-1">({category.itemsCount} items)</h6>
                 </Link>
                 )
-              ))}
+              ))
+            }
               </Slider>
+            
 
           </div>
       </div>
-        </Container>
-        </div>
-   
+      </Container>
+      </div>
+    ) : (<p className="no-products"><img src={sorry} alt="" /></p>)
+  }
+   </div>
   );
 }
 

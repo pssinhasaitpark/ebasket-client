@@ -4,8 +4,6 @@ import { IoSearchOutline } from "react-icons/io5";
 import { FormControl, Container } from 'react-bootstrap';
 import ProductList from '../../pages/Products/Products';
 import nothing from '../../asset/images/no-result.png'
-// import ProductList from '../Products';
-// import nothing from '../../assests/images/no-result.png';
 import { FiHome } from "react-icons/fi";
 import { useSelector } from 'react-redux';
 
@@ -13,18 +11,18 @@ import { useSelector } from 'react-redux';
 function Search() {
   const [searchTerm, setSearchTerm] = useState('');
   const { items } = useSelector((state) => state.items); 
-
   const style = { color: "#01664a", size: "10px" };
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
   };
 
-
   const filteredItems = items.filter((item) => {
     const productName = item?.itemDetails?.name || ''; 
     return productName.toLowerCase().includes(searchTerm.toLowerCase());
   });
+
+  
 
   return (
     <div className='search-page'>
@@ -60,13 +58,11 @@ function Search() {
     {filteredItems?.length === 0 && (
       <div className='text-center py-5'>
         <img src={nothing} alt="No results" />
-        <p>No products found</p>
+        <p></p>
       </div>
     )}
 
-   
-    {/* {filteredItems?.length > 0 && <ProductList itemss={filteredItems} />} */}
-    <ProductList itemss={filteredItems}></ProductList>
+    <ProductList itemss={filteredItems} />
   </div>
 </div>
 

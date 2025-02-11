@@ -1,10 +1,11 @@
-// src/store/slices/authSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   isSignedIn: false, // Initial state: user is not signed in
-  username: '', // Add username here
+  username: '', 
 };
+
+
 
 const authSlice = createSlice({
   name: 'auth',

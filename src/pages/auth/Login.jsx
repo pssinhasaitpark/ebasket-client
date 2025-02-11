@@ -88,7 +88,7 @@ const Login = () => {
         naviagte("/");
         toast.success("You are LoggedIn !!!!!!!")
         
-        dispatch(signIn(true)); // Dispatch the signIn action
+        dispatch(signIn(true));
         
       } else {
         toast.error("Invalid OTP. Please try again.");
