@@ -35,3 +35,9 @@
     background-color: rgb(255, 255, 255) !important;
     color: #000 !important;
 }
+
+@media (max-width: 767px){
+.modal-content {
+    width: 100% !important;
+}
+}
