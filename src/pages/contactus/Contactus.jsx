@@ -19,8 +19,8 @@ const ContactUs = () => {
     <>
      {/* <Header/> */}
     <Container>
-      <Row className="justify-content-center my-5 ">
-        <Col md={6} className='shadow-sm p-4'>
+      <Row className="justify-content-center my-5 contact-us-main-container">
+        <Col md={6} className='col-auto shadow-sm p-4 contact-us-container'>
           <h2 className="form-heading text-center mb-4">Tell Us About Yourself</h2>
           <Formik
             initialValues={{

@@ -232,7 +232,7 @@ function AddressForm() {
         <>
         <div>
            <Container>
-            <div className='d-flex justify-content-center'>
+            <div className='no-result d-flex justify-content-center'>
               <img src={noresult} alt="" />
             </div>
            </Container>

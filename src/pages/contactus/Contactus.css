@@ -19,3 +19,12 @@ label.form-label {
     background-color: #01664a !important;
     border: unset;
 }
+
+@media (max-width: 767px){
+    .contact-us-container{
+        padding : 0px !important;
+    }
+    .contact-us-main-container{
+        margin: 30px 0 !important;
+    }
+}
