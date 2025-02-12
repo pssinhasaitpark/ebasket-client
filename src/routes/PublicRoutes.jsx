@@ -3,7 +3,6 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import Home from "../pages/home/Home";
 import Login from "../pages/auth/Login";
 import SignUpForm from "../pages/auth/SignupForm";
-import NotFound from "../pages/NotFound/NotFound";
 import CouponsList from "../pages/offers/Offers";
 import Refund from "../pages/refund/Refund";
 import Privacy from "../pages/privacy/Privacy";
@@ -16,6 +15,8 @@ import Search from "../pages/Search/search-page";
 import ContactUs from "../pages/contactus/Contactus";
 import ProductList from "../pages/Products/Products";
 import ProductDetailPage from "../component/AddToCart";
+import NotFound from "../pages/NotFound/NotFound";
+
 
 import ProtectedRoutes from "./ProtectedRoutes";
 import { useSelector } from "react-redux";
@@ -59,9 +60,7 @@ const PublicRoutes = () => {
             <Route path="/search" element={<Search />} />
             <Route path="/contactus" element={<ContactUs />} />
             <Route path="/support" element={<FaqPage/>}/>
-            <Route path="*"/>
-            
-
+            {/* <Route path="*" element={<NotFound/>} /> */}
             </Routes>
         </>
     );

@@ -85,7 +85,8 @@ function Category() {
                                     {categories.map((category, i) => (
                                         category.publish && (
                                             <li key={category._id} className="category-item">
-                                                <a href="#" onClick={(e) => e.preventDefault()}>
+                                                <a href="#">
+                                                {/* onClick={(e) => e.preventDefault()} */}
                                                     <input
                                                         className="form-check-input category-item"
                                                         type="checkbox"
@@ -115,7 +116,8 @@ function Category() {
                                     {brands.map((brand) => (
                                         brand.publish && (
                                             <li key={brand._id} className="brand-item">
-                                                <a href="#" onClick={(e) => e.preventDefault()}>
+                                                <a href="#">
+                                                {/* onClick={(e) => e.preventDefault()} */}
                                                     <input
                                                         className="form-check-input category-item"
                                                         type="checkbox"

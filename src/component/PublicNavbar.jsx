@@ -1,5 +1,5 @@
 import React from 'react'
-import  { useState } from 'react'
+import  { useEffect , useState } from 'react'
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import { Dropdown, Row, Col, Form, NavLink } from 'react-bootstrap';
@@ -23,7 +23,7 @@ import { signIn, signOut } from '../store/slices/authSlice';
 
 const PublicNavbar = () => {
       const [show, setShow] = useState(false);
-    
+
       const handleClose = () => setShow(false);
       const handleShow = () => setShow(true);
     
@@ -38,6 +38,9 @@ const PublicNavbar = () => {
       const handleSignOut = () => {
         dispatch(signOut()); // Update Redux state to signed out
       };
+
+
+  
   return (
    <>
     <Col lg={7} className='col-2 pe-0'>

@@ -34,7 +34,7 @@ const ProductDetailPage = () => {
   const { id } = useParams(); 
   const [quantity, setQuantity] = useState(1);
   const [productData, setProductData] = useState(null);
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(false); 
   const [cart, setCart] = useState([]);
   const [selectedVariant, setSelectedVariant] = useState(null);
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(0); 
@@ -141,13 +141,7 @@ const ProductDetailPage = () => {
     console.log("Updated Cart:", updatedCart);
   };
 
-
-  // const productName = productData.itemDetails.name || "";
-  // const firstWord = productName.split(" ")[0];
-
-
-  
-
+  // const totalQuantity = cart.reduce((acc, item) => acc + item.quantity, 0);
 
 
   return (

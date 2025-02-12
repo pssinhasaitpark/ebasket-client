@@ -41,17 +41,8 @@ const App = () => {
       <Header/>
         {loading && (<LoadingSpinner />)
         }
-        {/* <>
-        {isSignedIn ? (<>
           <PublicRoutes />
           <ProtectedRoutes />
-        </>):(
-          <PublicRoutes />
-        )}
-        </> */}
-          <PublicRoutes />
-          <ProtectedRoutes />
-
        <Footer /> 
          
        </PersistGate>

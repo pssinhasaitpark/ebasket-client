@@ -301,6 +301,12 @@ input.form-control.input::placeholder {
   font-weight: 600; /* Make the text bold */
 }
 
+.count-badge{
+  position: relative;
+  background-color: #33ab5b; 
+}
+
+
 /* Define the zoom-in animation */
 @keyframes zoomInOut {
   0% {
