@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useEffect , useState } from 'react'
 import {  Col, } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
@@ -19,20 +19,61 @@ import {  signOut } from '../store/slices/authSlice';
 
 
 const PrivateNavbar = () => {
+  const dispatch = useDispatch();
+
     const username = useSelector((state) => state.auth.username); // Get username from Redux
     console.log("username-",username);
-    
+    const [cart, setCart] = useState(() => JSON.parse(localStorage.getItem("cart")) || []);
+    const [totalQuantity, setTotalQuantity] = useState(0);
     const [show, setShow] = useState(false);
-  
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
-    const dispatch = useDispatch();
-
-  
+    
+    
+    
     const handleSignOut = () => {
       dispatch(signOut());
     };
+    
+//     const updateCartQuantity = () => {
+//       const cart = JSON.parse(localStorage.getItem("cart")) || [];
+//       const totalQuantity = cart.reduce((acc, item) => {
+//         return acc + (item.quantity + (item.variantQuantity || 0));
+//       }, 0);
+//       setTotalQuantity(totalQuantity);
+//   };
+//   useEffect(() => {
+//     updateCartQuantity(); 
+
+//     const handleStorageChange = () => {
+//         updateCartQuantity();
+//     };
+
+//     window.addEventListener('storage', handleStorageChange);
+
+//     return () => {
+//         window.removeEventListener('storage', handleStorageChange);
+//     };
+// }, []);
+
+
+const updateCartQuantity = () => {
+  const totalQuantity = cart.reduce((acc, item) => {
+    return acc + (item.quantity + (item.variantQuantity || 0));
+  }, 0);
+  setTotalQuantity(totalQuantity);
+};
+
+useEffect(() => {
+  updateCartQuantity(); 
+  
+  localStorage.setItem("cart", JSON.stringify(cart));
+}, [cart]); 
+
+const updateCart = (newItem) => {
+  setCart(prevCart => [...prevCart, newItem]);
+};
+
   return (
    <>
      <Col lg={7} className='col-2 pe-0'>
@@ -120,6 +161,12 @@ const PrivateNavbar = () => {
                             </div>
                             <Link to={"/checkout"} className="nav-link " activeClassName="active">
                               Cart
+                              {totalQuantity > 0 && (
+                              <span className="badge rounded-circle count-badge" 
+                                    style={{ top: "-10px", fontSize: "12px", padding: "5px 10px" }}>
+                                {totalQuantity}
+                              </span>
+                            )}
                             </Link>
                           </div>
                         </li>

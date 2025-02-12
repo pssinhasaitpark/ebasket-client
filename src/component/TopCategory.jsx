@@ -21,9 +21,9 @@ function TopCategories() {
   useEffect(() => {
     dispatch(fetchCategories());
   }, [dispatch]);
-  if (categoryLoading) {
-    return <p>Loading categories</p>;
-  }
+  // if (categoryLoading) {
+  //   return <p>Loading categories</p>;
+  // }
 
   
 

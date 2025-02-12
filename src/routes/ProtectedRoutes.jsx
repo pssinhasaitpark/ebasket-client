@@ -4,52 +4,29 @@ import { useSelector } from "react-redux";
 import Profile from "../pages/profie/Profile";
 import Checkout from "../pages/checkout/Checkout";
 import OrderTabs from "../pages/MyOrders/MyOrder";
-import NotFound from "../pages/NotFound/NotFound";
 import AddressForm from "../pages/deliveryaddress/DeliveryAddress";
 import PayWallet from "../pages/paywallet/PayWallet";
 import Success from "../pages/success/Success";
 import WishlistPage from "../pages/FavoriteItems";
 import Transcation from '../pages/transaction/Transaction'
-import Login from "../pages/auth/Login";
-import PublicRoutes from "./PublicRoutes";
+import NotFound from "../pages/NotFound/NotFound";
+
 const ProtectedRoutes = () => {
 
-    // const isSignedIn = useSelector((state) => state.auth.isSignedIn);
-
-
-    // if (!isSignedIn) {
-    //     return <Navigate to="/login" />;
-    //   }
-
-     
-    // if (!isSignedIn) {
-    //     console.log('1234567890',isSignedIn);
-    //   const [isSignedIn, setisSignedIn] = useState(false);
-        
-
-//     const isSignedIn = useSelector((state) => state.auth.isSignedIn);
-//    console.log("protected route" ,isSignedIn);
-   
-   
-//     if (!isSignedIn) {
-
-//         // Redirect to login if not signed in
-//         return <Navigate to="/login" element={<Login/>}/>;
-//     }
-
+    const isSignedIn = useSelector((state) => state.auth.isSignedIn);
 
     return (
         <> 
             <Routes>
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/delivery-address" element={<AddressForm />} />
-            <Route path="/orders" element={<OrderTabs />} />
-            <Route path="/transaction" element={<Transcation />} />
-            <Route path="/pay-wallet" element={<PayWallet />} />
-            <Route path="/success" element={<Success />} />
-            <Route path="/favorite-products" element={<WishlistPage />} />
-            
+            <Route path="/profile" element={isSignedIn ? <Profile /> : <Navigate to="/login" />}/>
+            <Route path="/checkout" element={isSignedIn ? <Checkout /> : <Navigate to="/login" />}/>
+            <Route path="/delivery-address" element={isSignedIn ? <AddressForm /> : <Navigate to="/login" />}/>
+            <Route path="/orders" element={isSignedIn ? <OrderTabs /> : <Navigate to="/login" />}/>
+            <Route path="/transaction" element={isSignedIn ? <Transcation /> : <Navigate to="/login" />}/>
+            <Route path="/pay-wallet" element={isSignedIn ? <PayWallet /> : <Navigate to="/login" />}/>
+            <Route path="/success" element={isSignedIn ? <Success /> : <Navigate to="/login" />}/>
+            <Route path="/favorite-products" element={isSignedIn ? <WishlistPage /> : <Navigate to="/login" />}/>
+            {/* <Route path="*" element={<NotFound/>} /> */}
             </Routes>
         </>
     );

@@ -14,7 +14,7 @@ import PublicNavbar from '../component/PublicNavbar';
 
 const Header = () => {
   const isSignedIn = useSelector((state) => state.auth.isSignedIn);
-  
+
 
 
   return (

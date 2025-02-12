@@ -33,9 +33,7 @@ function Slick({category})
     
     
 
-//  useEffect(() => {
-//     console.log('Items:', items);
-//   }, [items]);
+
 
     const SamplePrevArrow = (props) => {
         const { className, style, onClick } = props;
