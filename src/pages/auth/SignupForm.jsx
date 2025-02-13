@@ -49,7 +49,8 @@ const username = useSelector((state) => state.auth.username); // Get username fr
       email: values.email,
       address: values.address,
     };
-
+ console.log("Bahveshv s", userData.fullName);
+  dispatch(signUp( userData.fullName))
     try {
       const response = await axios.post(`${BASE_URL}/user/signup`, userData);
       
