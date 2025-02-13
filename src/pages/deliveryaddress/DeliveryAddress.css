@@ -53,4 +53,7 @@
     .address-wrapper{
         width: auto !important;
     }
+    .no-result img{
+        width: -webkit-fill-available !important;
+    }
 }

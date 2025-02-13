@@ -19,7 +19,7 @@ import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch , useSelector} from 'react-redux';
-import { signIn } from '../../store/slices/authSlice';
+import { signIn, signUp } from '../../store/slices/authSlice';
 
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -32,7 +32,6 @@ const validationSchema = Yup.object({
 });
 
 const Login = () => {
-  
   const [country, setCountry] = useState("+91");
   const [isOtpVisible, setIsOtpVisible] = useState(false);
   const [otp, setOtp] = useState("");

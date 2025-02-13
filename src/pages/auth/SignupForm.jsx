@@ -10,6 +10,7 @@ import "./SignupForm.css";
 import { LoadingSpinner } from "../../component/spinner";
 import { signUp } from '../../store/slices/authSlice'; // Import the signUp action
 import { useDispatch, useSelector } from "react-redux";
+import { logDOM } from "@testing-library/react";
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 
@@ -29,7 +30,6 @@ const validationSchema = Yup.object({
 
 const SignUpForm = () => {
   
-const username = useSelector((state) => state.auth.username); // Get username from Redux
   const [showOtp, setShowOtp] = useState(false);
   const [otp, setOtp] = useState("");
   const [selectedCountryCode, setSelectedCountryCode] = useState("+91");
@@ -49,8 +49,13 @@ const username = useSelector((state) => state.auth.username); // Get username fr
       email: values.email,
       address: values.address,
     };
+<<<<<<< HEAD
  console.log("Bahveshv s", userData.fullName);
   dispatch(signUp( userData.fullName))
+=======
+   
+
+>>>>>>> 55723c1896e55deb9090aa53e41efbb6e0b1e136
     try {
       const response = await axios.post(`${BASE_URL}/user/signup`, userData);
       
@@ -61,8 +66,9 @@ const username = useSelector((state) => state.auth.username); // Get username fr
         toast.error("Failed to send OTP. Please try again.");
       }
     } catch (error) {
-      toast.error("An error occurred while signing up. Please try again.");
+      toast.error(error.response.data.message);
       console.error("API Error:", error.response || error.message);
+      
     } finally {
       setLoadingOtp(false); // Stop loading when response is received
       setSubmitting(false);
@@ -71,7 +77,8 @@ const username = useSelector((state) => state.auth.username); // Get username fr
   };
 
   const verifyOtp = async (values) => {
-    setLoadingOtp(true); // Start loading when OTP is being verified
+    
+    setLoadingOtp(true); 
     const otpData = { otp };
 
     try {
@@ -79,9 +86,6 @@ const username = useSelector((state) => state.auth.username); // Get username fr
 
       if (response.data.message) {
         toast.success("OTP verified successfully. You are now signed up!");
-        dispatch(signUp({ username :values.fullName }));
-        console.log("suerma" ,username);
-        
         navigate("/");
         
       } else {
