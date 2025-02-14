@@ -37,8 +37,8 @@ const Login = () => {
   const [otp, setOtp] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-
   const dispatch = useDispatch();
+  const token = useSelector(state => state.auth.token);
   const naviagte=useNavigate()
 
   const handleCountrySelect = (countryCode) => {
@@ -80,7 +80,9 @@ const Login = () => {
     };
     try {
       const response = await axios.post(`${BASE_URL}/user/verifyotp`, otpData);
-      console.log('reponse--', response);
+      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('username', response.data.username);
+
       
       if (response.data.message) {
         toast.success("OTP verified successfully. You are now logged in.");

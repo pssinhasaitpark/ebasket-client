@@ -7,7 +7,7 @@ import amul from '../../asset/images/Brands1.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategories } from '../../store/slices/categories-slice';
 import { fetchBrands } from '../../store/slices/brands-slice';
-import { useLocation } from "react-router-dom";
+import { useLocation , useParams } from "react-router-dom";
 import { fetchItems } from '../../store/slices/products-slice';
 import potatoImg from '../../asset/images/t3.png';
 import useProductNavigation from "../../hooks/useProductNavigation";
@@ -25,7 +25,7 @@ function Category() {
     const [selectedCategories, setSelectedCategories] = useState([]);
     const [selectedBrands, setSelectedBrands] = useState([]);
     const location = useLocation();
-
+    const { id } = useParams();
     useEffect(() => {
         dispatch(fetchCategories());
         dispatch(fetchBrands());
@@ -37,6 +37,12 @@ function Category() {
         console.log("Fetched Categories: ", categories);
         console.log("Fetched Brands: ", brands);
     }, [items, categories, brands]);
+
+    useEffect(() => {
+        if (id) {
+            setSelectedCategories([id]); 
+        }
+    }, [id]);
 
     const handleCategoryChange = (event) => {
       const checked = event.target.checked;
@@ -58,13 +64,14 @@ function Category() {
 
     const filteredItems = items.filter((item) => {
         const categoryMatches =
-            selectedCategories.length === 0 || selectedCategories.includes(item?.itemDetails?.category?.name); 
-
+            selectedCategories.length === 0 || selectedCategories.includes(item?.itemDetails?.category?._id); 
+    
         const brandMatches =
             selectedBrands.length === 0 || selectedBrands.includes(item?.itemDetails?.brand?.title);  
-
+    
         return categoryMatches && brandMatches;
     });
+    
 
     useEffect(() => {
         console.log("Filtered items: ", filteredItems);
@@ -90,14 +97,14 @@ function Category() {
                                                     <input
                                                         className="form-check-input category-item"
                                                         type="checkbox"
-                                                        value={category.name}
+                                                        value={category._id}
                                                         id={`category-${i}`}
-                                                        checked={selectedCategories.includes(category.name)}
+                                                        checked={selectedCategories.includes(category._id)}
                                                         onChange={handleCategoryChange}
                                                     />
                                                     <span className='input-title'>
                                                         <img
-                                                            src={category.image ? `${BASE_URL}${category.image}` : rice}
+                                                            src={category.image ? `${category.image}` : rice}
                                                             alt={category.name}
                                                         />
                                                         {category.name}
@@ -128,7 +135,7 @@ function Category() {
                                                     />
                                                     <span className='input-title'>
                                                         <img
-                                                            src={brand.image ? `${BASE_URL}${brand.image}` : amul}
+                                                            src={brand.image ? `${brand.image}` : amul}
                                                             alt={brand.title}
                                                         />
                                                         {brand.title}
@@ -151,11 +158,11 @@ function Category() {
                                         <Card className="list-card position-relative" onClick={() => handleCardClick(item._id)}>
                                             <div className="list-card-image">
                                                 <div className="member-plan position-absolute">
-                                                    <Badge className="badge" pill variant="dark">-2%</Badge>
+                                                    <Badge className="badge" pill variant="dark">-{item.itemDetails.discount}%</Badge>
                                                 </div>
                                                 <a href="#">
                                                     <Card.Img
-                                                        src={item.itemDetails.mediaFiles[0]?.url ? `${BASE_URL}${item.itemDetails.mediaFiles[0].url}` : potatoImg}
+                                                        src={item.itemDetails.mediaFiles[0]?.url ? `${item.itemDetails.mediaFiles[0].url}` : potatoImg}
                                                         variant="top"
                                                         className="img-fluid item-img w-100"
                                                         alt={item.itemDetails.name}
@@ -171,7 +178,7 @@ function Category() {
                                                     </Card.Title>
                                                     <Card.Text>
                                                         <span className="pro-price products-price">
-                                                            ₹{item.itemDetails.price} <s className='orignal-price'>₹{item.itemDetails.discountedPrice || item.itemDetails.price}</s>
+                                                            ₹{ (item.itemDetails.price)-((item.itemDetails.discount*item.itemDetails.price)/100)}<s className='orignal-price'>₹{item.itemDetails.price}</s>
                                                         </span>
                                                     </Card.Text>
                                                 </div>
