@@ -8,7 +8,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./SignupForm.css";
 import { LoadingSpinner } from "../../component/spinner";
-import { signUp } from '../../store/slices/authSlice'; // Import the signUp action
+import { signIn } from '../../store/slices/authSlice'; // Import the signUp action
 import { useDispatch, useSelector } from "react-redux";
 import { logDOM } from "@testing-library/react";
 const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -33,7 +33,7 @@ const SignUpForm = () => {
   const [showOtp, setShowOtp] = useState(false);
   const [otp, setOtp] = useState("");
   const [selectedCountryCode, setSelectedCountryCode] = useState("+91");
-  const [loadingOtp, setLoadingOtp] = useState(false);  // State to track OTP loading
+  const [loadingOtp, setLoadingOtp] = useState(false);  
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -41,21 +41,25 @@ const SignUpForm = () => {
     setSelectedCountryCode(countryCode);
   };
 
-  const sendOTP = async (values, { setSubmitting }) => {
-    setLoadingOtp(true); // Start loading when OTP is being sent
+  const sendOTP = async (values, { setSubmitting }, verifyOtp) => {
+    setLoadingOtp(true);
     const userData = {
       fullName: values.fullName,
       phoneNumber: selectedCountryCode + values.phoneNumber,
       email: values.email,
       address: values.address,
     };
-<<<<<<< HEAD
+
+    /* Add username*/
+    if(verifyOtp){
+      dispatch(  dispatch(signIn({ username: values.fullName })));
+      console.log("hello......");
+      
+    }
+
  console.log("Bahveshv s", userData.fullName);
   dispatch(signUp( userData.fullName))
-=======
-   
 
->>>>>>> 55723c1896e55deb9090aa53e41efbb6e0b1e136
     try {
       const response = await axios.post(`${BASE_URL}/user/signup`, userData);
       
@@ -77,22 +81,24 @@ const SignUpForm = () => {
   };
 
   const verifyOtp = async (values) => {
-    
     setLoadingOtp(true); 
     const otpData = { otp };
 
     try {
       const response = await axios.post(`${BASE_URL}/user/verifyotp`, otpData);
-
+      const user = response.data.username;
       if (response.data.message) {
         toast.success("OTP verified successfully. You are now signed up!");
-        navigate("/");
+      
+        dispatch(signIn({ username: user }));
         
+        navigate("/");
+
       } else {
         toast.error("Invalid OTP. Please try again.");
       }
     } catch (error) {
-      toast.error("An error occurred while verifying OTP. Please try again.");
+      toast.error(error.response.data.message);
       console.error("API Error:", error.response || error.message);
     }finally {
       setLoadingOtp(false); // Stop loading when response is received
@@ -130,6 +136,7 @@ const SignUpForm = () => {
       setLoadingOtp(false); // Stop loading when response is received
     }
   };
+
 
   return (
     <Container className="col-md-6 mt-3">
@@ -249,6 +256,8 @@ const SignUpForm = () => {
                   </Form.Group>
                 </>
               )}
+
+
 
               {showOtp && (
                 <Form.Group controlId="otp">

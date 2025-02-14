@@ -65,7 +65,7 @@ const Login = () => {
         toast.error("Failed to send OTP. Please try again.");
       }
     } catch (error) {
-      toast.error("An error occurred while sending OTP. Please try again.");
+      toast.error(error.response.data.message);
       console.error("API Error:", error);
     } finally {
       setSubmitting(false);
@@ -81,20 +81,20 @@ const Login = () => {
     try {
       const response = await axios.post(`${BASE_URL}/user/verifyotp`, otpData);
       console.log('reponse--', response);
-      
+      const user = response.data.username;
       if (response.data.message) {
         toast.success("OTP verified successfully. You are now logged in.");
     
         naviagte("/");
         toast.success("You are LoggedIn !!!!!!!")
         
-        dispatch(signIn(true));
+        dispatch(signIn({ username: user }));
         
       } else {
         toast.error("Invalid OTP. Please try again.");
       }
     } catch (error) {
-      toast.error("An error occurred while verifying OTP. Please try again.");
+      toast.error(error.response.data.message);
       console.error("API Error:", error);
     }
   };
