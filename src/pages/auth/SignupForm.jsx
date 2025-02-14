@@ -50,15 +50,9 @@ const SignUpForm = () => {
       address: values.address,
     };
 
-    /* Add username*/
-    if(verifyOtp){
-      dispatch(  dispatch(signIn({ username: values.fullName })));
-      console.log("hello......");
-      
-    }
 
- console.log("Bahveshv s", userData.fullName);
-  dispatch(signUp( userData.fullName))
+
+
 
     try {
       const response = await axios.post(`${BASE_URL}/user/signup`, userData);
@@ -314,6 +308,11 @@ const SignUpForm = () => {
               <div className="new-acc d-flex align-items-center justify-content-center mt-4 mb-2">
                 <a href="/login">
                   <p className="text-center m-0">Already an account? SIGN IN</p>
+                </a>
+              </div>
+              <div className="new-acc d-flex align-items-center justify-content-center mt-4 mb-2">
+                <a href="/verify-otp">
+                  <p className="text-center m-0">Verify Otp</p>
                 </a>
               </div>
             </Form>

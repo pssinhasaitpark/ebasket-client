@@ -17,7 +17,7 @@ const validationSchema = Yup.object({
   }),
 });
 
-const SignUpWithOTP = () => {
+const VerifyOTP = () => {
   const [email, setEmail] = useState(""); 
   const [loadingOtp, setLoadingOtp] = useState(false); 
   const [emailExists, setEmailExists] = useState(false); 
@@ -94,4 +94,4 @@ const SignUpWithOTP = () => {
   );
 };
 
-export default SignUpWithOTP;
+export default VerifyOTP;

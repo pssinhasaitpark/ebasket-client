@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-
+import Modal from 'react-bootstrap/Modal';
 import {
   Row,
   Col,
@@ -28,9 +28,11 @@ import LikeButton from '../component/LikeButton';
 import sorry from "../asset/images/no-result copy.png"
 import Selling from "../component/Most_selling";
 import { useDispatch,useSelector } from "react-redux";
-
+import popup from '../asset/images/po.png'
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const ProductDetailPage = () => {
+  const [modalShow, setModalShow] = useState(false);
+
   const { id } = useParams(); 
   const [quantity, setQuantity] = useState(1);
   const [productData, setProductData] = useState(null);
@@ -103,6 +105,7 @@ const ProductDetailPage = () => {
   if (!productData) return <Container className='py-5 mb-3'><p className="no-products"><img src={sorry} alt="" /></p></Container>;
 
   const handleAddToCart = (product) => {
+    setModalShow(true);  // Show the success modal
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     const storedVariant = JSON.parse(localStorage.getItem('selectedVariant')) || {};
   
@@ -262,9 +265,14 @@ const ProductDetailPage = () => {
                   </div>
 
                   <div className="addtocart mt-2 mb-3 gap-3">
-                    <Button variant="dark" className="btnnn " size="lg" onClick={() =>navigate(isSignedIn ? handleAddToCart(productData) :'/login') }>
+                    <Button variant="dark" className="btnnn " size="lg" onClick={() =>navigate(isSignedIn ? handleAddToCart(productData) :'/login') }
+                      >
                       <FaShoppingCart /> Add to Cart
                     </Button>
+                    <SuccessMessage
+                       show={modalShow}
+                    onHide={() => setModalShow(false)}
+                     />
                     <Button variant="success" className="btnnn" size="lg">
                     <NavLink className="button-routes"  onClick={() => navigate(isSignedIn ? '/checkout' : '/login')}>
                       <FaShoppingCart /> Buy Now
@@ -489,3 +497,32 @@ const ProductDetailPage = () => {
 };
 
 export default ProductDetailPage;
+
+
+function SuccessMessage (props){
+  return (
+    <>
+     <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+ 
+      <Modal.Body>
+  
+        <div className="pop_up_image-container">
+        <img src={popup} alt="" />
+        </div>
+        <p>
+          Your item has been successfully added to the cart. 
+        </p>
+      </Modal.Body>
+      <Modal.Footer className="pop_up_button">
+        <Button onClick={props.onHide} className="pop_up_close-btn">Ok</Button>
+      </Modal.Footer>
+    </Modal>
+    
+    </>
+  )
+}

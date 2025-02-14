@@ -22,6 +22,7 @@ import ProtectedRoutes from "./ProtectedRoutes";
 import { useSelector } from "react-redux";
 
 import FaqPage from "../pages/faq-support/Faq";
+import VerifyOTP from "../pages/auth/OtpVerify";
 
 
 const PublicRoutes = () => {
@@ -60,7 +61,8 @@ const PublicRoutes = () => {
             <Route path="/search" element={<Search />} />
             <Route path="/contactus" element={<ContactUs />} />
             <Route path="/support" element={<FaqPage/>}/>
-            {/* <Route path="*" element={<NotFound/>} /> */}
+            <Route path="/verify-otp" element={<VerifyOTP/>}/>
+         {/* <Route path="*" element={<NotFound/>} /> */}
             </Routes>
         </>
     );
