@@ -130,7 +130,6 @@ const Footer = () => {
                                 </Col>
                             </Row>
 
-
                         </Container>
                         <section className='footer-bottom'>
                           <div className='footer-bottom-wrapper container-fluid  py-3 position-absolute '>
