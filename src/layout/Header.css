@@ -14,6 +14,7 @@
   grid-template-rows: repeat(3, 1fr);
   justify-items: center;
   z-index: 120;
+  
 }
 
 .hamburger1 div {
