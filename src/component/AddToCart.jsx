@@ -28,7 +28,7 @@ import LikeButton from '../component/LikeButton';
 import sorry from "../asset/images/no-result copy.png"
 import Selling from "../component/Most_selling";
 import { useDispatch,useSelector } from "react-redux";
-import popup from '../asset/images/po.png'
+import AlertSuccess from '../asset/images/po.png'
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const ProductDetailPage = () => {
   const [modalShow, setModalShow] = useState(false);
@@ -512,7 +512,7 @@ function SuccessMessage (props){
       <Modal.Body>
   
         <div className="pop_up_image-container">
-        <img src={popup} alt="" />
+        <img src={AlertSuccess} alt="" />
         </div>
         <p>
           Your item has been successfully added to the cart. 
