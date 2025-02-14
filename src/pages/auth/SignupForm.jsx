@@ -49,8 +49,13 @@ const SignUpForm = () => {
       email: values.email,
       address: values.address,
     };
+<<<<<<< HEAD
+ console.log("Bahveshv s", userData.fullName);
+  dispatch(signUp( userData.fullName))
+=======
    
 
+>>>>>>> 55723c1896e55deb9090aa53e41efbb6e0b1e136
     try {
       const response = await axios.post(`${BASE_URL}/user/signup`, userData);
       

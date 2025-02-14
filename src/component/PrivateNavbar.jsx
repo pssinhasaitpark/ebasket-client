@@ -16,6 +16,7 @@ import '../layout/Header.css'
 import { Link} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {  signOut } from '../store/slices/authSlice';
+// import { addToCart, removeFromCart, updateCartQuantity } from '../store/slices/cart-slice';
 
 
 const PrivateNavbar = () => {
@@ -25,6 +26,12 @@ const PrivateNavbar = () => {
     console.log("username-",username);
     const [cart, setCart] = useState(() => JSON.parse(localStorage.getItem("cart")) || []);
     const [totalQuantity, setTotalQuantity] = useState(0);
+    // const [totalSum, settotalSum] = useState(0);
+    // const { totalQuantity } = useSelector(state => state.cart);
+
+    // console.log('Total quantitities', totalQuantity);
+    
+
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -35,44 +42,41 @@ const PrivateNavbar = () => {
       dispatch(signOut());
     };
     
-//     const updateCartQuantity = () => {
-//       const cart = JSON.parse(localStorage.getItem("cart")) || [];
-//       const totalQuantity = cart.reduce((acc, item) => {
-//         return acc + (item.quantity + (item.variantQuantity || 0));
-//       }, 0);
-//       setTotalQuantity(totalQuantity);
-//   };
-//   useEffect(() => {
-//     updateCartQuantity(); 
-
-//     const handleStorageChange = () => {
-//         updateCartQuantity();
-//     };
-
-//     window.addEventListener('storage', handleStorageChange);
-
-//     return () => {
-//         window.removeEventListener('storage', handleStorageChange);
-//     };
-// }, []);
-
 
 const updateCartQuantity = () => {
   const totalQuantity = cart.reduce((acc, item) => {
     return acc + (item.quantity + (item.variantQuantity || 0));
   }, 0);
   setTotalQuantity(totalQuantity);
+
+  // Store the updated totalQuantity and totalSum in localStorage
+  const totalSum = cart.reduce((acc, item) => {
+    return acc + item.quantity;
+  }, 0);
+
+  // Save to localStorage immediately
+  localStorage.setItem("totalQuantity", totalQuantity);
+  localStorage.setItem("totalSum", totalSum);
 };
 
 useEffect(() => {
-  updateCartQuantity(); 
-  
+  // Whenever cart changes, update quantities and localStorage
+  updateCartQuantity();
+
+  // Save the cart in localStorage immediately
   localStorage.setItem("cart", JSON.stringify(cart));
-}, [cart]); 
+}, [cart]); // Re-run this whenever cart changes
 
 const updateCart = (newItem) => {
+  // Update cart state
   setCart(prevCart => [...prevCart, newItem]);
 };
+
+// Example of how to remove an item from cart (if needed)
+const removeItemFromCart = (itemId) => {
+  setCart(prevCart => prevCart.filter(item => item.id !== itemId));
+};
+
 
   return (
    <>
@@ -162,11 +166,15 @@ const updateCart = (newItem) => {
                             <Link to={"/checkout"} className="nav-link " activeClassName="active">
                               Cart
                               {totalQuantity > 0 && (
-                              <span className="badge rounded-circle count-badge" 
-                                    style={{ top: "-10px", fontSize: "12px", padding: "5px 10px" }}>
+                              <span
+                                className="badge rounded-circle count-badge"
+                                style={{ top: '-10px', fontSize: '12px', padding: '5px 10px' }}
+                              >
                                 {totalQuantity}
                               </span>
                             )}
+                                                            {/* {totalQuantity} */}
+
                             </Link>
                           </div>
                         </li>
