@@ -49,12 +49,16 @@ const SignUpForm = () => {
       email: values.email,
       address: values.address,
     };
+
     /* Add username*/
     if(verifyOtp){
       dispatch(  dispatch(signIn({ username: values.fullName })));
       console.log("hello......");
       
     }
+
+ console.log("Bahveshv s", userData.fullName);
+  dispatch(signUp( userData.fullName))
 
     try {
       const response = await axios.post(`${BASE_URL}/user/signup`, userData);
