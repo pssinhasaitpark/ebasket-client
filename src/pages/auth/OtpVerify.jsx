@@ -28,7 +28,7 @@ const SignUpWithOTP = () => {
 
   const checkEmailExists = async (email) => {
     try {
-      const response = await axios.post(`${BASE_URL}/check-email-existence`, { email });
+      const response = await axios.post(`${BASE_URL}/`, { email });
       if (response.data.exists) {
         setEmailExists(true); 
         return true;
@@ -81,7 +81,7 @@ const SignUpWithOTP = () => {
 
           <Button
             className="mt-3"
-            variant="primary"
+            variant="success"
             onClick={sendOTP}
             disabled={loadingOtp || !email}
           >

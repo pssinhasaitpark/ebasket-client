@@ -21,8 +21,8 @@ root.render(
       <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
      
-        {/* <App/>   */}
-        <OTPVerify/>
+        <App/>  
+        {/* <OTPVerify/> */}
        </PersistGate>
        </Provider>
        </BrowserRouter>

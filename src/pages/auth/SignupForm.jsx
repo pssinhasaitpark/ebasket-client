@@ -33,7 +33,7 @@ const SignUpForm = () => {
   const [showOtp, setShowOtp] = useState(false);
   const [otp, setOtp] = useState("");
   const [selectedCountryCode, setSelectedCountryCode] = useState("+91");
-  const [loadingOtp, setLoadingOtp] = useState(false);  // State to track OTP loading
+  const [loadingOtp, setLoadingOtp] = useState(false);  
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -41,8 +41,8 @@ const SignUpForm = () => {
     setSelectedCountryCode(countryCode);
   };
 
-  const sendOTP = async (values, { setSubmitting }) => {
-    setLoadingOtp(true); // Start loading when OTP is being sent
+  const sendOTP = async (values, { setSubmitting }, verifyOtp) => {
+    setLoadingOtp(true);
     const userData = {
       fullName: values.fullName,
       phoneNumber: selectedCountryCode + values.phoneNumber,
@@ -50,9 +50,11 @@ const SignUpForm = () => {
       address: values.address,
     };
     /* Add username*/
-    // if(!verifyOtp){
-    //   dispatch(  dispatch(signIn({ username: values.fullName })));
-    // }
+    if(verifyOtp){
+      dispatch(  dispatch(signIn({ username: values.fullName })));
+      console.log("hello......");
+      
+    }
 
     try {
       const response = await axios.post(`${BASE_URL}/user/signup`, userData);
@@ -80,11 +82,11 @@ const SignUpForm = () => {
 
     try {
       const response = await axios.post(`${BASE_URL}/user/verifyotp`, otpData);
-
+      const user = response.data.username;
       if (response.data.message) {
         toast.success("OTP verified successfully. You are now signed up!");
       
-        dispatch(signIn( { username: values.fullName }));
+        dispatch(signIn({ username: user }));
         
         navigate("/");
 
@@ -92,7 +94,7 @@ const SignUpForm = () => {
         toast.error("Invalid OTP. Please try again.");
       }
     } catch (error) {
-      toast.error("An error occurred while verifying OTP. Please try again.");
+      toast.error(error.response.data.message);
       console.error("API Error:", error.response || error.message);
     }finally {
       setLoadingOtp(false); // Stop loading when response is received
@@ -250,6 +252,8 @@ const SignUpForm = () => {
                   </Form.Group>
                 </>
               )}
+
+
 
               {showOtp && (
                 <Form.Group controlId="otp">
