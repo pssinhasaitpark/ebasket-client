@@ -37,8 +37,8 @@ const Login = () => {
   const [otp, setOtp] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-
   const dispatch = useDispatch();
+  const token = useSelector(state => state.auth.token);
   const naviagte=useNavigate()
 
   const handleCountrySelect = (countryCode) => {
@@ -65,6 +65,7 @@ const Login = () => {
         toast.error("Failed to send OTP. Please try again.");
       }
     } catch (error) {
+      
       toast.error(error.response.data.message);
       console.error("API Error:", error);
     } finally {
@@ -80,6 +81,10 @@ const Login = () => {
     };
     try {
       const response = await axios.post(`${BASE_URL}/user/verifyotp`, otpData);
+      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('username', response.data.username);
+
+      
       console.log('reponse--', response);
       const user = response.data.username;
       if (response.data.message) {
@@ -212,7 +217,8 @@ const Login = () => {
             )}
 
            
-            {isOtpVisible && (
+            {isOtpVisible && 
+            (
               <div className="mt-4">
                 <h5>Enter OTP</h5>
                 <Form.Control

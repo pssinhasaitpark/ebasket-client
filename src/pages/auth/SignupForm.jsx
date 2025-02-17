@@ -98,14 +98,14 @@ const SignUpForm = () => {
       const response = await axios.post(`${BASE_URL}/user/verifyotp`, otpData);
       console.log("Signup response", response);
 
-      const user = values;
-      // console.log("user.....", user);
+      const user = response.data.username ;
+      console.log("user.....", user);
 
       if (response.data.message) {
         toast.success("OTP verified successfully. You are now signed up!");
 
         navigate("/");
-        // dispatch(signIn({ username: user }));
+        dispatch(signIn({ username: user }));
 
       } else {
         toast.error("Invalid OTP. Please try again.");
@@ -166,7 +166,7 @@ const SignUpForm = () => {
               phoneNumber: "",
               email: "",
               address: "",
-              otp: "",
+              otp: ""
             }}
             validationSchema={validationSchema}
             onSubmit={sendOTP}

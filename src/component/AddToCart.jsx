@@ -29,6 +29,8 @@ import sorry from "../asset/images/no-result copy.png"
 import Selling from "../component/Most_selling";
 import { useDispatch,useSelector } from "react-redux";
 import AlertSuccess from '../asset/images/po.png'
+import Slick from "./Slick-Slider";
+
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const ProductDetailPage = () => {
   const [modalShow, setModalShow] = useState(false);
@@ -43,6 +45,7 @@ const ProductDetailPage = () => {
   const [variantQuantity, setVariantQuantity] = useState(1);
   const [totalPrice, setTotalPrice] = useState(null);
   const [totalImage, settotalImage] = useState(null);
+     const [selectedCategory, setSelectedCategory] = useState('rice');
  
   const navigate = useNavigate();
   const isSignedIn = useSelector((state) => state.auth.isSignedIn);
@@ -117,7 +120,7 @@ const ProductDetailPage = () => {
         cartItem._id === product._id
           ? {
               ...cartItem,
-              quantity: cartItem.quantity + quantity,
+              quantity:  quantity,
               variantQuantity: storedVariant.productId === product._id
               ? storedVariant.variantQuantity 
               : cartItem.variantQuantity,
@@ -162,7 +165,7 @@ const ProductDetailPage = () => {
                         <img
                           alt="productData.itemDetails.name"
                           className="img-fluid item-img w-100"
-                          src={totalImage ? `${BASE_URL}${totalImage}` : `${BASE_URL}${productData?.itemDetails?.mediaFiles[0]?.url}`}
+                          src={totalImage ? `${totalImage}` : `${productData?.itemDetails?.mediaFiles[0]?.url}`}
                           />
                       </div>
                     </div>
@@ -177,7 +180,7 @@ const ProductDetailPage = () => {
                             onClick={() => handleVariantChange(variants)}
                           >
                             <img
-                              src={`${BASE_URL}${variants.variantImage}`}
+                              src={`${variants.variantImage}`}
                               alt={variants.variantName}
                               className="img-fluid cart-slider-img"
                               onClick={() => handleVariantImageClick(variants, index)}
@@ -208,8 +211,8 @@ const ProductDetailPage = () => {
                               </span>
                             ) : (
                               <span className="price">
-                                ${productData.itemDetails.price}
-                                <s>${productData.itemDetails.price + 10}</s>
+                                ₹{ (productData.itemDetails.price)-((productData.itemDetails.discount*productData.itemDetails.price)/100)}
+                                <s>${productData.itemDetails.price}</s>
                               </span>
                             )}
                         </div>
@@ -485,6 +488,7 @@ const ProductDetailPage = () => {
                 </Col>
                 </div>
                 {/* <ProductList firstWord={firstWord} /> */}
+                <Slick category={productData.itemDetails.category?.name}/>
               </Row>
              
             </div>

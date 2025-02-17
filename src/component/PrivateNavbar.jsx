@@ -49,30 +49,25 @@ const updateCartQuantity = () => {
   }, 0);
   setTotalQuantity(totalQuantity);
 
-  // Store the updated totalQuantity and totalSum in localStorage
   const totalSum = cart.reduce((acc, item) => {
     return acc + item.quantity;
   }, 0);
 
-  // Save to localStorage immediately
   localStorage.setItem("totalQuantity", totalQuantity);
   localStorage.setItem("totalSum", totalSum);
 };
 
 useEffect(() => {
-  // Whenever cart changes, update quantities and localStorage
+ 
   updateCartQuantity();
 
-  // Save the cart in localStorage immediately
   localStorage.setItem("cart", JSON.stringify(cart));
-}, [cart]); // Re-run this whenever cart changes
+}, [cart]);
 
 const updateCart = (newItem) => {
-  // Update cart state
   setCart(prevCart => [...prevCart, newItem]);
 };
 
-// Example of how to remove an item from cart (if needed)
 const removeItemFromCart = (itemId) => {
   setCart(prevCart => prevCart.filter(item => item.id !== itemId));
 };

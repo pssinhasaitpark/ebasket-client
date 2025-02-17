@@ -3,8 +3,12 @@ import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import './Contactus.css'
+import axios from 'axios';
 import Header from '../../layout/Header';
+import { toast, ToastContainer } from 'react-toastify';
 import Map from '../../component/Map';
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 const ContactUs = () => {
 
   // Validation Schema with Yup
@@ -14,6 +18,27 @@ const ContactUs = () => {
     phone: Yup.string().required('Phone number is required'),
     message: Yup.string().required('Please tell us how we can help you').min(10, 'Message must be at least 10 characters'),
   });
+
+    const handleSubmit = async (values) => {
+    
+      try {
+        // Send the form data to your API endpoint 
+        const response = await axios.post(`http://192.168.0.112:4500/userinfo/tell-us-about-yourself`, {
+          name: values.name,
+          email: values.email,
+          phone: values.phone,
+          helpText: values.message,
+        });
+  
+       
+        console.log('Form submitted successfully:', response.data);
+        toast.success('Your message has been sent successfully!');
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        toast.error('There was an error sending your message. Please try again later.');
+      }
+    };
+  
 
   return (
     <>
@@ -30,9 +55,7 @@ const ContactUs = () => {
               message: '',
             }}
             validationSchema={validationSchema}
-            onSubmit={(values) => {
-              console.log('Form submitted with values: ', values);
-            }}
+            onSubmit={handleSubmit}
           >
             {({ handleSubmit, handleChange, handleBlur, values, errors, touched }) => (
               <Form onSubmit={handleSubmit}>
@@ -108,6 +131,9 @@ const ContactUs = () => {
     <div>
       <Map/>
     </div>
+
+      {/* Toast Container */}
+      <ToastContainer />
     </>
   );
 };

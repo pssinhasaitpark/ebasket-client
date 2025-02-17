@@ -10,6 +10,7 @@ import Container from 'react-bootstrap/Container';
 import './Slick-Slider.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchItems } from "../store/slices/products-slice";
+import { Badge} from 'react-bootstrap';
 import useProductNavigation from "../hooks/useProductNavigation";
 import sorry from "../asset/images/no-result copy.png"
 
@@ -114,6 +115,9 @@ function Slick({category})
                               return (<div>
                                 <div key={item._id} className="Slick-card" onClick={() => handleCardClick(item._id)}>
                                   <div className="Slick-img-section">
+                                  <div className="member-plan position-absolute">
+                                                    <Badge className="badge discount-badge" pill variant="dark">-{item.itemDetails.discount}%</Badge>
+                                  </div>
                                     <img
                                       className="Slick-img img-fluid"
                                       src={
@@ -129,8 +133,8 @@ function Slick({category})
                                       <a className="title-link">{item.itemDetails.name}</a>
                                     </h6>
                                     <h6 className="mb-1 pt-2 slick-price">
-                                      <span className="actual-price">${item.itemDetails.price}</span>
-                                      <s>${item.itemDetails.discountedPrice || item.itemDetails.price}</s>
+                                      <span className="actual-price">₹{ (item.itemDetails.price)-((item.itemDetails.discount*item.itemDetails.price)/100)}</span>
+                                      <s>₹{item.itemDetails.price}</s>
                                     </h6>
                                   </div>
                                 </div>

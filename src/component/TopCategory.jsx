@@ -110,11 +110,11 @@ function TopCategories() {
               <Link to={`/categories/${category._id}`} className="category-card">
                   <img
                     className="category-img img-fluid"
-                    src={category.image ? `${BASE_URL}${category.image}` : snacks} 
+                    src={category.image ? `${category.image}` : snacks} 
                     alt={category.name}
                   />
                   <h4 className="pt-3">{category.name}</h4>
-                  <h6 className="pt-1">({category.itemsCount} items)</h6>
+                  <h6 className="pt-1">({category.itemCount} items)</h6>
                 </Link>
                 )
               ))
