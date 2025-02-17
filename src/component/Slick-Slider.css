@@ -45,6 +45,10 @@
     display: block;
 }
 
+.discount-badge{
+    background-color: #28a745 !important;
+}
+
 .slick-price {
     color: #01664a;
     display: block;

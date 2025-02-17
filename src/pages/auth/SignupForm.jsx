@@ -49,6 +49,9 @@ const SignUpForm = () => {
       email: values.email,
       address: values.address,
     };
+ console.log("Bahveshv s", userData.fullName);
+  dispatch(signUp( userData.fullName))
+   
 
     /* Add username*/
     if(verifyOtp){
