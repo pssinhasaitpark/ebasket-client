@@ -29,11 +29,11 @@ const validationSchema = Yup.object({
 
 
 const SignUpForm = () => {
-  
+
   const [showOtp, setShowOtp] = useState(false);
   const [otp, setOtp] = useState("");
   const [selectedCountryCode, setSelectedCountryCode] = useState("+91");
-  const [loadingOtp, setLoadingOtp] = useState(false);  
+  const [loadingOtp, setLoadingOtp] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -50,43 +50,62 @@ const SignUpForm = () => {
       address: values.address,
     };
 
-
-
-
-
     try {
       const response = await axios.post(`${BASE_URL}/user/signup`, userData);
-      
+
       if (response.data.message) {
         setShowOtp(true);
         toast.success("OTP sent successfully.");
-      } else {
+
+      }
+
+      else {
         toast.error("Failed to send OTP. Please try again.");
       }
     } catch (error) {
-      toast.error(error.response.data.message);
-      console.error("API Error:", error.response || error.message);
       
+      if (error.response && error.response.data && error.response.data.message) {
+        if (error.response.data.message.includes("Email already exists")) {
+          toast.warning("Email already exists. Please verify your OTP.");
+          
+          // Wait for 3 seconds before navigating to the OTP verification page
+          setTimeout(() => {
+            navigate('/verify-otp');
+          }, 3000);
+        } else {
+          // Handle other errors that might be in the response
+          toast.error(error.response.data.message);
+          console.error("API Error:", error.response || error.message);
+        }
+      } else {
+        // If error structure is unexpected, just show a general error
+        toast.error("An unexpected error occurred.");
+        console.error("API Error:", error);
+      }
+
     } finally {
       setLoadingOtp(false); // Stop loading when response is received
       setSubmitting(false);
-      
+
     }
   };
 
   const verifyOtp = async (values) => {
-    setLoadingOtp(true); 
+    setLoadingOtp(true);
     const otpData = { otp };
 
     try {
       const response = await axios.post(`${BASE_URL}/user/verifyotp`, otpData);
-      const user = response.data.username;
+      console.log("Signup response", response);
+
+      const user = values;
+      // console.log("user.....", user);
+
       if (response.data.message) {
         toast.success("OTP verified successfully. You are now signed up!");
-      
-        dispatch(signIn({ username: user }));
-        
+
         navigate("/");
+        // dispatch(signIn({ username: user }));
 
       } else {
         toast.error("Invalid OTP. Please try again.");
@@ -94,10 +113,10 @@ const SignUpForm = () => {
     } catch (error) {
       toast.error(error.response.data.message);
       console.error("API Error:", error.response || error.message);
-    }finally {
+    } finally {
       setLoadingOtp(false); // Stop loading when response is received
     }
-    
+
   };
 
   const handleOtpChange = (e) => {
@@ -126,7 +145,7 @@ const SignUpForm = () => {
     } catch (error) {
       toast.error("An error occurred while resending OTP. Please try again.");
       console.error("API Error:", error.response || error.message);
-    }finally {
+    } finally {
       setLoadingOtp(false); // Stop loading when response is received
     }
   };
@@ -137,191 +156,191 @@ const SignUpForm = () => {
       <div className="col-10 mx-auto  cardss border p-3">
         <h3 className="text-dark my-0 mb-3">Sign up With Us</h3>
         <p className="text-50">Sign up to continue</p>
-   {/* Show loader if loading state is true */}
-   {loadingOtp ? (
-          <LoadingSpinner/> // You can create a loader in the "spinner" component
+        {/* Show loader if loading state is true */}
+        {loadingOtp ? (
+          <LoadingSpinner /> // You can create a loader in the "spinner" component
         ) : (
-        <Formik
-          initialValues={{
-            fullName: "",
-            phoneNumber: "",
-            email: "",
-            address: "",
-            otp: "",
-          }}
-          validationSchema={validationSchema}
-          onSubmit={sendOTP}
-          validateOnChange={true}
-        >
-          {({
-            values,
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            errors,
-            touched,
-            isSubmitting,
-          }) => (
-            <Form onSubmit={handleSubmit}>
-              {!showOtp && (
-                <>
-                  <Form.Group controlId="fullName">
-                    <Form.Label className="text-dark mt-3 input_heading">Full Name</Form.Label>
+          <Formik
+            initialValues={{
+              fullName: "",
+              phoneNumber: "",
+              email: "",
+              address: "",
+              otp: "",
+            }}
+            validationSchema={validationSchema}
+            onSubmit={sendOTP}
+            validateOnChange={true}
+          >
+            {({
+              values,
+              handleChange,
+              handleBlur,
+              handleSubmit,
+              errors,
+              touched,
+              isSubmitting,
+            }) => (
+              <Form onSubmit={handleSubmit}>
+                {!showOtp && (
+                  <>
+                    <Form.Group controlId="fullName">
+                      <Form.Label className="text-dark mt-3 input_heading">Full Name</Form.Label>
+                      <Form.Control
+                        className="border-0 inputes-box"
+                        type="text"
+                        placeholder="Insert Full Name"
+                        value={values.fullName}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        isInvalid={touched.fullName && errors.fullName}
+                        required
+                      />
+                      <Form.Control.Feedback type="invalid">{errors.fullName}</Form.Control.Feedback>
+                    </Form.Group>
+
+                    <Form.Group controlId="phoneNumber">
+                      <Form.Label className="text-dark mt-2 input_heading">Phone</Form.Label>
+                      <Row className="align-items-center">
+                        <Col xs={4}>
+                          <Dropdown>
+                            <Dropdown.Toggle className="bg-transparent border-0 input_heading inputes-box">
+                              {selectedCountryCode}
+                            </Dropdown.Toggle>
+                            <Dropdown.Menu>
+                              <Dropdown.Item onClick={() => handleCountrySelect("+1")}>USA (+1)</Dropdown.Item>
+                              <Dropdown.Item onClick={() => handleCountrySelect("+44")}>UK (+44)</Dropdown.Item>
+                              <Dropdown.Item onClick={() => handleCountrySelect("+91")}>India (+91)</Dropdown.Item>
+                            </Dropdown.Menu>
+                          </Dropdown>
+                        </Col>
+
+                        <Col className="mt-3">
+                          <Form.Control
+                            className="border-0 inputes-box"
+                            type="text"
+                            placeholder="Phone Number"
+                            name="phoneNumber"
+                            value={values.phoneNumber}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            isInvalid={touched.phoneNumber && errors.phoneNumber}
+                            required
+                          />
+                          <Form.Control.Feedback type="invalid">{errors.phoneNumber}</Form.Control.Feedback>
+                        </Col>
+                      </Row>
+                    </Form.Group>
+
+                    <Form.Group controlId="email">
+                      <Form.Label className="text-dark mt-3 input_heading">Email</Form.Label>
+                      <Form.Control
+                        className="border-0 inputes-box"
+                        type="email"
+                        placeholder="Insert Email"
+                        value={values.email}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        isInvalid={touched.email && errors.email}
+                        required
+                      />
+                      <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
+                    </Form.Group>
+
+                    <Form.Group controlId="address">
+                      <Form.Label className="text-dark mt-3 p-2 input_heading">Address</Form.Label>
+                      <div className="position-relative">
+                        <Form.Control
+                          className="p-3 address_input"
+                          type="text"
+                          placeholder="Insert Address"
+                          value={values.address}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          isInvalid={touched.address && errors.address}
+                          required
+                        />
+                        <span class="locate-me" onclick="getCurrentLocation()">
+                          <img src="https://emartweb.siswebapp.com/img/locatleme-icon.png" />
+                          Locate Me
+                        </span>
+                        <Form.Control.Feedback type="invalid">{errors.address}</Form.Control.Feedback>
+                      </div>
+                    </Form.Group>
+                  </>
+                )}
+
+
+
+                {showOtp && (
+                  <Form.Group controlId="otp">
+                    <Form.Label className="text-dark mt-3 p-2 input_heading">OTP</Form.Label>
                     <Form.Control
                       className="border-0 inputes-box"
                       type="text"
-                      placeholder="Insert Full Name"
-                      value={values.fullName}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      isInvalid={touched.fullName && errors.fullName}
-                      required
+                      placeholder="Enter OTP"
+                      value={otp}
+                      onChange={handleOtpChange}
+                      isInvalid={touched.otp && errors.otp}
                     />
-                    <Form.Control.Feedback type="invalid">{errors.fullName}</Form.Control.Feedback>
+                    <Form.Control.Feedback type="invalid">{errors.otp}</Form.Control.Feedback>
                   </Form.Group>
+                )}
 
-                  <Form.Group controlId="phoneNumber">
-                    <Form.Label className="text-dark mt-2 input_heading">Phone</Form.Label>
-                    <Row className="align-items-center">
-                      <Col xs={4}>
-                        <Dropdown>
-                          <Dropdown.Toggle className="bg-transparent border-0 input_heading inputes-box">
-                            {selectedCountryCode}
-                          </Dropdown.Toggle>
-                          <Dropdown.Menu>
-                            <Dropdown.Item onClick={() => handleCountrySelect("+1")}>USA (+1)</Dropdown.Item>
-                            <Dropdown.Item onClick={() => handleCountrySelect("+44")}>UK (+44)</Dropdown.Item>
-                            <Dropdown.Item onClick={() => handleCountrySelect("+91")}>India (+91)</Dropdown.Item>
-                          </Dropdown.Menu>
-                        </Dropdown>
-                      </Col>
-
-                      <Col className="mt-3">
-                        <Form.Control
-                          className="border-0 inputes-box"
-                          type="text"
-                          placeholder="Phone Number"
-                          name="phoneNumber"
-                          value={values.phoneNumber}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          isInvalid={touched.phoneNumber && errors.phoneNumber}
-                          required
-                        />
-                        <Form.Control.Feedback type="invalid">{errors.phoneNumber}</Form.Control.Feedback>
-                      </Col>
-                    </Row>
-                  </Form.Group>
-
-                  <Form.Group controlId="email">
-                    <Form.Label className="text-dark mt-3 input_heading">Email</Form.Label>
-                    <Form.Control
-                      className="border-0 inputes-box"
-                      type="email"
-                      placeholder="Insert Email"
-                      value={values.email}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      isInvalid={touched.email && errors.email}
-                      required
-                    />
-                    <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
-                  </Form.Group>
-
-                  <Form.Group controlId="address">
-                    <Form.Label className="text-dark mt-3 p-2 input_heading">Address</Form.Label>
-                    <div className="position-relative">
-                      <Form.Control
-                        className="p-3 address_input"
-                        type="text"
-                        placeholder="Insert Address"
-                        value={values.address}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        isInvalid={touched.address && errors.address}
-                        required
-                      />
-                       <span class="locate-me" onclick="getCurrentLocation()">
-                                    <img src="https://emartweb.siswebapp.com/img/locatleme-icon.png" />
-                                    Locate Me
-                                </span>
-                      <Form.Control.Feedback type="invalid">{errors.address}</Form.Control.Feedback>
-                    </div>
-                  </Form.Group>
-                </>
-              )}
-
-
-
-              {showOtp && (
-                <Form.Group controlId="otp">
-                  <Form.Label className="text-dark mt-3 p-2 input_heading">OTP</Form.Label>
-                  <Form.Control
-                    className="border-0 inputes-box"
-                    type="text"
-                    placeholder="Enter OTP"
-                    value={otp}
-                    onChange={handleOtpChange}
-                    isInvalid={touched.otp && errors.otp}
-                  />
-                  <Form.Control.Feedback type="invalid">{errors.otp}</Form.Control.Feedback>
-                </Form.Group>
-              )}
-
-              {!showOtp ? (
-                <Button
-                  className="w-100 btn-lg p-3 send_Otp_button mt-3"
-                  type="submit"
-                  disabled={isSubmitting || loadingOtp} // Disable if loading
-                >
-                  {loadingOtp ? (<LoadingSpinner/>):(
-                   " Send OTP"
-                  )}
-                  
-                </Button>
-              ) : (
-                <div>
+                {!showOtp ? (
                   <Button
-                    className="w-100 btn-lg p-3 send_Otp_button mt-2"
-                    type="button"
-                    onClick={() => verifyOtp(values)}
-                    disabled={isSubmitting|| loadingOtp} // Disable if loading
+                    className="w-100 btn-lg p-3 send_Otp_button mt-3"
+                    type="submit"
+                    disabled={isSubmitting || loadingOtp} // Disable if loading
                   >
-                     {loadingOtp ? (<LoadingSpinner/>):(
-                   "Verify OTP"
-                  )}
-                  
+                    {loadingOtp ? (<LoadingSpinner />) : (
+                      " Send OTP"
+                    )}
+
                   </Button>
-                  <Button
-                    className="w-100 btn-lg p-3 send_Otp_button mt-2"
-                    type="button"
-                    onClick={() => resendOtp(values)}
-                    disabled={isSubmitting || loadingOtp} // Disable if loading}
-                  >
-                    {loadingOtp ? (<LoadingSpinner/>):(
-                   "Resend"
-                  )}
-                  </Button>
+                ) : (
+                  <div>
+                    <Button
+                      className="w-100 btn-lg p-3 send_Otp_button mt-2"
+                      type="button"
+                      onClick={() => verifyOtp(values)}
+                      disabled={isSubmitting || loadingOtp} // Disable if loading
+                    >
+                      {loadingOtp ? (<LoadingSpinner />) : (
+                        "Verify OTP"
+                      )}
+
+                    </Button>
+                    <Button
+                      className="w-100 btn-lg p-3 send_Otp_button mt-2"
+                      type="button"
+                      onClick={() => resendOtp(values)}
+                      disabled={isSubmitting || loadingOtp} // Disable if loading}
+                    >
+                      {loadingOtp ? (<LoadingSpinner />) : (
+                        "Resend"
+                      )}
+                    </Button>
+                  </div>
+                )}
+
+                <div className="new-acc d-flex align-items-center justify-content-center mt-4 mb-2">
+                  <a href="/login">
+                    <p className="text-center m-0">Already an account? SIGN IN</p>
+                  </a>
                 </div>
-              )}
-
-              <div className="new-acc d-flex align-items-center justify-content-center mt-4 mb-2">
-                <a href="/login">
-                  <p className="text-center m-0">Already an account? SIGN IN</p>
-                </a>
-              </div>
-              <div className="new-acc d-flex align-items-center justify-content-center mt-4 mb-2">
-                <a href="/verify-otp">
-                  <p className="text-center m-0">Verify Otp</p>
-                </a>
-              </div>
-            </Form>
-          )}
-        </Formik>
+                <div className="new-acc d-flex align-items-center justify-content-center mt-4 mb-2">
+                  <a href="/verify-otp">
+                    <p className="text-center m-0">Verify Otp</p>
+                  </a>
+                </div>
+              </Form>
+            )}
+          </Formik>
         )}
       </div>
 
-   
+
       <ToastContainer />
     </Container>
   );
