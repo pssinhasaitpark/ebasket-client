@@ -10,6 +10,7 @@ import authReducer from './slices/authSlice';
 import couponsReducer from './slices/coupons.slice';
 import cartReducer from './slices/cart-slice';
 import addressesReducer from './slices/addressSlice';
+import orderReducer from './slices/orderSlice';
 
 const persistConfig = {
   key: 'root',  
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
   coupons: couponsReducer,
   cart: cartReducer,
   addresses: addressesReducer,
+  Order : orderReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

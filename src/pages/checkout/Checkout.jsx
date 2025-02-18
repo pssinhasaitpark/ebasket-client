@@ -24,7 +24,7 @@ import { ImCopy } from "react-icons/im";
 import { useDispatch, useSelector } from 'react-redux';
 import { getCoupons } from '../../store/slices/coupons.slice';
 import discountImg from '../../asset/images/discount-icon.png'
-
+import useCreateOrder from "../../component/CreateOrder";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const Checkout = () => {
@@ -42,7 +42,7 @@ const Checkout = () => {
   const [couponCode, setCouponCode] = useState("");
   const [appliedCoupon, setAppliedCoupon] = useState(null);
   const [totalAmount, setTotalAmount] = useState(0);
-
+  const { createOrder } = useCreateOrder(); 
 
   useEffect(() => {
     dispatch(getCoupons());
@@ -562,7 +562,7 @@ const Checkout = () => {
 
            
               <div className="p-3 text-center">
-                <Button  block size="lg" className="pay_now_buttons border-0 text-center">
+                <Button onClick={() => {createOrder(cart); window.location.reload()}} block size="lg" className="pay_now_buttons border-0 text-center">
                   Pay <span className="currency-symbol-left">$</span>{totalAmount.toFixed(2)}<FaArrowRight />
                 </Button>
               </div>

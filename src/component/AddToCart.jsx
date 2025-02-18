@@ -207,12 +207,12 @@ const ProductDetailPage = () => {
                         <div className="price-section">
                             {totalPrice !== null ? (
                               <span className="price">
-                                ${totalPrice}
+                                ₹{totalPrice}
                               </span>
                             ) : (
                               <span className="price">
                                 ₹{ (productData.itemDetails.price)-((productData.itemDetails.discount*productData.itemDetails.price)/100)}
-                                <s>${productData.itemDetails.price}</s>
+                                <s>₹{productData.itemDetails.price}</s>
                               </span>
                             )}
                         </div>
@@ -435,8 +435,8 @@ const ProductDetailPage = () => {
                                   </span>
                                 </div>
                                 <div className="strike-price">
-                                  <strike>$50.00</strike>
-                                  <div className="product-price">$49.00</div>
+                                  <strike>₹50.00</strike>
+                                  <div className="product-price">₹49.00</div>
                                 </div>
                               </div>
                             </div>
@@ -462,8 +462,8 @@ const ProductDetailPage = () => {
                                   </span>
                                 </div>
                                 <div className="strike-price">
-                                  <strike>$30.00</strike>
-                                  <div className="product-price">$28.50</div>
+                                  <strike>₹30.00</strike>
+                                  <div className="product-price">₹28.50</div>
                                 </div>
                               </div>
                             </div>
@@ -523,7 +523,10 @@ function SuccessMessage (props){
         </p>
       </Modal.Body>
       <Modal.Footer className="pop_up_button">
-        <Button onClick={props.onHide} className="pop_up_close-btn">Ok</Button>
+        <Button onClick={() => { 
+            props.onHide(); 
+            window.location.reload();  
+            }} className="pop_up_close-btn">Ok</Button>
       </Modal.Footer>
     </Modal>
     
