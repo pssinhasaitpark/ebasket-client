@@ -65,6 +65,7 @@ const Login = () => {
         toast.error("Failed to send OTP. Please try again.");
       }
     } catch (error) {
+      
       toast.error(error.response.data.message);
       console.error("API Error:", error);
     } finally {
@@ -216,7 +217,8 @@ const Login = () => {
             )}
 
            
-            {isOtpVisible && (
+            {isOtpVisible && 
+            (
               <div className="mt-4">
                 <h5>Enter OTP</h5>
                 <Form.Control

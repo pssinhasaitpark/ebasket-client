@@ -324,6 +324,23 @@
     color: white;
     text-decoration: none;
 }
+.pop_up_image-container img{
+    width: -webkit-fill-available;
+}
+.pop_up_close-btn{
+    background-color: #198754;
+    border: unset;
+    padding: 8px 25px;
+    font-size: 18px;
+    font-weight: 600;
+}
+.pop_up_close-btn:hover{
+    background-color: #198754 !important; 
+    border: unset;
+}
+.pop_up_button{
+    justify-content: center;
+}
 
 @media (max-width: 767px){
     .product-detail-page .addtocart .btnnn{

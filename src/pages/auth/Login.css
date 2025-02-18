@@ -25,6 +25,7 @@ width: 65%;
     text-transform: uppercase;
     color: #ffffff;
     font-weight: 700;
+    border: none;
   }
   
   .or-line:before {

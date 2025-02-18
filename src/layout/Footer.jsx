@@ -129,12 +129,9 @@ const Footer = () => {
                                     </div>
                                 </Col>
                             </Row>
-
-
                         </Container>
                         <section className='footer-bottom'>
                           <div className='footer-bottom-wrapper container-fluid  py-3 position-absolute '>
-
                          <Container>
                             <Row className='bottom-row'>
                                 <Col className="bottom-col-left col-lg-8 col-sm-6 text-center text-white d-flex">

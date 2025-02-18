@@ -23,7 +23,7 @@ const PrivateNavbar = () => {
   const dispatch = useDispatch();
 
     const username = useSelector((state) => state.auth.username); // Get username from Redux
-    console.log("username-",username);
+    // console.log("username-",username);
     const [cart, setCart] = useState(() => JSON.parse(localStorage.getItem("cart")) || []);
     const [totalQuantity, setTotalQuantity] = useState(0);
     // const [totalSum, settotalSum] = useState(0);
