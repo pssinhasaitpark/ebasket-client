@@ -49,8 +49,7 @@ const SignUpForm = () => {
       email: values.email,
       address: values.address,
     };
- console.log("Bahveshv s", userData.fullName);
-  dispatch(signUp( userData.fullName))
+
    
 
     /* Add username*/
@@ -60,8 +59,7 @@ const SignUpForm = () => {
       
     }
 
- console.log("Bahveshv s", userData.fullName);
-  dispatch(signUp( userData.fullName))
+
 
     try {
       const response = await axios.post(`${BASE_URL}/user/signup`, userData);
@@ -89,6 +87,8 @@ const SignUpForm = () => {
 
     try {
       const response = await axios.post(`${BASE_URL}/user/verifyotp`, otpData);
+      console.log('respone', response);
+      
       const user = response.data.username;
       if (response.data.message) {
         toast.success("OTP verified successfully. You are now signed up!");
