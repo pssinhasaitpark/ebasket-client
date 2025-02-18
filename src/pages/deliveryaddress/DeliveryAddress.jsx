@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { Form, Button, Container, Row, Col, Radio } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAddresses, createAddress } from '../../store/slices/addressSlice'; 
+import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+import Modal from 'react-bootstrap/Modal';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import Modal from 'react-bootstrap/Modal';
-import './DeliveryAddress.css'
-import location from '../../asset/images/deliverylocation.png'
-import edit from '../../asset/images/edit.svg'
-import bin from '../../asset/images/trash-2.svg'
-import noresult from '../../asset/images/no-result.png'
-import plus from '../../asset/images/plus.svg'
-const Forms = (props) => {
+import './DeliveryAddress.css';
+import location from '../../asset/images/deliverylocation.png';
+import edit from '../../asset/images/edit.svg';
+import bin from '../../asset/images/trash-2.svg';
+import noresult from '../../asset/images/no-result.png';
+import plus from '../../asset/images/plus.svg';
 
-  // Validation schema using Yup
+const Forms = (props) => {
   const validationSchema = Yup.object({
     address: Yup.string().required('Delivery address is required'),
     flatHouseBuilding: Yup.string().required('Flat/House/Floor/Building is required'),
@@ -21,22 +22,11 @@ const Forms = (props) => {
   });
 
   return (
-    <Modal
-      {...props}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
+    <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Delivery Address Form
-        </Modal.Title>
+        <Modal.Title id="contained-modal-title-vcenter">Delivery Address Form</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-
-        {/* <Row className="justify-content-center my-5">
-            <Col md={6} className="shadow-sm p-4"> */}
-
         <Formik
           initialValues={{
             address: '',
@@ -45,14 +35,13 @@ const Forms = (props) => {
             landmark: '',
             saveAs: '',
           }}
-          validationSchema={props.validationSchema}
+          validationSchema={validationSchema}
           onSubmit={(values) => {
-            console.log('Form Submitted with values:', values);
+            props.onSubmit(values); // Pass the submitted values up to the parent
           }}
         >
           {({ handleSubmit, handleChange, handleBlur, values, errors, touched }) => (
             <Form onSubmit={handleSubmit}>
-              {/* Delivery Address */}
               <Form.Group controlId="address" className="mb-3">
                 <Form.Control
                   type="text"
@@ -66,7 +55,6 @@ const Forms = (props) => {
                 <Form.Control.Feedback type="invalid">{errors.address}</Form.Control.Feedback>
               </Form.Group>
 
-              {/* Flat/House/Floor/Building */}
               <Form.Group controlId="flatHouseBuilding" className="mb-3">
                 <Form.Control
                   type="text"
@@ -80,7 +68,6 @@ const Forms = (props) => {
                 <Form.Control.Feedback type="invalid">{errors.flatHouseBuilding}</Form.Control.Feedback>
               </Form.Group>
 
-              {/* Area/Sector/Locality */}
               <Form.Group controlId="area" className="mb-3">
                 <Form.Control
                   type="text"
@@ -94,18 +81,6 @@ const Forms = (props) => {
                 <Form.Control.Feedback type="invalid">{errors.area}</Form.Control.Feedback>
               </Form.Group>
 
-              {/* Nearby Landmark */}
-              <Form.Group controlId="landmark" className="mb-3">
-                <Form.Control
-                  type="text"
-                  name="landmark"
-                  value={values.landmark}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-              </Form.Group>
-
-              {/* Save As Dropdown */}
               <Form.Group controlId="saveAs" className="mb-3">
                 <Form.Label>Save as</Form.Label>
                 <Form.Check
@@ -139,7 +114,6 @@ const Forms = (props) => {
                 <Form.Control.Feedback type="invalid">{errors.saveAs}</Form.Control.Feedback>
               </Form.Group>
 
-              {/* Submit Button */}
               <div className="d-flex w-100">
                 <Button type="button" className="form-btn w-50 close-btn" onClick={props.onHide}>
                   Close
@@ -151,98 +125,89 @@ const Forms = (props) => {
             </Form>
           )}
         </Formik>
-        {/* </Col>
-          </Row> */}
-
       </Modal.Body>
     </Modal>
-
-
-
   );
 };
 
+const AddressForm = () => {
+  const dispatch = useDispatch();
+  const { addresses, loading, error } = useSelector((state) => state.addresses);
+  const [modalShow, setModalShow] = useState(false);
 
-
-
-function AddressForm() {
-  const [loading, setLoading] = useState(true);
   useEffect(() => {
+    dispatch(fetchAddresses());
+  }, [dispatch]);
 
-    setTimeout(() => {
-      setLoading(false);
-
-    }, 1000)
-
-  }, []);
-  const [modalShow, setModalShow] = React.useState(false);
-
-  // You can define the validation schema here or import it if needed
-  const validationSchema = null; // Example, adjust according to your needs
+  const handleCreateAddress = (newAddress) => {
+    dispatch(createAddress(newAddress));
+  };
 
   return (
-
     <>
-      <div className='mt-3'>
-
+      <div className="mt-3">
         <Container>
-          <div>
-
-     
-          <Row className='address-addon '>
-
-
-            <Button className='address-btn' onClick={() => setModalShow(true)}>
+          <Row className="address-addon">
+            <Button className="address-btn" onClick={() => setModalShow(true)}>
               <img src={plus} alt="" /> Add New Address
             </Button>
 
             <Forms
               show={modalShow}
               onHide={() => setModalShow(false)}
-              validationSchema={validationSchema} // Pass validation schema if you have one
+              onSubmit={handleCreateAddress} // Pass the handleSubmit function
             />
           </Row>
-          </div>
 
-          <div className='address-wrapper w-50 h-100 border rounded-2 mt-5 p-3'>
-         
-          <Row  >
-            <div className='d-flex p-3 gap-2'>
-              <div className='image'>
-                <img src={location} alt="image" />
-              </div>
-              <div className='ms-3'>
-                <p className='location-detail'>Lorem ipsum dolor sit amet consect adipisicing elit. Fugit?</p>
-                <Button className='btn'>Default</Button>
-              </div>
-              <div className=' ms-2 d-flex gap-2'>
-               <a href="#"> <div className=' rounded bg-color p-2'> <img src={edit} alt="" /></div></a>
-               <a href="#"> <div className=' rounded bg-color p-2'> <img src={bin} alt="" /></div></a>
-              </div>
-            </div>
-          </Row >
+          <div className="address-wrapper w-50 h-100 border rounded-2 mt-5 p-3">
+            { error ? (
+              <div>Error: {error}</div>
+            ) : addresses.length > 0 ? (
+              addresses.map((address) => (
+                <Row key={address._id}>
+                  <div className="d-flex p-3 gap-2">
+                    <div className="image">
+                      <img src={location} alt="location" />
+                    </div>
+                    <div className="ms-3">
+                      <p className="location-detail">
+                        {address.flatHouseFloorBuilding}, {address.areaSectorLocality}
+                      </p>
+                      <Button className="btn">Default</Button>
+                    </div>
+                    <div className="ms-2 d-flex gap-2">
+                      <a href="#">
+                        <div className="rounded bg-color p-2">
+                          <img src={edit} alt="edit" />
+                        </div>
+                      </a>
+                      <a href="#">
+                        <div className="rounded bg-color p-2">
+                          <img src={bin} alt="delete" />
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </Row>
+              ))
+            ) : (
+              <NoResult />
+            )}
           </div>
-          <NoResult/>
         </Container>
       </div>
     </>
   );
-}
+};
 
- export const NoResult = ()=>{
-      return(
-        <>
-        <div>
-           <Container>
-            <div className='no-result d-flex justify-content-center'>
-              <img src={noresult} alt="" />
-            </div>
-           </Container>
-        </div>
-        </>
-      )
-
-}
-
+const NoResult = () => (
+  <div>
+    <Container>
+      <div className="no-result d-flex justify-content-center">
+        <img src={noresult} alt="no-result" />
+      </div>
+    </Container>
+  </div>
+);
 
 export default AddressForm;

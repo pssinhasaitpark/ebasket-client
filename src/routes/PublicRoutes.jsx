@@ -18,7 +18,6 @@ import ProductDetailPage from "../component/AddToCart";
 import NotFound from "../pages/NotFound/NotFound";
 
 
-import ProtectedRoutes from "./ProtectedRoutes";
 import { useSelector } from "react-redux";
 
 import FaqPage from "../pages/faq-support/Faq";
@@ -40,13 +39,13 @@ const PublicRoutes = () => {
         //   // If user is signed in, redirect them to ProtectedRoutes
         //   return <ProtectedRoutes />;
         // }
-
+    const isSignedIn = useSelector((state) => state.auth.isSignedIn);
     return (
         <>
             <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<SignUpForm />} />
+            <Route path="/login"  element={isSignedIn ? <Home /> : <Login />} />
+            <Route path="/signup" element={isSignedIn ? <Home /> : <SignUpForm />} />
             <Route path="/productlist" element={<ProductList />} />
             <Route path="/products/:id" element={<ProductDetailPage />} />
             <Route path="/productDetail/:id" element={<ProductDetailPage />} />
