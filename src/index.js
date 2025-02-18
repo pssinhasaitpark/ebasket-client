@@ -12,7 +12,6 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './store/store';
-import OTPVerify from './pages/auth/OtpVerify';
 // import store from './store/store';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -20,9 +19,7 @@ root.render(
       <BrowserRouter>
       <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-     
         <App/>  
-        {/* <OTPVerify/> */}
        </PersistGate>
        </Provider>
        </BrowserRouter>

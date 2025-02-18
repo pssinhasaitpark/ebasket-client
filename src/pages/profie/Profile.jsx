@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import image from '../../asset/images/logo_web.png'
 import Header from '../../layout/Header';
+import axios from 'axios';
 import './Profile.css'
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 const Profile = () => {
+    const [userData, setUserData] = useState({});
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+
     const validationSchema = Yup.object({
         name: Yup.string().required('Name is required'),
         email: Yup.string().email('Invalid email format').required('Email is required'),
@@ -16,6 +24,30 @@ const Profile = () => {
             .test('fileSize', 'File too large, please choose a smaller image', (value) => value && value.size <= 5000000) // Max 5MB
             .test('fileType', 'Unsupported file type', (value) => value && ['image/jpeg', 'image/png', 'image/gif'].includes(value.type)),
     });
+    useEffect(() => {
+        // Fetch user data from the API
+    
+        fetchUserData();
+    }, []);
+
+    const fetchUserData = async () => {
+        
+        try {
+            const response = await axios.get(`${BASE_URL}/user/me`, {
+                headers:{
+                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                     'Content-Type': 'application/json',
+                }
+            });
+            console.log('---------', response.data.user.fullName);
+
+            setUserData(response.data.user); // Assuming 'user' is the key in the API response
+            setLoading(false);
+        } catch (err) {
+            setError('Failed to fetch user data');
+            setLoading(false);
+        }
+    };
     return (
         <>
             <Container>
@@ -31,9 +63,9 @@ const Profile = () => {
                                 </div>
                                 <div>
 
-                                    <h6>Name</h6>
+                                    <h6>{userData.fullName}</h6>
                                     <p>
-                                        <span>user@gmail.com</span>
+                                        <span>{userData.email}</span>
                                     </p>
                                 </div>
                             </div>
@@ -47,10 +79,10 @@ const Profile = () => {
                         <h2 className="form-heading mb-4">My Account</h2>
                         <Formik
                             initialValues={{
-                                name: '',
-                                email: '',
-                                phone: '',
-                                message: '',
+                                name: userData?.fullName || '', // Populate with user data
+                                email: userData?.email || '',
+                                phone: userData?.phoneNumber || '',
+                                message: '', // Empty as it's not in the user data
                             }}
                             validationSchema={validationSchema}
                             onSubmit={(values) => {
