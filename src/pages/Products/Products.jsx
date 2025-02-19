@@ -43,6 +43,7 @@ const ProductList = ({  itemss,firstWord}) => {
         {fi && fi.length > 0 ? (
           fi.map((item, index) => {
             const id = item?._id;
+            if (item.itemDetails.publish)
             return (
               <Col key={index} md={4} className="pb-3">
                 <Card
@@ -77,9 +78,9 @@ const ProductList = ({  itemss,firstWord}) => {
                       </Card.Title>
                       <Card.Text>
                         <span className="pro-price products-price">
-                          ${item.itemDetails?.price}{' '}
+                        ₹{ (item.itemDetails.price)-((item.itemDetails.discount*item.itemDetails.price)/100)}{' '}
                           <s className="orignal-price">
-                            ${item.itemDetails?.discountedPrice || item.itemDetails?.price}
+                          ₹{item.itemDetails?.price}
                           </s>
                         </span>
                       </Card.Text>

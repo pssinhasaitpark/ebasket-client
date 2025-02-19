@@ -98,7 +98,7 @@ const addressSlice = createSlice({
       })
       .addCase(createAddress.fulfilled, (state, action) => {
         state.loading = false;
-        state.addresses.push(action.payload); 
+        state.addresses.addresses.push(action.payload); 
       })
       .addCase(createAddress.rejected, (state, action) => {
         state.loading = false;
@@ -111,6 +111,7 @@ const addressSlice = createSlice({
       .addCase(updateAddress.fulfilled, (state, action) => {
         state.loading = false;
         const index = state.addresses.addresses.findIndex((address) => address?._id === action.payload._id);
+        // const index = state.addresses.findIndex((address) => address?._id === action.payload._id);
         if (index !== -1) {
           state.addresses[index] = action.payload;
         }

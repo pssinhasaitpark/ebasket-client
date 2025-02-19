@@ -431,7 +431,7 @@ const Checkout = () => {
           cart.map((item) => (
             <div key={item._id} className="d-flex w-100 media align-items-center col-md-6 mb-2 border checkout-added-products">
              <div className="w-100"> <div className="d-flex"><img
-                src= {`${BASE_URL}${item.itemDetails.mediaFiles[0]?.url}`}
+                src= {`${item.itemDetails.mediaFiles[0]?.url}`}
                 className="img-responsive img-rounded order-img"
                 style={{ maxHeight: '40px', maxWidth: '25px' }}
                 alt="product"
@@ -562,7 +562,7 @@ const Checkout = () => {
 
            
               <div className="p-3 text-center">
-                <Button onClick={() => {createOrder(cart); window.location.reload()}} block size="lg" className="pay_now_buttons border-0 text-center">
+                <Button onClick={() => {createOrder(cart)}} block size="lg" className="pay_now_buttons border-0 text-center">
                   Pay <span className="currency-symbol-left">$</span>{totalAmount.toFixed(2)}<FaArrowRight />
                 </Button>
               </div>
