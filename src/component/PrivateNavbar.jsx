@@ -16,6 +16,7 @@ import '../layout/Header.css'
 import { Link} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {  signOut } from '../store/slices/authSlice';
+import axios from 'axios';
 // import { addToCart, removeFromCart, updateCartQuantity } from '../store/slices/cart-slice';
 
 
@@ -28,7 +29,9 @@ const PrivateNavbar = () => {
     const [totalQuantity, setTotalQuantity] = useState(0);
     // const [totalSum, settotalSum] = useState(0);
     // const { totalQuantity } = useSelector(state => state.cart);
-
+    const [userData, setUserData] = useState({});
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     // console.log('Total quantitities', totalQuantity);
     
 
@@ -71,7 +74,25 @@ const updateCart = (newItem) => {
 const removeItemFromCart = (itemId) => {
   setCart(prevCart => prevCart.filter(item => item.id !== itemId));
 };
+const fetchUserData = async () => {
+  try {
+      const response = await axios.get(`http://192.168.0.112:4500/user/me`, {
+          headers: {
+              'Authorization': `Bearer ${localStorage.getItem('token')}`,
+              'Content-Type': 'application/json',
+          },
+      });
+      setUserData(response.data.user); // Assuming the response contains a user object
+      setLoading(false);
+  } catch (err) {
+      setError('Failed to fetch user data');
+      setLoading(false);
+  }
+};
 
+    useEffect(() => {
+        fetchUserData();
+    }, []);
 
   return (
    <>
@@ -107,12 +128,12 @@ const removeItemFromCart = (itemId) => {
                           <div className='dropdown-container d-flex align-items-center me-2'>
                             <a href="#">
                               <div className='item-image '>
-                                <img src={user} alt="" />
+                                <img src={userData.image || user} alt="" />
                               </div>
                             </a>
 
                             <Link to={'/profile'} className="nav-link " activeClassName="active">
-                            Hii <span>{username || 'Guest'}</span>
+                            Hii <span>{userData?.fullName || 'Guest'}</span>
                             </Link>
 
 

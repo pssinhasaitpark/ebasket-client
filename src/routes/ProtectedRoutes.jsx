@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Navigate, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Profile from "../pages/profie/Profile";
+// import Profile from "../pages/profie/Profile";
 import Checkout from "../pages/checkout/Checkout";
 import OrderTabs from "../pages/MyOrders/MyOrder";
 import AddressForm from "../pages/deliveryaddress/DeliveryAddress";
@@ -10,7 +10,7 @@ import Success from "../pages/success/Success";
 import WishlistPage from "../pages/FavoriteItems";
 import Transcation from '../pages/transaction/Transaction'
 import NotFound from "../pages/NotFound/NotFound";
-
+import Profile from '../pages/profie/Demo'
 
 const ProtectedRoutes = () => {
 

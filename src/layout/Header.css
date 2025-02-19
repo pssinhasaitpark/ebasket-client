@@ -308,6 +308,13 @@ input.form-control.input::placeholder {
 }
 
 
+.item-image img{
+  height: 30px;
+  width:  30px;
+  object-fit: contain;
+  border-radius: 50px;
+}
+
 /* Define the zoom-in animation */
 @keyframes zoomInOut {
   0% {

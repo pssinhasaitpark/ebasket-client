@@ -7,12 +7,11 @@ import * as Yup from "yup";
 import { signIn } from "../../store/slices/authSlice";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const validationSchema = Yup.object({
- 
   email: Yup.string().email("Invalid email address").required("Email is required"),
-  address: Yup.string().required("Address is required"),
   otp: Yup.string().when("showOtp", {
     is: true,
     then: Yup.string().required("OTP is required"),
@@ -20,78 +19,86 @@ const validationSchema = Yup.object({
 });
 
 const VerifyOTP = () => {
+  const [showOtp, setShowOtp] = useState(false);
   const [email, setEmail] = useState(""); 
+  const [otp, setOtp] = useState(""); 
   const [loadingOtp, setLoadingOtp] = useState(false); 
-  const [emailExists, setEmailExists] = useState(false); 
-  const [isOtpVisible,setIsOtpVisible] = useState(false)
+  const [isOtpVisible, setIsOtpVisible] = useState(false);
   const dispatch = useDispatch();
-  const naviagte=useNavigate();
+  const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
 
-  const sendOTP = async (values) => {
-    const userData = {
-      // phoneNumber: country + values.phoneNumber,
-      email: values.email,
-    };
+  const handleOtpChange = (e) => {
+    setOtp(e.target.value);
+  };
+
+  const sendOTP = async () => {
+    setLoadingOtp(true);
 
     try {
-      const response = await axios.post(`${BASE_URL}/user/signin`, userData);
-      console.log("resss",response)
-      if (response.data.message) {
+      // Step 1: Check if the email exists
+      const checkEmailResponse = await axios.post(`${BASE_URL}/user/signup`, { email });
+        console.log(checkEmailResponse);
+        
+      if (checkEmailResponse.data.exists) {
+        // Step 2: If email exists, send OTP
+        const response = await axios.post(`${BASE_URL}/user/signup`, { email });
 
-        setIsOtpVisible(true);
-       toast.success("OTP sent successfully.");
-        console.log("API Response:", response.data);
+        if (response.data.message) {
+          setShowOtp(true); // Show OTP input field
+          toast.success("OTP sent successfully.");
+        } else {
+          toast.error("Failed to send OTP. Please try again.");
+        }
       } else {
-        toast.error("Failed to send OTP. Please try again.");
+        // If email doesn't exist
+        toast.error("Email not registered.");
       }
     } catch (error) {
-      toast.error(error.response.data.message);
-      console.error("API Error:", error);
-    } 
+      // Handle any error during the process
+      toast.error("An unexpected error occurred.");
+      console.error("API Error:", error.response || error.message);
+    } finally {
+      setLoadingOtp(false);
+    }
   };
 
   const verifyOtp = async () => {
     const otpData = {
-      // phoneNumber: country + values.phoneNumber,
-      // otp: otp,
-      
+      email,
+      otp,
     };
+
     try {
       const response = await axios.post(`${BASE_URL}/user/verifyotp`, otpData);
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('username', response.data.username);
 
-      
-      console.log('reponse--', response);
+      console.log('response:', response);
       const user = response.data.username;
       if (response.data.message) {
         toast.success("OTP verified successfully. You are now logged in.");
-    
-        naviagte("/");
-        toast.success("You are LoggedIn !!!!!!!")
-        
+        navigate("/");
+        toast.success("You are Logged In!");
         dispatch(signIn({ username: user }));
-        
       } else {
         toast.error("Invalid OTP. Please try again.");
       }
     } catch (error) {
-      toast.error(error.response.data.message);
+      toast.error(error.response?.data?.message || "An unexpected error occurred.");
       console.error("API Error:", error);
     }
   };
-
- 
 
   return (
     <Container className="col-md-6 mt-3">
       <div className="card p-3">
         <h3>OTP Verification</h3>
-        <Form >
+        <Form onSubmit={(e) => e.preventDefault()}>
+          {/* Email input */}
           <Form.Group controlId="email">
             <Form.Label>Email Address</Form.Label>
             <Form.Control
@@ -103,20 +110,33 @@ const VerifyOTP = () => {
             />
           </Form.Group>
 
+          {/* OTP input - only visible if OTP is sent */}
+          {showOtp && (
+            <Form.Group controlId="otp">
+              <Form.Label>Enter OTP</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter OTP"
+                value={otp}
+                onChange={handleOtpChange}
+                required
+              />
+            </Form.Group>
+          )}
+
           <Button
             className="mt-3"
             variant="success"
-            onClick={sendOTP}
-            disabled={loadingOtp || !email }
+            onClick={showOtp ? verifyOtp : sendOTP}
+            disabled={loadingOtp || !email || (showOtp && !otp)}
           >
-            {loadingOtp ? "Sending OTP..." : "Send OTP"}
+            {loadingOtp ? "Sending OTP..." : showOtp ? "Verify OTP" : "Send OTP"}
           </Button>
         </Form>
       </div>
-      <ToastContainer /> 
+      <ToastContainer />
     </Container>
   );
 };
 
 export default VerifyOTP;
-

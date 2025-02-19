@@ -13,3 +13,8 @@ label.form-label {
     font-size: 14px;
     font-weight: normal;
 }
+.user-updated-image{
+    height: 100px;
+    width: 100px;
+    object-fit: contain;
+}
