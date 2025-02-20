@@ -111,8 +111,8 @@ function Slick({category})
                         <Slider {...settings} style={{background:'tranparent'}}>
                         {filteredItems && filteredItems.length > 0 ? (
                           filteredItems.map((item) => {
-                          {
-                              return (<div>
+                              return (
+                              <div>
                                 <div key={item._id} className="Slick-card" onClick={() => handleCardClick(item._id)}>
                                   <div className="Slick-img-section">
                                   <div className="member-plan position-absolute">
@@ -140,7 +140,7 @@ function Slick({category})
                                 </div>
                                 </div>
                               );
-                            }
+                          
                             return null;
                           })
                         ) : (

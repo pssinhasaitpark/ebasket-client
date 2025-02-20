@@ -37,9 +37,13 @@ const Forms = (props) => {
           }}
           validationSchema={validationSchema}
           onSubmit={(values) => {
+            console.log("values--", values);
+            
             props.onSubmit(values); // Pass the submitted values up to the parent
           }}
         >
+
+
           {({ handleSubmit, handleChange, handleBlur, values, errors, touched }) => (
             <Form onSubmit={handleSubmit}>
               <Form.Group controlId="address" className="mb-3">
@@ -73,7 +77,7 @@ const Forms = (props) => {
                   type="text"
                   name="area"
                   value={values.area}
-                  placeholder="Nearby Landmark (optional)"
+                  placeholder="Nearby Landmark"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   isInvalid={touched.area && !!errors.area}
@@ -87,6 +91,7 @@ const Forms = (props) => {
                   type="radio"
                   label="Home"
                   name="saveAs"
+                  onChange={handleChange}
                   value="Home"
                   aria-label="Home"
                 />
@@ -94,12 +99,14 @@ const Forms = (props) => {
                   type="radio"
                   label="Work"
                   name="saveAs"
+                  onChange={handleChange}
                   value="Work"
                   aria-label="Work"
                 />
                 <Form.Check
                   type="radio"
                   label="Hotel"
+                  onChange={handleChange}
                   name="saveAs"
                   value="Hotel"
                   aria-label="Hotel"
@@ -108,6 +115,7 @@ const Forms = (props) => {
                   type="radio"
                   label="Other"
                   name="saveAs"
+                  onChange={handleChange}
                   value="Other"
                   aria-label="Other"
                 />
@@ -118,7 +126,7 @@ const Forms = (props) => {
                 <Button type="button" className="form-btn w-50 close-btn" onClick={props.onHide}>
                   Close
                 </Button>
-                <Button type="submit" variant="primary" className="form-btn w-50">
+                <Button type="submit" variant="primary" className="form-btn w-50" >
                   Save
                 </Button>
               </div>
@@ -176,7 +184,7 @@ const AddressForm = () => {
                       <Button className="btn">Default</Button>
                     </div>
                     <div className="ms-2 d-flex gap-2">
-                      <a href="#">
+                      <a href="#" >
                         <div className="rounded bg-color p-2">
                           <img src={edit} alt="edit" />
                         </div>
