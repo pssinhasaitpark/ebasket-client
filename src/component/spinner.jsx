@@ -4,7 +4,7 @@ import spinner from '../asset/images/spinner.gif';
 import './spinner.css';
 import addspinner from '../asset/images/address-loading-loader.gif'
 
- export const LoadingSpinner = () => {
+ const LoadingSpinner = () => {
   return (
     <div className="loading overlay">
     <div className="loading spinner-container">
@@ -15,7 +15,7 @@ import addspinner from '../asset/images/address-loading-loader.gif'
 };
 
 
-export const AddressLoader = () => {
+const AddressLoader = () => {
   return (
     <div>
  <div className="address overlay">
@@ -29,4 +29,4 @@ export const AddressLoader = () => {
   )
 }
 
-// export AddressLoaderLoadingSpinner ;
+export {AddressLoader ,LoadingSpinner };
