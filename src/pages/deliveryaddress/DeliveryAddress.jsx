@@ -186,6 +186,7 @@ const AddressForm = () => {
       setEditingAddress(null); 
     }
   };
+  {console.log('showme' ,addresses?.addresses?.[0]?.address?.addressType)}
 
   return (
     <>
@@ -217,7 +218,7 @@ const AddressForm = () => {
                       <div className="ms-3 d-flex flex-column justify-content-between">
                         <div>
                         <p className="location-detail">
-                          {console.log("address",address_e?.address)}
+                          {console.log("addresss",address_e?.address)}
                           {address_e?.address?.flatHouseFloorBuilding}, {address_e?.address?.areaSectorLocality}
                         </p>
                         </div>

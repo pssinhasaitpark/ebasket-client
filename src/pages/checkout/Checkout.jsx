@@ -176,7 +176,7 @@ const Checkout = () => {
                       </div>
                       <Button
                         variant="link"
-                        href="https://ebasketweb.siswebapp.com/delivery-address"
+                        href="/delivery-address"
                         className="ml-auto font-weight-bold text-"
                       >
                         Change

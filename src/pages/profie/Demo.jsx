@@ -67,6 +67,7 @@ const Profile = () => {
             setUserData(response.data.user);
             setLoading(false);
             console.log('User data updated successfully:', response.data.user);
+            fetchUserData();
         } catch (err) {
             setError('Failed to update user data');
             setLoading(false);
@@ -86,6 +87,7 @@ const Profile = () => {
 
 
                                     <div className='me-3'>
+                                        {console.log("heera seth",userData)}
                                         <img src={userData.image || image} alt="image" className='user-updated-image' />
                                     </div>
                                     <div>

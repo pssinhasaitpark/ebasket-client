@@ -11,7 +11,7 @@ export const fetchAddresses = createAsyncThunk('addresses/fetchAddresses', async
   
 
   try {
-    const response = await axios.get(`${BASE_URL}/address/getalladdress`, {
+    const response = await axios.get(`http://192.168.0.112:4500/address/getalladdress`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     return response.data; 
