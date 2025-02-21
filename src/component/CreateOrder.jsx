@@ -6,23 +6,25 @@ const useCreateOrder = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const createOrder = (cart) => {
-    if (cart && cart.length > 0) {
-      dispatch(createorders({ items: cart }))
+  const createOrder = () => {
+    // Retrieve order data from localStorage
+    const orderData = JSON.parse(localStorage.getItem("orderData"));
+
+    if (orderData) {
+      dispatch(createorders(orderData)) // Pass the entire order data
         .then(() => {
-          localStorage.removeItem('cart'); //Clear the cart after placing the order
-          navigate('/success');
+          localStorage.removeItem('cart'); // Clear cart after order
+          localStorage.removeItem('orderData'); // Clear order data
+          navigate('/success'); // Navigate to success page
         })
         .catch((err) => {
           console.error('Error creating order:', err);
         });
     } else {
-      alert('Your cart is empty!');
+      alert('No order data found in localStorage!');
     }
   };
 
-  
-  
   return { createOrder };
 };
 

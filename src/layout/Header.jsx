@@ -21,7 +21,8 @@ const Header = () => {
   const { userData } = useSelector((state) => state.userMe);
 
   useEffect(() => {
-    dispatch(fetchUserMe() , fetchAddresses());
+    dispatch(fetchAddresses());
+    dispatch(fetchUserMe())
   }, [dispatch]);
   {console.log('showme' ,addresses?.addresses?.[0]?.address?.areaSectorLocality)}
 

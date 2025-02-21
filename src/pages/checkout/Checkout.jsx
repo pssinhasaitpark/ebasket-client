@@ -25,10 +25,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getCoupons } from '../../store/slices/coupons.slice';
 import discountImg from '../../asset/images/discount-icon.png'
 import useCreateOrder from "../../component/CreateOrder";
+import axios from 'axios';
+import { fetchUserMe } from '../../store/slices/usermeSlice';
+import { fetchAddresses } from '../../store/slices/addressSlice';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const Checkout = () => {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [cart, setCart] = useState([]);
+  const [order_username, setorder_username] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalDiscount, setTotalDiscount] = useState(0);
   const [deliveryCharges, setDeliveryCharges] = useState(0); 
@@ -43,11 +49,50 @@ const Checkout = () => {
   const [appliedCoupon, setAppliedCoupon] = useState(null);
   const [totalAmount, setTotalAmount] = useState(0);
   const { createOrder } = useCreateOrder(); 
+  const [userData, setUserData] = useState({});
+  const { addresses } = useSelector((state) => state.addresses);
 
+  
   useEffect(() => {
     dispatch(getCoupons());
+    dispatch(fetchUserMe());
+    dispatch(fetchAddresses());
   }, [dispatch]);
+  
 
+  // useEffect(() => {
+  //   const order_user = JSON.parse(localStorage.getItem("username"));
+  //   if (order_user) {
+  //     setorder_username(order_user);
+  //   }
+  // }, []);
+//  useEffect(() => {
+//     dispatch(fetchUserMe() , fetchAddresses());
+//   }, [dispatch]);
+
+const selectedAddress = addresses?.addresses?.length > 0 ? addresses?.addresses?.[0]?.address?.areaSectorLocality : userData?.address;
+{console.log('Lodu',selectedAddress);
+}
+
+  useEffect(() => {
+    fetchUserData();
+}, []);
+
+const fetchUserData = async () => {
+    try {
+        const response = await axios.get(`${BASE_URL}/user/me`, {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json',
+            },
+        });
+        setUserData(response.data.user); // Assuming the response contains a user object
+        setLoading(false);
+    } catch (err) {
+        setError('Failed to fetch user data');
+        setLoading(false);
+    }
+};
 
   const copyToClipboard = (code) => {
     navigator.clipboard.writeText(code);
@@ -71,9 +116,6 @@ const Checkout = () => {
       setSelectedVariant(parsedVariant);
     }
   }, []);
-
- 
-
 
   useEffect(() => {
     let total = 0;
@@ -155,8 +197,44 @@ const Checkout = () => {
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
-
+  
   const totalQuantity = cart.reduce((acc, item) => acc + item.quantity, 0);
+  
+  const createOrderData = () => {
+    const orderData = {
+      billingDetails: {
+        name: userData?.fullName, // This should be dynamic from a form
+        address: selectedAddress,
+        shippingAddress: selectedAddress,
+      },
+      orderItems: {
+        items: cart.map((item) => ({
+          itemId: item._id,
+          quantity: item.quantity,
+          price: item.itemDetails.price,
+          total: item.itemDetails.price * item.quantity,
+        })),
+        orderSubtotal: totalPrice,
+        orderDiscount: totalDiscount,
+        orderShipping: deliveryCharges,
+        orderTax: CGST + GST,
+        cgst: CGST,
+        gst: GST,
+        orderTotal: totalAmount,
+      },
+      generalDetails: {
+        paymentMethod: selectedPaymentMethod,
+      },
+    };
+
+    // Save order data to localStorage
+    localStorage.setItem("orderData", JSON.stringify(orderData));
+  };
+
+  const handleCheckout = () => {
+    createOrderData(); // Save the order data to localStorage before proceeding
+    createOrder(); // Call the hook to handle the API call
+  };
 
   return (
     <div className="rajj-checkout">
@@ -562,7 +640,7 @@ const Checkout = () => {
 
            
               <div className="p-3 text-center">
-                <Button onClick={() => {createOrder(cart)}} block size="lg" className="pay_now_buttons border-0 text-center">
+                <Button onClick={handleCheckout} block size="lg" className="pay_now_buttons border-0 text-center">
                   Pay <span className="currency-symbol-left">$</span>{totalAmount.toFixed(2)}<FaArrowRight />
                 </Button>
               </div>
