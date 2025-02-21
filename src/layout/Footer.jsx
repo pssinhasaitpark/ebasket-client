@@ -23,7 +23,7 @@ const Footer = () => {
     
     return (
         <>
-            <div>
+            <div className='w-100'>
                 <footer className='footer position-relative mt-4'>
                     <div className='footer-outer py-5'>
 

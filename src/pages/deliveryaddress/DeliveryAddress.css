@@ -33,8 +33,10 @@
     width: 30px;
 }
 .address-wrapper .btn{
-    background-color: #28a745 !important;
-    border-color: #28a745 !important;
+    background-color: #01664a !important;
+    border-color: #01664a !important;
+    height: 40px;
+    width: 40px;
 }
 .address-wrapper .location-detail{
     font-weight: 600;
@@ -42,6 +44,9 @@
 }
 .address-addon{
     width: 19% !important;
+}
+button.default-btn.btn.btn-primary {
+    width: fit-content;
 }
 @media (max-width: 767px) {
     .form-control:focus {

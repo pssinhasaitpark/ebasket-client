@@ -18,6 +18,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {  signOut } from '../store/slices/authSlice';
 import axios from 'axios';
 // import { addToCart, removeFromCart, updateCartQuantity } from '../store/slices/cart-slice';
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 
 const PrivateNavbar = () => {
@@ -74,9 +75,13 @@ const updateCart = (newItem) => {
 const removeItemFromCart = (itemId) => {
   setCart(prevCart => prevCart.filter(item => item.id !== itemId));
 };
+
+useEffect(() => {
+
+
 const fetchUserData = async () => {
   try {
-      const response = await axios.get(`http://192.168.0.112:4500/user/me`, {
+      const response = await axios.get(`${BASE_URL}/user/me`, {
           headers: {
               'Authorization': `Bearer ${localStorage.getItem('token')}`,
               'Content-Type': 'application/json',
@@ -90,9 +95,12 @@ const fetchUserData = async () => {
   }
 };
 
-    useEffect(() => {
-        fetchUserData();
-    }, []);
+
+fetchUserData();
+}, []);
+// useEffect(() => {
+//   updateUserData();
+//     }, []);
 
   return (
    <>
@@ -126,9 +134,10 @@ const fetchUserData = async () => {
                         <li className="nav-item">
 
                           <div className='dropdown-container d-flex align-items-center me-2'>
-                            <a href="#">
+                            <a href="">
                               <div className='item-image '>
-                                <img src={userData.image || user} alt="" />
+                                {console.log("hii 12345",userData)}
+                                <img src={userData?.image || user} alt="" />
                               </div>
                             </a>
 
@@ -149,7 +158,7 @@ const fetchUserData = async () => {
 
                               {/* Down Arrow Icon */}
                               <div className="dropdown-icon">
-                                <a href="#">
+                                <a href="">
                                   <img src={downarrow} alt="" />
                                 </a>
                                 {/* Dropdown Menu */}

@@ -39,31 +39,21 @@ const VerifyOTP = () => {
     setLoadingOtp(true);
 
     try {
-      // Step 1: Check if the email exists
-      const checkEmailResponse = await axios.post(`${BASE_URL}/user/signup`, { email });
-        console.log(checkEmailResponse);
-        
-      if (checkEmailResponse.data.exists) {
-        // Step 2: If email exists, send OTP
-        const response = await axios.post(`${BASE_URL}/user/signup`, { email });
-
-        if (response.data.message) {
-          setShowOtp(true); // Show OTP input field
-          toast.success("OTP sent successfully.");
-        } else {
-          toast.error("Failed to send OTP. Please try again.");
-        }
+      const response = await axios.post(`${BASE_URL}/user/reverify`, { email });
+    
+      if (response.data.message) {
+        setShowOtp(true); // Show OTP input field
+        toast.success("OTP sent successfully.");
       } else {
-        // If email doesn't exist
-        toast.error("Email not registered.");
+        toast.error("Failed to send OTP. Please try again.");
       }
     } catch (error) {
-      // Handle any error during the process
       toast.error("An unexpected error occurred.");
       console.error("API Error:", error.response || error.message);
     } finally {
       setLoadingOtp(false);
     }
+    
   };
 
   const verifyOtp = async () => {

@@ -27,7 +27,7 @@ const Profile = () => {
 
     const fetchUserData = async () => {
         try {
-            const response = await axios.get(`http://192.168.0.112:4500/user/me`, {
+            const response = await axios.get(`${BASE_URL}/user/me`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                     'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ const Profile = () => {
         }
         try {
             const response = await axios.put(
-                `http://192.168.0.112:4500/user/updateme`,
+                `${BASE_URL}/user/updateme`,
                 formData,
                 {
                     headers: {
@@ -67,6 +67,7 @@ const Profile = () => {
             setUserData(response.data.user);
             setLoading(false);
             console.log('User data updated successfully:', response.data.user);
+            fetchUserData();
         } catch (err) {
             setError('Failed to update user data');
             setLoading(false);
@@ -86,6 +87,7 @@ const Profile = () => {
 
 
                                     <div className='me-3'>
+                                        {console.log("heera seth",userData)}
                                         <img src={userData.image || image} alt="image" className='user-updated-image' />
                                     </div>
                                     <div>
