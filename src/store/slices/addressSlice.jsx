@@ -7,9 +7,11 @@ export const fetchAddresses = createAsyncThunk('addresses/fetchAddresses', async
   if (!token) {
     return rejectWithValue('No token available');
   }
+  console.log('token->',token);
+  
 
   try {
-    const response = await axios.get(`${BASE_URL}/address/getalladdress/`, {
+    const response = await axios.get(`http://192.168.0.112:4500/address/getalladdress`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     return response.data; 
@@ -25,10 +27,42 @@ export const createAddress = createAsyncThunk('addresses/createAddress', async (
   }
 
   try {
-    const response = await axios.post(`${BASE_URL}/address/create/`, address, {
+    const response = await axios.post(`${BASE_URL}/address/create`, address, {
       headers: { Authorization: `Bearer ${token}` },
     });
     return response.data; 
+  } catch (error) {
+    return rejectWithValue(error.message);
+  }
+});
+
+export const updateAddress = createAsyncThunk('addresses/updateAddress', async ({id, updatedData }, { rejectWithValue }) => {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    return rejectWithValue('No token available');
+  }
+
+  try {
+    const response = await axios.put(`${BASE_URL}/address/update/${id}`, updatedData, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    return response.data; 
+  } catch (error) {
+    return rejectWithValue(error.message);
+  }
+});
+
+export const deleteAddress = createAsyncThunk('addresses/deleteAddress', async (id, { rejectWithValue }) => {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    return rejectWithValue('No token available');
+  }
+
+  try {
+    await axios.delete(`${BASE_URL}/address/delete/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    return id; 
   } catch (error) {
     return rejectWithValue(error.message);
   }
@@ -46,28 +80,59 @@ const addressSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+    // fetch
       .addCase(fetchAddresses.pending, (state) => {
         state.loading = true;
       })
       .addCase(fetchAddresses.fulfilled, (state, action) => {
         state.loading = false;
-        state.addresses = action.payload;
+        state.addresses = action.payload || [];
       })
       .addCase(fetchAddresses.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload; 
       })
+      // Create
       .addCase(createAddress.pending, (state) => {
         state.loading = true;
       })
       .addCase(createAddress.fulfilled, (state, action) => {
         state.loading = false;
-        state.addresses.push(action.payload); 
+        state.addresses.addresses.push(action.payload); 
       })
       .addCase(createAddress.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+      })
+      // update
+      .addCase(updateAddress.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(updateAddress.fulfilled, (state, action) => {
+        state.loading = false;
+        const index = state.addresses.addresses.findIndex((address) => address?._id === action.payload._id);
+        // const index = state.addresses.findIndex((address) => address?._id === action.payload._id);
+        if (index !== -1) {
+          state.addresses[index] = action.payload;
+        }
+      })
+      .addCase(updateAddress.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      // Delete
+      .addCase(deleteAddress.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(deleteAddress.fulfilled, (state, action) => {
+        state.loading = false;
+        state.addresses = state.addresses.addresses.filter((address) => address?._id !== action.payload);
+      })
+      .addCase(deleteAddress.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       });
+      
   },
 });
 

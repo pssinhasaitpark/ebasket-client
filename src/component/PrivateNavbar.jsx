@@ -74,6 +74,10 @@ const updateCart = (newItem) => {
 const removeItemFromCart = (itemId) => {
   setCart(prevCart => prevCart.filter(item => item.id !== itemId));
 };
+
+useEffect(() => {
+
+
 const fetchUserData = async () => {
   try {
       const response = await axios.get(`http://192.168.0.112:4500/user/me`, {
@@ -90,9 +94,12 @@ const fetchUserData = async () => {
   }
 };
 
-    useEffect(() => {
-        fetchUserData();
-    }, []);
+
+fetchUserData();
+}, []);
+// useEffect(() => {
+//   updateUserData();
+//     }, []);
 
   return (
    <>
@@ -128,7 +135,8 @@ const fetchUserData = async () => {
                           <div className='dropdown-container d-flex align-items-center me-2'>
                             <a href="#">
                               <div className='item-image '>
-                                <img src={userData.image || user} alt="" />
+                                {console.log("hii 12345",userData)}
+                                <img src={userData?.image || user} alt="" />
                               </div>
                             </a>
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect , useState } from 'react'
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import { Dropdown, Row, Col, Form, NavLink } from 'react-bootstrap';
@@ -6,7 +6,9 @@ import Logo from '../asset/images/logo_web.png'
 import location from '../asset/images/location.svg'
 // import GooglePlacesAutocomplete from 'react-google-autocomplete';
 import './Header.css'
-import {  useSelector } from 'react-redux';
+import {  useDispatch , useSelector } from 'react-redux';
+import { fetchUserMe } from '../store/slices/usermeSlice';
+import { fetchAddresses } from '../store/slices/addressSlice';
 
 import PrivateNavbar from '../component/PrivateNavbar';
 import PublicNavbar from '../component/PublicNavbar';
@@ -14,9 +16,17 @@ import PublicNavbar from '../component/PublicNavbar';
 
 const Header = () => {
   const isSignedIn = useSelector((state) => state.auth.isSignedIn);
+  const dispatch = useDispatch();
+    const { addresses, loading, error } = useSelector((state) => state.addresses);
+  const { userData } = useSelector((state) => state.userMe);
+
+  useEffect(() => {
+    dispatch(fetchUserMe() , fetchAddresses());
+  }, [dispatch]);
+  {console.log('showme' ,addresses?.addresses?.[0]?.address?.areaSectorLocality)}
 
 
-
+  const selectedAddress = addresses?.addresses?.length > 0 ? addresses?.addresses?.[0]?.address?.areaSectorLocality : userData?.address;
   return (
     <>
 
@@ -42,9 +52,10 @@ const Header = () => {
                           <img src={location} alt="search" className='' />
                         </span>
                       </div>
-
+                      
                       <input
                         type="text"
+                        value={addresses?.addresses?.length > 0 ? addresses?.addresses?.[0]?.address?.areaSectorLocality : userData?.address}
                         className="form-control input border-0"
                         placeholder="Enter Your Location"
 

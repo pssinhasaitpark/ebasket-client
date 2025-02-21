@@ -110,9 +110,10 @@ function Slick({category})
                       {filteredItems && filteredItems.length > 0 ?(
                         <Slider {...settings} style={{background:'tranparent'}}>
                         {filteredItems && filteredItems.length > 0 ? (
-                          filteredItems.map((item) => {
-                              return (
-                              <div>
+                          filteredItems.map((item) =>  {
+                            if (item.itemDetails.publish)
+                          {
+                              return (<div>
                                 <div key={item._id} className="Slick-card" onClick={() => handleCardClick(item._id)}>
                                   <div className="Slick-img-section">
                                   <div className="member-plan position-absolute">
@@ -122,7 +123,7 @@ function Slick({category})
                                       className="Slick-img img-fluid"
                                       src={
                                         item.itemDetails.mediaFiles && item.itemDetails.mediaFiles[0]?.url
-                                          ? `${BASE_URL}${item.itemDetails.mediaFiles[0].url}`
+                                          ? `${item.itemDetails.mediaFiles[0].url}`
                                           : rice
                                       }
                                       alt={item.itemDetails.name}
@@ -140,7 +141,7 @@ function Slick({category})
                                 </div>
                                 </div>
                               );
-                          
+                            }
                             return null;
                           })
                         ) : (
