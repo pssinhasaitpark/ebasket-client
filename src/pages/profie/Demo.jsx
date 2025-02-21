@@ -16,7 +16,7 @@ const Profile = () => {
     // Validation Schema
     const validationSchema = Yup.object({
         fullName: Yup.string().required('Name is required'),
-       
+
         image: Yup.mixed().required("required"), // Image is optional for update
     });
 
@@ -108,8 +108,8 @@ const Profile = () => {
                             <Formik
                                 initialValues={{
                                     fullName: userData?.fullName || '',
-                                    email: userData?.email ||'',
-                                    phoneNumber: userData?.phoneNumber|| '',
+                                    email: userData?.email || '',
+                                    phoneNumber: userData?.phoneNumber || '',
                                     image: '',
                                 }}
                                 validationSchema={validationSchema}
@@ -117,7 +117,7 @@ const Profile = () => {
                                     // Collect updated data for PUT request
                                     console.log("values..", values);
                                     console.log(values.fullName);
-                                    
+
 
                                     const updatedData = {
                                         fullName: values.fullName,
@@ -130,7 +130,7 @@ const Profile = () => {
                                     await updateUserData(updatedData);
                                 }}
                             >
-                                {({ handleSubmit, setFieldValue, values, errors, touched, handleChange,isSubmitting }) => (
+                                {({ handleSubmit, setFieldValue, values, errors, touched, handleChange, isSubmitting }) => (
                                     <Form onSubmit={handleSubmit}>
                                         {/* Full Name Field */}
                                         <Form.Group controlId="fullName" className="mb-3">
