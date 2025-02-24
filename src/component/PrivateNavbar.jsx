@@ -18,6 +18,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {  signOut } from '../store/slices/authSlice';
 import axios from 'axios';
 // import { addToCart, removeFromCart, updateCartQuantity } from '../store/slices/cart-slice';
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 
 const PrivateNavbar = () => {
@@ -80,7 +81,7 @@ useEffect(() => {
 
 const fetchUserData = async () => {
   try {
-      const response = await axios.get(`http://192.168.0.112:4500/user/me`, {
+      const response = await axios.get(`${BASE_URL}/user/me`, {
           headers: {
               'Authorization': `Bearer ${localStorage.getItem('token')}`,
               'Content-Type': 'application/json',

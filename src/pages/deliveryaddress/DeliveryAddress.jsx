@@ -186,7 +186,9 @@ const AddressForm = () => {
       setEditingAddress(null); 
     }
   };
-  {console.log('showme' ,addresses?.addresses?.[0]?.address?.addressType)}
+  // {console.log('showme' ,addresses?.addresses?.[0]?.address?.addressType)}
+
+  {console.log('showme' ,addresses?.addresses?.[0]?.address?.areaSectorLocality)}
 
   return (
     <>
@@ -225,7 +227,7 @@ const AddressForm = () => {
                        
                       </div>
                       <div className="ms-2 d-flex gap-2">
-                        <Button className="rounded bg-color p-2" onClick={() => handleEditAddress(address_e)}>
+                        <Button className="rounded bg-color p-2" onClick={() => handleEditAddress(address_e.address)}>
                           <img src={edit} alt="" />
                         </Button>
 {/* 
@@ -234,7 +236,7 @@ const AddressForm = () => {
                           onHide={() => setModalShow(false)}
                           onSubmit={(updatedData) => handleupdateAddress(address._id, updatedData )}
                         /> */}
-                        <a href="#" onClick={() => {handleDelete(address_e._id);}}>
+                        <a href="#" onClick={() => {handleDelete(address_e.address._id);}}>
                           <div className="rounded bg-color p-2">
                             <img src={bin} alt="delete" />
                           </div>

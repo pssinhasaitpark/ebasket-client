@@ -27,7 +27,7 @@ const Profile = () => {
 
     const fetchUserData = async () => {
         try {
-            const response = await axios.get(`http://192.168.0.112:4500/user/me`, {
+            const response = await axios.get(`${BASE_URL}/user/me`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                     'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ const Profile = () => {
         }
         try {
             const response = await axios.put(
-                `http://192.168.0.112:4500/user/updateme`,
+                `${BASE_URL}/user/updateme`,
                 formData,
                 {
                     headers: {
