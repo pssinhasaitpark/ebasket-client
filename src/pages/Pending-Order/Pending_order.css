@@ -1,10 +1,27 @@
+.table
+{
+--bs-table-striped-bg: none !important;
+--bs-table-hover-bg: none !important;
+}
+
+.card{
+    --bs-card-border-color:none !important
+}
+/* thead{
+    border-color: inherit;
+    border-style: none;
+    border-width: 0;
+} */
+.order-table thead{
+    border-style: unset !important
+}
 .order-container {
     margin-top: 20px;
 }
 
 .order-card {
     border-radius: 12px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     padding: 15px;
 }
@@ -13,6 +30,8 @@
     font-size: 1.3rem;
     font-weight: bold;
     color: #333;
+    padding: 5px 0;
+    border-bottom: 2px solid green;
 }
 
 .order-table {
@@ -21,10 +40,10 @@
 }
 
 .order-table th {
-    background-color: #f8f9fa;
+    /* background-color: #f8f9fa; */
     font-weight: bold;
     padding: 12px;
-    text-align: center;
+    /* text-align: center; */
 }
 
 .order-table td {
@@ -49,4 +68,12 @@
 }
 .order-table tbody tr:hover {
     background: none !important;
+}
+td.image {
+    max-width: 150px;
+    width: 150px;
+}
+td.image img{
+  object-fit: cover;
+    width: 100%;
 }

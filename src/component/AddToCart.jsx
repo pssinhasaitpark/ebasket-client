@@ -524,8 +524,7 @@ function SuccessMessage (props){
       </Modal.Body>
       <Modal.Footer className="pop_up_button">
         <Button onClick={() => { 
-            props.onHide(); 
-            window.location.reload();  
+            props.onHide();  
             }} className="pop_up_close-btn">Ok</Button>
       </Modal.Footer>
     </Modal>

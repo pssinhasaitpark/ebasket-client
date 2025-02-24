@@ -141,13 +141,13 @@ const Footer = () => {
                                 <div className='bottom-col-right d-flex justify-content-end gap-3'>
 
                                 <div className='image'> 
-                                    <a href="#">
+                                    <a href="">
                                         <img src={playmarket} alt="" />
                                     </a>
                                 </div>
                          
                                 <div className='image '>
-                                <a href="#">
+                                <a href="">
                                         <img src={app} alt="" />
                                     </a>
                                 </div>

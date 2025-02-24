@@ -32,7 +32,7 @@ const ProtectedRoutes = () => {
             <Route path="/my-order" element={isSignedIn ? <OrderTabs /> : <Navigate to="/login" />}/>
             <Route path="/notification" element={isSignedIn ? <Notification /> : <Navigate to="/login" />}/>
             <Route path="/favorite-products" element={isSignedIn ? <WishlistPage /> : <Navigate to="/login" />}/>
-            <Route path="/pending_order" element={isSignedIn ? <Pending_order/> : <Navigate to="/login" />}/>
+            <Route path="/pending_order/:id" element={isSignedIn ? <Pending_order/> : <Navigate to="/login" />}/>
             
             {/* <Route path="*" element={<NotFound/>} /> */}
             </Routes>

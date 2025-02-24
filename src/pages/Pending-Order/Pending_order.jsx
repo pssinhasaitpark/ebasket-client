@@ -1,35 +1,62 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { Container, Row, Col, Card, Table, Badge } from 'react-bootstrap';
 import './Pending_order.css'
+import { useLocation , useParams } from "react-router-dom";
+import axios from 'axios';
+
 const Pending_order = () => {
+    const [UserOrder, setUserOrder] = useState({});
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const { id } = useParams();
+    const fetchOrderData = async () => {
+        try {
+            const response = await axios.get(`http://192.168.0.113:4500/orders/getorderbyid/${id}`, {
+ 
+            });
+            
+            setUserOrder(response.data.order); // Assuming the response contains a user object
+            setLoading(false);
+            {console.log('order' , response.data.order)}
+        } catch (err) {
+            setError('Failed to fetch user data');
+            setLoading(false);
+        }
+    };
+       useEffect(() => {
+            if (id) {
+                setUserOrder([id]); 
+            }
+        }, [id]);
+    useEffect(() => {
+        fetchOrderData();
+    }, []);
+
     const order = {
-        dateCreated: 'Mon Feb 24 2025 12:02:35 PM',
-        orderNumber: '67bcl2373c213',
-        status: 'In Process',
-        timeElapsed: '6 hours 49 minutes',
-        paymentMethod: 'Cash on Delivery',
+        dateCreated: UserOrder?.generalDetails?.dateCreated.split('T')[0],
+        orderNumber: UserOrder?.generalDetails?.orderNumber,
+        status: UserOrder?.generalDetails?.status,
+        timeElapsed: UserOrder?.generalDetails?.time,
+        paymentMethod: UserOrder?.generalDetails?.paymentMethod,
         billing: {
-            name: 'Bhavesh',
-            address: 'Indore, Madhya Pradesh 452002, India',
-            shippingAddress: 'Indore, Madhya Pradesh 452002, India',
+            name: UserOrder?.billingDetails?.name,
+            address: UserOrder?.billingDetails?.address,
+            shippingAddress: UserOrder?.billingDetails?.shippingAddress,
         },
         vendor: {
-            address: 'Iscon mall, Satellite Rd, Opp bidiwala park, Satellite, Ahmedabad, Gujarat 380015',
-            phone: '8000000521',
+            address: UserOrder?.vendor?.address,
+            phone: UserOrder?.vendor?.phone,
         },
         items: [
-            { name: 'India Gate Premium Basmati Rice', quantity: 1, price: 225.00 },
-            { name: 'Red Rice', quantity: 1, price: 50.00 },
-            { name: 'Madhur Sugar', quantity: 1, price: 59.00 },
-            { name: 'India Gate Basmati Rice Dubar', quantity: 1, price: 100.10 }
+            { name: UserOrder?.orderItems?.items.map(item => item.itemName), quantity: UserOrder?.orderItems?.items.map(item => item.quantity), price: UserOrder?.orderItems?.items.map(item => item.price), Image: UserOrder?.orderItems?.items.map(item => item.itemImage) },
         ],
         summary: {
-            subtotal: 686.10,
-            discount: -202546374756.57,
-            tax: 10127544310.91,
-            gst: 10.00,
-            shipping: 1022.43,
-            total: 212678431561.62
+            subtotal: UserOrder?.orderItems?.orderSubtotal,
+            discount: -UserOrder?.orderItems?.orderDiscount,
+            tax: UserOrder?.orderItems?.orderTax,
+            gst: UserOrder?.orderItems?.gst,
+            shipping: UserOrder?.orderItems?.orderShipping,
+            total: UserOrder?.orderItems?.orderTotal
         }
     };
     return (
@@ -39,7 +66,7 @@ const Pending_order = () => {
                     <Col md={6}>
                         <Card className="order-card">
                             <Card.Body>
-                                <Card.Title>General Details</Card.Title>
+                                <Card.Title >General Details</Card.Title>
                                 <p><strong>Date Created:</strong> {order.dateCreated}</p>
                                 <p><strong>Order Number:</strong> {order.orderNumber}</p>
                                 <p><strong>Status:</strong> <Badge bg="primary">{order.status}</Badge></p>
@@ -60,13 +87,27 @@ const Pending_order = () => {
                     </Col>
                 </Row>
                 <Row>
+                    <Col md={6}>
+                    <Card className="order-card">
+                            <Card.Body>
+                                <Card.Title>Vendor Details</Card.Title>
+                                <p><strong>Address:</strong> {order.vendor.address}</p>
+                                <p><strong>Phone:</strong> {order.vendor.phone}</p>
+                             
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
+                <Row>
                     <Col>
                         <Card className="order-card">
 
                             <h4>Order Items</h4>
                             <Table striped bordered hover className="order-table">
-                                <thead>
+                                <thead className='thead'>
                                     <tr>
+
+                                      <th>Image</th>
                                         <th>Item Name</th>
                                         <th>Quantity</th>
                                         <th>Price</th>
@@ -76,10 +117,11 @@ const Pending_order = () => {
                                 <tbody>
                                     {order.items.map((item, index) => (
                                         <tr key={index}>
+                                             <td className='image'><img src={item.Image} alt={item.itemName} width={100} height={100} rounded /></td>
                                             <td>{item.name}</td>
                                             <td>x {item.quantity}</td>
-                                            <td>${item.price.toFixed(2)}</td>
-                                            <td>${(item.quantity * item.price).toFixed(2)}</td>
+                                            <td>${item.price}</td>
+                                            <td>${(item.quantity * item.price)}</td>
                                         </tr>
                                     ))}
                                 </tbody>
@@ -95,26 +137,26 @@ const Pending_order = () => {
                                 <Table className="order-summary">
                                     <tbody>
                                         <tr><td className='fw-bold'>Order Subtotal</td>
-                                            <td className="text-end">${order.summary.subtotal.toFixed(2)}</td>
+                                            <td className="text-end">${order.summary.subtotal}</td>
                                         </tr>
                                         <tr>
                                              <td className='fw-bold'>Order Discount</td>
-                                             <td className="text-danger text-end">(${order.summary.discount.toFixed(2)})</td>
+                                             <td className="text-danger text-end">(${order.summary.discount})</td>
                                         </tr>
                                         <tr>
                                             <td className='fw-bold'>Order Tax </td>
-                                                 <td className="text-end">${order.summary.tax.toFixed(2)}</td>
+                                                 <td className="text-end">${order.summary.tax}</td>
                                         </tr>
                                         <tr>
                                             <td className='fw-bold'>GST</td>
-                                                 <td className='text-end'>${order.summary.gst.toFixed(2)}</td>
+                                                 <td className='text-end'>${order.summary.gst}</td>
                                         </tr>
                                         <tr>
                                             <td className='fw-bold'>Order Shipping</td>
-                                                 <td className='text-end'>${order.summary.shipping.toFixed(2)}</td>
+                                                 <td className='text-end'>${order.summary.shipping}</td>
                                         </tr>
                                         <tr className="total-row"><td className='fw-bold'>Order Total</td>
-                                             <td className='text-end'>${order.summary.total.toFixed(2)}</td>
+                                             <td className='text-end'>${order.summary.total}</td>
                                         </tr>
                                     </tbody>
                                 </Table>
