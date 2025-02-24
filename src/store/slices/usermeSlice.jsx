@@ -1,11 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 
 export const fetchUserMe = createAsyncThunk(
   'userMe/fetchUserMe',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get('http://192.168.0.112:4500/user/me', {
+      const response = await axios.get(`${BASE_URL}/user/me`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
           'Content-Type': 'application/json',

@@ -1,0 +1,64 @@
+.bg-pending{
+    font-size: 11px !important;
+    background-color: #ffc107 !important;
+    text-align: center;
+    border-radius: 0.75rem !important;
+    line-height: 24px;
+}
+
+.delivery-otp{
+    color: #fff;
+    background-color: #33ab5b;
+}
+
+.order_img{
+    height: 88px;
+    max-width: 110px;
+}
+
+.nav-item a.active{
+    background: #eff2f5 !important;
+}
+
+.total-pay-my_order {
+    font-size: 11px !important;
+    margin-left: auto !important;
+    margin-right: 24px !important;
+}
+
+.text-muted {
+    color: #6c757d !important;
+}
+
+.custom-help .btn-outline-primary {
+    color: #01664a;
+    border-color: #01664a;
+    font-size: 13px;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+.custom-help .btn-outline-primary:hover {
+    background: #01664a;
+    border-color: #01664a;
+}
+
+.my_order_name{
+    text-decoration: none;
+}
+
+.order-date{
+    color: #333;
+    letter-spacing: 0.2px;
+    font-weight: 400;
+}
+
+.order-date svg{
+    width: 13px;
+    height: 13px;
+}
+/* a.active .active-icon{  
+    background: #e23844;
+    color: #fff !important;
+    border-color: transparent;
+} */
