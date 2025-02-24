@@ -12,6 +12,7 @@ import Transcation from '../pages/transaction/Transaction'
 import NotFound from "../pages/NotFound/NotFound";
 import Notification from "../pages/notification/notification";
 import Profile from '../pages/profie/Demo'
+import Pending_order from "../pages/Pending-Order/Pending_order";
 
 const ProtectedRoutes = () => {
 
@@ -31,6 +32,8 @@ const ProtectedRoutes = () => {
             <Route path="/my-order" element={isSignedIn ? <OrderTabs /> : <Navigate to="/login" />}/>
             <Route path="/notification" element={isSignedIn ? <Notification /> : <Navigate to="/login" />}/>
             <Route path="/favorite-products" element={isSignedIn ? <WishlistPage /> : <Navigate to="/login" />}/>
+            <Route path="/pending_order" element={isSignedIn ? <Pending_order/> : <Navigate to="/login" />}/>
+            
             {/* <Route path="*" element={<NotFound/>} /> */}
             </Routes>
         </>
