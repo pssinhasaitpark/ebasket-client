@@ -1,52 +1,267 @@
-import React, { useState } from 'react';
-import { FaList, FaClock, FaCheck, FaMapMarker } from 'react-icons/fa';
+import React, { useState, useEffect } from 'react';
+import { FaList, FaClock, FaCheck, FaMapMarker, FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
 import NotFound from '../NotFound/NotFound';
+import './MyOrder.css'
+import { useDispatch, useSelector } from 'react-redux';
+import { getorders } from '../../store/slices/orderSlice';
+import Noresult from '../../asset/images/no-result copy.png';
+import {Clock} from 'react-feather'
 
 const OrderTabs = () => {
+  const dispatch = useDispatch();
+  const { orders, loading, error } = useSelector((state) => state.Order);
   const [activeTab, setActiveTab] = useState('all'); // Initially, 'all' tab is active
-
   const handleTabClick = (tab) => {
     setActiveTab(tab); // Update active tab on click
+  };
+
+  useEffect(() => {
+    dispatch(getorders());
+  }, [dispatch]);
+
+  if (loading) {
+    return <div>Loading orders...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  const filterOrdersByStatus = (status) => {
+    return orders.filter((order) => order?.order?.generalDetails?.status === status);
+  };
+
+
+
+  // return (
+  //   <div className="container mt-3">
+  //     <div className="row">
+  //       <div className="col-md-12 top-nav mb-3">
+  //         <div className="custom-tabsa border-0 bg-white rounded overflow-hidden shadow-sm p-2 c-t-order">
+  //           {/* Navigation Tabs */}
+  //           <ul className="nav nav-tabs">
+  //             <li className="nav-item rounded-circle">
+  //               <a
+  //                 className={`nav-link ${activeTab === 'all' ? 'active' : ''} border-0 text-dark py-3`}
+  //                 onClick={() => handleTabClick('all')}
+  //                 href="#"
+  //               >
+  //                 <FaList className="mr-2 text-success mb-0" /> All
+  //               </a>
+  //             </li>
+  //             <li className="nav-item">
+  //               <a
+  //                 className={`nav-link ${activeTab === 'progress' ? 'active' : ''} border-0 text-dark py-3`}
+  //                 onClick={() => handleTabClick('progress')}
+  //                 href="#"
+  //               >
+  //                 <FaClock className="mr-2 text-warning mb-0" /> InProcess
+  //               </a>
+  //             </li>
+  //             <li className="nav-item">
+  //               <a
+  //                 className={`nav-link ${activeTab === 'intransit' ? 'active' : ''} border-0 text-dark py-3`}
+  //                 onClick={() => handleTabClick('intransit')}
+  //                 href="#"
+  //               >
+  //                 <FaClock className="mr-2 text-success mb-0" /> InTransit
+  //               </a>
+  //             </li>
+  //             <li className="nav-item">
+  //               <a
+  //                 className={`nav-link ${activeTab === 'delivered' ? 'active' : ''} border-0 text-dark py-3`}
+  //                 onClick={() => handleTabClick('delivered')}
+  //                 href="#"
+  //               >
+  //                 <FaCheck className="mr-2 text-success mb-0" /> Delivered
+  //               </a>
+  //             </li>
+  //           </ul>
+
+  //           <div className="tab-content col-md-12 mt-3">
+  //             {activeTab === 'all' && (
+  //               <div className="tab-pane active" id="all">
+  //                 <div><div class="p-3 rounded shadow-sm bg-white">
+  //                   <div class="d-flex border-bottom pb-3 m-d-flex justify-content-between">
+  //                     <div class="d-flex">
+  //                     <div class="text-muted mr-3">
+  //                       <img
+  //                         alt="#"
+  //                         src={NotFound}
+  //                         class="img-fluid order_img rounded"
+  //                       />
+  //                     </div>
+  //                     <div>
+  //                       <p class="mb-0 font-weight-bold">
+  //                         <a class="text-dark">India Gate Basmati Rice Dubar</a>
+  //                       </p>
+  //                       <p class="mb-0">
+  //                         <span><FaMapMarker className="mr-2 text-muted" aria-hidden="true" /></span> IT Park, 28, Indore - Dhar Rd, Sinhasa, Indore, Madhya Pradesh 452013, India
+  //                       </p>
+  //                       <p>ORDER 67b8780d8048f</p>
+  //                       <p class="mb-0 small view-det">
+  //                         <a href="https://ebasketweb.siswebapp.com/pending_order?id=67b8780d8048f" className='small font-weight-bold text-center ' >View Details</a>
+  //                       </p>
+  //                     </div>
+  //                     </div>
+  //                     <div class="ml-auto ord-com-btn">
+  //                       <p class="bg-pending text-white py-1 px-2 rounded small mb-1">InProcess</p>
+  //                       <p class="small font-weight-bold text-center">
+  //                         <i class="feather-clock"></i> Fri Feb 21 2025
+  //                       </p>
+  //                       <p class="delivery-otp small font-weight-bold text-center otp-box badge badge-danger py-2 px-3">
+  //                         OTP : 677055
+  //                       </p>
+  //                     </div>
+  //                   </div>
+
+  //                   <div class="d-flex pt-3 m-d-flex justify-content-between">
+
+  //                   <div class="text-muted m-0 ml-auto mr-3 small">
+  //                       <span class="text-dark font-weight-bold">1 items</span>
+  //                     </div>
+
+  //                     <div class="text-muted m-0 ml-auto mr-3 small">
+  //                       Total Payment
+  //                       <span class="text-dark font-weight-bold">$1137.54</span>
+  //                     </div>
+
+  //                   </div>
+  //                 </div>
+  //                 </div>
+
+  //                 <p>All orders content goes here.</p>
+  //               </div>
+  //             )}
+
+  //             {activeTab === 'progress' && (
+  //               <div className="tab-pane active" id="progress">
+  //                 <p>Orders that are InProcess go here.</p>
+  //               </div>
+  //             )}
+
+  //             {activeTab === 'intransit' && (
+  //               <div className="tab-pane active" id="intransit">
+  //                 <p>Orders that are InTransit go here.</p>
+  //               </div>
+  //             )}
+
+  //             {activeTab === 'delivered' && (
+  //               <div className="tab-pane active" id="delivered">
+  //                 <p>Orders that are Delivered go here.</p>
+  //               </div>
+  //             )}
+  //           </div>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   </div>
+  // );
+
+  const renderOrderDetails = (order) => {
+    const { generalDetails, billingDetails, orderItems, otp, ordercreatedAt } = order;
+    return (
+      <div className='pb-3'>
+      <div className="p-3 rounded shadow-sm bg-white" key={order.id}>
+        <div className="d-flex border-bottom pb-3 m-d-flex justify-content-between">
+          <div className="d-flex">
+            <div className="text-muted mr-3">
+              <img
+                alt="Order Image"
+                src={orderItems.items[0].itemImage}
+                className="img-fluid order_img rounded"
+              />
+            </div>
+            <div>
+              <p className="mb-0 font-weight-bold">
+                <a className="text-dark my_order_name">{orderItems?.items[0]?.itemName}</a>
+              </p>
+              <p className="mb-0">
+                <FaMapMarker className="mr-2 text-muted" /> {billingDetails?.shippingAddress}
+              </p>
+              <p>ORDER {order?.generalDetails?.orderNumber}</p>
+              <p className="mb-0 small view-det">
+                <a
+                  href={`${order._id}`}
+                  className="small font-weight-bold text-center"
+                >
+                  View Details
+                </a>
+              </p>
+            </div>
+          </div>
+          <div className="ml-auto ord-com-btn">
+            <p className={`bg-pending text-white py-1 px-2 rounded small mb-1 status-${order?.generalDetails?.status || 'unkwown'}`}>
+              {order?.generalDetails?.status}
+            </p>
+            <p className="small font-weight-bold text-center order-date">
+              <Clock className='small' /> {generalDetails?.dateCreated.split('T')[0]}
+            </p>
+            <p className="delivery-otp small font-weight-bold text-center otp-box badge badge-danger py-2 px-3">
+              OTP : {otp}
+            </p>
+          </div>
+        </div>
+
+        <div className="d-flex pt-3 m-d-flex ">
+          <div className="text-muted m-0 ml-auto mr-3 small">
+            <span className="text-dark font-weight-bold">{Array.isArray(orderItems?.items)
+              ? orderItems.items.reduce((total, item) => total + item.quantity, 0)
+              : 0} items</span>
+          </div>
+
+          <div className="total-pay-my_order text-muted mr-3 ml-auto small">
+            Total Payment
+            <div className="text-dark font-weight-bold">${orderItems?.orderTotal.toFixed(2)}</div>
+          </div>
+
+          <div className="text-right custom-help">
+              <a href='/contactus' className='btn btn-outline-primary px-3'>Help</a>
+          </div>
+        </div>
+      </div>
+      </div>
+    );
   };
 
   return (
     <div className="container mt-3">
       <div className="row">
         <div className="col-md-12 top-nav mb-3">
-          <div className="custom-tabsa border-0 bg-white rounded overflow-hidden shadow-sm p-2 c-t-order">
+          <div className="custom-tabsa bg-white overflow-hidden  p-2 c-t-order">
             {/* Navigation Tabs */}
-            <ul className="nav nav-tabs">
+            <ul className="nav nav-tabs border-0 bg-white rounded overflow-hidden shadow-sm p-2 c-t-order">
               <li className="nav-item rounded-circle">
                 <a
                   className={`nav-link ${activeTab === 'all' ? 'active' : ''} border-0 text-dark py-3`}
                   onClick={() => handleTabClick('all')}
                   href="#"
                 >
-                  <FaList className="mr-2 text-success mb-0" /> All
+                  <FaList className="active-icon mr-2 text-success mb-0" /> All
                 </a>
               </li>
-              <li className="nav-item">
+              <li className="nav-item rounded-circle">
                 <a
-                  className={`nav-link ${activeTab === 'progress' ? 'active' : ''} border-0 text-dark py-3`}
-                  onClick={() => handleTabClick('progress')}
+                  className={`nav-link ${activeTab === 'InProcess' ? 'active' : ''} border-0 text-dark py-3`}
+                  onClick={() => handleTabClick('InProcess')}
                   href="#"
                 >
                   <FaClock className="mr-2 text-warning mb-0" /> InProcess
                 </a>
               </li>
-              <li className="nav-item">
+              <li className="nav-item rounded-circle">
                 <a
-                  className={`nav-link ${activeTab === 'intransit' ? 'active' : ''} border-0 text-dark py-3`}
-                  onClick={() => handleTabClick('intransit')}
+                  className={`nav-link ${activeTab === 'InTransit' ? 'active' : ''} border-0 text-dark py-3`}
+                  onClick={() => handleTabClick('InTransit')}
                   href="#"
                 >
                   <FaClock className="mr-2 text-success mb-0" /> InTransit
                 </a>
               </li>
-              <li className="nav-item">
+              <li className="nav-item rounded-circle">
                 <a
-                  className={`nav-link ${activeTab === 'delivered' ? 'active' : ''} border-0 text-dark py-3`}
-                  onClick={() => handleTabClick('delivered')}
+                  className={`nav-link ${activeTab === 'Delivered' ? 'active' : ''} border-0 text-dark py-3`}
+                  onClick={() => handleTabClick('Delivered')}
                   href="#"
                 >
                   <FaCheck className="mr-2 text-success mb-0" /> Delivered
@@ -57,74 +272,42 @@ const OrderTabs = () => {
             <div className="tab-content col-md-12 mt-3">
               {activeTab === 'all' && (
                 <div className="tab-pane active" id="all">
-                  <div><div class="p-3 rounded shadow-sm bg-white">
-                    <div class="d-flex border-bottom pb-3 m-d-flex justify-content-between">
-                      <div class="d-flex">
-                      <div class="text-muted mr-3">
-                        <img
-                          alt="#"
-                          src={NotFound}
-                          class="img-fluid order_img rounded"
-                        />
-                      </div>
-                      <div>
-                        <p class="mb-0 font-weight-bold">
-                          <a class="text-dark">India Gate Basmati Rice Dubar</a>
-                        </p>
-                        <p class="mb-0">
-                          <span><FaMapMarker className="mr-2 text-muted" /></span> IT Park, 28, Indore - Dhar Rd, Sinhasa, Indore, Madhya Pradesh 452013, India
-                        </p>
-                        <p>ORDER 67b8780d8048f</p>
-                        <p class="mb-0 small view-det">
-                          <a href="https://ebasketweb.siswebapp.com/pending_order?id=67b8780d8048f" className='small font-weight-bold text-center ' >View Details</a>
-                        </p>
-                      </div>
-                      </div>
-                      <div class="ml-auto ord-com-btn">
-                        <p class="bg-pending text-white py-1 px-2 rounded small mb-1">InProcess</p>
-                        <p class="small font-weight-bold text-center">
-                          <i class="feather-clock"></i> Fri Feb 21 2025
-                        </p>
-                        <p class="small font-weight-bold text-center otp-box badge badge-danger py-2 px-3">
-                          OTP : 677055
-                        </p>
-                      </div>
-                    </div>
-
-                    <div class="d-flex pt-3 m-d-flex justify-content-between">
-
-                    <div class="text-muted m-0 ml-auto mr-3 small">
-                        <span class="text-dark font-weight-bold">1 items</span>
-                      </div>
-
-                      <div class="text-muted m-0 ml-auto mr-3 small">
-                        Total Payment
-                        <span class="text-dark font-weight-bold">$1137.54</span>
-                      </div>
-
-                    </div>
-                  </div>
-                  </div>
-                  
-                  <p>All orders content goes here.</p>
+                  {orders.length === 0 ? (
+                    <p className='text-center'><img src={Noresult} alt="" /></p>
+                  ) : (
+                    orders.map((orderData) => renderOrderDetails(orderData.order)) // Correct mapping here
+                  )}
+                  {console.log('order', orders)
+                  }
                 </div>
               )}
 
-              {activeTab === 'progress' && (
-                <div className="tab-pane active" id="progress">
-                  <p>Orders that are InProcess go here.</p>
+              {activeTab === 'InProcess' && (
+                <div className="tab-pane active" id="InProcess">
+                  {filterOrdersByStatus('InProcess').length === 0 ? (
+                    <p className='text-center'><img src={Noresult} alt="" /></p>
+                  ) : (
+                    filterOrdersByStatus('InProcess').map((orderData) => renderOrderDetails(orderData.order))
+                  )}
                 </div>
               )}
 
-              {activeTab === 'intransit' && (
-                <div className="tab-pane active" id="intransit">
-                  <p>Orders that are InTransit go here.</p>
+              {activeTab === 'InTransit' && (
+                <div className="tab-pane active" id="InTransit">
+                  {filterOrdersByStatus('InTransit').length === 0 ? (
+                    <p className='text-center'><img src={Noresult} alt="" /></p>
+                  ) : (
+                    filterOrdersByStatus('InTransit').map((orderData) => renderOrderDetails(orderData.order))
+                  )}
                 </div>
               )}
-
-              {activeTab === 'delivered' && (
-                <div className="tab-pane active" id="delivered">
-                  <p>Orders that are Delivered go here.</p>
+              {activeTab === 'Delivered' && (
+                <div className="tab-pane active" id="Delivered">
+                  {filterOrdersByStatus('Delivered').length === 0 ? (
+                    <p className='text-center'><img src={Noresult} alt="" /></p>
+                  ) : (
+                    filterOrdersByStatus('Delivered').map((orderData) => renderOrderDetails(orderData.order))
+                  )}
                 </div>
               )}
             </div>
@@ -133,6 +316,8 @@ const OrderTabs = () => {
       </div>
     </div>
   );
+
+
 };
 
 export default OrderTabs;

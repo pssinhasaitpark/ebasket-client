@@ -24,8 +24,8 @@ export const createorders = createAsyncThunk(
 );
 
 export const getorders = createAsyncThunk(
-  'orders/createorders',
-  async ({ rejectWithValue }) => {
+  'orders/getallorder',
+  async (_, { rejectWithValue }) => {
     const token = localStorage.getItem('token');
     if (!token) {
       return rejectWithValue('No token available');
@@ -35,6 +35,8 @@ export const getorders = createAsyncThunk(
       const response = await axios.get(`http://192.168.0.113:4500/orders/getallorder`, {
         headers: { Authorization: `Bearer ${token}` },
       });
+      
+      console.log('repsonse132465789',response.data);
       return response.data;
     } catch (error) {
       const message = error.response ? error.response.data : error.message;
@@ -48,26 +50,39 @@ const initialState = {
   loading: false,
   error: null,
   orderDetails: null,
+  status: 'idle',
 };
 
 const orderSlice = createSlice({
   name: 'orders',
   initialState,
-  reducers: {},
+  reducers: { 
+    setOrders(state, action) {
+      state.orders = action.payload;
+    },
+    setStatus(state, action) {
+      state.status = action.payload;
+    },
+    setError(state, action) {
+      state.error = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
     //fetch
-      // .addCase(getorders.pending, (state) => {
-      //       state.loading = true;
-      //     })
-      //     .addCase(getorders.fulfilled, (state, action) => {
-      //       state.loading = false;
-      //       state.addresses = action.payload || [];
-      //     })
-      //     .addCase(getorders.rejected, (state, action) => {
-      //       state.loading = false;
-      //       state.error = action.payload; 
-      //     })
+    // getorders actions
+      .addCase(getorders.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getorders.fulfilled, (state, action) => {
+        state.loading = false;
+        state.orders = action.payload || [];
+      })
+      .addCase(getorders.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
     //create
       .addCase(createorders.pending, (state) => {
         state.error = null;

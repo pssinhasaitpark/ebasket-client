@@ -7,15 +7,14 @@ const useCreateOrder = () => {
   const navigate = useNavigate();
 
   const createOrder = () => {
-    // Retrieve order data from localStorage
     const orderData = JSON.parse(localStorage.getItem("orderData"));
 
     if (orderData) {
-      dispatch(createorders(orderData)) // Pass the entire order data
+      dispatch(createorders(orderData)) 
         .then(() => {
-          localStorage.removeItem('cart'); // Clear cart after order
-          localStorage.removeItem('orderData'); // Clear order data
-          navigate('/success'); // Navigate to success page
+          localStorage.removeItem('cart'); 
+          localStorage.removeItem('orderData');
+          navigate('/success'); 
         })
         .catch((err) => {
           console.error('Error creating order:', err);
