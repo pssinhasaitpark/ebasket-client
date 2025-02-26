@@ -324,9 +324,13 @@
     color: white;
     text-decoration: none;
 }
-.pop_up_image-container img{
-    width: -webkit-fill-available;
+.pop_up_image-container{
+    display: flex;
+    justify-content: center;
 }
+/* .pop_up_image-container img{
+    width: -webkit-fill-available;
+} */
 .pop_up_close-btn{
     background-color: #198754;
     border: unset;

@@ -160,14 +160,14 @@ function Category() {
                                                 <div className="member-plan position-absolute">
                                                     <Badge className="badge" pill variant="dark">-{item.itemDetails.discount}%</Badge>
                                                 </div>
-                                                <a href="#">
+                                                <div role="button">
                                                     <Card.Img
                                                         src={item.itemDetails.mediaFiles[0]?.url ? `${item.itemDetails.mediaFiles[0].url}` : potatoImg}
                                                         variant="top"
                                                         className="img-fluid item-img w-100"
                                                         alt={item.itemDetails.name}
                                                     />
-                                                </a>
+                                                </div>
                                             </div>
                                             <Card.Body className="py-2 position-relative product-desc">
                                                 <div className="list-card-body">

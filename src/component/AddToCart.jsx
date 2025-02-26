@@ -28,7 +28,7 @@ import LikeButton from '../component/LikeButton';
 import sorry from "../asset/images/no-result copy.png"
 import Selling from "../component/Most_selling";
 import { useDispatch,useSelector } from "react-redux";
-import AlertSuccess from '../asset/images/po.png'
+import AlertSuccess from '../asset/images/Animation - 1740142866364.gif'
 import Slick from "./Slick-Slider";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -518,14 +518,13 @@ function SuccessMessage (props){
         <div className="pop_up_image-container">
         <img src={AlertSuccess} alt="" />
         </div>
-        <p>
-          Your item has been successfully added to the cart. 
+        <p className="text-center ">
+          Item  added to the cart. 
         </p>
       </Modal.Body>
       <Modal.Footer className="pop_up_button">
         <Button onClick={() => { 
-            props.onHide(); 
-            window.location.reload();  
+            props.onHide();  
             }} className="pop_up_close-btn">Ok</Button>
       </Modal.Footer>
     </Modal>

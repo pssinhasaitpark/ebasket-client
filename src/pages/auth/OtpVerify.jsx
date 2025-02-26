@@ -39,7 +39,7 @@ const VerifyOTP = () => {
     setLoadingOtp(true);
 
     try {
-      const response = await axios.post(`http://192.168.0.112:4500/user/reverify`, { email });
+      const response = await axios.post(`${BASE_URL}/user/reverify`, { email });
     
       if (response.data.message) {
         setShowOtp(true); // Show OTP input field

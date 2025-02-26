@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getorders } from '../../store/slices/orderSlice';
 import Noresult from '../../asset/images/no-result copy.png';
 import {Clock} from 'react-feather'
+import Pending_order from '../Pending-Order/Pending_order';
 
 const OrderTabs = () => {
   const dispatch = useDispatch();
@@ -182,9 +183,10 @@ const OrderTabs = () => {
               <p>ORDER {order?.generalDetails?.orderNumber}</p>
               <p className="mb-0 small view-det">
                 <a
-                  href={`${order._id}`}
+                  href={`/pending_order/${order._id}`}
                   className="small font-weight-bold text-center"
                 >
+                  {/* <Pending_order order= {order._id}/> */}
                   View Details
                 </a>
               </p>

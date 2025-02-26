@@ -134,7 +134,7 @@ fetchUserData();
                         <li className="nav-item">
 
                           <div className='dropdown-container d-flex align-items-center me-2'>
-                            <a href="#">
+                            <a href="">
                               <div className='item-image '>
                                 {console.log("hii 12345",userData)}
                                 <img src={userData?.image || user} alt="" />
@@ -158,7 +158,7 @@ fetchUserData();
 
                               {/* Down Arrow Icon */}
                               <div className="dropdown-icon">
-                                <a href="#">
+                                <a href="">
                                   <img src={downarrow} alt="" />
                                 </a>
                                 {/* Dropdown Menu */}
