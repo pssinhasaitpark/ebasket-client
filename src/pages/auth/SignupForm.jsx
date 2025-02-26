@@ -8,7 +8,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./SignupForm.css";
 import { LoadingSpinner } from "../../component/spinner";
-import { signIn } from '../../store/slices/authSlice'; // Import the signUp action
+import { signIn, signUp } from '../../store/slices/authSlice'; // Import the signUp action
 import { useDispatch, useSelector } from "react-redux";
 import { logDOM } from "@testing-library/react";
 const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -97,20 +97,20 @@ const SignUpForm = () => {
 
     try {
       const response = await axios.post(`${BASE_URL}/user/verifyotp`, otpData);
-
-      // console.log("Signup response", response);
-
+      console.log(response);
+      
+      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('username', response.data.username);
       const user = response.data.username;
       // console.log("user.....", user);
 
-
-      // console.log('respone', response);
       
-
       if (response.data.message) {
         toast.success("OTP verified successfully. You are now signed up!");
 
-        dispatch(signIn({ username : user }));
+        dispatch(signUp({ username : user }));
+        console.log(signUp({username :user}));
+        
         navigate("/");
 
       } else {

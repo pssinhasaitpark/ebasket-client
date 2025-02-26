@@ -13,13 +13,20 @@ const ContactUs = () => {
 
   // Validation Schema with Yup
   const validationSchema = Yup.object({
-    name: Yup.string().required('Name is required'),
+    name: Yup.string().required('Name is required').min(3, 'Name must be at least 3 characters'),
     email: Yup.string().email('Invalid email format').required('Email is required'),
-    phone: Yup.string().required('Phone number is required'),
-    message: Yup.string().required('Please tell us how we can help you').min(10, 'Message must be at least 10 characters'),
+    phone: Yup.string().matches(
+      /^[0-9]{10}$/, 
+      "Phone number must be exactly 10 digits"
+    ).required('Phone number is required'),
+    message: Yup.string()
+      .required('Please tell us how we can help you')
+      .min(10, 'Message must be at least 10 characters')
+      .trim(),
   });
+  
 
-    const handleSubmit = async (values) => {
+    const handleSubmit = async (values, { resetForm }) => {
     
       try {
         // Send the form data to your API endpoint 
@@ -33,6 +40,7 @@ const ContactUs = () => {
        
         // console.log('Form submitted successfully:', response.data);
         toast.success('Your message has been sent successfully!');
+        resetForm(); // Reset form after submission
       } catch (error) {
         console.error('Error submitting form:', error);
         toast.error('There was an error sending your message. Please try again later.');
