@@ -56,7 +56,7 @@ const PublicNavbar = () => {
 
                             to={'/search'}
                             className="nav-link "
-                            activeClassName="active"
+                            activeclassname="active"
 
                           >
                             Search
@@ -69,7 +69,7 @@ const PublicNavbar = () => {
                           <div>
                             <img src={offer} alt="" />
                           </div>
-                          <Link to={"/offers"} className="nav-link " activeClassName="active">
+                          <Link to={"/offers"} className="nav-link " activeclassname="active">
                             Offers
                           </Link>
                         </div>
@@ -80,7 +80,7 @@ const PublicNavbar = () => {
                           <div>
                             <img src={user} alt="" />
                           </div>
-                          <Link  to={"/login"} className="nav-link " activeClassName="active">
+                          <Link  to={"/login"} className="nav-link " activeclassname="active">
                             Sign In
                           </Link>
 
@@ -126,7 +126,7 @@ const PublicNavbar = () => {
                             onClick={() => navigate(isSignedIn ? '/checkout' : '/login')}
 
                             className="nav-link "
-                            activeClassName="active">
+                            activeclassname="active">
                             Cart
                           </NavLink>
                         </div>
@@ -157,9 +157,9 @@ const PublicNavbar = () => {
                         <Button onClick={handleShow} className='hemburger-button bg-transparent border-0'>
                           
                           <div className={`hamburger1 ${show ? 'open' : ''}`}>
-                            <div class="top"></div>
-                            <div class="meat"></div>
-                            <div class="bottom"></div>
+                            <div className="top"></div>
+                            <div className="meat"></div>
+                            <div className="bottom"></div>
                           </div>
                        
                         </Button>
@@ -169,10 +169,10 @@ const PublicNavbar = () => {
                           </Offcanvas.Header>
                           <Offcanvas.Body className='p-0'>
                             <div>
-                              <ul class="link-group p-0 ">
+                              <ul className="link-group p-0 ">
 
-                                <li class="list-group-item  border-bottom" onClick={handleClose}>
-                                  <Link to={'/'} class="link1" href="" >
+                                <li className="list-group-item  border-bottom" onClick={handleClose}>
+                                  <Link to={'/'} className="link1" href="" >
                                     <div className='link1-div'>
                                       <div className='image'>
                                         <img src={home} alt="" />
@@ -184,8 +184,8 @@ const PublicNavbar = () => {
                                     </div>
                                   </Link>
                                 </li>
-                                <li class="list-group-item border-bottom" onClick={handleClose}>
-                                  <Link class="link1 " to={'/contactus'}  >
+                                <li className="list-group-item border-bottom" onClick={handleClose}>
+                                  <Link className="link1 " to={'/contactus'}  >
                                     <div className='link1-div'>
                                       <div className='image'>
                                         <img src={user} alt="" />
@@ -197,8 +197,8 @@ const PublicNavbar = () => {
                                     </div>
                                   </Link>
                                 </li>
-                                <li class="list-group-item  border-bottom" onClick={handleClose}>
-                                  <Link to={'/login'} class="link1 " href="" >
+                                <li className="list-group-item  border-bottom" onClick={handleClose}>
+                                  <Link to={'/login'} className="link1 " href="" >
                                     <div className='link1-div'>
                                       <div className='image'>
                                         <img src={user} alt="" />
@@ -210,8 +210,8 @@ const PublicNavbar = () => {
                                     </div>
                                   </Link>
                                 </li>
-                                <li class="list-group-item  border-bottom" onClick={handleClose}>
-                                  <Link to={'/signup'} class="link1 " href="" >
+                                <li className="list-group-item  border-bottom" onClick={handleClose}>
+                                  <Link to={'/signup'} className="link1 " href="" >
                                     <div className='link1-div'>
                                       <div className='image'>
                                         <img src={user} alt="" />
@@ -223,7 +223,7 @@ const PublicNavbar = () => {
                                     </div>
                                   </Link>
                                 </li>
-                                <li class="list-group-item border-bottom" onClick={handleClose}>
+                                <li className="list-group-item border-bottom" onClick={handleClose}>
                                   <div className='version py-5'>
                                     <span >
                                       <p >V:2.1</p>
@@ -234,7 +234,7 @@ const PublicNavbar = () => {
 
 
                               <ul className='sidebar-bottom d-flex position-absolute bottom-0 border-top w-100  p-0 mb-0'>
-                                <li class="bottom list-group-item text-center w-50 p-2" onClick={handleClose}>
+                                <li className="bottom list-group-item text-center w-50 p-2" onClick={handleClose}>
                                   <Link to={'/'} href="" className='text-decoration-none  text-secondary text-center' onClick={() => navigate('/')}>
                                     <div className='bottom-home position-relative'>
                                       <div className=''>
@@ -248,8 +248,8 @@ const PublicNavbar = () => {
                                     </div>
                                   </Link>
                                 </li>
-                                <li class="bottom list-group-item text-center w-50 p-2" onClick={handleClose}>
-                                  <Link to={'/help'} href="" class=" text-decoration-none text-secondary text-center "  >
+                                <li className="bottom list-group-item text-center w-50 p-2" onClick={handleClose}>
+                                  <Link to={'/help'} href="" className=" text-decoration-none text-secondary text-center "  >
 
                                     <div className='position-relative'>
                                       <div>
