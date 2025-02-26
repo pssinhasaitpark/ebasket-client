@@ -73,9 +73,9 @@ const Footer = () => {
                                     <div className='footer-upper-wrapper-mid'>
                                         <h5 className='text-white mb-3 services-heading'>SERVICES</h5>
                                         <ul className="services-list p-0">
-                                            <li><Link to={'/contactus'} href="" >Contact us</Link></li>
-                                            <li><Link to={'/terms'} href="">Term & Condition</Link></li>
-                                            <li><Link to={'/aboutus'} href="">About us</Link></li>
+                                            <li><Link to={'/contactus'}  >Contact us</Link></li>
+                                            <li><Link to={'/terms'} >Term & Condition</Link></li>
+                                            <li><Link to={'/aboutus'} >About us</Link></li>
                                         </ul>
                                     </div>
                                 </Col>
@@ -83,9 +83,9 @@ const Footer = () => {
                                     <div className='footer-upper-wrapper-mid '>
                                         <h5 className='text-white mb-3 services-heading'>FOR USERS</h5>
                                         <ul className="services-list p-0">
-                                            <li><Link href="" to="/login">User Login</Link></li>
-                                            <li><Link href="" to="/signup">User Register</Link></li>
-                                            <li><a href="" onClick={handleProfileClick}
+                                            <li><Link  to="/login">User Login</Link></li>
+                                            <li><Link  to="/signup">User Register</Link></li>
+                                            <li><a  onClick={handleProfileClick}
                                             >User Profile</a></li>
                                         </ul>
                                     </div>
@@ -115,7 +115,7 @@ const Footer = () => {
                                         <h5 className='text-white fw-bold mb-3'>Contact</h5>
                                         <a href="tel:91+6232987451" className='text-decoration-none mb-2'> 
                                             <p className='p-0 m-0 text-white '>6232987451</p>
-                                            </a>
+                                        </a>
 
                                     </div>
                                 </Col>
@@ -141,15 +141,15 @@ const Footer = () => {
                                 <div className='bottom-col-right d-flex justify-content-end gap-3'>
 
                                 <div className='image'> 
-                                    <a href="">
+                                    <a >
                                         <img src={playmarket} alt="" />
                                     </a>
                                 </div>
                          
                                 <div className='image '>
-                                <a href="">
+                                <a >
                                         <img src={app} alt="" />
-                                    </a>
+                                </a>
                                 </div>
                                 </div>
                                 </Col>

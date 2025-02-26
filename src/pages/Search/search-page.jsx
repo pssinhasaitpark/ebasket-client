@@ -46,7 +46,7 @@ function Search() {
     <div>
       <ul className='nav seachpage-list'>
         <li className='nav-item'>
-          <a href="" className='nav-link Home-Tab'>
+          <a  className='nav-link Home-Tab'>
             <FiHome className='home-icon' />
             <span className='product-count'>Items ({filteredItems?.length})</span>
           </a>

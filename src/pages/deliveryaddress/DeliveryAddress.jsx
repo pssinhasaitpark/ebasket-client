@@ -29,15 +29,20 @@ const Forms = (props) => {
       <Modal.Body>
         <Formik
           initialValues={{
+            // address: props.address?.address || '',
+            // flatHouseFloorBuilding: '',
+            // areaSectorLocality: '',
+            // nearbyLandmark: '',
+            // addressType: '',
             address: props.address?.address || '',
-            flatHouseFloorBuilding: '',
-            areaSectorLocality: '',
-            nearbyLandmark: '',
-            addressType: '',
+            flatHouseFloorBuilding: props.address?.flatHouseFloorBuilding || '',
+            areaSectorLocality: props.address?.areaSectorLocality || '',
+            nearbyLandmark: props.address?.nearbyLandmark || '',
+            addressType: props.address?.addressType || '',
           }}
           validationSchema={validationSchema}
           onSubmit={(values) => {
-            console.log("values--", values);
+            // console.log("values--", values);
 
             props.onSubmit(values); // Pass the submitted values up to the parent
           }}
@@ -174,6 +179,12 @@ const AddressForm = () => {
     dispatch(deleteAddress(id));
   };
 
+  useEffect(() => {
+    if (!loading && !error) {
+      dispatch(fetchAddresses());
+    }
+  }, [dispatch, loading, error]);
+
   const handleEditAddress = (address) => {
     setEditingAddress(address);  
     setModalShow(true);         
@@ -186,9 +197,7 @@ const AddressForm = () => {
       setEditingAddress(null); 
     }
   };
-  // {console.log('showme' ,addresses?.addresses?.[0]?.address?.addressType)}
 
-  {console.log('showme' ,addresses?.addresses?.[0]?.address?.areaSectorLocality)}
 
   return (
     <>
@@ -220,7 +229,7 @@ const AddressForm = () => {
                       <div className="ms-3 d-flex flex-column justify-content-between">
                         <div>
                         <p className="location-detail">
-                          {console.log("addresss",address_e?.address)}
+                          {/* {console.log("addresss",address_e?.address)} */}
                           {address_e?.address?.flatHouseFloorBuilding}, {address_e?.address?.areaSectorLocality}
                         </p>
                         </div>
@@ -236,7 +245,7 @@ const AddressForm = () => {
                           onHide={() => setModalShow(false)}
                           onSubmit={(updatedData) => handleupdateAddress(address._id, updatedData )}
                         /> */}
-                        <a href="#" onClick={() => {handleDelete(address_e.address._id);}}>
+                        <a  onClick={() => {handleDelete(address_e.address._id);}}>
                           <div className="rounded bg-color p-2">
                             <img src={bin} alt="delete" />
                           </div>

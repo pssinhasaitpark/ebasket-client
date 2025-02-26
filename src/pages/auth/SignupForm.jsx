@@ -98,20 +98,20 @@ const SignUpForm = () => {
     try {
       const response = await axios.post(`${BASE_URL}/user/verifyotp`, otpData);
 
-      console.log("Signup response", response);
+      // console.log("Signup response", response);
 
       const user = response.data.username;
-      console.log("user.....", user);
+      // console.log("user.....", user);
 
 
-      console.log('respone', response);
+      // console.log('respone', response);
       
 
       if (response.data.message) {
         toast.success("OTP verified successfully. You are now signed up!");
 
+        dispatch(signIn({ username : user }));
         navigate("/");
-        dispatch(signIn({ username: user }));
 
       } else {
         toast.error("Invalid OTP. Please try again.");
@@ -266,7 +266,7 @@ const SignUpForm = () => {
                           isInvalid={touched.address && errors.address}
                           required
                         />
-                        <span class="locate-me" onclick="getCurrentLocation()">
+                        <span className="locate-me" onclick="getCurrentLocation()">
                           <img src="https://emartweb.siswebapp.com/img/locatleme-icon.png" />
                           Locate Me
                         </span>

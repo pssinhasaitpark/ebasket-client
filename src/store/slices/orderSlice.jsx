@@ -36,7 +36,7 @@ export const getorders = createAsyncThunk(
         headers: { Authorization: `Bearer ${token}` },
       });
       
-      console.log('repsonse132465789',response.data);
+      // console.log('repsonse132465789',response.data);
       return response.data;
     } catch (error) {
       const message = error.response ? error.response.data : error.message;

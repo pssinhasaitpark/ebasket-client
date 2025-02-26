@@ -31,7 +31,7 @@ function All() {
         </div>
         <div className='titlebar-contain'><h5 className='title-heading'>Flour</h5><span><Viewall/></span></div>
         <div>
-            <Slick category="dryfruits"/>
+            <Slick category="Flour"/>
         </div>
         <div className='titlebar-contain'><h5 className='title-heading'>Salt & Sugar</h5><span><Viewall/></span></div>
         <div>

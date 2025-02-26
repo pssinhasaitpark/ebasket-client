@@ -17,7 +17,7 @@ export default function SimpleSlider() {
     const { className, style, onClick } = props;
     return (
       <div onClick={onClick} className={`arrow ${className}`}>
-        <img src={arrow_right} class="arrows" style={{ color: "white" }} />
+        <img src={arrow_right} className="arrows" style={{ color: "white" }} />
       </div>
     );
   };

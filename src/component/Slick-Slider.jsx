@@ -40,7 +40,7 @@ function Slick({category})
         const { className, style, onClick } = props;
         return(
             <div onClick={onClick} className={'arrow ${className}'}>
-                <img src={left} alt="" class="arrows" className="position-absolute bottom-50 start-0 translate-middle-x  arrows" 
+                <img src={left} alt="" className="arrows position-absolute bottom-50 start-0 translate-middle-x  arrows" 
                     style={{width:"8%",color:"white", paddingRight:"4%"}}/>
             </div>  
         );
@@ -109,12 +109,11 @@ function Slick({category})
                       <Container>
                       {filteredItems && filteredItems.length > 0 ?(
                         <Slider {...settings} style={{background:'tranparent'}}>
-                        {filteredItems && filteredItems.length > 0 ? (
-                          filteredItems.map((item) =>  {
+                          {filteredItems.map((item) =>  {
                             if (item.itemDetails.publish)
                           {
-                              return (<div>
-                                <div key={item._id} className="Slick-card" onClick={() => handleCardClick(item._id)}>
+                              return (<div key={item._id}>
+                                <div  className="Slick-card" onClick={() => handleCardClick(item._id)}>
                                   <div className="Slick-img-section">
                                   <div className="member-plan position-absolute">
                                                     <Badge className="badge discount-badge" pill variant="dark">-{item.itemDetails.discount}%</Badge>
@@ -134,8 +133,8 @@ function Slick({category})
                                       <a className="title-link">{item.itemDetails.name}</a>
                                     </h6>
                                     <h6 className="mb-1 pt-2 slick-price">
-                                      <span className="actual-price">₹{ (item.itemDetails.price)-((item.itemDetails.discount*item.itemDetails.price)/100)}</span>
-                                      <s>₹{item.itemDetails.price}</s>
+                                      <span className="actual-price">₹{ ((item.itemDetails.price)-((item.itemDetails.discount*item.itemDetails.price)/100) ?? 0).toFixed(2)}</span>
+                                      <s className="text-muted">₹{item.itemDetails.price}</s>
                                     </h6>
                                   </div>
                                 </div>
@@ -143,10 +142,7 @@ function Slick({category})
                               );
                             }
                             return null;
-                          })
-                        ) : (
-                          <p></p>
-                        )}
+                          })}
 
                                 </Slider>):(<p className="no-products"><img src={sorry} alt="" /></p>) }
                 

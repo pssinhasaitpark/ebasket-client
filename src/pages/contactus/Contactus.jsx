@@ -31,7 +31,7 @@ const ContactUs = () => {
         });
   
        
-        console.log('Form submitted successfully:', response.data);
+        // console.log('Form submitted successfully:', response.data);
         toast.success('Your message has been sent successfully!');
       } catch (error) {
         console.error('Error submitting form:', error);

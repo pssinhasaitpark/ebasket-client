@@ -134,9 +134,9 @@ fetchUserData();
                         <li className="nav-item">
 
                           <div className='dropdown-container d-flex align-items-center me-2'>
-                            <a href="">
+                            <a >
                               <div className='item-image '>
-                                {console.log("hii 12345",userData)}
+                                {/* {console.log("hii 12345",userData)} */}
                                 <img src={userData?.image || user} alt="" />
                               </div>
                             </a>
@@ -158,21 +158,21 @@ fetchUserData();
 
                               {/* Down Arrow Icon */}
                               <div className="dropdown-icon">
-                                <a href="">
+                                <a >
                                   <img src={downarrow} alt="" />
                                 </a>
                                 {/* Dropdown Menu */}
                                 <div className='dropdown-menuu'>
-                                  <Link href="" to={'/profile'} >My Account</Link>
-                                  <Link href="" to={'/notification'} >Notification</Link>
-                                  <Link href="" to={'/support'} >Delivery Support</Link>
-                                  <Link href="" to={'/contactus'}  >Contact Us</Link>
-                                  <Link href="" to={'/aboutus'} >About us</Link>
-                                  <Link href="" to={'/help'} >Help</Link>
-                                  <Link href="" to={'/terms'} >Term of use</Link>
-                                  <Link href="" to={'/privacy'} >Privacy policy</Link>
-                                  <Link href="" to={'/refund'} >Refund policy</Link>
-                                  <Link href="" to={'/login'} onClick={handleSignOut}>Logout</Link>
+                                  <Link  to={'/profile'} >My Account</Link>
+                                  <Link  to={'/notification'} >Notification</Link>
+                                  <Link  to={'/support'} >Delivery Support</Link>
+                                  <Link  to={'/contactus'}  >Contact Us</Link>
+                                  <Link  to={'/aboutus'} >About us</Link>
+                                  <Link  to={'/help'} >Help</Link>
+                                  <Link  to={'/terms'} >Term of use</Link>
+                                  <Link  to={'/privacy'} >Privacy policy</Link>
+                                  <Link  to={'/refund'} >Refund policy</Link>
+                                  <Link  to={'/login'} onClick={handleSignOut}>Logout</Link>
 
 
                                 </div>
@@ -255,7 +255,7 @@ fetchUserData();
                                     </Link>
                                   </li>
                                   <li className="list-group-item  border-bottom" >
-                                    <Link to={'/orders'} className="link1" href="" onClick={handleClose}>
+                                    <Link to={'/orders'} className="link1"  onClick={handleClose}>
                                       <div className='link1-div'>
                                         <div className='image'>
                                           <img src={home} alt="" />
@@ -268,7 +268,7 @@ fetchUserData();
                                     </Link>
                                   </li>
                                   <li className="list-group-item  border-bottom">
-                                    <Link to={'/transaction'} className="link1" href="" onClick={handleClose}>
+                                    <Link to={'/transaction'} className="link1"  onClick={handleClose}>
                                       <div className='link1-div'>
                                         <div className='image'>
                                           <img src={home} alt="" />
@@ -281,7 +281,7 @@ fetchUserData();
                                     </Link>
                                   </li>
                                   <li className="list-group-item  border-bottom">
-                                    <Link to={'/favorite-products'} className="link1" href="" onClick={handleClose}>
+                                    <Link to={'/favorite-products'} className="link1"  onClick={handleClose}>
                                       <div className='link1-div'>
                                         <div className='image'>
                                           <img src={home} alt="" />
@@ -294,7 +294,7 @@ fetchUserData();
                                     </Link>
                                   </li>
                                   <li className="list-group-item  border-bottom">
-                                    <Link to={'/delivery-address'} className="link1" href="" onClick={handleClose}>
+                                    <Link to={'/delivery-address'} className="link1"  onClick={handleClose}>
                                       <div className='link1-div'>
                                         <div className='image'>
                                           <img src={home} alt="" />
@@ -307,7 +307,7 @@ fetchUserData();
                                     </Link>
                                   </li>
                                   <li className="list-group-item  border-bottom">
-                                    <Link to={'/profile'} className="link1" href="" onClick={handleClose}>
+                                    <Link to={'/profile'} className="link1"  onClick={handleClose}>
                                       <div className='link1-div'>
                                         <div className='image'>
                                           <img src={home} alt="" />
@@ -320,7 +320,7 @@ fetchUserData();
                                     </Link>
                                   </li>
                                   <li className="list-group-item border-bottom">
-                                    <Link to={'/contactus'} className="link1 " href="" onClick={handleClose}>
+                                    <Link to={'/contactus'} className="link1 "  onClick={handleClose}>
                                       <div className='link1-div'>
                                         <div className='image'>
                                           <img src={user} alt="" />
@@ -334,7 +334,7 @@ fetchUserData();
                                   </li>
 
                                   <li className="list-group-item  border-bottom"onClick={handleClose}>
-                                    <Link className="link1 " href=""  to={'/login'} onClick={handleSignOut}>
+                                    <Link className="link1 "   to={'/login'} onClick={handleSignOut}>
                                       <div className='link1-div'>
                                         <div className='image'>
                                           <img src={user} alt="" />
@@ -362,7 +362,7 @@ fetchUserData();
 
                                 <ul className='sidebar-bottom d-flex position-absolute bottom-0 border-top w-100  p-0 mb-0'>
                                   <li className="bottom list-group-item text-center w-50 p-2">
-                                    <Link to={'/'} href="" className='text-decoration-none  text-secondary text-center' onClick={handleClose}>
+                                    <Link to={'/'}  className='text-decoration-none  text-secondary text-center' onClick={handleClose}>
                                       <div className='bottom-home position-relative'>
                                         <div className=''>
                                           <img src={home} alt="" />
@@ -377,7 +377,7 @@ fetchUserData();
                                   </li>
 
                                   <li className="bottom list-group-item text-center w-50 p-2">
-                                    <Link to={'/help'} href="" className=" text-decoration-none text-secondary text-center " onClick={handleClose}>
+                                    <Link to={'/help'}  className=" text-decoration-none text-secondary text-center " onClick={handleClose}>
 
                                       <div className='position-relative'>
                                         <div>

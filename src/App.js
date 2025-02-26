@@ -17,12 +17,12 @@ import { Route, Routes } from "react-router-dom";
 import NotFound from "./pages/NotFound/NotFound.jsx";
 import Map from "./component/Map.jsx";
 import Transcation from './pages/transaction/Transaction.jsx'
-
+import ScrollToTop from "./component/Scroll.jsx";
 
 
 const App = () => {
   const isSignedIn = useSelector((state) => state.auth.isSignedIn);
-  console.log("check", isSignedIn);
+  // console.log("check", isSignedIn);
 
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -41,6 +41,7 @@ const App = () => {
       <Header/>
         {loading && (<LoadingSpinner />)
         }
+        <ScrollToTop />
           <PublicRoutes />
           <ProtectedRoutes />
        <Footer /> 

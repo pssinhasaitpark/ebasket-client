@@ -56,7 +56,7 @@ const ProductList = ({  itemss,firstWord}) => {
                         {item.itemDetails.discount}%
                       </Badge>
                     </div>
-                    <a href="#">
+                    <a >
                       <Card.Img
                         src={
                           item.itemDetails?.mediaFiles[0]?.url
@@ -72,13 +72,13 @@ const ProductList = ({  itemss,firstWord}) => {
                   <Card.Body className="py-2 position-relative product-desc">
                     <div className="list-card-body">
                       <Card.Title>
-                        <a href="#" className="product-title">
+                        <a  className="product-title">
                           {item.itemDetails?.name || 'Product Name'}
                         </a>
                       </Card.Title>
                       <Card.Text>
                         <span className="pro-price products-price">
-                        ₹{ (item.itemDetails.price)-((item.itemDetails.discount*item.itemDetails.price)/100)}{' '}
+                        ₹{ ((item.itemDetails.price)-((item.itemDetails.discount*item.itemDetails.price)/100) ?? 0).toFixed(2)}{' '}
                           <s className="orignal-price">
                           ₹{item.itemDetails?.price}
                           </s>

@@ -22,7 +22,7 @@ function Selling() {
         const { className, style, onClick } = props;
         return(
             <div onClick={onClick} className={'arrow ${className}'}>
-                <img src={left} alt="" class="arrows" className="position-absolute bottom-50 start-0 translate-middle-x  arrows" 
+                <img src={left} alt="" className="arrows position-absolute bottom-50 start-0 translate-middle-x  arrows" 
                     style={{width:"8%",color:"white", paddingRight:"4%"}}/>
             </div>  
         );

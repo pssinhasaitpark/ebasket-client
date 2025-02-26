@@ -3,6 +3,7 @@ import { Container, Row, Col, Card, Table, Badge } from 'react-bootstrap';
 import './Pending_order.css'
 import { useLocation , useParams } from "react-router-dom";
 import axios from 'axios';
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const Pending_order = () => {
     const [UserOrder, setUserOrder] = useState({});
@@ -17,7 +18,7 @@ const Pending_order = () => {
             
             setUserOrder(response.data.order); // Assuming the response contains a user object
             setLoading(false);
-            {console.log('order' , response.data.order)}
+            // {console.log('order' , response.data.order)}
         } catch (err) {
             setError('Failed to fetch user data');
             setLoading(false);
@@ -48,15 +49,19 @@ const Pending_order = () => {
             phone: UserOrder?.vendor?.phone,
         },
         items: [
-            { name: UserOrder?.orderItems?.items.map(item => item.itemName), quantity: UserOrder?.orderItems?.items.map(item => item.quantity), price: UserOrder?.orderItems?.items.map(item => item.price), Image: UserOrder?.orderItems?.items.map(item => item.itemImage) },
+            {   name: UserOrder?.orderItems?.items.map(item => item.itemName), 
+                quantity: UserOrder?.orderItems?.items.map(item => item.quantity), 
+                price: UserOrder?.orderItems?.items.map(item => item.price), 
+                Image: UserOrder?.orderItems?.items.map(item => item.itemImage) 
+            },
         ],
         summary: {
-            subtotal: UserOrder?.orderItems?.orderSubtotal,
-            discount: -UserOrder?.orderItems?.orderDiscount,
-            tax: UserOrder?.orderItems?.orderTax,
-            gst: UserOrder?.orderItems?.gst,
-            shipping: UserOrder?.orderItems?.orderShipping,
-            total: UserOrder?.orderItems?.orderTotal
+            subtotal: (UserOrder?.orderItems?.orderSubtotal?? 0).toFixed(2),
+            discount: -(UserOrder?.orderItems?.orderDiscount ?? 0).toFixed(2),
+            tax: (UserOrder?.orderItems?.orderTax?? 0).toFixed(2),
+            gst: (UserOrder?.orderItems?.gst?? 0).toFixed(2),
+            shipping: (UserOrder?.orderItems?.orderShipping?? 0).toFixed(2),
+            total: (UserOrder?.orderItems?.orderTotal?? 0).toFixed(2)
         }
     };
     return (
@@ -141,22 +146,22 @@ const Pending_order = () => {
                                         </tr>
                                         <tr>
                                              <td className='fw-bold'>Order Discount</td>
-                                             <td className="text-danger text-end">(${order.summary.discount})</td>
+                                             <td className="text-danger text-end">${(order.summary.discount)}</td>
                                         </tr>
                                         <tr>
                                             <td className='fw-bold'>Order Tax </td>
-                                                 <td className="text-end">${order.summary.tax}</td>
+                                                 <td className="text-end">${(order.summary.tax)}</td>
                                         </tr>
                                         <tr>
                                             <td className='fw-bold'>GST</td>
-                                                 <td className='text-end'>${order.summary.gst}</td>
+                                                 <td className='text-end'>${(order.summary.gst)}</td>
                                         </tr>
                                         <tr>
                                             <td className='fw-bold'>Order Shipping</td>
                                                  <td className='text-end'>${order.summary.shipping}</td>
                                         </tr>
                                         <tr className="total-row"><td className='fw-bold'>Order Total</td>
-                                             <td className='text-end'>${order.summary.total}</td>
+                                             <td className='text-end'>${(order.summary.total)}</td>
                                         </tr>
                                     </tbody>
                                 </Table>

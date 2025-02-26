@@ -12,6 +12,7 @@ import { fetchItems } from '../../store/slices/products-slice';
 import potatoImg from '../../asset/images/t3.png';
 import useProductNavigation from "../../hooks/useProductNavigation";
 import sorry from '../../asset/images/no-result copy.png'
+// import '../Products/Products.css';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 function Category() {
@@ -33,9 +34,9 @@ function Category() {
     }, [dispatch]);
 
     useEffect(() => {
-        console.log("Fetched items: ", items);
-        console.log("Fetched Categories: ", categories);
-        console.log("Fetched Brands: ", brands);
+        // console.log("Fetched items: ", items);
+        // console.log("Fetched Categories: ", categories);
+        // console.log("Fetched Brands: ", brands);
     }, [items, categories, brands]);
 
     useEffect(() => {
@@ -74,7 +75,7 @@ function Category() {
     
 
     useEffect(() => {
-        console.log("Filtered items: ", filteredItems);
+        // console.log("Filtered items: ", filteredItems);
     }, [filteredItems]);
 
     return (
@@ -92,8 +93,8 @@ function Category() {
                                     {categories.map((category, i) => (
                                         category.publish && (
                                             <li key={category._id} className="category-item">
-                                                <a href="#">
-                                                {/* onClick={(e) => e.preventDefault()} */}
+                                                <a >
+                                               
                                                     <input
                                                         className="form-check-input category-item"
                                                         type="checkbox"
@@ -123,8 +124,8 @@ function Category() {
                                     {brands.map((brand) => (
                                         brand.publish && (
                                             <li key={brand._id} className="brand-item">
-                                                <a href="#">
-                                                {/* onClick={(e) => e.preventDefault()} */}
+                                                <a >
+                                          
                                                     <input
                                                         className="form-check-input category-item"
                                                         type="checkbox"
@@ -172,7 +173,7 @@ function Category() {
                                             <Card.Body className="py-2 position-relative product-desc">
                                                 <div className="list-card-body">
                                                     <Card.Title>
-                                                        <a href="#" className="product-title">
+                                                        <a  className="product-title">
                                                             {item.itemDetails.name}
                                                         </a>
                                                     </Card.Title>

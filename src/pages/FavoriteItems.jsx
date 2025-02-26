@@ -37,7 +37,6 @@ const WishlistPage = () => {
     fetchWishlistProducts();
   }, []); 
 
-  if (loading) return <div>Loading wishlist...</div>;
   if (productDetails.length === 0) return <Container className='py-5 mb-3'><div><h2 className='favourites-heading'>Favorite Items</h2><p className="no-products"><img src={sorry} alt="" /></p></div></Container>;
 
   return (
@@ -59,9 +58,9 @@ const WishlistPage = () => {
                          <HeartButton productId={product._id} />
                       </Badge>
                       </div>
-                      <a href="#">
+                      <a >
                         <Card.Img
-                          src={`${BASE_URL}${product.itemDetails.mediaFiles[0]?.url}`}
+                          src={`${product.itemDetails.mediaFiles[0]?.url}`}
                           variant="top"
                           className="img-fluid item-img w-100"
                           alt={product.itemDetails.name}
@@ -72,7 +71,7 @@ const WishlistPage = () => {
                     <Card.Body className="py-2 position-relative product-desc">
                       <div className="list-card-body">
                         <Card.Title>
-                          <a href="#" className="product-title">
+                          <a  className="product-title">
                             {product.itemDetails.name}
                           </a>
                         </Card.Title>

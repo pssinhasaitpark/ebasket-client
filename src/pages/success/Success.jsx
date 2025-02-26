@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import icon from '../../asset/images/icons8-party-popper-96.png'
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 function Success() {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ const username = useSelector((state) => state.auth.username);
             <div className="card-body " style={{padding:"60px "}}>
               <h2 className="card-title text-center fw-bolder fs-1">{username || 'Guest'}, Your order has been successful</h2>
               <p className="card-text text-center">
-                Check your order status in <a href="/my-order" className='text-decoration-none text-success fw-bold '>My Orders</a> about next steps information.
+                Check your order status in <Link to="my-order" className='text-decoration-none text-success fw-bold '>My Orders</Link> about next steps information.
               </p>
               <div className="text-center">
                 <img src={icon} alt="Party Hat" width="100" height="100" />

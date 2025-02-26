@@ -53,10 +53,10 @@ function Product() {
           </Nav.Link>
           <Nav.Link
             className="nav-content"
-            onClick={() => handleCategoryClick('saltandsugar')}
+            onClick={() => handleCategoryClick('Salt & Sugar')}
           >
             <a
-              className={`nav-txt ${selectedCategory === 'saltandsugar' ? 'act' : ''}`}
+              className={`nav-txt ${selectedCategory === 'Salt & Sugar' ? 'act' : ''}`}
               href="#action4"
             >
               SALT & SUGAR

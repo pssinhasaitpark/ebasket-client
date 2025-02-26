@@ -55,12 +55,12 @@ const Login = () => {
 
     try {
       const response = await axios.post(`${BASE_URL}/user/signin`, userData);
-      console.log("resss",response)
+      // console.log("resss",response)
       if (response.data.message) {
 
         setIsOtpVisible(true);
        toast.success("OTP sent successfully.");
-        console.log("API Response:", response.data);
+        // console.log("API Response:", response.data);
       } else {
         toast.error("Failed to send OTP. Please try again.");
       }
@@ -85,7 +85,7 @@ const Login = () => {
       localStorage.setItem('username', response.data.username);
 
       
-      console.log('reponse--', response);
+      // console.log('reponse--', response);
       const user = response.data.username;
       if (response.data.message) {
         toast.success("OTP verified successfully. You are now logged in.");
