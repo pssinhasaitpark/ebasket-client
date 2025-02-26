@@ -11,7 +11,7 @@ const Pending_order = () => {
     const { id } = useParams();
     const fetchOrderData = async () => {
         try {
-            const response = await axios.get(`http://192.168.0.113:4500/orders/getorderbyid/${id}`, {
+            const response = await axios.get(`${BASE_URL}/orders/getorderbyid/${id}`, {
  
             });
             

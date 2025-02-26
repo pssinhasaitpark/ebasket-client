@@ -105,7 +105,7 @@ function TopCategories() {
           <div className="Category-heading"><h3>TOP CATEGORIES</h3></div>
           <div className="pb-5">
             <Slider {...settings} style={{ background: 'transparent' }}>
-            { categories.map((category) => (
+            { categories.map((category, key) => (
              category.publish && (
               <Link to={`/categories/${category._id}`} className="category-card">
                   <img

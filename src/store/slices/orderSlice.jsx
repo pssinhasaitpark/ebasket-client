@@ -12,7 +12,7 @@ export const createorders = createAsyncThunk(
     }
 
     try {
-      const response = await axios.post(`http://192.168.0.113:4500/orders/createorders`, orderData, {
+      const response = await axios.post(`${BASE_URL}/orders/createorders`, orderData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       return response.data;
@@ -32,7 +32,7 @@ export const getorders = createAsyncThunk(
     }
 
     try {
-      const response = await axios.get(`http://192.168.0.113:4500/orders/getallorder`, {
+      const response = await axios.get(`${BASE_URL}/orders/getallorder`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       

@@ -23,7 +23,7 @@ const ContactUs = () => {
     
       try {
         // Send the form data to your API endpoint 
-        const response = await axios.post(`http://192.168.0.112:4500/userinfo/tell-us-about-yourself`, {
+        const response = await axios.post(`${BASE_URL}/userinfo/tell-us-about-yourself`, {
           name: values.name,
           email: values.email,
           phone: values.phone,
