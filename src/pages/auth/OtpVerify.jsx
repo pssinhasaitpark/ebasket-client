@@ -67,7 +67,7 @@ const VerifyOTP = () => {
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('username', response.data.username);
 
-      console.log('response:', response);
+      // console.log('response:', response);
       const user = response.data.username;
       if (response.data.message) {
         toast.success("OTP verified successfully. You are now logged in.");

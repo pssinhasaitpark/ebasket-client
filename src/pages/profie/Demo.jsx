@@ -66,7 +66,7 @@ const Profile = () => {
             // Assuming the response contains updated user data
             setUserData(response.data.user);
             setLoading(false);
-            console.log('User data updated successfully:', response.data.user);
+            // console.log('User data updated successfully:', response.data.user);
             fetchUserData();
         } catch (err) {
             setError('Failed to update user data');
@@ -87,7 +87,7 @@ const Profile = () => {
 
 
                                     <div className='me-3'>
-                                        {console.log("heera seth",userData)}
+                                        {/* {console.log("heera seth",userData)} */}
                                         <img src={userData.image || image} alt="image" className='user-updated-image' />
                                     </div>
                                     <div>
@@ -117,15 +117,15 @@ const Profile = () => {
                                 validationSchema={validationSchema}
                                 onSubmit={async (values) => {
                                     // Collect updated data for PUT request
-                                    console.log("values..", values);
-                                    console.log(values.fullName);
+                                    // console.log("values..", values);
+                                    // console.log(values.fullName);
 
 
                                     const updatedData = {
                                         fullName: values.fullName,
                                         image: values.image,
                                     };
-                                    console.log("updated data", updatedData);
+                                    // console.log("updated data", updatedData);
 
 
                                     // Call the function to update user data
@@ -135,7 +135,7 @@ const Profile = () => {
                                 {({ handleSubmit, setFieldValue, values, errors, touched, handleChange, isSubmitting }) => (
                                     <Form onSubmit={handleSubmit}>
                                         {/* Full Name Field */}
-                                        <Form.Group controlId="fullName" className="mb-3">
+                                        <Form.Group className="mb-3">
                                             <Form.Label>Full Name</Form.Label>
                                             <Form.Control
                                                 type="text"
@@ -150,7 +150,7 @@ const Profile = () => {
                                         </Form.Group>
 
                                         {/* Email Field */}
-                                        <Form.Group controlId="email" className="mb-3">
+                                        <Form.Group  className="mb-3">
                                             <Form.Label>Email</Form.Label>
                                             <Form.Control
                                                 type="email"
@@ -164,7 +164,7 @@ const Profile = () => {
                                         </Form.Group>
 
                                         {/* Phone Number Field */}
-                                        <Form.Group controlId="phoneNumber" className="mb-3">
+                                        <Form.Group className="mb-3">
                                             <Form.Label>Phone Number</Form.Label>
                                             <Form.Control
                                                 type="text"

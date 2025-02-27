@@ -26,19 +26,6 @@ import VerifyOTP from "../pages/auth/OtpVerify";
 
 const PublicRoutes = () => {
 
-    // const isSignedIn = useSelector((state) => state.auth.isSignedIn);
-
-    // if (!isSignedIn) {
-    //     return <Navigate to="*" />;
-    //   }
-
- 
-        // const isSignedIn = useSelector((state) => state.auth.isSignedIn); // Get the auth state
-      
-        // if (isSignedIn) {
-        //   // If user is signed in, redirect them to ProtectedRoutes
-        //   return <ProtectedRoutes />;
-        // }
     const isSignedIn = useSelector((state) => state.auth.isSignedIn);
     return (
         <>

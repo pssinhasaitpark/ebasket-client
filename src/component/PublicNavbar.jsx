@@ -77,7 +77,7 @@ const PublicNavbar = () => {
 
                       <li className="nav-item">
                         <div className='d-flex align-items-center me-2'>
-                          <div>
+                          <div className='item-image '>
                             <img src={user} alt="" />
                           </div>
                           <Link  to={"/login"} className="nav-link " activeclassname="active">
@@ -96,19 +96,19 @@ const PublicNavbar = () => {
                           <div className="dropdown-container">
                             {/* Down Arrow Icon */}
                             <div className="dropdown-icon">
-                              <a href="#">
+                              <a >
                                 <img src={downarrow} alt="" />
                               </a>
                               {/* Dropdown Menu */}
                               <div className='dropdown-menuu'>
 
-                                <Link to={'/support'} href="">Delivery Support</Link>
-                                <Link to={'/contactus'} href="">Contact Us</Link>
-                                <Link to={'/aboutus'} href="">About us</Link>
-                                <Link to={'/help'} href="">Help</Link>
-                                <Link to={'/terms'} href="">Term of use</Link>
-                                <Link to={'/privacy'} href="">Privacy policy</Link>
-                                <Link to={'/refund'} href="">Refund policy</Link>
+                                <Link to={'/support'} >Delivery Support</Link>
+                                <Link to={'/contactus'} >Contact Us</Link>
+                                <Link to={'/aboutus'} >About us</Link>
+                                <Link to={'/help'} >Help</Link>
+                                <Link to={'/terms'} >Term of use</Link>
+                                <Link to={'/privacy'} >Privacy policy</Link>
+                                <Link to={'/refund'} >Refund policy</Link>
 
                               </div>
                             </div>
@@ -133,7 +133,7 @@ const PublicNavbar = () => {
                       </li>
 
                       <li className="nav-item">
-                        <div class="dropdown d-flex align-items-center text-dark me-2">
+                        <div className="dropdown d-flex align-items-center text-dark me-2">
                           <div>
                             <img src={glob} alt="" />
                           </div>
@@ -144,8 +144,8 @@ const PublicNavbar = () => {
                               </span>
                             </button>
                             <ul className="language dropdown-menu m-0 p-0">
-                              <li><a className="dropdown-item m-0  " href="#">English</a></li>
-                              <li><a className="dropdown-item m-0" href="#">Arabic</a></li>
+                              <li><a className="dropdown-item m-0  " >English</a></li>
+                              <li><a className="dropdown-item m-0" >Arabic</a></li>
 
                             </ul>
                           </div>
@@ -172,7 +172,7 @@ const PublicNavbar = () => {
                               <ul className="link-group p-0 ">
 
                                 <li className="list-group-item  border-bottom" onClick={handleClose}>
-                                  <Link to={'/'} className="link1" href="" >
+                                  <Link to={'/'} className="link1"  >
                                     <div className='link1-div'>
                                       <div className='image'>
                                         <img src={home} alt="" />
@@ -198,7 +198,7 @@ const PublicNavbar = () => {
                                   </Link>
                                 </li>
                                 <li className="list-group-item  border-bottom" onClick={handleClose}>
-                                  <Link to={'/login'} className="link1 " href="" >
+                                  <Link to={'/login'} className="link1 "  >
                                     <div className='link1-div'>
                                       <div className='image'>
                                         <img src={user} alt="" />
@@ -211,7 +211,7 @@ const PublicNavbar = () => {
                                   </Link>
                                 </li>
                                 <li className="list-group-item  border-bottom" onClick={handleClose}>
-                                  <Link to={'/signup'} className="link1 " href="" >
+                                  <Link to={'/signup'} className="link1 "  >
                                     <div className='link1-div'>
                                       <div className='image'>
                                         <img src={user} alt="" />
@@ -235,7 +235,7 @@ const PublicNavbar = () => {
 
                               <ul className='sidebar-bottom d-flex position-absolute bottom-0 border-top w-100  p-0 mb-0'>
                                 <li className="bottom list-group-item text-center w-50 p-2" onClick={handleClose}>
-                                  <Link to={'/'} href="" className='text-decoration-none  text-secondary text-center' onClick={() => navigate('/')}>
+                                  <Link to={'/'}  className='text-decoration-none  text-secondary text-center' onClick={() => navigate('/')}>
                                     <div className='bottom-home position-relative'>
                                       <div className=''>
                                         <img src={home} alt="" />
@@ -249,7 +249,7 @@ const PublicNavbar = () => {
                                   </Link>
                                 </li>
                                 <li className="bottom list-group-item text-center w-50 p-2" onClick={handleClose}>
-                                  <Link to={'/help'} href="" className=" text-decoration-none text-secondary text-center "  >
+                                  <Link to={'/help'}  className=" text-decoration-none text-secondary text-center "  >
 
                                     <div className='position-relative'>
                                       <div>

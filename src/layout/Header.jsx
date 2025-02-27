@@ -24,7 +24,7 @@ const Header = () => {
     dispatch(fetchAddresses());
     dispatch(fetchUserMe())
   }, [dispatch]);
-  {console.log('showme' ,addresses?.addresses?.[0]?.address?.areaSectorLocality)}
+  // {console.log('showme' ,addresses?.addresses?.[0]?.address?.areaSectorLocality)}
 
 
   const selectedAddress = addresses?.addresses?.length > 0 ? addresses?.addresses?.[0]?.address?.areaSectorLocality : userData?.address;
@@ -82,7 +82,7 @@ const Header = () => {
                   </form>
                 </div>
               </Col>
-              {console.log(" hellllloo",isSignedIn)}
+              {/* {console.log(" hellllloo",isSignedIn)} */}
 
 
               {isSignedIn ?

@@ -103,12 +103,24 @@ const ProductDetailPage = () => {
     setSelectedVariant(variant); 
   };
 
-  if (loading) return <div>Loading...</div>;
+  
 
   if (!productData) return <Container className='py-5 mb-3'><p className="no-products"><img src={sorry} alt="" /></p></Container>;
 
+  const handleAddToCartClick = () => {
+    // First, show the modal
+    setModalShow(true);
+    
+    // Then, handle the cart logic and navigation
+    if (isSignedIn) {
+      handleAddToCart(productData);
+    } else {
+      navigate('/login');
+    }
+  };
+
   const handleAddToCart = (product) => {
-    setModalShow(true);  // Show the success modal
+    // setModalShow(true);  // Show the success modal
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     const storedVariant = JSON.parse(localStorage.getItem('selectedVariant')) || {};
   
@@ -144,7 +156,7 @@ const ProductDetailPage = () => {
   
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   
-    console.log("Updated Cart:", updatedCart);
+    // console.log("Updated Cart:", updatedCart);
   };
 
   // const totalQuantity = cart.reduce((acc, item) => acc + item.quantity, 0);
@@ -178,7 +190,7 @@ const ProductDetailPage = () => {
                             key={index}
                             className="p-1 border variant-item"
                             onClick={() => handleVariantChange(variants)}
-                          >
+                          >{console.log(variants)}
                             <img
                               src={`${variants.variantImage}`}
                               alt={variants.variantName}
@@ -211,13 +223,13 @@ const ProductDetailPage = () => {
                               </span>
                             ) : (
                               <span className="price">
-                                ₹{ (productData.itemDetails.price)-((productData.itemDetails.discount*productData.itemDetails.price)/100)}
-                                <s>₹{productData.itemDetails.price}</s>
+                                ₹{ (productData.itemDetails.price)-((productData.itemDetails.discount*productData.itemDetails.price)/100).toFixed(2) }
+                                <s className="text-muted">₹{productData.itemDetails.price}</s>
                               </span>
                             )}
                         </div>
                           <div className="variant_quntity">
-                            Quantity left: {productData.itemDetails.itemQuantity || 'Unlimited'}
+                            Quantity left: {(productData.itemDetails.itemQuantity > 0) ? productData.itemDetails.itemQuantity : 'Unlimited'}
                           </div>
                         </div>
                       </div>
@@ -251,13 +263,13 @@ const ProductDetailPage = () => {
                       <h3 className="m-0">Quantity</h3>
                       {/* <div className="ml-auto"> */}
                         <span className="count-number">
-                          <div class="ml-auto">
-                            <span class="count-number">
-                              <button class="btn-sm left dec btn btn-outline-secondary food_count_decrese" onClick={handleDecrement}>
+                          <div className="ml-auto">
+                            <span className="count-number">
+                              <button className="btn-sm left dec btn btn-outline-secondary food_count_decrese" onClick={handleDecrement}>
                                 <FaMinus />
                               </button>
                               <span className="particular-product-quantity">{quantity}</span>
-                              <button class="btn-sm right inc btn btn-outline-secondary" onClick={handleIncrement}>
+                              <button className="btn-sm right inc btn btn-outline-secondary" onClick={handleIncrement}>
                                 <FaPlus />
                               </button>
                             </span>
@@ -268,7 +280,7 @@ const ProductDetailPage = () => {
                   </div>
 
                   <div className="addtocart mt-2 mb-3 gap-3">
-                    <Button variant="dark" className="btnnn " size="lg" onClick={() =>navigate(isSignedIn ? handleAddToCart(productData) :'/login') }
+                    <Button variant="dark" className="btnnn " size="lg" onClick={handleAddToCartClick}
                       >
                       <FaShoppingCart /> Add to Cart
                     </Button>
@@ -285,14 +297,13 @@ const ProductDetailPage = () => {
 
                   <div className="product-fav-share">
                     <div className="add-to-favorite">
-                      <a href="#" className="loginAlert count d-flex">
+                      <a className="loginAlert count d-flex">
                         <LikeButton productId={productData._id} />
                         <span>Add To Wishlist</span>
                       </a>
                     </div>
                     <div className="share-btn">
                       <a
-                        href="#"
                         data-toggle="modal"
                         data-target="#socialShare"
                       >
@@ -481,7 +492,7 @@ const ProductDetailPage = () => {
                   <Button
                    className="btn-btn-link "
                     variant="link"
-                    href="https://ebasketweb.siswebapp.com/products/category/65d85efaa0c87"
+                    href={`/categories/${productData.itemDetails.category?._id}`}
                   >
                     View all
                   </Button>

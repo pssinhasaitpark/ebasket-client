@@ -7,7 +7,7 @@ export const fetchAddresses = createAsyncThunk('addresses/fetchAddresses', async
   if (!token) {
     return rejectWithValue('No token available');
   }
-  console.log('token->',token);
+  // console.log('token->',token);
   
 
   try {
@@ -88,17 +88,25 @@ const addressSlice = createSlice({
         state.loading = false;
         state.addresses = action.payload || [];
       })
-      .addCase(fetchAddresses.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload; 
-      })
+      // .addCase(fetchAddresses.rejected, (state, action) => {
+      //   state.loading = false;
+      //   state.error = action.payload; 
+      // })
       // Create
       .addCase(createAddress.pending, (state) => {
         state.loading = true;
       })
+      // .addCase(createAddress.fulfilled, (state, action) => {
+      //   state.loading = false;
+      //   state.addresses.addresses.push(action.payload); 
+      // })
       .addCase(createAddress.fulfilled, (state, action) => {
         state.loading = false;
-        state.addresses.addresses.push(action.payload); 
+        if (Array.isArray(state.addresses)) {
+          state.addresses.push(action.payload);
+        } else {
+          state.addresses = [action.payload];
+        }
       })
       .addCase(createAddress.rejected, (state, action) => {
         state.loading = false;
@@ -111,7 +119,6 @@ const addressSlice = createSlice({
       .addCase(updateAddress.fulfilled, (state, action) => {
         state.loading = false;
         const index = state.addresses.addresses.findIndex((address) => address?._id === action.payload._id);
-        // const index = state.addresses.findIndex((address) => address?._id === action.payload._id);
         if (index !== -1) {
           state.addresses[index] = action.payload;
         }

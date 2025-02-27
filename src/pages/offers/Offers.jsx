@@ -60,7 +60,7 @@ const CouponsList = () => {
                   <h6 className="date">Expires At: {new Date(coupon.expiresAt).toLocaleString()}</h6>
                   <div className="offercoupan">
                     <Badge className="mb-0 badge bg-transparent text-black">{coupon.code}</Badge>
-                    <a className='copy-link' href="#" onClick={() => copyToClipboard(coupon.code)}>
+                    <a className='copy-link'  onClick={() => copyToClipboard(coupon.code)}>
                       <ImCopy />
                     </a>
                   </div>

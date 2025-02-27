@@ -71,8 +71,8 @@ const Checkout = () => {
 //   }, [dispatch]);
 
 const selectedAddress = addresses?.addresses?.length > 0 ? addresses?.addresses?.[0]?.address?.areaSectorLocality : userData?.address;
-{console.log('Lodu',selectedAddress);
-}
+// {console.log('Lodu',selectedAddress);
+// }
 
   useEffect(() => {
     fetchUserData();
@@ -468,7 +468,7 @@ const fetchUserData = async () => {
                 <div id="" className="res-search-list">
         {coupons.map((coupon) => (
         <Col className='transactions-list-wrap mt-4' xs={12} key={coupon._id}>
-          <a className='checkout-page-coupon-link' href="#" onClick={() => copyToClipboard(coupon.code)}>
+          <a className='checkout-page-coupon-link' onClick={() => copyToClipboard(coupon.code)}>
           <Card className="checkout-page-coupons-card bg-white px-4 py-3 rounded-lg mb-3 shadow-sm h-100">
             <Row className="  gold-members d-flex align-items-center transactions-list">
               <span className=" d-flex coupons-per-off">

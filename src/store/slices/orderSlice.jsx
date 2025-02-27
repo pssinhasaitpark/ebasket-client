@@ -36,7 +36,6 @@ export const getorders = createAsyncThunk(
         headers: { Authorization: `Bearer ${token}` },
       });
       
-      console.log('repsonse132465789',response.data);
       return response.data;
     } catch (error) {
       const message = error.response ? error.response.data : error.message;
@@ -77,7 +76,7 @@ const orderSlice = createSlice({
       })
       .addCase(getorders.fulfilled, (state, action) => {
         state.loading = false;
-        state.orders = action.payload || [];
+        state.orders = action.payload ? action.payload : [];
       })
       .addCase(getorders.rejected, (state, action) => {
         state.loading = false;

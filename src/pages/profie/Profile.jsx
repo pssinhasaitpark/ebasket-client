@@ -41,7 +41,7 @@ const Profile = () => {
                     'Content-Type': 'application/json',
                 }
             });
-            console.log('ressssssssssssssssssssss', response.data.user);
+            // console.log('ressssssssssssssssssssss', response.data.user);
 
             setUserData(response.data.user); // Assuming 'user' is the key in the API response
             setLoading(false);
@@ -51,10 +51,10 @@ const Profile = () => {
         }
     };
 
-    console.log("userData",userData);
+    // console.log("userData",userData);
 
     const updateUserData = async (updatedData) => {
-        console.log("update userdata");
+        // console.log("update userdata");
 
         try {
             const formData = new FormData();
@@ -76,7 +76,7 @@ const Profile = () => {
                     }
                 }
             );
-            console.log('User data updated successfully:', response.data.user);
+            // console.log('User data updated successfully:', response.data.user);
 
             // Update the state with the updated user data
             setUserData(response.data.user);
@@ -132,7 +132,7 @@ const Profile = () => {
                                         validationSchema={validationSchema}
                                         onSubmit={async (values) => {
 
-                                            console.log('Form submitted with values: ', values);
+                                            // console.log('Form submitted with values: ', values);
                                             const updatedData = {
                                                 fullName: values.name,
                                                 image: values.image,  // If you have a new image URL

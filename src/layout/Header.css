@@ -309,12 +309,17 @@ input.form-control.input::placeholder {
 
 
 .item-image img{
-  height: 30px;
-  width:  30px;
-  object-fit: contain;
+  height: 19px;
+  width:  19px;
+  object-fit: cover;
   border-radius: 50px;
 }
+.username{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
+}
 /* Define the zoom-in animation */
 @keyframes zoomInOut {
   0% {

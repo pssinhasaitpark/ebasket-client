@@ -13,7 +13,7 @@ const Setlocation = () => {
 
                 <div className='set-location-header-logo'>
                     <Container>
-                        <a href="#home">
+                        <a >
 
                         <div className=' d-flex '>
                             <img src={logo} alt="" />
@@ -38,7 +38,7 @@ const Setlocation = () => {
                                     // onChange={(e) => setBusinessAddress(e.target.value)}
                                     required
                                 />
-                                <span class="locate-me" onclick="getCurrentLocation()">
+                                <span className="locate-me" onclick="getCurrentLocation()">
                                     <img src="https://emartweb.siswebapp.com/img/locatleme-icon.png" />
                                     Locate Me
                                 </span>

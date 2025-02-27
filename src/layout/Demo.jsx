@@ -147,19 +147,19 @@ const DemoHeader= () => {
                           <div className="dropdown-container">
                             {/* Down Arrow Icon */}
                             <div className="dropdown-icon">
-                              <a href="#">
+                              <a >
                                 <img src={downarrow} alt="" />
                               </a>
                               {/* Dropdown Menu */}
                               <div className='dropdown-menuu'>
 
-                                <Link to={'/support'} href="">Delivery Support</Link>
-                                <Link to={'/contactus'} href="">Contact Us</Link>
-                                <Link to={'/aboutus'} href="">About us</Link>
-                                <Link to={'/help'} href="">Help</Link>
-                                <Link to={'/terms'} href="">Term of use</Link>
-                                <Link to={'/privacy'} href="">Privacy policy</Link>
-                                <Link to={'/refund'} href="">Refund policy</Link>
+                                <Link to={'/support'} >Delivery Support</Link>
+                                <Link to={'/contactus'} >Contact Us</Link>
+                                <Link to={'/aboutus'} >About us</Link>
+                                <Link to={'/help'} >Help</Link>
+                                <Link to={'/terms'} >Term of use</Link>
+                                <Link to={'/privacy'} >Privacy policy</Link>
+                                <Link to={'/refund'} >Refund policy</Link>
 
                               </div>
                             </div>
@@ -184,7 +184,7 @@ const DemoHeader= () => {
                       </li>
 
                       <li className="nav-item">
-                        <div class="dropdown d-flex align-items-center text-dark me-2">
+                        <div className="dropdown d-flex align-items-center text-dark me-2">
                           <div>
                             <img src={glob} alt="" />
                           </div>
@@ -195,8 +195,8 @@ const DemoHeader= () => {
                               </span>
                             </button>
                             <ul className="language dropdown-menu m-0 p-0">
-                              <li><a className="dropdown-item m-0  " href="#">English</a></li>
-                              <li><a className="dropdown-item m-0" href="#">Arabic</a></li>
+                              <li><a className="dropdown-item m-0  " >English</a></li>
+                              <li><a className="dropdown-item m-0" >Arabic</a></li>
 
                             </ul>
                           </div>
@@ -208,9 +208,9 @@ const DemoHeader= () => {
                         <Button onClick={handleShow} className='hemburger-button bg-transparent border-0'>
                           
                           <div className={`hamburger1 ${show ? 'open' : ''}`}>
-                            <div class="top"></div>
-                            <div class="meat"></div>
-                            <div class="bottom"></div>
+                            <div className="top"></div>
+                            <div className="meat"></div>
+                            <div className="bottom"></div>
                           </div>
                        
                         </Button>
@@ -220,10 +220,10 @@ const DemoHeader= () => {
                           </Offcanvas.Header>
                           <Offcanvas.Body className='p-0'>
                             <div>
-                              <ul class="link-group p-0 ">
+                              <ul className="link-group p-0 ">
 
-                                <li class="list-group-item  border-bottom">
-                                  <Link to={'/'} class="link1" href="">
+                                <li className="list-group-item  border-bottom">
+                                  <Link to={'/'} className="link1" >
                                     <div className='link1-div'>
                                       <div className='image'>
                                         <img src={home} alt="" />
@@ -235,8 +235,8 @@ const DemoHeader= () => {
                                     </div>
                                   </Link>
                                 </li>
-                                <li class="list-group-item border-bottom">
-                                  <Link class="link1 " to={'/contactus'}  >
+                                <li className="list-group-item border-bottom">
+                                  <Link className="link1 " to={'/contactus'}  >
                                     <div className='link1-div'>
                                       <div className='image'>
                                         <img src={user} alt="" />
@@ -248,8 +248,8 @@ const DemoHeader= () => {
                                     </div>
                                   </Link>
                                 </li>
-                                <li class="list-group-item  border-bottom">
-                                  <Link to={'/login'} class="link1 " href="" >
+                                <li className="list-group-item  border-bottom">
+                                  <Link to={'/login'} className="link1 "  >
                                     <div className='link1-div'>
                                       <div className='image'>
                                         <img src={user} alt="" />
@@ -261,8 +261,8 @@ const DemoHeader= () => {
                                     </div>
                                   </Link>
                                 </li>
-                                <li class="list-group-item  border-bottom">
-                                  <Link to={'/signup'} class="link1 " href="" >
+                                <li className="list-group-item  border-bottom">
+                                  <Link to={'/signup'} className="link1 "  >
                                     <div className='link1-div'>
                                       <div className='image'>
                                         <img src={user} alt="" />
@@ -274,7 +274,7 @@ const DemoHeader= () => {
                                     </div>
                                   </Link>
                                 </li>
-                                <li class="list-group-item border-bottom">
+                                <li className="list-group-item border-bottom">
                                   <div className='version py-5'>
                                     <span >
                                       <p >V:2.1</p>
@@ -285,8 +285,8 @@ const DemoHeader= () => {
 
 
                               <ul className='sidebar-bottom d-flex position-absolute bottom-0 border-top w-100  p-0 mb-0'>
-                                <li class="bottom list-group-item text-center w-50 p-2">
-                                  <Link to={'/'} href="" className='text-decoration-none  text-secondary text-center' onClick={() => navigate('/')}>
+                                <li className="bottom list-group-item text-center w-50 p-2">
+                                  <Link to={'/'}  className='text-decoration-none  text-secondary text-center' onClick={() => navigate('/')}>
                                     <div className='bottom-home position-relative'>
                                       <div className=''>
                                         <img src={home} alt="" />
@@ -299,8 +299,8 @@ const DemoHeader= () => {
                                     </div>
                                   </Link>
                                 </li>
-                                <li class="bottom list-group-item text-center w-50 p-2">
-                                  <Link to={'/help'} href="" class=" text-decoration-none text-secondary text-center "  >
+                                <li className="bottom list-group-item text-center w-50 p-2">
+                                  <Link to={'/help'}  className=" text-decoration-none text-secondary text-center "  >
 
                                     <div className='position-relative'>
                                       <div>
@@ -356,7 +356,7 @@ const DemoHeader= () => {
                         <li className="nav-item">
 
                           <div className='dropdown-container d-flex align-items-center me-2'>
-                            <a href="#">
+                            <a >
                               <div className='item-image '>
                                 <img src={user} alt="" />
                               </div>
@@ -379,21 +379,21 @@ const DemoHeader= () => {
 
                               {/* Down Arrow Icon */}
                               <div className="dropdown-icon">
-                                <a href="#">
+                                <a >
                                   <img src={downarrow} alt="" />
                                 </a>
                                 {/* Dropdown Menu */}
                                 <div className='dropdown-menuu'>
-                                  <Link href="" to={'/myaccount'} >My Account</Link>
-                                  <Link href="" to={'/notification'} >Notification</Link>
-                                  <Link href="" to={'/support'} >Delivery Support</Link>
-                                  <Link href="" to={'/contactus'}  >Contact Us</Link>
-                                  <Link href="" to={'/aboutus'} >About us</Link>
-                                  <Link href="" to={'/help'} >Help</Link>
-                                  <Link href="" to={'/terms'} >Term of use</Link>
-                                  <Link href="" to={'/privacy'} >Privacy policy</Link>
-                                  <Link href="" to={'/refund'} >Refund policy</Link>
-                                  <Link href="" to={'/signup'} onClick={handleSignOut}>Logout</Link>
+                                  <Link  to={'/myaccount'} >My Account</Link>
+                                  <Link  to={'/notification'} >Notification</Link>
+                                  <Link  to={'/support'} >Delivery Support</Link>
+                                  <Link  to={'/contactus'}  >Contact Us</Link>
+                                  <Link  to={'/aboutus'} >About us</Link>
+                                  <Link  to={'/help'} >Help</Link>
+                                  <Link  to={'/terms'} >Term of use</Link>
+                                  <Link  to={'/privacy'} >Privacy policy</Link>
+                                  <Link  to={'/refund'} >Refund policy</Link>
+                                  <Link  to={'/signup'} onClick={handleSignOut}>Logout</Link>
 
 
                                 </div>
@@ -416,7 +416,7 @@ const DemoHeader= () => {
                         </li>
 
                         <li className="nav-item">
-                          <div class="dropdown d-flex align-items-center text-dark me-2">
+                          <div className="dropdown d-flex align-items-center text-dark me-2">
                             <div>
                               <img src={glob} alt="" />
                             </div>
@@ -440,9 +440,9 @@ const DemoHeader= () => {
                           <Button onClick={handleShow} className='hemburger-button bg-transparent border-0'>
                      
                             <div className={`hamburger1 ${show ? 'open' : ''}`}>
-                              <div class="top"></div>
-                              <div class="meat"></div>
-                              <div class="bottom"></div>
+                              <div className="top"></div>
+                              <div className="meat"></div>
+                              <div className="bottom"></div>
                             </div>
                           </Button>
                           <Offcanvas show={show} onHide={handleClose}  >
@@ -451,9 +451,9 @@ const DemoHeader= () => {
                             </Offcanvas.Header>
                             <Offcanvas.Body className='p-0'>
                               <div>
-                                <ul class="link-group p-0 ">
-                                  <li class="list-group-item  border-bottom">
-                                    <Link to={'/'} class="link1" >
+                                <ul className="link-group p-0 ">
+                                  <li className="list-group-item  border-bottom">
+                                    <Link to={'/'} className="link1" >
                                       <div className='link1-div'>
                                         <div className='image'>
                                           <img src={home} alt="" />
@@ -465,8 +465,8 @@ const DemoHeader= () => {
                                       </div>
                                     </Link>
                                   </li>
-                                  <li class="list-group-item  border-bottom">
-                                    <Link to={'/orders'} class="link1" href="">
+                                  <li className="list-group-item  border-bottom">
+                                    <Link to={'/orders'} className="link1" >
                                       <div className='link1-div'>
                                         <div className='image'>
                                           <img src={home} alt="" />
@@ -478,8 +478,8 @@ const DemoHeader= () => {
                                       </div>
                                     </Link>
                                   </li>
-                                  <li class="list-group-item  border-bottom">
-                                    <Link to={'/transaction'} class="link1" href="">
+                                  <li className="list-group-item  border-bottom">
+                                    <Link to={'/transaction'} className="link1" >
                                       <div className='link1-div'>
                                         <div className='image'>
                                           <img src={home} alt="" />
@@ -491,8 +491,8 @@ const DemoHeader= () => {
                                       </div>
                                     </Link>
                                   </li>
-                                  <li class="list-group-item  border-bottom">
-                                    <Link to={'/favourite'} class="link1" href="">
+                                  <li className="list-group-item  border-bottom">
+                                    <Link to={'/favourite'} className="link1" >
                                       <div className='link1-div'>
                                         <div className='image'>
                                           <img src={home} alt="" />
@@ -504,8 +504,8 @@ const DemoHeader= () => {
                                       </div>
                                     </Link>
                                   </li>
-                                  <li class="list-group-item  border-bottom">
-                                    <Link to={'/address'} class="link1" href="">
+                                  <li className="list-group-item  border-bottom">
+                                    <Link to={'/address'} className="link1" >
                                       <div className='link1-div'>
                                         <div className='image'>
                                           <img src={home} alt="" />
@@ -517,8 +517,8 @@ const DemoHeader= () => {
                                       </div>
                                     </Link>
                                   </li>
-                                  <li class="list-group-item  border-bottom">
-                                    <Link to={'/profile'} class="link1" href="">
+                                  <li className="list-group-item  border-bottom">
+                                    <Link to={'/profile'} className="link1" >
                                       <div className='link1-div'>
                                         <div className='image'>
                                           <img src={home} alt="" />
@@ -530,8 +530,8 @@ const DemoHeader= () => {
                                       </div>
                                     </Link>
                                   </li>
-                                  <li class="list-group-item border-bottom">
-                                    <Link to={'/contactus'} class="link1 " href="">
+                                  <li className="list-group-item border-bottom">
+                                    <Link to={'/contactus'} className="link1 " >
                                       <div className='link1-div'>
                                         <div className='image'>
                                           <img src={user} alt="" />
@@ -544,8 +544,8 @@ const DemoHeader= () => {
                                     </Link>
                                   </li>
 
-                                  <li class="list-group-item  border-bottom">
-                                    <Link class="link1 " href="" to='/' to={'/signup'} onClick={handleSignOut}>
+                                  <li className="list-group-item  border-bottom">
+                                    <Link className="link1 "  to={'/login'} onClick={handleSignOut}>
                                       <div className='link1-div'>
                                         <div className='image'>
                                           <img src={user} alt="" />
@@ -561,7 +561,7 @@ const DemoHeader= () => {
 
 
 
-                                  <li class="list-group-item border-bottom">
+                                  <li className="list-group-item border-bottom">
                                     <div className='version py-5'>
                                       <span >
                                         <p >V:2.1</p>
@@ -572,8 +572,8 @@ const DemoHeader= () => {
 
 
                                 <ul className='sidebar-bottom d-flex position-absolute bottom-0 border-top w-100  p-0 mb-0'>
-                                  <li class="bottom list-group-item text-center w-50 p-2">
-                                    <Link to={'/'} href="" className='text-decoration-none  text-secondary text-center'>
+                                  <li className="bottom list-group-item text-center w-50 p-2">
+                                    <Link to={'/'}  className='text-decoration-none  text-secondary text-center'>
                                       <div className='bottom-home position-relative'>
                                         <div className=''>
                                           <img src={home} alt="" />
@@ -587,8 +587,8 @@ const DemoHeader= () => {
                                     </Link>
                                   </li>
 
-                                  <li class="bottom list-group-item text-center w-50 p-2">
-                                    <Link to={'/help'} href="" class=" text-decoration-none text-secondary text-center ">
+                                  <li className="bottom list-group-item text-center w-50 p-2">
+                                    <Link to={'/help'}  className=" text-decoration-none text-secondary text-center ">
 
                                       <div className='position-relative'>
                                         <div>
