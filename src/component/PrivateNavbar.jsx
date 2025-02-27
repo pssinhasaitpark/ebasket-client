@@ -142,7 +142,7 @@ fetchUserData();
                             </a>
 
                             <Link to={'/profile'} className="nav-link username" activeclassname="active">
-                            Hii <span>{userData?.fullName || username || 'Guest'}</span>
+                            Hii <span>{userData?.fullName  || 'Guest'}</span>
                             </Link>
 
 

@@ -122,14 +122,14 @@ const fetchUserData = async () => {
     let discount = 0;
 
     cart.forEach((item) => {
-      const itemPrice = item.itemDetails.price * item.quantity;
+      const itemPrice = ((item.itemDetails.price * item.quantity) - (item.itemDetails.discount / 100) * item.itemDetails.price);
       const itemDiscount = ((item.itemDetails.discount / 100) * item.itemDetails.price) * item.quantity || 0;
 
       total += itemPrice;
       discount += itemDiscount;
     });
 
-    const discountedPrice = total - discount;
+    const discountedPrice = total;
     const finalAmount = discountedPrice;
 
     setTotalPrice(total);
@@ -530,8 +530,8 @@ const fetchUserData = async () => {
                       </Button>
                     </span>
                     <p className="text-gray mb-0 float-right ml-3 text-muted small">
-                      <span className="currency-symbol-left">$</span>
-                      <span className="cart_iteam_total_669de52f3449f">{item.itemDetails.price * item.quantity}</span>
+                      <span className="currency-symbol-left">₹</span>
+                      <span className="cart_iteam_total_669de52f3449f">{(item.itemDetails.price - (item.itemDetails.discount * item.itemDetails.price)/100) * item.quantity}</span>
                     </p>
               
               </div>
@@ -590,7 +590,7 @@ const fetchUserData = async () => {
                 <p className="mb-2">
                   Sub Total
                   <span className="float-right">
-                    <span className="currency-symbol-left">$</span>
+                    <span className="currency-symbol-left"></span>
                     {totalPrice}
                   </span>
                 </p>
@@ -599,7 +599,7 @@ const fetchUserData = async () => {
                   <p className="mb-2">
                     Total Discount ({appliedCoupon.discount} %)
                     <span className="float-right Total-Discount">
-                      <span className="currency-symbol-left">( - $</span>
+                      <span className="currency-symbol-left">( - ₹</span>
                       {totalDiscount.toFixed(2)} )
                     </span>
                     <hr />
@@ -609,14 +609,14 @@ const fetchUserData = async () => {
                 <p className="mb-2">
                   CGST (5%)
                   <span className="float-right text-dark">
-                    <span className="currency-symbol-left">$</span>
+                    <span className="currency-symbol-left">₹</span>
                     {CGST.toFixed(2)}
                   </span>
                 </p>
                 <p className="mb-2">
                   GST ( 10% )
                   <span className="float-right text-dark">
-                    <span className="currency-symbol-left">$</span>
+                    <span className="currency-symbol-left">₹</span>
                     {GST.toFixed(2)}
                   </span>
                 </p>
@@ -624,7 +624,7 @@ const fetchUserData = async () => {
                 <p className="mb-2">
                   Delivery Charge
                   <span className="float-right text-dark">
-                    <span className="currency-symbol-left">$</span>
+                    <span className="currency-symbol-left">₹</span>
                       0                  
                   </span>
                 </p>
@@ -632,7 +632,7 @@ const fetchUserData = async () => {
                 <h6 className="font-weight-boldss mb-0">
                   Total
                   <p className="float-right">
-                    <span className="currency-symbol-left">$</span>
+                    <span className="currency-symbol-left">₹</span>
                     {totalAmount.toFixed(2)}
                   </p>
                 </h6>
@@ -641,7 +641,7 @@ const fetchUserData = async () => {
            
               <div className="p-3 text-center">
                 <Button onClick={handleCheckout} block size="lg" className="pay_now_buttons border-0 text-center">
-                  Pay <span className="currency-symbol-left">$</span>{totalAmount.toFixed(2)}<FaArrowRight />
+                  Pay <span className="currency-symbol-left">₹</span>{totalAmount.toFixed(2)}<FaArrowRight />
                 </Button>
               </div>
             </div>
