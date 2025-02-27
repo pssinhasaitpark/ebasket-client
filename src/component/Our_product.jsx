@@ -22,67 +22,67 @@ function Product() {
             className="nav-content"
             onClick={() => handleCategoryClick('rice')}
           >
-            <a
+            <p
               className={`nav-txt ${selectedCategory === 'rice' ? 'act' : ''}`}
               href="#action1"
             >
               RICE
-            </a>
+            </p>
           </Nav.Link>
           <Nav.Link
             className="nav-content"
             onClick={() => handleCategoryClick('pulses')}
           >
-            <a
+            <p
               className={`nav-txt ${selectedCategory === 'pulses' ? 'act' : ''}`}
               href="#action2"
             >
               PULSES
-            </a>
+            </p>
           </Nav.Link>
           <Nav.Link
             className="nav-content"
             onClick={() => handleCategoryClick('flour')}
           >
-            <a
+            <p
               className={`nav-txt ${selectedCategory === 'flour' ? 'act' : ''}`}
               href="#action3"
             >
               FLOUR
-            </a>
+            </p>
           </Nav.Link>
           <Nav.Link
             className="nav-content"
             onClick={() => handleCategoryClick('Salt & Sugar')}
           >
-            <a
+            <p
               className={`nav-txt ${selectedCategory === 'Salt & Sugar' ? 'act' : ''}`}
               href="#action4"
             >
               SALT & SUGAR
-            </a>
+            </p>
           </Nav.Link>
           <Nav.Link
             className="nav-content"
             onClick={() => handleCategoryClick('snacksanddrinks')}
           >
-            <a
+            <p
               className={`nav-txt ${selectedCategory === 'snacksanddrinks' ? 'act' : ''}`}
               href="#action5"
             >
               SNACKS & DRINKS
-            </a>
+            </p>
           </Nav.Link>
           <Nav.Link
             className="nav-content"
             onClick={() => handleCategoryClick('oilsanddryfruits')}
           >
-            <a
+            <p
               className={`nav-txt ${selectedCategory === 'oilsanddryfruits' ? 'act' : ''}`}
               href="#action6"
             >
               OILS & DRY FRUITS
-            </a>
+            </p>
           </Nav.Link>
         </Navbar>
         <div>

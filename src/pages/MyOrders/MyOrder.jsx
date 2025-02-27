@@ -24,9 +24,6 @@ const OrderTabs = () => {
     return <div className="d-flex justify-content-center"><img src={Noresult} /></div>;
   }
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
 
   const filterOrdersByStatus = (status) => {
     return orders.filter((order) => order?.order?.generalDetails?.status === status);

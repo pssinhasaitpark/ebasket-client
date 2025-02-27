@@ -113,7 +113,7 @@ fetchUserData();
                             <div>
                               <img src={search} alt="" />
                             </div>
-                            <Link to={'/search'} className="nav-link " activeClassName="active">
+                            <Link to={'/search'} className="nav-link " activeclassname="active">
                               Search
                             </Link>
                           </div>
@@ -124,7 +124,7 @@ fetchUserData();
                             <div>
                               <img src={offer} alt="" />
                             </div>
-                            <Link to={"/offers"} className="nav-link " activeClassName="active">
+                            <Link to={"/offers"} className="nav-link " activeclassname="active">
                               Offers
                             </Link>
                           </div>
@@ -141,7 +141,7 @@ fetchUserData();
                               </div>
                             </a>
 
-                            <Link to={'/profile'} className="nav-link username" activeClassName="active">
+                            <Link to={'/profile'} className="nav-link username" activeclassname="active">
                             Hii <span>{userData?.fullName || username || 'Guest'}</span>
                             </Link>
 
@@ -188,7 +188,7 @@ fetchUserData();
                             <div>
                               <img src={shopping} alt="" />
                             </div>
-                            <Link to={"/checkout"} className="nav-link " activeClassName="active">
+                            <Link to={"/checkout"} className="nav-link " activeclassname="active">
                               Cart
                               {totalQuantity > 0 && (
                               <span

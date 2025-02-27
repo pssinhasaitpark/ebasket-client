@@ -77,7 +77,7 @@ const PublicNavbar = () => {
 
                       <li className="nav-item">
                         <div className='d-flex align-items-center me-2'>
-                          <div>
+                          <div className='item-image '>
                             <img src={user} alt="" />
                           </div>
                           <Link  to={"/login"} className="nav-link " activeclassname="active">

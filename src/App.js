@@ -42,7 +42,7 @@ const App = () => {
         {loading && (<LoadingSpinner />)
         }
         <ScrollToTop />
-          <PublicRoutes />
+          {/* <PublicRoutes /> */}
           <ProtectedRoutes />
        <Footer /> 
          

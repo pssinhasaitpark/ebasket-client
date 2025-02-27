@@ -135,7 +135,7 @@ const Profile = () => {
                                 {({ handleSubmit, setFieldValue, values, errors, touched, handleChange, isSubmitting }) => (
                                     <Form onSubmit={handleSubmit}>
                                         {/* Full Name Field */}
-                                        <Form.Group controlId="fullName" className="mb-3">
+                                        <Form.Group className="mb-3">
                                             <Form.Label>Full Name</Form.Label>
                                             <Form.Control
                                                 type="text"
@@ -150,7 +150,7 @@ const Profile = () => {
                                         </Form.Group>
 
                                         {/* Email Field */}
-                                        <Form.Group controlId="email" className="mb-3">
+                                        <Form.Group  className="mb-3">
                                             <Form.Label>Email</Form.Label>
                                             <Form.Control
                                                 type="email"
@@ -164,7 +164,7 @@ const Profile = () => {
                                         </Form.Group>
 
                                         {/* Phone Number Field */}
-                                        <Form.Group controlId="phoneNumber" className="mb-3">
+                                        <Form.Group className="mb-3">
                                             <Form.Label>Phone Number</Form.Label>
                                             <Form.Control
                                                 type="text"
