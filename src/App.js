@@ -36,7 +36,6 @@ const App = () => {
 
   return (
     <>
-
     <PersistGate loading={null} persistor={persistor}>
       <Header/>
         {loading && (<LoadingSpinner />)
