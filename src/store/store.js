@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; 
 import { combineReducers } from 'redux';
+// import { getDefaultMiddleware } from '@reduxjs/toolkit';
 
 import categoriesReducer from './slices/categories-slice';
 import brandsReducer from './slices/brands-slice';
@@ -35,8 +36,17 @@ const rootReducer = combineReducers({
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
-  reducer: persistedReducer, 
+  reducer: persistedReducer,
+  middleware : (getDefaultMiddleware) =>  getDefaultMiddleware({
+    serializableCheck : {
+      ignoredActions: ['persist/PERSIST']
+    }
+  })
 });
+
+// const customizedMiddleware = getDefaultMiddleware({
+//   serializableCheck: false
+// })
 
 const persistor = persistStore(store);
 

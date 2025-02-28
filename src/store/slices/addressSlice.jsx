@@ -7,17 +7,32 @@ export const fetchAddresses = createAsyncThunk('addresses/fetchAddresses', async
   if (!token) {
     return rejectWithValue('No token available');
   }
-  // console.log('token->',token);
   
 
   try {
+    if (!token) {
+      throw new Error('Authorization token is missing');
+    }
+  
     const response = await axios.get(`${BASE_URL}/address/getalladdress`, {
       headers: { Authorization: `Bearer ${token}` },
     });
-    return response.data; 
+  
+    // Check if response.data is valid and not undefined
+    if (!response || !response.data) {
+      throw new Error('No data returned from the server');
+    }
+  
+    // Return the valid response data
+    return response.data;
   } catch (error) {
-    return rejectWithValue(error.message);
+    // Ensure the error message is valid
+    const errorMessage = error.message || 'An unknown error occurred';
+    
+    // Reject with a valid error message
+    return rejectWithValue(errorMessage);
   }
+  
 });
 
 export const createAddress = createAsyncThunk('addresses/createAddress', async (address, { rejectWithValue }) => {
@@ -88,10 +103,10 @@ const addressSlice = createSlice({
         state.loading = false;
         state.addresses = action.payload || [];
       })
-      // .addCase(fetchAddresses.rejected, (state, action) => {
-      //   state.loading = false;
-      //   state.error = action.payload; 
-      // })
+      .addCase(fetchAddresses.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload; 
+      })
       // Create
       .addCase(createAddress.pending, (state) => {
         state.loading = true;

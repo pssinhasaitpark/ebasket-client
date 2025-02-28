@@ -15,7 +15,7 @@ import PublicNavbar from '../component/PublicNavbar';
 
 
 const Header = () => {
-  const isSignedIn = useSelector((state) => state.auth.isSignedIn);
+  const isSignedIn = useSelector((state) => state.auth.isSignedIn ?? false);
   const dispatch = useDispatch();
     const { addresses, loading, error } = useSelector((state) => state.addresses);
   const { userData } = useSelector((state) => state.userMe);

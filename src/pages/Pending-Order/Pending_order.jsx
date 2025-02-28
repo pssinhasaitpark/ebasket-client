@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, Row, Col, Card, Table, Badge } from 'react-bootstrap';
 import './Pending_order.css'
-import { useLocation , useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import axios from 'axios';
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -13,9 +13,9 @@ const Pending_order = () => {
     const fetchOrderData = async () => {
         try {
             const response = await axios.get(`${BASE_URL}/orders/getorderbyid/${id}`, {
- 
+
             });
-            
+
             setUserOrder(response.data.order); // Assuming the response contains a user object
             setLoading(false);
             // {console.log('order' , response.data.order)}
@@ -24,11 +24,11 @@ const Pending_order = () => {
             setLoading(false);
         }
     };
-       useEffect(() => {
-            if (id) {
-                setUserOrder([id]); 
-            }
-        }, [id]);
+    useEffect(() => {
+        if (id) {
+            setUserOrder([id]);
+        }
+    }, [id]);
     useEffect(() => {
         fetchOrderData();
     }, []);
@@ -48,20 +48,14 @@ const Pending_order = () => {
             address: UserOrder?.vendor?.address,
             phone: UserOrder?.vendor?.phone,
         },
-        items: [
-            {   name: UserOrder?.orderItems?.items.map(item => item.itemName), 
-                quantity: UserOrder?.orderItems?.items.map(item => item.quantity), 
-                price: UserOrder?.orderItems?.items.map(item => item.price), 
-                Image: UserOrder?.orderItems?.items.map(item => item.itemImage) 
-            },
-        ],
         summary: {
-            subtotal: (UserOrder?.orderItems?.orderSubtotal?? 0).toFixed(2),
+            subtotal: (UserOrder?.orderItems?.orderSubtotal ?? 0).toFixed(2),
             discount: -(UserOrder?.orderItems?.orderDiscount ?? 0).toFixed(2),
-            tax: (UserOrder?.orderItems?.orderTax?? 0).toFixed(2),
-            gst: (UserOrder?.orderItems?.gst?? 0).toFixed(2),
-            shipping: (UserOrder?.orderItems?.orderShipping?? 0).toFixed(2),
-            total: (UserOrder?.orderItems?.orderTotal?? 0).toFixed(2)
+            tax: (UserOrder?.orderItems?.orderTax ?? 0).toFixed(2),
+            cgst: (UserOrder?.orderItems?.cgst ?? 0).toFixed(2),
+            gst: (UserOrder?.orderItems?.gst ?? 0).toFixed(2),
+            shipping: (UserOrder?.orderItems?.orderShipping ?? 0).toFixed(2),
+            total: (UserOrder?.orderItems?.orderTotal ?? 0).toFixed(2)
         }
     };
     return (
@@ -93,12 +87,12 @@ const Pending_order = () => {
                 </Row>
                 <Row>
                     <Col md={6}>
-                    <Card className="order-card">
+                        <Card className="order-card">
                             <Card.Body>
                                 <Card.Title>Vendor Details</Card.Title>
                                 <p><strong>Address:</strong> {order.vendor.address}</p>
                                 <p><strong>Phone:</strong> {order.vendor.phone}</p>
-                             
+
                             </Card.Body>
                         </Card>
                     </Col>
@@ -112,7 +106,7 @@ const Pending_order = () => {
                                 <thead className='thead'>
                                     <tr>
 
-                                      <th>Image</th>
+                                        <th>Image</th>
                                         <th>Item Name</th>
                                         <th>Quantity</th>
                                         <th>Price</th>
@@ -120,16 +114,19 @@ const Pending_order = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {order.items.map((item, index) => (
+                                    {UserOrder?.orderItems?.items?.map((item, index) => (
                                         <tr key={index}>
-                                             <td className='image'><img src={item.Image} alt={item.itemName} width={100} height={100} rounded /></td>
-                                            <td>{item.name}</td>
+                                            <td className='image'>
+                                                <img src={item.itemImage} alt={item.itemName} width={100} height={100} />
+                                            </td>
+                                            <td>{item.itemName}</td>
                                             <td>x {item.quantity}</td>
-                                            <td>${item.price}</td>
-                                            <td>${(item.quantity * item.price)}</td>
+                                            <td>₹{item.price}</td>
+                                            <td>₹{(item.quantity * item.price).toFixed(2)}</td>
                                         </tr>
                                     ))}
                                 </tbody>
+
                             </Table>
 
                         </Card>
@@ -142,26 +139,31 @@ const Pending_order = () => {
                                 <Table className="order-summary">
                                     <tbody>
                                         <tr><td className='fw-bold'>Order Subtotal</td>
-                                            <td className="text-end">${order.summary.subtotal}</td>
+                                            <td className="text-end">₹{order.summary.subtotal}</td>
                                         </tr>
                                         <tr>
-                                             <td className='fw-bold'>Order Discount</td>
-                                             <td className="text-danger text-end">${(order.summary.discount)}</td>
+                                            <td className='fw-bold'>Order Discount</td>
+                                            <td className="text-danger text-end">₹{(order.summary.discount)}</td>
                                         </tr>
                                         <tr>
                                             <td className='fw-bold'>Order Tax </td>
-                                                 <td className="text-end">${(order.summary.tax)}</td>
+                                            <td className="text-end">₹{(order.summary.tax)}</td>
                                         </tr>
                                         <tr>
-                                            <td className='fw-bold'>GST</td>
-                                                 <td className='text-end'>${(order.summary.gst)}</td>
-                                        </tr>
+                                            <td className='fw-bold'>CGST (5%)</td>
+                                            <td className='text-end'>₹{(order.summary.cgst)}</td>
+                                            </tr>
+                                            <tr>
+                                            <td className='fw-bold'>GST (10%)</td>
+                                            <td className='text-end'>₹{(order.summary.gst)}</td>
+                                            </tr>
+                                   
                                         <tr>
                                             <td className='fw-bold'>Order Shipping</td>
-                                                 <td className='text-end'>${order.summary.shipping}</td>
+                                            <td className='text-end'>₹{order.summary.shipping}</td>
                                         </tr>
                                         <tr className="total-row"><td className='fw-bold'>Order Total</td>
-                                             <td className='text-end'>${(order.summary.total)}</td>
+                                            <td className='text-end'>₹{(order.summary.total)}</td>
                                         </tr>
                                     </tbody>
                                 </Table>

@@ -29,10 +29,10 @@ const OrderTabs = () => {
     return orders.filter((order) => order?.order?.generalDetails?.status === status);
   };
 
-  const renderOrderDetails = (order) => {
+  const renderOrderDetails = (order, key) => {
     const { generalDetails, billingDetails, orderItems, otp, ordercreatedAt } = order;
     return (
-      <div className='pb-3'>
+      <div className='pb-3' key={key}>
       <div className="p-3 rounded shadow-sm bg-white" key={order.id}>
         <div className="d-flex border-bottom pb-3 m-d-flex justify-content-between">
           <div className="d-flex">
@@ -84,7 +84,7 @@ const OrderTabs = () => {
 
           <div className="total-pay-my_order text-muted mr-3 ml-auto small">
             Total Payment
-            <div className="text-dark font-weight-bold">${orderItems?.orderTotal.toFixed(2)}</div>
+            <div className="text-dark font-weight-bold">₹{orderItems?.orderTotal.toFixed(2)}</div>
           </div>
 
           <div className="text-right custom-help">
@@ -106,8 +106,8 @@ const OrderTabs = () => {
               <li className="nav-item rounded-circle">
                 <a
                   className={`nav-link ${activeTab === 'all' ? 'active' : ''} border-0 text-dark py-3`}
+                  style={{ cursor: 'pointer' }}
                   onClick={() => handleTabClick('all')}
-                  href="#"
                 >
                   <FaList className="active-icon mr-2 text-success mb-0" /> All
                 </a>
@@ -115,8 +115,9 @@ const OrderTabs = () => {
               <li className="nav-item rounded-circle">
                 <a
                   className={`nav-link ${activeTab === 'InProcess' ? 'active' : ''} border-0 text-dark py-3`}
+                  style={{ cursor: 'pointer' }}
                   onClick={() => handleTabClick('InProcess')}
-                  href="#"
+                  
                 >
                   <FaClock className="mr-2 text-warning mb-0" /> InProcess
                 </a>
@@ -124,8 +125,9 @@ const OrderTabs = () => {
               <li className="nav-item rounded-circle">
                 <a
                   className={`nav-link ${activeTab === 'InTransit' ? 'active' : ''} border-0 text-dark py-3`}
+                  style={{ cursor: 'pointer' }}
                   onClick={() => handleTabClick('InTransit')}
-                  href="#"
+                  
                 >
                   <FaClock className="mr-2 text-success mb-0" /> InTransit
                 </a>
@@ -133,8 +135,9 @@ const OrderTabs = () => {
               <li className="nav-item rounded-circle">
                 <a
                   className={`nav-link ${activeTab === 'Delivered' ? 'active' : ''} border-0 text-dark py-3`}
+                  style={{ cursor: 'pointer' }}
                   onClick={() => handleTabClick('Delivered')}
-                  href="#"
+                  
                 >
                   <FaCheck className="mr-2 text-success mb-0" /> Delivered
                 </a>
@@ -147,7 +150,7 @@ const OrderTabs = () => {
                   {orders.length === 0 ? (
                     <p className='text-center'><img src={Noresult} alt="" /></p>
                   ) : (
-                    orders.map((orderData) => renderOrderDetails(orderData.order)) // Correct mapping here
+                    orders.map((orderData) => renderOrderDetails(orderData.order , orderData.order._id)) // Correct mapping here
                   )}
                   {/* {console.log('order', orders)
                   } */}

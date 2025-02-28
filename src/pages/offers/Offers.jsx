@@ -5,6 +5,7 @@ import './Offers.css'
 import { ImCopy } from "react-icons/im";
 import { useDispatch, useSelector } from 'react-redux';
 import { getCoupons } from '../../store/slices/coupons.slice';
+import { toast, ToastContainer } from "react-toastify";
 
 const CouponsList = () => {
 
@@ -18,7 +19,7 @@ const CouponsList = () => {
 
   const copyToClipboard = (code) => {
     navigator.clipboard.writeText(code);
-    alert('Coupon code copied');
+    toast.success('Coupon code copied');
   };
 
 
@@ -37,7 +38,7 @@ const CouponsList = () => {
       </div>
 
       <div className="text-center py-5 not_found_div" style={{ display: 'none' }}>
-        <Image src="" />
+        <Image />
       </div>
 
       <div style={{ display: 'none' }} className="coupon_code_copied_div mt-4 error_top text-center">
@@ -84,6 +85,7 @@ const CouponsList = () => {
           </Button>
         </Col>
       </Row>
+      <ToastContainer />
     </div>
     </>
   );

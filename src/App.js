@@ -21,7 +21,7 @@ import ScrollToTop from "./component/Scroll.jsx";
 
 
 const App = () => {
-  const isSignedIn = useSelector((state) => state.auth.isSignedIn);
+  const isSignedIn = useSelector((state) => state.auth.isSignedIn ?? false);
   // console.log("check", isSignedIn);
 
   const [loading, setLoading] = useState(true);
