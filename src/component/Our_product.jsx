@@ -64,10 +64,10 @@ function Product() {
           </Nav.Link>
           <Nav.Link
             className="nav-content"
-            onClick={() => handleCategoryClick('snacksanddrinks')}
+            onClick={() => handleCategoryClick('Snacks & Drinks')}
           >
             <p
-              className={`nav-txt ${selectedCategory === 'snacksanddrinks' ? 'act' : ''}`}
+              className={`nav-txt ${selectedCategory === 'Snacks & Drinks' ? 'act' : ''}`}
               href="#action5"
             >
               SNACKS & DRINKS
@@ -75,10 +75,10 @@ function Product() {
           </Nav.Link>
           <Nav.Link
             className="nav-content"
-            onClick={() => handleCategoryClick('oilsanddryfruits')}
+            onClick={() => handleCategoryClick('Oils & Dry Fruits')}
           >
             <p
-              className={`nav-txt ${selectedCategory === 'oilsanddryfruits' ? 'act' : ''}`}
+              className={`nav-txt ${selectedCategory === 'Oils & Dry Fruits' ? 'act' : ''}`}
               href="#action6"
             >
               OILS & DRY FRUITS

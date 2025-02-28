@@ -46,6 +46,7 @@ const ProductDetailPage = () => {
   const [totalPrice, setTotalPrice] = useState(null);
   const [totalImage, settotalImage] = useState(null);
      const [selectedCategory, setSelectedCategory] = useState('rice');
+   const [totalQuantity, setTotalQuantity] = useState(0);
  
   const navigate = useNavigate();
   const isSignedIn = useSelector((state) => state.auth.isSignedIn);
@@ -155,6 +156,14 @@ const ProductDetailPage = () => {
     setCart(updatedCart);
   
     localStorage.setItem("cart", JSON.stringify(updatedCart));
+    // Calculate the total quantity dynamically
+  const totalQuantity = updatedCart.reduce((acc, item) => {
+    return acc + (item.quantity + (item.variantQuantity || 0));
+  }, 0);
+
+  // Set the total quantity in state and localStorage
+  setTotalQuantity(totalQuantity); // Update the state
+  localStorage.setItem("totalQuantity", totalQuantity);
   
     // console.log("Updated Cart:", updatedCart);
   };
@@ -224,8 +233,10 @@ const ProductDetailPage = () => {
                             ) : (
                               <span className="price">
                                 ₹{ (productData.itemDetails.price)-((productData.itemDetails.discount*productData.itemDetails.price)/100).toFixed(2) }
+                               { (productData.itemDetails.price)-((productData.itemDetails.discount*productData.itemDetails.price)/100).toFixed(2) !== productData.itemDetails.price  && (
                                 <s className="text-muted">₹{productData.itemDetails.price}</s>
-                              </span>
+                               )}
+                                </span>
                             )}
                         </div>
                           <div className="variant_quntity">

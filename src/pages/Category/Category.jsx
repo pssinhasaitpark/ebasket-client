@@ -159,7 +159,9 @@ function Category() {
                                         <Card className="list-card position-relative" onClick={() => handleCardClick(item._id)}>
                                             <div className="list-card-image">
                                                 <div className="member-plan position-absolute">
+                                                    {item.itemDetails.discount > 0 && (
                                                     <Badge className="badge" pill variant="dark">-{item.itemDetails.discount}%</Badge>
+                                                )}
                                                 </div>
                                                 <div role="button">
                                                     <Card.Img
@@ -179,7 +181,10 @@ function Category() {
                                                     </Card.Title>
                                                     <Card.Text>
                                                         <span className="pro-price products-price">
-                                                            ₹{ (item.itemDetails.price)-((item.itemDetails.discount*item.itemDetails.price)/100)}<s className='orignal-price'>₹{item.itemDetails.price}</s>
+                                                            ₹{ (item.itemDetails.price)-((item.itemDetails.discount*item.itemDetails.price)/100)}
+                                                            {(item.itemDetails.price)-((item.itemDetails.discount*item.itemDetails.price)/100) !== item.itemDetails.price && (
+                                                            <s className='orignal-price'>₹{item.itemDetails.price}</s>
+                                                            )}
                                                         </span>
                                                     </Card.Text>
                                                 </div>

@@ -52,9 +52,11 @@ const ProductList = ({  itemss,firstWord}) => {
                 >
                   <div className="list-card-image">
                     <div className="member-plan position-absolute">
+                      {item.itemDetails.discount > 0 && (
                       <Badge className="badge" pill variant="dark">
                         {item.itemDetails.discount}%
                       </Badge>
+                      )}
                     </div>
                     <a >
                       <Card.Img
@@ -79,9 +81,11 @@ const ProductList = ({  itemss,firstWord}) => {
                       <Card.Text>
                         <span className="pro-price products-price">
                         ₹{ ((item.itemDetails.price)-((item.itemDetails.discount*item.itemDetails.price)/100) ?? 0).toFixed(2)}{' '}
+                        {((item.itemDetails.price)-((item.itemDetails.discount*item.itemDetails.price)/100)).toFixed(2) !== item.itemDetails?.price.toFixed(2) && (
                           <s className="orignal-price">
                           ₹{item.itemDetails?.price}
                           </s>
+                        )}
                         </span>
                       </Card.Text>
                     </div>
