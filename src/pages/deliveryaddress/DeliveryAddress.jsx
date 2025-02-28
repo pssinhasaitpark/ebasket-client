@@ -220,8 +220,8 @@ const AddressForm = () => {
           <div className="address-wrapper  h-100  rounded-2 mt-5 p-3">
             <Row className="gap-4 d-flex justify-content-center">
               {addresses?.addresses?.length > 0 ? (
-                addresses.addresses.map((address_e) => (
-                  <Col sm={5} key={address_e._id} className='border p-3 '>
+                addresses.addresses.map((address_e , index) => (
+                  <Col sm={5} key={address_e._id || index} className='border p-3 '>
                     <div className="d-flex justify-content-between  gap-2 ">
                       <div className="image">
                         <img src={location} alt="location" />

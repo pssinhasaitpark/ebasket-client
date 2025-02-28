@@ -216,8 +216,8 @@ fetchUserData();
                                 </span>
                               </button>
                               <ul className="language dropdown-menu m-0 p-0">
-                                <li><a className="dropdown-item m-0  " href="#">English</a></li>
-                                <li><a className="dropdown-item m-0" href="#">Arabic</a></li>
+                                <li><a className="dropdown-item m-0  " href="">English</a></li>
+                                <li><a className="dropdown-item m-0" href="">Arabic</a></li>
 
                               </ul>
                             </div>

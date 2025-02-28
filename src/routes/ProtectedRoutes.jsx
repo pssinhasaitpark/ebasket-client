@@ -33,7 +33,7 @@ import VerifyOTP from "../pages/auth/OtpVerify";
 
 const ProtectedRoutes = () => {
 
-    const isSignedIn = useSelector((state) => state.auth.isSignedIn);
+    const isSignedIn = useSelector((state) => state.auth.isSignedIn ?? false);
 
     return (
         <> 

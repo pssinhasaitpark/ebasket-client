@@ -41,6 +41,7 @@
 .custom-help .btn-outline-primary:hover {
     background: #01664a;
     border-color: #01664a;
+    color: white;
 }
 
 .my_order_name{
