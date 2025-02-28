@@ -20,7 +20,11 @@ import '../layout/Header.css'
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { signIn, signOut } from '../store/slices/authSlice';
-
+import { LuBook } from "react-icons/lu";
+import { LuHeart } from "react-icons/lu";
+import { RiListUnordered } from "react-icons/ri";
+import { FiUser } from "react-icons/fi";
+import { IoCallOutline, IoHomeOutline } from 'react-icons/io5';
 const PublicNavbar = () => {
       const [show, setShow] = useState(false);
 
@@ -175,7 +179,7 @@ const PublicNavbar = () => {
                                   <Link to={'/'} className="link1"  >
                                     <div className='link1-div'>
                                       <div className='image'>
-                                        <img src={home} alt="" />
+                                      <IoHomeOutline className='icon' />
                                       </div>
                                       <span>
 
@@ -188,7 +192,7 @@ const PublicNavbar = () => {
                                   <Link className="link1 " to={'/contactus'}  >
                                     <div className='link1-div'>
                                       <div className='image'>
-                                        <img src={user} alt="" />
+                                      <IoCallOutline />
                                       </div>
                                       <span>
 
@@ -201,7 +205,7 @@ const PublicNavbar = () => {
                                   <Link to={'/login'} className="link1 "  >
                                     <div className='link1-div'>
                                       <div className='image'>
-                                        <img src={user} alt="" />
+                                      <FiUser/>
                                       </div>
                                       <span>
 
@@ -214,7 +218,7 @@ const PublicNavbar = () => {
                                   <Link to={'/signup'} className="link1 "  >
                                     <div className='link1-div'>
                                       <div className='image'>
-                                        <img src={user} alt="" />
+                                      <FiUser/>
                                       </div>
                                       <span>
 
@@ -238,7 +242,7 @@ const PublicNavbar = () => {
                                   <Link to={'/'}  className='text-decoration-none  text-secondary text-center' onClick={() => navigate('/')}>
                                     <div className='bottom-home position-relative'>
                                       <div className=''>
-                                        <img src={home} alt="" />
+                                      <IoHomeOutline className='icon' />
                                       </div>
 
                                       <p >
@@ -253,7 +257,7 @@ const PublicNavbar = () => {
 
                                     <div className='position-relative'>
                                       <div>
-                                        <img src={phone} alt="" />
+                                         <IoCallOutline />
                                       </div>
 
                                       <p>

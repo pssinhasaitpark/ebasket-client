@@ -17,6 +17,12 @@ import { Link} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {  signOut } from '../store/slices/authSlice';
 import axios from 'axios';
+import { IoHomeOutline } from "react-icons/io5";
+import { LuBook } from "react-icons/lu";
+import { LuHeart } from "react-icons/lu";
+import { RiListUnordered } from "react-icons/ri";
+import { FiUser } from "react-icons/fi";
+import { IoCallOutline } from "react-icons/io5";
 // import { addToCart, removeFromCart, updateCartQuantity } from '../store/slices/cart-slice';
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -245,7 +251,7 @@ fetchUserData();
                                     <Link to={'/'} className="link1" onClick={handleClose}>
                                       <div className='link1-div'>
                                         <div className='image'>
-                                          <img src={home} alt="" />
+                                        <IoHomeOutline className='icon' />
                                         </div>
                                         <span>
 
@@ -258,7 +264,7 @@ fetchUserData();
                                     <Link to={'/orders'} className="link1"  onClick={handleClose}>
                                       <div className='link1-div'>
                                         <div className='image'>
-                                          <img src={home} alt="" />
+                                       <RiListUnordered />
                                         </div>
                                         <span>
 
@@ -271,7 +277,7 @@ fetchUserData();
                                     <Link to={'/transaction'} className="link1"  onClick={handleClose}>
                                       <div className='link1-div'>
                                         <div className='image'>
-                                          <img src={home} alt="" />
+                                        <RiListUnordered />
                                         </div>
                                         <span>
 
@@ -284,7 +290,8 @@ fetchUserData();
                                     <Link to={'/favorite-products'} className="link1"  onClick={handleClose}>
                                       <div className='link1-div'>
                                         <div className='image'>
-                                          <img src={home} alt="" />
+                                        
+                                        <LuHeart />
                                         </div>
                                         <span>
 
@@ -297,7 +304,7 @@ fetchUserData();
                                     <Link to={'/delivery-address'} className="link1"  onClick={handleClose}>
                                       <div className='link1-div'>
                                         <div className='image'>
-                                          <img src={home} alt="" />
+                                        <LuBook className='icon'/>
                                         </div>
                                         <span>
 
@@ -310,7 +317,9 @@ fetchUserData();
                                     <Link to={'/profile'} className="link1"  onClick={handleClose}>
                                       <div className='link1-div'>
                                         <div className='image'>
-                                          <img src={home} alt="" />
+                                       
+<FiUser />
+
                                         </div>
                                         <span>
 
@@ -323,7 +332,7 @@ fetchUserData();
                                     <Link to={'/contactus'} className="link1 "  onClick={handleClose}>
                                       <div className='link1-div'>
                                         <div className='image'>
-                                          <img src={user} alt="" />
+                                        <FiUser />
                                         </div>
                                         <span>
 
@@ -337,7 +346,7 @@ fetchUserData();
                                     <Link className="link1 "   to={'/login'} onClick={handleSignOut}>
                                       <div className='link1-div'>
                                         <div className='image'>
-                                          <img src={user} alt="" />
+                                        <FiUser />
                                         </div>
                                         <span>
 
@@ -365,7 +374,7 @@ fetchUserData();
                                     <Link to={'/'}  className='text-decoration-none  text-secondary text-center' onClick={handleClose}>
                                       <div className='bottom-home position-relative'>
                                         <div className=''>
-                                          <img src={home} alt="" />
+                                        <IoHomeOutline className='icon' />
                                         </div>
 
                                         <p >
@@ -381,7 +390,8 @@ fetchUserData();
 
                                       <div className='position-relative'>
                                         <div>
-                                          <img src={phone} alt="" />
+                                      
+                                        <IoCallOutline />
                                         </div>
 
                                         <p>
