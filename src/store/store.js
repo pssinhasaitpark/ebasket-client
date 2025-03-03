@@ -13,11 +13,12 @@ import cartReducer from './slices/cart-slice';
 import addressesReducer from './slices/addressSlice';
 import orderReducer from './slices/orderSlice';
 import usermeReducer from './slices/usermeSlice';
+import totalQuantityReducer from './slices/totalQuantitySlice';
 
 const persistConfig = {
   key: 'root',  
   storage,      
-  whitelist: ['auth'], 
+  whitelist: ['auth','totalQuantity'], 
 };
 
 
@@ -31,6 +32,7 @@ const rootReducer = combineReducers({
   addresses: addressesReducer,
   Order : orderReducer,
   userMe: usermeReducer,
+  totalQuantity: totalQuantityReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

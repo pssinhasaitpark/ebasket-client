@@ -11,13 +11,11 @@ import offer from '../asset/images/discount.png'
 import shopping from '../asset/images/shopping-cart.svg';
 import glob from '../asset/images/globe.svg'
 import downarrow from '../asset/images/chevron-down.svg'
-// import GooglePlacesAutocomplete from 'react-google-autocomplete';
 import '../layout/Header.css'
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { signOut } from '../store/slices/authSlice';
 import axios from 'axios';
-// import { addToCart, removeFromCart, updateCartQuantity } from '../store/slices/cart-slice';
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 
@@ -25,15 +23,11 @@ const PrivateNavbar = () => {
   const dispatch = useDispatch();
 
   const username = useSelector((state) => state.auth.username); // Get username from Redux
-  // console.log("username-",username);
   const [cart, setCart] = useState(() => JSON.parse(localStorage.getItem("cart")) || []);
-  const [totalQuantity, setTotalQuantity] = useState(0);
-  // const [totalSum, settotalSum] = useState(0);
-  // const { totalQuantity } = useSelector(state => state.cart);
   const [userData, setUserData] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  // console.log('Total quantitities', totalQuantity);
+  const totalQuantity = useSelector((state) => state.totalQuantity.totalQuantity); // Access totalQuantity from Redux
 
 
   const [show, setShow] = useState(false);
@@ -44,22 +38,6 @@ const PrivateNavbar = () => {
 
   const handleSignOut = () => {
     dispatch(signOut());
-  };
-
-  useEffect(() => {
-    const storedTotalQuantity = localStorage.getItem("totalQuantity");
-
-    if (storedTotalQuantity) {
-      setTotalQuantity(Number(storedTotalQuantity)); 
-    }
-  }, [totalQuantity]);
-
-  const updateCart = (newItem) => {
-    setCart(prevCart => [...prevCart, newItem]);
-  };
-
-  const removeItemFromCart = (itemId) => {
-    setCart(prevCart => prevCart.filter(item => item.id !== itemId));
   };
 
   useEffect(() => {
@@ -169,7 +147,7 @@ const PrivateNavbar = () => {
                 </div>
                 <Link to={"/checkout"} className="nav-link " activeclassname="active">
                   Cart
-                  {totalQuantity > 0 && (
+                  {totalQuantity > 0 &&(
                     <span
                       className="badge rounded-circle count-badge"
                       style={{ top: '-10px', fontSize: '12px', padding: '5px 10px' }}
@@ -177,8 +155,6 @@ const PrivateNavbar = () => {
                       {totalQuantity}
                     </span>
                   )}
-                  {/* {totalQuantity} */}
-
                 </Link>
               </div>
             </li>
