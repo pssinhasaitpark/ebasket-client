@@ -1,9 +1,9 @@
-import React, { useEffect , useState } from 'react'
+import React, { useEffect } from 'react'
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-import { Dropdown, Row, Col, Form, NavLink } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import Logo from '../asset/images/logo_web.png'
-import location from '../asset/images/location.svg'
+import locationnn from '../asset/images/location.svg'
 // import GooglePlacesAutocomplete from 'react-google-autocomplete';
 import './Header.css'
 import {  useDispatch , useSelector } from 'react-redux';
@@ -12,12 +12,13 @@ import { fetchAddresses } from '../store/slices/addressSlice';
 
 import PrivateNavbar from '../component/PrivateNavbar';
 import PublicNavbar from '../component/PublicNavbar';
+import { useLocation } from 'react-router-dom';
 
 
 const Header = () => {
   const isSignedIn = useSelector((state) => state.auth.isSignedIn ?? false);
   const dispatch = useDispatch();
-    const { addresses, loading, error } = useSelector((state) => state.addresses);
+    const { addresses} = useSelector((state) => state.addresses);
   const { userData } = useSelector((state) => state.userMe);
 
   useEffect(() => {
@@ -25,18 +26,18 @@ const Header = () => {
     dispatch(fetchUserMe())
   }, [dispatch]);
   // {console.log('showme' ,addresses?.addresses?.[0]?.address?.areaSectorLocality)}
-
-
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
   const selectedAddress = addresses?.addresses?.length > 0 ? addresses?.addresses?.[0]?.address?.areaSectorLocality : userData?.address;
   return (
     <>
 
-      <Navbar expand="lg" className=" pb-0 pt-0 navbar">
+      <Navbar expand="lg" className=" pb-0 pt-0 navbar shadow-sm">
         <div className="bg-transparent   text-dark container-fluid  ">
           <Container >
             <Row className='header-container-row d-flex align-items-center py-2'>
               <Col lg={2} className='col-5 ps-0' >
-                <Navbar.Brand href="/" className='m-0'>
+                <Navbar.Brand href={isHomePage ? undefined : '/'} className='m-0'>
                   <div className='logo fw-bold   fs-1 '>
                     <img src={Logo} alt="" />
                   </div>
@@ -50,7 +51,7 @@ const Header = () => {
                     <div className="input-group form-container border border-success rounded-2">
                       <div className="input-group-prepend">
                         <span className="location-image">
-                          <img src={location} alt="search" className='' />
+                          <img src={locationnn} alt="search" className='' />
                         </span>
                       </div>
                       
@@ -82,10 +83,7 @@ const Header = () => {
                   </form>
                 </div>
               </Col>
-              {/* {console.log(" hellllloo",isSignedIn)} */}
-
-
-              {isSignedIn ?
+          {isSignedIn ?
                 (
                 
                   <PrivateNavbar />
@@ -100,9 +98,6 @@ const Header = () => {
           </Container>
         </div>
       </Navbar>
-
-
-
     </>
   )
 }

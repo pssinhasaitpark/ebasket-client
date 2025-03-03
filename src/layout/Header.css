@@ -14,7 +14,7 @@
   grid-template-rows: repeat(3, 1fr);
   justify-items: center;
   z-index: 120;
-  
+
 }
 
 .hamburger1 div {
@@ -22,10 +22,8 @@
   position: relative;
   width: 32px;
   height: 2px;
-  margin-top: 7px;transition: transform 0.2s ease-in-out;
-
-  /* -webkit-transition: all 0.2s ease-in-out; */
-  /* transition: all 0.2s ease-in-out; */
+  margin-top: 7px;
+  transition: transform 0.2s ease-in-out;
 }
 
 .hamburger1 .top {
@@ -44,21 +42,20 @@
 
 /* When the button is clicked (Hamburger is open), it transforms into a cross */
 .hamburger1.open .top {
-  transform: rotate(45deg); /* Top bar rotates */
-  margin-top: 17px; /* Adjust top position */
+  transform: rotate(45deg);
+  margin-top: 17px;
 }
 
 .hamburger1.open .meat {
-  transform: rotate(-45deg); /* Middle bar rotates */
-  margin-top: 0px; /* Adjust middle position */
+  transform: rotate(-45deg);
+  margin-top: 0px;
 }
 
 .hamburger1.open .bottom {
-  transform: scale(0); /* Bottom bar disappears */
+  transform: scale(0);
+  /* Bottom bar disappears */
 }
-/* ============= */
 
-/* ============== */
 ul.dropdown-menu.show {
   min-width: 93px !important;
 }
@@ -88,7 +85,7 @@ a.link1 {
 
 .link1-div span {
   font-size: 13px;
-  
+
 }
 
 .link1-div:hover {
@@ -113,17 +110,10 @@ li.bottom a:hover {
   text-decoration: none !important;
 }
 
-
 .search-bar-div {
   position: relative;
 
 }
-
-/* .dropdown-menu[data-bs-popper] {
-  right: 10px !important;
-  left: 0px !important;
-} */
-
 .search-icon {
   position: absolute;
 }
@@ -169,23 +159,19 @@ button.btn.dropdown-toggle {
   background: none;
 }
 
-/* ========searcch icon animation=== */
-/* Add initial styling for the image */
 .location-image img {
   transition: transform 0.3s ease-in-out;
-  /* Smooth transition */
+
 }
 
-/* Apply the zoom-in effect when the icon is hovered */
 .location-image img:hover {
   transform: scale(1.2);
-  /* Zooms in by 20% */
+
 }
 
-/* Apply zoom-in effect on load */
 .location-image img {
   animation: zoomInOut 2.1s ease-in-out infinite;
-  /* Infinite loop to keep zoomed in */
+
 }
 
 .sidebar-bottom .bottom img {
@@ -205,26 +191,24 @@ button.btn.dropdown-toggle {
 button.btn-close {
   display: none;
 }
-.list-group-item .version p{
+
+.list-group-item .version p {
   text-align: center;
   font-size: 13px !important;
   font-weight: 700 !important;
 }
-/* .dropdown-item:hover{
-  background-color: #007bff !important; 
-  color: white !important;
-} */
+
 .language {
   border-radius: 0px !important;
 }
+
 /* ================================================ */
- /* Dropdown Container */
- .dropdown-container {
+
+.dropdown-container {
   position: relative;
   display: inline-block;
 }
 
-/* Down Arrow Icon */
 .dropdown-icon {
   cursor: pointer;
   font-size: 20px;
@@ -232,7 +216,6 @@ button.btn-close {
   position: relative;
 }
 
-/* Dropdown Menu */
 .dropdown-menuu {
   position: absolute;
   top: 110%;
@@ -246,32 +229,28 @@ button.btn-close {
   visibility: hidden;
   transition: opacity 0.3s, visibility 0.3s;
   font-size: 13px;
-    border-radius: 6px;
-    margin: 1px 0;
-    font-weight: 500;
-    right:0px;
+  border-radius: 6px;
+  margin: 1px 0;
+  font-weight: 500;
+  right: 0px;
 }
 
-/* Float Left */
 .dropdown-menuu.left {
   left: 0;
 }
 
-/* Float Right */
 .dropdown-menuu.right {
   right: 0;
 }
 
-/* Show Dropdown Menu on Hover */
 .dropdown-container:hover .dropdown-menuu {
   opacity: 1;
   visibility: visible;
 }
 
-/* Dropdown Links */
 .dropdown-menuu a {
   display: block;
-  padding:9px 10px 5px 14px;
+  padding: 9px 10px 5px 14px;
   text-decoration: none;
   color: #333;
   font-size: 13px;
@@ -281,45 +260,49 @@ button.btn-close {
 .dropdown-menuu a:hover {
   background-color: #f1f1f1;
 }
-.nav-item .main-div{
+
+.nav-item .main-div {
   margin-left: -8px;
 }
-.navbar-menu .nav-item .nav-link{
+
+.navbar-menu .nav-item .nav-link {
   font-weight: 500 !important;
 }
-button.language-btn{
-  background: none  !important;
+
+button.language-btn {
+  background: none !important;
 }
-button.language-btn span{
+
+button.language-btn span {
   font-weight: 500 !important;
   font-size: 13px !important;
 }
-/* Custom styles for the placeholder text */
+
 input.form-control.input::placeholder {
-  color: #726f6f; /* Change the color */
-  
-  font-size: 14px; /* Change the font size */
-  font-weight: 600; /* Make the text bold */
+  color: #726f6f;
+  font-size: 14px;
+  font-weight: 600;
 }
 
-.count-badge{
+.count-badge {
   position: relative;
-  background-color: #33ab5b; 
+  background-color: #33ab5b;
 }
 
-
-.item-image img{
+.item-image img {
   height: 19px;
-  width:  19px;
+  width: 19px;
   object-fit: cover;
   border-radius: 50px;
 }
-.username{
+
+.username {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 
 }
+
 /* Define the zoom-in animation */
 @keyframes zoomInOut {
   0% {
@@ -339,80 +322,85 @@ input.form-control.input::placeholder {
 @keyframes zoomIn {
   0% {
     transform: scale(0);
-    /* Start scaled down */
+
   }
 
   100% {
     transform: scale(1);
-    /* End at normal size */
+
   }
 }
 
 
 @media (max-width: 767px) {
- 
-  .navbar{
-     background-color: #01664a; 
-     padding-bottom: 10px !important;
-   
+
+  .navbar {
+    background-color: #01664a;
+    padding: 10px 0 !important;
+
   }
-  .logo{
+
+  .logo {
     background-color: #fff;
     padding: 0px 10px 5px 10px;
     border-radius: 10px;
     float: none !important;
   }
-  .logo img{
+
+  .logo img {
     width: -webkit-fill-available !important;
   }
- 
-  .form-container{
-    background-color:  #01664a;
+
+  .form-container {
+    background-color: #01664a;
   }
+
   .search-bar-div {
     padding: 0px !important;
-    display:flex;
+    display: flex;
     align-items: flex-start !important;
   }
+
   .hamburger1 div {
     background-color: rgb(254, 254, 254);
   }
-  li.nav-item{
+
+  li.nav-item {
     display: none;
   }
 
-  /* input.form-control.input{
-    background-color: #01664a;
+  input.form-control {}
 
-    } */
-  input.form-control{
-    /* background-color: #01664a; */
-
-  }
-  .form-control:focus{
+  .form-control:focus {
     background-color: #01664a !important;
   }
+
   .offcanvas {
     max-width: 80% !important;
-}
-.offcanvas.offcanvas-start.show{
-  width: 80% !important;
-}
-button.hemburger-button{
-  padding: 0px;
-}
-.input-group.form-container{
-  border-color:white !important;
-  border-radius: 12px !important;
-  padding: 0px 6px !important;
-  background-color: white;
-}
-.header-container-row{
-  display: flex !important;
-}
-.header-search-form{
-  display: flex;
-  justify-content: end;
-}
+  }
+
+  .offcanvas.offcanvas-start.show {
+    width: 80% !important;
+  }
+
+  button.hemburger-button {
+    padding: 0px;
+  }
+
+  .input-group.form-container {
+    border-color: white !important;
+    border-radius: 12px !important;
+    padding: 0px 6px !important;
+    background-color: white;
+  }
+
+  .header-container-row {
+    display: flex !important;
+  }
+
+  .header-search-form {
+    display: flex;
+    justify-content: center;
+  }
 
 }

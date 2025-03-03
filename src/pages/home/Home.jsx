@@ -7,10 +7,6 @@ import Selling from "../../component/Most_selling";
 import All from "../../component/all-products";
 import {LoadingSpinner} from "../../component/spinner";
 
-import Header from "../../layout/Header";
-import Search from "../../pages/Search/search-page";
-
-
 function Home() {
     const [loading, setLoading] = useState(true);
   
