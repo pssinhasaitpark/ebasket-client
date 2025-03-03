@@ -362,7 +362,7 @@ fetchUserData();
                                   <li className="list-group-item border-bottom">
                                     <div className='version py-5'>
                                       <span >
-                                        <p >V:2.1</p>
+                                        <p >V:1.1</p>
                                       </span>
                                     </div>
                                   </li>
@@ -379,6 +379,7 @@ fetchUserData();
 
                                         <p >
                                           Home
+                                          
                                         </p>
 
                                       </div>

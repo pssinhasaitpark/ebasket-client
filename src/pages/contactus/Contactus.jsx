@@ -136,9 +136,12 @@ const ContactUs = () => {
         </Col>
       </Row>
     </Container>
-    <div>
+
+<div style={{marginBottom :'-30px'}}>
       <Map/>
-    </div>
+
+</div>
+    
 
       {/* Toast Container */}
       <ToastContainer />

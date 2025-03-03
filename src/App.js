@@ -5,18 +5,13 @@ import React from "react";
 import "bootstrap/dist/js/bootstrap.min.js";
 import Footer from "./layout/Footer.jsx";
 import { useState, useEffect } from 'react';
-import { LoadingSpinner, AddressLoader } from "./component/spinner";
+import { LoadingSpinner} from "./component/spinner";
 import { useSelector } from "react-redux";
 import PublicRoutes from "./routes/PublicRoutes.jsx";
 import ProtectedRoutes from "./routes/ProtectedRoutes.jsx";
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistor } from './store/store.js';
-import DemoHeader from "./layout/Demo.jsx";
-import Checkout from "./pages/checkout/Checkout.jsx";
-import { Route, Routes } from "react-router-dom";
-import NotFound from "./pages/NotFound/NotFound.jsx";
-import Map from "./component/Map.jsx";
-import Transcation from './pages/transaction/Transaction.jsx'
+
 import ScrollToTop from "./component/Scroll.jsx";
 
 

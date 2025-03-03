@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { Row, Col, Button, Image, Badge, Card } from 'react-bootstrap';
-import Header from '../../layout/Header';
 import './Offers.css'
 import { ImCopy } from "react-icons/im";
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,7 +9,7 @@ import { toast, ToastContainer } from "react-toastify";
 const CouponsList = () => {
 
   const dispatch = useDispatch();
-  const { coupons, loading, error } = useSelector((state) => state.coupons);
+  const { coupons} = useSelector((state) => state.coupons);
 
   useEffect(() => {
     dispatch(getCoupons());
@@ -18,7 +17,7 @@ const CouponsList = () => {
 
 
   const copyToClipboard = (code) => {
-    navigator.clipboard.writeText(code);
+    navigator?.clipboard?.writeText(code);
     toast.success('Coupon code copied');
   };
 
@@ -61,7 +60,7 @@ const CouponsList = () => {
                   <h6 className="date">Expires At: {new Date(coupon.expiresAt).toLocaleString()}</h6>
                   <div className="offercoupan">
                     <Badge className="mb-0 badge bg-transparent text-black">{coupon.code}</Badge>
-                    <a className='copy-link'  onClick={() => copyToClipboard(coupon.code)}>
+                    <a href='' className='copy-link'  onClick={() => copyToClipboard(coupon.code)}>
                       <ImCopy />
                     </a>
                   </div>
