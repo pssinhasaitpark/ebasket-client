@@ -1,16 +1,11 @@
 import React from 'react'
-import  { useEffect , useState } from 'react'
-import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
-import { Dropdown, Row, Col, Form, NavLink } from 'react-bootstrap';
+import  {  useState } from 'react'
+
+import {  Col, NavLink } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
-import Logo from '../asset/images/logo_web.png'
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import search from '../asset/images/search.svg'
-import location from '../asset/images/location.svg'
 import user from '../asset/images/user.svg';
-import phone from '../asset/images/phone.svg'
-import home from '../asset/images/home.svg'
 import offer from '../asset/images/discount.png'
 import shopping from '../asset/images/shopping-cart.svg';
 import glob from '../asset/images/globe.svg'
@@ -18,9 +13,10 @@ import downarrow from '../asset/images/chevron-down.svg'
 // import GooglePlacesAutocomplete from 'react-google-autocomplete';
 import '../layout/Header.css'
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { signIn, signOut } from '../store/slices/authSlice';
-
+import { useSelector } from 'react-redux';
+// import { signIn, signOut } from '../store/slices/authSlice';
+import { FiUser } from "react-icons/fi";
+import { IoCallOutline, IoHomeOutline } from 'react-icons/io5';
 const PublicNavbar = () => {
       const [show, setShow] = useState(false);
 
@@ -29,15 +25,15 @@ const PublicNavbar = () => {
     
       const navigate = useNavigate();
       const isSignedIn = useSelector((state) => state.auth.isSignedIn);
-      const dispatch = useDispatch();
+      // const dispatch = useDispatch();
     
-      const handleSignIn = () => {
-        dispatch(signIn()); // Update Redux state to signed in
-      };
+      // const handleSignIn = () => {
+      //   dispatch(signIn()); // Update Redux state to signed in
+      // };
     
-      const handleSignOut = () => {
-        dispatch(signOut()); // Update Redux state to signed out
-      };
+      // const handleSignOut = () => {
+      //   dispatch(signOut()); // Update Redux state to signed out
+      // };
 
 
   
@@ -175,7 +171,7 @@ const PublicNavbar = () => {
                                   <Link to={'/'} className="link1"  >
                                     <div className='link1-div'>
                                       <div className='image'>
-                                        <img src={home} alt="" />
+                                      <IoHomeOutline className='icon' />
                                       </div>
                                       <span>
 
@@ -188,7 +184,7 @@ const PublicNavbar = () => {
                                   <Link className="link1 " to={'/contactus'}  >
                                     <div className='link1-div'>
                                       <div className='image'>
-                                        <img src={user} alt="" />
+                                      <IoCallOutline />
                                       </div>
                                       <span>
 
@@ -201,7 +197,7 @@ const PublicNavbar = () => {
                                   <Link to={'/login'} className="link1 "  >
                                     <div className='link1-div'>
                                       <div className='image'>
-                                        <img src={user} alt="" />
+                                      <FiUser/>
                                       </div>
                                       <span>
 
@@ -214,7 +210,7 @@ const PublicNavbar = () => {
                                   <Link to={'/signup'} className="link1 "  >
                                     <div className='link1-div'>
                                       <div className='image'>
-                                        <img src={user} alt="" />
+                                      <FiUser/>
                                       </div>
                                       <span>
 
@@ -226,7 +222,7 @@ const PublicNavbar = () => {
                                 <li className="list-group-item border-bottom" onClick={handleClose}>
                                   <div className='version py-5'>
                                     <span >
-                                      <p >V:2.1</p>
+                                      <p >V:1.1</p>
                                     </span>
                                   </div>
                                 </li>
@@ -238,7 +234,7 @@ const PublicNavbar = () => {
                                   <Link to={'/'}  className='text-decoration-none  text-secondary text-center' onClick={() => navigate('/')}>
                                     <div className='bottom-home position-relative'>
                                       <div className=''>
-                                        <img src={home} alt="" />
+                                      <IoHomeOutline className='icon' />
                                       </div>
 
                                       <p >
@@ -253,7 +249,7 @@ const PublicNavbar = () => {
 
                                     <div className='position-relative'>
                                       <div>
-                                        <img src={phone} alt="" />
+                                         <IoCallOutline />
                                       </div>
 
                                       <p>

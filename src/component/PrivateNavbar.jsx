@@ -16,6 +16,13 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { signOut } from '../store/slices/authSlice';
 import axios from 'axios';
+import { IoHomeOutline } from "react-icons/io5";
+import { LuBook } from "react-icons/lu";
+import { LuHeart } from "react-icons/lu";
+import { RiListUnordered } from "react-icons/ri";
+import { FiUser } from "react-icons/fi";
+import { IoCallOutline } from "react-icons/io5";
+// import { addToCart, removeFromCart, updateCartQuantity } from '../store/slices/cart-slice';
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 
@@ -178,184 +185,187 @@ const PrivateNavbar = () => {
                 </div>
               </div>
             </li>
-
             <div>
-
-              <Button onClick={handleShow} className='hemburger-button bg-transparent border-0'>
-
-                <div className={`hamburger1 ${show ? 'open' : ''}`}>
-                  <div className="top"></div>
-                  <div className="meat"></div>
-                  <div className="bottom"></div>
-                </div>
-              </Button>
-              <Offcanvas show={show} onHide={handleClose}  >
-                <Offcanvas.Header closeButton >
-                  <Offcanvas.Title className='text-white'>eBasket</Offcanvas.Title>
-                </Offcanvas.Header>
-                <Offcanvas.Body className='p-0'>
-                  <div>
-                    <ul className="link-group p-0 ">
-                      <li className="list-group-item  border-bottom">
-                        <Link to={'/'} className="link1" onClick={handleClose}>
-                          <div className='link1-div'>
-                            <div className='image'>
-                              <img src={home} alt="" />
+            <Button onClick={handleShow} className='hemburger-button bg-transparent border-0'>
+                     
+                            <div className={`hamburger1 ${show ? 'open' : ''}`}>
+                              <div className="top"></div>
+                              <div className="meat"></div>
+                              <div className="bottom"></div>
                             </div>
-                            <span>
+                          </Button>
+                          <Offcanvas show={show} onHide={handleClose}  >
+                            <Offcanvas.Header closeButton >
+                              <Offcanvas.Title className='text-white'>eBasket</Offcanvas.Title>
+                            </Offcanvas.Header>
+                            <Offcanvas.Body className='p-0'>
+                              <div>
+                                <ul className="link-group p-0 ">
+                                  <li className="list-group-item  border-bottom">
+                                    <Link to={'/'} className="link1" onClick={handleClose}>
+                                      <div className='link1-div'>
+                                        <div className='image'>
+                                        <IoHomeOutline className='icon' />
+                                        </div>
+                                        <span>
 
-                              Home Page
-                            </span>
-                          </div>
-                        </Link>
-                      </li>
-                      <li className="list-group-item  border-bottom" >
-                        <Link to={'/orders'} className="link1" onClick={handleClose}>
-                          <div className='link1-div'>
-                            <div className='image'>
-                              <img src={home} alt="" />
-                            </div>
-                            <span>
+                                          Home Page
+                                        </span>
+                                      </div>
+                                    </Link>
+                                  </li>
+                                  <li className="list-group-item  border-bottom" >
+                                    <Link to={'/orders'} className="link1"  onClick={handleClose}>
+                                      <div className='link1-div'>
+                                        <div className='image'>
+                                       <RiListUnordered />
+                                        </div>
+                                        <span>
 
-                              My Orders
-                            </span>
-                          </div>
-                        </Link>
-                      </li>
-                      <li className="list-group-item  border-bottom">
-                        <Link to={'/transaction'} className="link1" onClick={handleClose}>
-                          <div className='link1-div'>
-                            <div className='image'>
-                              <img src={home} alt="" />
-                            </div>
-                            <span>
+                                          My Orders
+                                        </span>
+                                      </div>
+                                    </Link>
+                                  </li>
+                                  <li className="list-group-item  border-bottom">
+                                    <Link to={'/transaction'} className="link1"  onClick={handleClose}>
+                                      <div className='link1-div'>
+                                        <div className='image'>
+                                        <RiListUnordered />
+                                        </div>
+                                        <span>
 
-                              My Transactions
-                            </span>
-                          </div>
-                        </Link>
-                      </li>
-                      <li className="list-group-item  border-bottom">
-                        <Link to={'/favorite-products'} className="link1" onClick={handleClose}>
-                          <div className='link1-div'>
-                            <div className='image'>
-                              <img src={home} alt="" />
-                            </div>
-                            <span>
+                                          My Transactions
+                                        </span>
+                                      </div>
+                                    </Link>
+                                  </li>
+                                  <li className="list-group-item  border-bottom">
+                                    <Link to={'/favorite-products'} className="link1"  onClick={handleClose}>
+                                      <div className='link1-div'>
+                                        <div className='image'>
+                                        
+                                        <LuHeart />
+                                        </div>
+                                        <span>
 
-                              Favorite items
-                            </span>
-                          </div>
-                        </Link>
-                      </li>
-                      <li className="list-group-item  border-bottom">
-                        <Link to={'/delivery-address'} className="link1" onClick={handleClose}>
-                          <div className='link1-div'>
-                            <div className='image'>
-                              <img src={home} alt="" />
-                            </div>
-                            <span>
+                                          Favorite items
+                                        </span>
+                                      </div>
+                                    </Link>
+                                  </li>
+                                  <li className="list-group-item  border-bottom">
+                                    <Link to={'/delivery-address'} className="link1"  onClick={handleClose}>
+                                      <div className='link1-div'>
+                                        <div className='image'>
+                                        <LuBook className='icon'/>
+                                        </div>
+                                        <span>
 
-                              Address Book
-                            </span>
-                          </div>
-                        </Link>
-                      </li>
-                      <li className="list-group-item  border-bottom">
-                        <Link to={'/profile'} className="link1" onClick={handleClose}>
-                          <div className='link1-div'>
-                            <div className='image'>
-                              <img src={home} alt="" />
-                            </div>
-                            <span>
+                                          Address Book
+                                        </span>
+                                      </div>
+                                    </Link>
+                                  </li>
+                                  <li className="list-group-item  border-bottom">
+                                    <Link to={'/profile'} className="link1"  onClick={handleClose}>
+                                      <div className='link1-div'>
+                                        <div className='image'>
+                                       
+<FiUser />
 
-                              Profile
-                            </span>
-                          </div>
-                        </Link>
-                      </li>
-                      <li className="list-group-item border-bottom">
-                        <Link to={'/contactus'} className="link1 " onClick={handleClose}>
-                          <div className='link1-div'>
-                            <div className='image'>
-                              <img src={user} alt="" />
-                            </div>
-                            <span>
+                                        </div>
+                                        <span>
 
-                              Contact Us
-                            </span>
-                          </div>
-                        </Link>
-                      </li>
+                                          Profile
+                                        </span>
+                                      </div>
+                                    </Link>
+                                  </li>
+                                  <li className="list-group-item border-bottom">
+                                    <Link to={'/contactus'} className="link1 "  onClick={handleClose}>
+                                      <div className='link1-div'>
+                                        <div className='image'>
+                                        <FiUser />
+                                        </div>
+                                        <span>
 
-                      <li className="list-group-item  border-bottom" onClick={handleClose}>
-                        <Link className="link1 " to={'/login'} onClick={handleSignOut}>
-                          <div className='link1-div'>
-                            <div className='image'>
-                              <img src={user} alt="" />
-                            </div>
-                            <span>
+                                          Contact Us
+                                        </span>
+                                      </div>
+                                    </Link>
+                                  </li>
 
-                              Logout
-                            </span>
-                          </div>
-                        </Link>
-                      </li>
+                                  <li className="list-group-item  border-bottom"onClick={handleClose}>
+                                    <Link className="link1 "   to={'/login'} onClick={handleSignOut}>
+                                      <div className='link1-div'>
+                                        <div className='image'>
+                                        <FiUser />
+                                        </div>
+                                        <span>
+
+                                          Logout
+                                        </span>
+                                      </div>
+                                    </Link>
+                                  </li>
 
 
 
 
-                      <li className="list-group-item border-bottom">
-                        <div className='version py-5'>
-                          <span >
-                            <p >V:2.1</p>
-                          </span>
+                                  <li className="list-group-item border-bottom">
+                                    <div className='version py-5'>
+                                      <span >
+                                        <p >V:1.1</p>
+                                      </span>
+                                    </div>
+                                  </li>
+                                </ul>
+
+
+                                <ul className='sidebar-bottom d-flex position-absolute bottom-0 border-top w-100  p-0 mb-0'>
+                                  <li className="bottom list-group-item text-center w-50 p-2">
+                                    <Link to={'/'}  className='text-decoration-none  text-secondary text-center' onClick={handleClose}>
+                                      <div className='bottom-home position-relative'>
+                                        <div className=''>
+                                        <IoHomeOutline className='icon' />
+                                        </div>
+
+                                        <p >
+                                          Home
+                                          
+                                        </p>
+
+                                      </div>
+                                    </Link>
+                                  </li>
+
+                                  <li className="bottom list-group-item text-center w-50 p-2">
+                                    <Link to={'/help'}  className=" text-decoration-none text-secondary text-center " onClick={handleClose}>
+
+                                      <div className='position-relative'>
+                                        <div>
+                                      
+                                        <IoCallOutline />
+                                        </div>
+
+                                        <p>
+                                          Help
+                                        </p>
+
+
+                                      </div>
+                                    </Link>
+                                  </li>
+                                </ul>
+                              </div>
+                            </Offcanvas.Body>
+                          </Offcanvas>
                         </div>
-                      </li>
-                    </ul>
-
-
-                    <ul className='sidebar-bottom d-flex position-absolute bottom-0 border-top w-100  p-0 mb-0'>
-                      <li className="bottom list-group-item text-center w-50 p-2">
-                        <Link to={'/'} className='text-decoration-none  text-secondary text-center' onClick={handleClose}>
-                          <div className='bottom-home position-relative'>
-                            <div className=''>
-                              <img src={home} alt="" />
-                            </div>
-
-                            <p >
-                              Home
-                            </p>
-
-                          </div>
-                        </Link>
-                      </li>
-
-                      <li className="bottom list-group-item text-center w-50 p-2">
-                        <Link to={'/help'} className=" text-decoration-none text-secondary text-center " onClick={handleClose}>
-
-                          <div className='position-relative'>
-                            <div>
-                              <img src={phone} alt="" />
-                            </div>
-
-                            <p>
-                              Help
-                            </p>
-
-
-                          </div>
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-                </Offcanvas.Body>
-              </Offcanvas>
-            </div>
-          </ul>
-        </div>
-      </Col>
-    </>
+                      </ul>
+                    </div>
+                  </Col>
+   </>
   )
 }
 
