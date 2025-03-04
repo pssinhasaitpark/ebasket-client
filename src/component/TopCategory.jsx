@@ -1,4 +1,4 @@
-import React  , { useEffect} from "react";
+import React, { useEffect } from "react";
 import Slider from "react-slick";
 import Container from "react-bootstrap/esm/Container";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategories } from '../store/slices/categories-slice';
 import sorry from "../asset/images/no-result copy.png"
+import Browse_All from "../asset/images/Browse_all.png"
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -25,7 +26,7 @@ function TopCategories() {
   //   return <p>Loading categories</p>;
   // }
 
-  
+
 
   const SamplePrevArrow = (props) => {
     const { className, style, onClick } = props;
@@ -49,7 +50,7 @@ function TopCategories() {
 
 
   var settings = {
-    dots:false,
+    dots: false,
     infinite: true,
     speed: 500,
     gap: 20,
@@ -95,40 +96,49 @@ function TopCategories() {
 
   };
   return (
-        <div>
-            { categories.length>0 ? (
-       <div className="top-category-container">
+    <div>
+      {categories.length > 0 ? (
+        <div className="top-category-container">
 
-    
-        <Container>
-      <div className="pt-5 container section-container">
-          <div className="Category-heading"><h3>TOP CATEGORIES</h3></div>
-          <div className="pb-5">
-            <Slider {...settings} style={{ background: 'transparent' }}>
-            { categories.map((category) => (
-             category.publish && (
-              <Link key={category._id} to={`/categories/${category._id}`} className="category-card">
-                  <img
-                    className="category-img img-fluid"
-                    src={category.image ? `${category.image}` : snacks} 
-                    alt={category.name}
-                  />
-                  <h4 className="pt-3">{category.name}</h4>
-                  <h6 className="pt-1">({category.itemCount} items)</h6>
-                </Link>
-                )
-              ))
-            }
-              </Slider>
-            
 
-          </div>
-      </div>
-      </Container>
-      </div>
-    ) : (<p className="no-products"><img src={sorry} alt="" /></p>)
-  }
-   </div>
+          <Container>
+            <div className="pt-5 container section-container">
+              <div className="Category-heading"><h3>TOP CATEGORIES</h3></div>
+              <div className="pb-5">
+                <Slider {...settings} style={{ background: 'transparent' }}>
+                  {[ {
+                  _id: 'browse-all',
+                  name: 'Browse All', 
+                  image: `${Browse_All}`,
+                  itemCount: categories.reduce((total, category) => total + category.itemCount, 0),
+                  publish: true,  
+                  }, ...categories]
+                    .map((category) => (
+                      category.publish && (
+                        <Link key={category._id} 
+                        to={category._id === 'browse-all' ? '/productList' : `/categories/${category._id}`} 
+                        className="category-card">
+                          <img
+                            className="category-img img-fluid"
+                            src={category.image ? `${category.image}` : snacks}
+                            alt={category.name}
+                          />
+                          <h4 className="pt-3">{category.name}</h4>
+                          <h6 className="pt-1">({category.itemCount} items)</h6>
+                        </Link>
+                      )
+                    ))
+                  }
+                </Slider>
+
+
+              </div>
+            </div>
+          </Container>
+        </div>
+      ) : (<p className="no-products"><img src={sorry} alt="" /></p>)
+      }
+    </div>
   );
 }
 

@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { createorders } from '../store/slices/orderSlice';
+import { resetTotalQuantity } from '../store/slices/totalQuantitySlice';
 
 const useCreateOrder = () => {
   const dispatch = useDispatch();
@@ -14,6 +15,8 @@ const useCreateOrder = () => {
         .then(() => {
           localStorage.removeItem('cart'); 
           localStorage.removeItem('orderData');
+          localStorage.removeItem('totalQuantity'); // Remove totalQuantity from localStorage
+          dispatch(resetTotalQuantity());
           navigate('/success'); 
         })
         .catch((err) => {

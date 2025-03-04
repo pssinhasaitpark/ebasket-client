@@ -116,7 +116,9 @@ function Slick({category})
                                 <div  className="Slick-card" onClick={() => handleCardClick(item._id)}>
                                   <div className="Slick-img-section">
                                   <div className="member-plan position-absolute">
-                                                    <Badge className="badge discount-badge" pill variant="dark">-{item.itemDetails.discount}%</Badge>
+                                  {item.itemDetails.discount > 0 && (
+                                                    <Badge  className="badge discount-badge" pill variant="dark">-{item.itemDetails.discount}%</Badge>)
+                                  }
                                   </div>
                                     <img
                                       className="Slick-img img-fluid"
@@ -134,7 +136,9 @@ function Slick({category})
                                     </h6>
                                     <h6 className="mb-1 pt-2 slick-price">
                                       <span className="actual-price">₹{ ((item.itemDetails.price)-((item.itemDetails.discount*item.itemDetails.price)/100) ?? 0).toFixed(2)}</span>
+                                      {((item.itemDetails.price)-((item.itemDetails.discount*item.itemDetails.price)/100).toFixed(2)) !== item.itemDetails.price && (
                                       <s className="text-muted">₹{item.itemDetails.price}</s>
+                                      )}
                                     </h6>
                                   </div>
                                 </div>

@@ -4,7 +4,7 @@ import { Container, Row, Col, Card, Badge } from 'react-bootstrap';
 import { FaHeart } from 'react-icons/fa';
 import empty from "../asset/images/empty wishlist.png"
 import sorry from "../asset/images/no-result copy.png"
-
+import useProductNavigation from '../hooks/useProductNavigation';
 
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -12,6 +12,8 @@ const WishlistPage = () => {
   const [wishlist, setWishlist] = useState([]);
   const [productDetails, setProductDetails] = useState([]);
   const [loading, setLoading] = useState(true);
+  const handleCardClick = useProductNavigation();
+
 
   useEffect(() => {
     const fetchWishlistProducts = async () => {
@@ -52,7 +54,7 @@ const WishlistPage = () => {
                   <Card
                     className="list-card position-relative"
                   >
-                    <div className="list-card-image">
+                    <div className="list-card-image" onClick={() => handleCardClick(product._id)}>
                       <div className="member-plan2 position-absolute">
                       <Badge className="badge" pill variant="dark">
                          <HeartButton productId={product._id} />

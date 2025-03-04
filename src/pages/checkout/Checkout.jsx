@@ -29,7 +29,8 @@ import axios from 'axios';
 import { fetchUserMe } from '../../store/slices/usermeSlice';
 import { fetchAddresses } from '../../store/slices/addressSlice';
 import { toast, ToastContainer } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
+import { setTotalQuantity } from "../../store/slices/totalQuantitySlice";
+import useProductNavigation from "../../hooks/useProductNavigation";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const Checkout = () => {
@@ -59,7 +60,7 @@ const Checkout = () => {
     dispatch(fetchUserMe());
     dispatch(fetchAddresses());
   }, [dispatch]);
-
+  const handleCardClick = useProductNavigation();
   const defaultAddress = addresses?.addresses?.length > 0
     ? addresses?.addresses?.[0]?.address
     : userData?.address;
@@ -176,7 +177,11 @@ const Checkout = () => {
     );
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
+    const newTotalQuantity = updatedCart.reduce((acc, item) => acc + item.quantity, 0);
+    dispatch(setTotalQuantity(newTotalQuantity)); // Update Redux
+    localStorage.setItem('totalQuantity', newTotalQuantity);
   };
+
 
   const handleDecrement = (productId) => {
     const updatedCart = cart.map((item) =>
@@ -184,15 +189,20 @@ const Checkout = () => {
     );
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
+    const newTotalQuantity = updatedCart.reduce((acc, item) => acc + item.quantity, 0);
+    dispatch(setTotalQuantity(newTotalQuantity)); // Update Redux
+    localStorage.setItem('totalQuantity', newTotalQuantity); 
   };
 
   const handleRemoveItem = (productId) => {
     const updatedCart = cart.filter((item) => item._id !== productId);
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
+    const newTotalQuantity = updatedCart.reduce((acc, item) => acc + item.quantity, 0);
+    dispatch(setTotalQuantity(newTotalQuantity)); // Update Redux
+    localStorage.setItem('totalQuantity', newTotalQuantity);
   };
 
-  const totalQuantity = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   const createOrderData = () => {
     const orderData = {
@@ -226,15 +236,53 @@ const Checkout = () => {
   };
 
   const handleCheckout = () => {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    if (cart.length > 0) {
-      createOrderData();
-      createOrder();
-    } else {
-      toast.warning('Cart Is Empty')
+    
+    const CashOnDelivery = ()=>{
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      if (cart.length > 0) {
+        createOrderData();
+        createOrder();
+      } else {
+        toast.warning('Cart Is Empty')
+      }
     }
-  };
 
+    
+    const handlePayment = async () => {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      if (cart.length > 0) {
+        createOrderData();
+        createOrder();
+      } else {
+        toast.warning('Cart Is Empty')
+      }
+      const options = {
+        key: "rzp_test_b0PSRa7kNhbHj3", 
+        amount: {totalAmount},
+        currency: "INR",
+        name: "Your Company Name",
+        description: "Order Payment",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQANahebD11CDDP5Du80OP6S2Z5d_9N0c76vQ&s", 
+        handler: function (response) {
+          toast.success(`Payment Successful! Payment ID: ${response.razorpay_payment_id}`);
+        },
+        prefill: {
+          name: "John Doe",
+          email: "johndoe@example.com",
+          contact: "9999999999",
+        },
+        theme: {
+          color: "#01664a",
+        },
+      };
+      
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+    };
+    selectedPaymentMethod === 'COD' ? CashOnDelivery() : handlePayment();
+  }
+  
+  
   return (
     <div className="rajj-checkout">
       <Container className="position-relative">
@@ -317,6 +365,21 @@ const Checkout = () => {
                   </div>
 
                   <div className="custom-control custom-radio border-bottom py-2" id="stripe_box">
+                    <Form.Check
+                      type="radio"
+                      label="Cash on Delivery"
+                      name="payment_method"
+                      id="COD"
+                      value="COD"
+                      checked={selectedPaymentMethod === 'COD'}
+                      onChange={handlePaymentMethodChange}
+                    />
+                    <input type="hidden" id="isStripeEnabled" value="true" />
+                  </div>
+
+
+
+                  {/* <div className="custom-control custom-radio border-bottom py-2" id="stripe_box">
                     <Form.Check
                       type="radio"
                       label="Stripe"
@@ -431,20 +494,8 @@ const Checkout = () => {
                       onChange={handlePaymentMethodChange}
                     />
                     <input type="hidden" id="isStripeEnabled" value="true" />
-                  </div>
+                  </div> 
 
-                  <div className="custom-control custom-radio border-bottom py-2" id="stripe_box">
-                    <Form.Check
-                      type="radio"
-                      label="Cash on Delivery"
-                      name="payment_method"
-                      id="COD"
-                      value="COD"
-                      checked={selectedPaymentMethod === 'COD'}
-                      onChange={handlePaymentMethodChange}
-                    />
-                    <input type="hidden" id="isStripeEnabled" value="true" />
-                  </div>
 
                   <div className="custom-control custom-radio border-bottom py-2" id="stripe_box">
                     <Form.Check
@@ -457,7 +508,9 @@ const Checkout = () => {
                       onChange={handlePaymentMethodChange}
                     />
                     <input type="hidden" id="isStripeEnabled" value="true" />
-                  </div>
+                  </div> */}
+
+
                 </div>
               </Accordion>
 
@@ -511,7 +564,7 @@ const Checkout = () => {
                             alt="product"
                           />
                             <div className="media-body">
-                              <div className="m-0 product-name">{item.itemDetails.name}</div>
+                              <div className="m-0 product-name" onClick={() => handleCardClick(item._id)}>{item.itemDetails.name}</div>
                             </div></div>{item.variantQuantity > 0 ?
                               <div className="extra-weight"><span className="extra-weight-heading">weight: </span>{item.variantQuantity} kg</div> : null}
                           </div>
@@ -527,7 +580,7 @@ const Checkout = () => {
                             </span>
                             <p className="text-gray mb-0 float-right ml-3 text-muted small">
                               <span className="currency-symbol-left">₹</span>
-                              <span className="cart_iteam_total_669de52f3449f">{(item.itemDetails.price - (item.itemDetails.discount * item.itemDetails.price) / 100) * item.quantity}</span>
+                              <span className="cart_iteam_total_669de52f3449f">{((item.itemDetails.price - (item.itemDetails.discount * item.itemDetails.price) / 100) * item.quantity).toFixed(2)}</span>
                             </p>
 
                           </div>
@@ -576,7 +629,7 @@ const Checkout = () => {
                   Sub Total
                   <span className="float-right">
                     <span className="currency-symbol-left"></span>
-                    {totalPrice}
+                    {(totalPrice).toFixed(2)}
                   </span>
                 </p>
                 <hr />
