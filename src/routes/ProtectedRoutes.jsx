@@ -7,7 +7,7 @@ import OrderTabs from "../pages/MyOrders/MyOrder";
 import AddressForm from "../pages/deliveryaddress/DeliveryAddress";
 import PayWallet from "../pages/paywallet/PayWallet";
 import Success from "../pages/success/Success";
-import WishlistPage from "../pages/FavoriteItems";
+import WishlistPage from "../pages/Favourite/FavoriteItems"; 
 import Transcation from '../pages/transaction/Transaction'
 import NotFound from "../pages/NotFound/NotFound";
 import Notification from "../pages/notification/notification";
