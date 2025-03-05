@@ -6,7 +6,7 @@ import "bootstrap/dist/js/bootstrap.min.js";
 import Footer from "./layout/Footer.jsx";
 import { useState, useEffect } from 'react';
 import { LoadingSpinner} from "./component/spinner";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PublicRoutes from "./routes/PublicRoutes.jsx";
 import ProtectedRoutes from "./routes/ProtectedRoutes.jsx";
 import { PersistGate } from 'redux-persist/integration/react';
@@ -18,7 +18,6 @@ import ScrollToTop from "./component/Scroll.jsx";
 const App = () => {
   const isSignedIn = useSelector((state) => state.auth.isSignedIn ?? false);
   // console.log("check", isSignedIn);
-
   const [loading, setLoading] = useState(true);
   useEffect(() => {
 

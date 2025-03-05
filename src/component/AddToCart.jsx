@@ -23,14 +23,12 @@ import p1_img from "../asset/images/t2.png";
 import Slider from "./Slider";
 import "./AddToCart.css";
 import ProductList from "../pages/Products/Products";
-import Header from "../layout/Header";
 import LikeButton from '../component/LikeButton';
 import sorry from "../asset/images/no-result copy.png"
 import Selling from "../component/Most_selling";
 import { useDispatch, useSelector } from "react-redux";
 import AlertSuccess from '../asset/images/Success.gif'
 import Slick from "./Slick-Slider";
-import PrivateNavbar from "./PrivateNavbar";
 import { updateTotalQuantityAsync } from "../store/slices/totalQuantitySlice";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;

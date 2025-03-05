@@ -21,16 +21,15 @@ body {
     font-family: 'Montserrat',sans-serif; /* Apply the Google Font */
     font-size: 16px;
     line-height: 1.5;
+    background-color: #000;
   }
-  
-  *{
+*{
     font-family: 'Montserrat',sans-serif !important; /* Apply the Google Font */
     margin: 0px;
     padding: 0px;
+    background: linear-gradient();
     
   }
-
-
 
 .carousel-control-prev-icon{
     background-image: url(../src/asset/images/left.svg) !important;

@@ -16,8 +16,10 @@ import { useLocation } from 'react-router-dom';
 
 
 const Header = () => {
-  const isSignedIn = useSelector((state) => state.auth.isSignedIn ?? false);
   const dispatch = useDispatch();
+
+  const isSignedIn = useSelector((state) => state.auth.isSignedIn ?? false);
+ 
     const { addresses} = useSelector((state) => state.addresses);
   const { userData } = useSelector((state) => state.userMe);
 
@@ -97,6 +99,7 @@ const Header = () => {
             </Row>
           </Container>
         </div>
+       
       </Navbar>
     </>
   )
