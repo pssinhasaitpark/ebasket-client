@@ -14,7 +14,6 @@ import offer from '../asset/images/discount.png'
 import shopping from '../asset/images/shopping-cart.svg';
 import glob from '../asset/images/globe.svg'
 import downarrow from '../asset/images/chevron-down.svg'
-// import GooglePlacesAutocomplete from 'react-google-autocomplete';
 import './Header.css'
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';

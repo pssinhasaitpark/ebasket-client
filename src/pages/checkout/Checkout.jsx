@@ -7,20 +7,16 @@ import {
   Card,
   Button,
   Form,
-  Badge,
   Image,
-  InputGroup,
 } from "react-bootstrap";
 import {
   FaMinus,
   FaPlus,
   FaTimes,
-  FaPercent,
   FaArrowRight,
   FaClock,
 } from "react-icons/fa";
 import './Checkout.css'
-import { ImCopy } from "react-icons/im";
 import { useDispatch, useSelector } from 'react-redux';
 import { getCoupons } from '../../store/slices/coupons.slice';
 import discountImg from '../../asset/images/discount-icon.png'
@@ -34,15 +30,17 @@ import useProductNavigation from "../../hooks/useProductNavigation";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const Checkout = () => {
+  /* eslint-disable */
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [cart, setCart] = useState([]);
   const [order_username, setorder_username] = useState([]);
-  const [totalPrice, setTotalPrice] = useState(0);
-  const [totalDiscount, setTotalDiscount] = useState(0);
-  const [deliveryCharges, setDeliveryCharges] = useState(0);
   const [finalAmount, setFinalAmount] = useState(0);
   const [SelectedVariant, setSelectedVariant] = useState(0);
+  const [deliveryCharges, setDeliveryCharges] = useState(0);
+  /* eslint-enable */
+  const [cart, setCart] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [totalDiscount, setTotalDiscount] = useState(0);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('Razorpay');
   const { coupons } = useSelector((state) => state.coupons);
   const dispatch = useDispatch();
@@ -256,6 +254,7 @@ const Checkout = () => {
       } else {
         toast.warning('Cart Is Empty')
       }
+      
       const options = {
         key: process.env.Razorpay_Payment_Key, 
         amount: {totalAmount},
@@ -519,7 +518,7 @@ const Checkout = () => {
                 <div id="" className="res-search-list">
                   {coupons.map((coupon) => (
                     <Col className='transactions-list-wrap mt-4' xs={12} key={coupon._id}>
-                      <a className='checkout-page-coupon-link' onClick={() => copyToClipboard(coupon.code)}>
+                      <a href="/#" className='checkout-page-coupon-link' onClick={(e) =>  {e.preventDefault(); copyToClipboard(coupon.code);}}>
                         <Card className="checkout-page-coupons-card bg-white px-4 py-3 rounded-lg mb-3 shadow-sm h-100">
                           <Row className="  gold-members d-flex align-items-center transactions-list">
                             <span className=" d-flex coupons-per-off">
@@ -678,7 +677,7 @@ const Checkout = () => {
 
 
               <div className="p-3 text-center">
-                <Button onClick={handleCheckout} block size="lg" className="pay_now_buttons border-0 text-center">
+                <Button onClick={handleCheckout} block="true" size="lg" className="pay_now_buttons border-0 text-center">
                   Pay <span className="currency-symbol-left">₹</span>{totalAmount.toFixed(2)}<FaArrowRight />
                 </Button>
               </div>

@@ -6,7 +6,8 @@ import "bootstrap/dist/js/bootstrap.min.js";
 import Footer from "./layout/Footer.jsx";
 import { useState, useEffect } from 'react';
 import { LoadingSpinner} from "./component/spinner";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import PublicRoutes from "./routes/PublicRoutes.jsx";
 import ProtectedRoutes from "./routes/ProtectedRoutes.jsx";
 import { PersistGate } from 'redux-persist/integration/react';
@@ -30,18 +31,16 @@ const App = () => {
 
   return (
     <>
-    <PersistGate loading={null} persistor={persistor}>
-      <Header/>
-        {loading && (<LoadingSpinner />)
-        }
-        <ScrollToTop />
-          {/* <PublicRoutes /> */}
+      <PersistGate loading={null} persistor={persistor}>
+        <Header />
+          {loading && (<LoadingSpinner />)
+          }
+          <ScrollToTop />
           <ProtectedRoutes />
-       <Footer /> 
-         
-       </PersistGate>
+        <Footer />
+      </PersistGate>
 
-    
+
 
     </>
   );
