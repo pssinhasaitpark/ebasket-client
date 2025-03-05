@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Modal from 'react-bootstrap/Modal';
 import {
   Row,
   Col,
   Button,
-  Form,
-  FormControl,
   Card,
   Container,
   NavLink,
@@ -16,21 +14,14 @@ import {
   FaMinus,
   FaPlus,
   FaShoppingCart,
-  FaHeart,
   FaShareAlt,
 } from "react-icons/fa";
-import p1_img from "../asset/images/t2.png";
-import Slider from "./Slider";
 import "./AddToCart.css";
-import ProductList from "../pages/Products/Products";
-import Header from "../layout/Header";
 import LikeButton from '../component/LikeButton';
 import sorry from "../asset/images/no-result copy.png"
-import Selling from "../component/Most_selling";
 import { useDispatch, useSelector } from "react-redux";
 import AlertSuccess from '../asset/images/Success.gif'
 import Slick from "./Slick-Slider";
-import PrivateNavbar from "./PrivateNavbar";
 import { updateTotalQuantityAsync } from "../store/slices/totalQuantitySlice";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -40,15 +31,17 @@ const ProductDetailPage = () => {
   const { id } = useParams();
   const [quantity, setQuantity] = useState(1);
   const [productData, setProductData] = useState(null);
+  /* eslint-disable */
   const [loading, setLoading] = useState(false);
   const [cart, setCart] = useState([]);
   const [selectedVariant, setSelectedVariant] = useState(null);
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
   const [variantQuantity, setVariantQuantity] = useState(1);
-  const [totalPrice, setTotalPrice] = useState(null);
-  const [totalImage, settotalImage] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState('rice');
   const [totalQuantity, setTotalQuantity] = useState(0);
+  /* eslint-enable */
+  const [totalPrice, setTotalPrice] = useState(null);
+  const [totalImage, settotalImage] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isSignedIn = useSelector((state) => state.auth.isSignedIn);
@@ -64,7 +57,6 @@ const ProductDetailPage = () => {
           setSelectedVariant(response.data.product.itemDetails.variants[0]);
         }
       } catch (error) {
-        // console.error("Error fetching product data:", error);
         setLoading(false);
       }
     };
@@ -123,7 +115,6 @@ const ProductDetailPage = () => {
     // First, show the modal
     setModalShow(true);
 
-    // Then, handle the cart logic and navigation
     if (isSignedIn) {
       handleAddToCart(productData);
     } else {
@@ -132,7 +123,6 @@ const ProductDetailPage = () => {
   };
 
   const handleAddToCart = (product) => {
-    // setModalShow(true);  // Show the success modal
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     const storedVariant = JSON.parse(localStorage.getItem('selectedVariant')) || {};
 
@@ -181,7 +171,6 @@ const ProductDetailPage = () => {
 
   return (
     <>
-        {/* <PrivateNavbar totalQuantity={totalQuantity} /> */}
       <div className="product-detail-page mb-4">
         <Container className="pt-5 position-relative">
           <div className="car-detail-inner">
@@ -281,7 +270,6 @@ const ProductDetailPage = () => {
                     <div className="quantity mt-2 mb-3">
                       <div className="d-flex align-items-center product-item-box justify-content-between">
                         <h3 className="m-0">Quantity</h3>
-                        {/* <div className="ml-auto"> */}
                         <span className="count-number">
                           <div className="ml-auto">
                             <span className="count-number">
@@ -295,7 +283,6 @@ const ProductDetailPage = () => {
                             </span>
                           </div>
                         </span>
-                        {/* </div> */}
                       </div>
                     </div>
 
@@ -317,18 +304,18 @@ const ProductDetailPage = () => {
 
                     <div className="product-fav-share">
                       <div className="add-to-favorite">
-                        <a className="loginAlert count d-flex">
+                        <p className="loginAlert count d-flex">
                           <LikeButton productId={productData._id} />
                           <span>Add To Wishlist</span>
-                        </a>
+                        </p>
                       </div>
                       <div className="share-btn">
-                        <a
+                        <p
                           data-toggle="modal"
                           data-target="#socialShare"
                         >
                           <FaShareAlt className="social-icons" /> Share this product
-                        </a>
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -448,7 +435,6 @@ const ProductDetailPage = () => {
                         <div id="top-rated-product">
                           <div
                             className="store-product"
-                          // data-product-id="65d88623a39d9"
                           >
                             <div className="product-content">
                               <div className="store-image">
@@ -517,7 +503,6 @@ const ProductDetailPage = () => {
                       </Button>
                     </Col>
                   </div>
-                  {/* <ProductList firstWord={firstWord} /> */}
                   <Slick category={productData.itemDetails.category?.name} />
                 </Row>
 

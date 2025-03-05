@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 
 function Search() {
   const [searchTerm, setSearchTerm] = useState('');
-  const { items } = useSelector((state) => state.items); 
+  const { items } = useSelector((state) => state.items);
   const style = { color: "#01664a", size: "10px" };
 
   const handleSearchChange = (e) => {
@@ -18,53 +18,55 @@ function Search() {
   };
 
   const filteredItems = items.filter((item) => {
-    const productName = item?.itemDetails?.name || ''; 
+    const productName = item?.itemDetails?.name || '';
     return productName.toLowerCase().includes(searchTerm.toLowerCase());
   });
-
-  
+  console.log('filter',filteredItems);
 
   return (
     <div className='search-page'>
-  <div className='container section-content py-5'>
-   
-    <div className="mb-4 d-flex align-items-center search-bar">
-      <FormControl
-        className="food_search border-right-0 form-control form-control-lg input_search"
-        placeholder="Search Product Items"
-        aria-label="Search Product Items"
-        style={{ width: '100%' }}
-        value={searchTerm}
-        onChange={handleSearchChange}
-      />
-      <div variant="outline-primary" className="p-0 ml-2 search-icon">
-        <IoSearchOutline style={style} />
+      <div className='container section-content py-5'>
+
+        <div className="mb-4 d-flex align-items-center search-bar">
+          <FormControl
+            className="food_search border-right-0 form-control form-control-lg input_search"
+            placeholder="Search Product Items"
+            aria-label="Search Product Items"
+            style={{ width: '100%' }}
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
+          <div variant="outline-primary" className="p-0 ml-2 search-icon">
+            <IoSearchOutline style={style} />
+          </div>
+        </div>
+
+
+        <div>
+          <ul className='nav seachpage-list'>
+            <li className='nav-item'>
+              <a className='nav-link Home-Tab'>
+                <FiHome className='home-icon' />
+                <span className='product-count'>Items ({filteredItems?.length})</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        
+        {filteredItems?.length === 0 && searchTerm.length ===0 ?
+         <ProductList itemss={filteredItems} />
+         : 
+          (filteredItems?.length > 0 ? (
+            <ProductList itemss={filteredItems} />
+          ) : (
+            <div className='text-center py-5'>
+              <img src={nothing} alt="No results" />
+            </div>
+          )) 
+        }
+
       </div>
     </div>
-
-   
-    <div>
-      <ul className='nav seachpage-list'>
-        <li className='nav-item'>
-          <a  className='nav-link Home-Tab'>
-            <FiHome className='home-icon' />
-            <span className='product-count'>Items ({filteredItems?.length})</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-
-    
-    {filteredItems?.length === 0 && (
-      <div className='text-center py-5'>
-        <img src={nothing} alt="No results" />
-        <p></p>
-      </div>
-    )}
-
-    <ProductList itemss={filteredItems} />
-  </div>
-</div>
 
   );
 }

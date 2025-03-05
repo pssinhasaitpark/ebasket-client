@@ -5,7 +5,7 @@ import React from "react";
 import "bootstrap/dist/js/bootstrap.min.js";
 import Footer from "./layout/Footer.jsx";
 import { useState, useEffect } from 'react';
-import { LoadingSpinner} from "./component/spinner";
+import { LoadingSpinner } from "./component/spinner";
 import { useSelector } from "react-redux";
 import PublicRoutes from "./routes/PublicRoutes.jsx";
 import ProtectedRoutes from "./routes/ProtectedRoutes.jsx";
@@ -31,18 +31,16 @@ const App = () => {
 
   return (
     <>
-    <PersistGate loading={null} persistor={persistor}>
-      <Header/>
-        {loading && (<LoadingSpinner />)
-        }
-        <ScrollToTop />
-          {/* <PublicRoutes /> */}
+      <PersistGate loading={null} persistor={persistor}>
+        <Header />
+          {loading && (<LoadingSpinner />)
+          }
+          <ScrollToTop />
           <ProtectedRoutes />
-       <Footer /> 
-         
-       </PersistGate>
+        <Footer />
+      </PersistGate>
 
-    
+
 
     </>
   );
