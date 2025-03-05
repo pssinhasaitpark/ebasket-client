@@ -26,9 +26,6 @@ const CouponsList = () => {
   return (
     <>
 
-
-    {/* <Header/> */}
-
     <div className="container mt-3">
       <div className="transactions-banner p-4 rounded">
         <Row className="align-items-center text-left">
@@ -60,7 +57,7 @@ const CouponsList = () => {
                   <h6 className="date">Expires At: {new Date(coupon.expiresAt).toLocaleString()}</h6>
                   <div className="offercoupan">
                     <Badge className="mb-0 badge bg-transparent text-black">{coupon.code}</Badge>
-                    <a href='' className='copy-link'  onClick={() => copyToClipboard(coupon.code)}>
+                    <a href='/#' className='copy-link'  onClick={(e) => { e.preventDefault(); copyToClipboard(coupon.code);}}>
                       <ImCopy />
                     </a>
                   </div>

@@ -94,7 +94,7 @@ function Category() {
                                         category.publish && (
                                             <li key={category._id} className="category-item">
                                                 <a >
-                                               
+
                                                     <input
                                                         className="form-check-input category-item"
                                                         type="checkbox"
@@ -155,7 +155,7 @@ function Category() {
                                <p className="no-products"><img src={sorry} alt="" /></p>
                             ) : (
                                 filteredItems.map((item, index) => (
-                                    <Col key={index} md={4} className="pb-3">
+                                    <Col key={index} md={4} className="category-product-card pb-3">
                                         <Card className="list-card position-relative" onClick={() => handleCardClick(item._id)}>
                                             <div className="list-card-image">
                                                 <div className="member-plan position-absolute">

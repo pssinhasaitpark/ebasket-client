@@ -9,7 +9,7 @@ import PayWallet from "../pages/paywallet/PayWallet";
 import Success from "../pages/success/Success";
 import WishlistPage from "../pages/FavoriteItems";
 import Transcation from '../pages/transaction/Transaction'
-import NotFound from "../pages/NotFound/NotFound";
+// import NotFound from "../pages/NotFound/NotFound";
 import Notification from "../pages/notification/notification";
 import Profile from '../pages/profie/Demo'
 import Pending_order from "../pages/Pending-Order/Pending_order";
@@ -30,6 +30,7 @@ import ProductList from "../pages/Products/Products";
 import ProductDetailPage from "../component/AddToCart";
 import FaqPage from "../pages/faq-support/Faq";
 import VerifyOTP from "../pages/auth/OtpVerify";
+import Razorpay from "../pages/Razorpay/Razorpay";
 
 const ProtectedRoutes = () => {
 
@@ -38,7 +39,7 @@ const ProtectedRoutes = () => {
     return (
         <> 
             <Routes>
-                
+            {/* Public Routes */}
             <Route path="/" element={<Home />} />
             <Route path="/login"  element={isSignedIn ? <Home /> : <Login />} />
             <Route path="/signup" element={isSignedIn ? <Home /> : <SignUpForm />} />
@@ -58,7 +59,7 @@ const ProtectedRoutes = () => {
             <Route path="/support" element={<FaqPage/>}/>
             <Route path="/verify-otp" element={<VerifyOTP/>}/>
 
-
+            {/* Private Routes */}
             <Route path="/profile" element={isSignedIn ? <Profile /> : <Navigate to="/login" />}/>
             <Route path="/checkout" element={isSignedIn ? <Checkout /> : <Navigate to="/login" />}/>
             <Route path="/delivery-address" element={isSignedIn ? <AddressForm /> : <Navigate to="/login" />}/>
@@ -70,7 +71,8 @@ const ProtectedRoutes = () => {
             <Route path="/notification" element={isSignedIn ? <Notification /> : <Navigate to="/login" />}/>
             <Route path="/favorite-products" element={isSignedIn ? <WishlistPage /> : <Navigate to="/login" />}/>
             <Route path="/pending_order/:id" element={isSignedIn ? <Pending_order/> : <Navigate to="/login" />}/>
-            
+            <Route path="/pay" element={isSignedIn ? <Razorpay/> : <Navigate to="/login" />}/>
+
             {/* <Route path="*" element={<NotFound/>} /> */}
             </Routes>
         </>

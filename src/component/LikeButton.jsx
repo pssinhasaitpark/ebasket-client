@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { FaHeart } from 'react-icons/fa';
 
 const LikeButton = ({ productId }) => {
@@ -21,13 +21,13 @@ const LikeButton = ({ productId }) => {
   };
 
   return (
-    <div>
+    <span>
       <FaHeart
         className={`symbol-heart ${isLiked ? 'liked' : ''}`}
         onClick={toggleLike}
         style={{ color: isLiked ? 'red' : '' }}
       />
-    </div>
+    </span>
   );
 };
 
