@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import './FavoriteItems.css';
 import { Container, Row, Col, Card, Badge } from 'react-bootstrap';
 import { FaHeart } from 'react-icons/fa';
-import empty from "../asset/images/empty wishlist.png"
-import sorry from "../asset/images/no-result copy.png"
-import useProductNavigation from '../hooks/useProductNavigation';
+import empty from "../../asset/images/empty wishlist.png"
+import sorry from "../../asset/images/no-result copy.png"
+import useProductNavigation from '../../hooks/useProductNavigation';
 
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;

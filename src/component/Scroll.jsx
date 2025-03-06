@@ -8,7 +8,7 @@ const ScrollToTop = () => {
     // Delay scrolling to top in case of initial render
     const timer = setTimeout(() => {
       window.scrollTo(0, 0); // Scroll to the top of the page on route change
-    }, 100); // Delay can be adjusted based on need
+    }, 10); // Delay can be adjusted based on need
 
     return () => clearTimeout(timer); // Clear timeout on cleanup
   }, [location]); // This runs whenever the route changes

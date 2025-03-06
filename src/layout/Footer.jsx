@@ -85,8 +85,7 @@ const Footer = () => {
                                         <ul className="services-list p-0">
                                             <li><Link  to="/login">User Login</Link></li>
                                             <li><Link  to="/signup">User Register</Link></li>
-                                            <li><a  onClick={handleProfileClick}
-                                            >User Profile</a></li>
+                                            <li><Link   onClick={handleProfileClick}>User Profile</Link></li>
                                         </ul>
                                     </div>
                                 </Col>

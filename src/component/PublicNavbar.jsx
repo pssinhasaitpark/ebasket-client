@@ -19,8 +19,7 @@ import { FiUser } from "react-icons/fi";
 import { IoCallOutline, IoHomeOutline } from 'react-icons/io5';
 const PublicNavbar = () => {
       const [show, setShow] = useState(false);
-
-      const handleClose = () => setShow(false);
+      const handleClose = () =>{ setShow(false) ; };
       const handleShow = () => setShow(true);
     
       const navigate = useNavigate();
@@ -34,9 +33,6 @@ const PublicNavbar = () => {
       // const handleSignOut = () => {
       //   dispatch(signOut()); // Update Redux state to signed out
       // };
-
-
-  
   return (
    <>
     <Col lg={7} className='col-2 pe-0'>
@@ -79,26 +75,22 @@ const PublicNavbar = () => {
                           <Link  to={"/login"} className="nav-link " activeclassname="active">
                             Sign In
                           </Link>
-
-
-
                         </div>
                       </li>
-
                       <li className="nav-item ms-1">
                         <div className='main-div'>
 
 
                           <div className="dropdown-container">
                             {/* Down Arrow Icon */}
-                            <div className="dropdown-icon">
+                            <div className="dropdown-icon" >
                               <a >
                                 <img src={downarrow} alt="" />
                               </a>
                               {/* Dropdown Menu */}
                               <div className='dropdown-menuu'>
 
-                                <Link to={'/support'} >Delivery Support</Link>
+                                <Link to={'/support'} onClick={handleClose}>Delivery Support</Link>
                                 <Link to={'/contactus'} >Contact Us</Link>
                                 <Link to={'/aboutus'} >About us</Link>
                                 <Link to={'/help'} >Help</Link>
@@ -149,8 +141,8 @@ const PublicNavbar = () => {
                       </li>
 
                       <div>
-
-                        <Button onClick={handleShow} className='hemburger-button bg-transparent border-0'>
+ 
+              <Button onClick={handleShow} className='hemburger-button bg-transparent border-0'>
                           
                           <div className={`hamburger1 ${show ? 'open' : ''}`}>
                             <div className="top"></div>

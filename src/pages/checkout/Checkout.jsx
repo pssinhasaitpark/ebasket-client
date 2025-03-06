@@ -256,7 +256,7 @@ const Checkout = () => {
       }
       
       const options = {
-        key: "rzp_test_b0PSRa7kNhbHj3", 
+        key: process.env.Razorpay_Payment_Key, 
         amount: {totalAmount},
         currency: "INR",
         name: "Your Company Name",

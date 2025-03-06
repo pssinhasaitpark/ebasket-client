@@ -17,6 +17,7 @@ import {
   FaShareAlt,
 } from "react-icons/fa";
 import "./AddToCart.css";
+import ProductList from "../pages/Products/Products";
 import LikeButton from '../component/LikeButton';
 import sorry from "../asset/images/no-result copy.png"
 import { useDispatch, useSelector } from "react-redux";
