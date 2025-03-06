@@ -21,7 +21,6 @@ function Search() {
     const productName = item?.itemDetails?.name || '';
     return productName.toLowerCase().includes(searchTerm.toLowerCase());
   });
-  console.log('filter',filteredItems);
 
   return (
     <div className='search-page'>
