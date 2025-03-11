@@ -2,8 +2,6 @@ import { configureStore } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; 
 import { combineReducers } from 'redux';
-// import { getDefaultMiddleware } from '@reduxjs/toolkit';
-
 import categoriesReducer from './slices/categories-slice';
 import brandsReducer from './slices/brands-slice';
 import itemsReducer from './slices/products-slice';
@@ -45,10 +43,6 @@ const store = configureStore({
     }
   })
 });
-
-// const customizedMiddleware = getDefaultMiddleware({
-//   serializableCheck: false
-// })
 
 const persistor = persistStore(store);
 

@@ -6,8 +6,10 @@ import "slick-carousel/slick/slick-theme.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Slider from "react-slick";
 import '../component/Slick-Slider.css'
+/* eslint-disable */
 import left from "../asset/images/left.svg"
 import right from "../asset/images/right.svg"
+/* eslint-enable */
 import './Most_selling.css'
 import img1 from '../asset/images/offer-banner1.png';
 import img2 from '../asset/images/offer-banner2.png';
@@ -18,25 +20,25 @@ import { Link } from 'react-router-dom';
 
 
 function Selling() {
-    const SamplePrevArrow = (props) => {
-        const { className, style, onClick } = props;
-        return(
-            <div onClick={onClick} className={'arrow ${className}'}>
-                <img src={left} alt="" className="arrows position-absolute bottom-50 start-0 translate-middle-x  arrows" 
-                    style={{width:"8%",color:"white", paddingRight:"4%"}}/>
-            </div>  
-        );
-        } ;
+    // const SamplePrevArrow = (props) => {
+    //     const { className, style, onClick } = props;
+    //     return(
+    //         <div onClick={onClick} className={'arrow ${className}'}>
+    //             <img src={left} alt="" className="arrows position-absolute bottom-50 start-0 translate-middle-x  arrows" 
+    //                 style={{width:"8%",color:"white", paddingRight:"4%"}}/>
+    //         </div>  
+    //     );
+    //     } ;
 
-        const SampleNextArrow = (props) => {
-            const { className, style, onClick } = props;
-            return(
-                <div onClick={onClick} className={'arrow ${className}'}>
-                    <img src={right} alt="" className="position-absolute bottom-50  start-100 translate-middle-x arrows" 
-                    style={{width:"8%",color:"white", paddingLeft:"4%" }}/>
-                </div>
-            );
-            } ;
+    //     const SampleNextArrow = (props) => {
+    //         const { className, style, onClick } = props;
+    //         return(
+    //             <div onClick={onClick} className={'arrow ${className}'}>
+    //                 <img src={right} alt="" className="position-absolute bottom-50  start-100 translate-middle-x arrows" 
+    //                 style={{width:"8%",color:"white", paddingLeft:"4%" }}/>
+    //             </div>
+    //         );
+    //         } ;
 
 
         var settings = {

@@ -6,8 +6,6 @@ import {
   Row,
   Col,
   Card,
-  InputGroup,
-  FormControl,
   Dropdown,
   Alert,
 } from "react-bootstrap";
@@ -19,7 +17,7 @@ import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch , useSelector} from 'react-redux';
-import { signIn, signUp } from '../../store/slices/authSlice';
+import { signIn } from '../../store/slices/authSlice';
 
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -31,6 +29,7 @@ const validationSchema = Yup.object({
   email: Yup.string().email("Invalid email address").required("Email is required"),
 });
 
+/* eslint-disable */
 const Login = () => {
   const [country, setCountry] = useState("+91");
   const [isOtpVisible, setIsOtpVisible] = useState(false);

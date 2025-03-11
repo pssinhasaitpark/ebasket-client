@@ -284,6 +284,10 @@ input.form-control.input::placeholder {
   font-weight: 600;
 }
 
+input.form-control.input{
+  text-overflow: ellipsis;
+}
+
 .count-badge {
   position: relative;
   background-color: #33ab5b;
@@ -301,7 +305,6 @@ input.form-control.input::placeholder {
   white-space: nowrap;
 
 }
-
 /* Define the zoom-in animation */
 @keyframes zoomInOut {
   0% {

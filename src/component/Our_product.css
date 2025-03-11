@@ -75,17 +75,20 @@
     }
 }
 
-.nav-txt:before{
-position: absolute;
-content: "";
-right: -10px;
-top: 50%;
--webkit-transform: translateY(-50%);
--ms-transform: translateY(-50%);
-transform: translateY(-50%);
-height: 16px;
-width: 2px;
-background-color: #8cb2b2;
-opacity: 0.4;
-}
+.nav-txt_bf:before{
+  position: absolute;
+  content: "";
+  right: -10px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  height: 16px;
+  width: 2px;
+  background-color: #8cb2b2;
+  opacity: 0.4;
+  }
 
+  .nav-link:focus-visible {
+    box-shadow: none !important;
+}
