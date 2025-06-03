@@ -1,0 +1,5 @@
+.notification-container{
+    display: flex;
+    background-color: #01664a !important;
+    height: auto ;
+}

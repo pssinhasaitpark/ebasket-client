@@ -12,22 +12,15 @@ import { fetchCategories } from '../store/slices/categories-slice';
 import sorry from "../asset/images/no-result copy.png"
 import Browse_All from "../asset/images/Browse_all.png"
 
-const BASE_URL = process.env.REACT_APP_BASE_URL;
-
 function TopCategories() {
-
+  /* eslint-disable */
   const dispatch = useDispatch();
   const { categories, loading: categoryLoading, error: categoryError } = useSelector((state) => state.categories);
 
   useEffect(() => {
     dispatch(fetchCategories());
   }, [dispatch]);
-  // if (categoryLoading) {
-  //   return <p>Loading categories</p>;
-  // }
-
-
-
+  
   const SamplePrevArrow = (props) => {
     const { className, style, onClick } = props;
     return (

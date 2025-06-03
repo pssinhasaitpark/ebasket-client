@@ -1,7 +1,6 @@
 import React from 'react'
-import  {  useState } from 'react'
-
-import {  Col, NavLink } from 'react-bootstrap';
+import { useState } from 'react'
+import { Col, NavLink } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import search from '../asset/images/search.svg'
@@ -17,250 +16,230 @@ import { useSelector } from 'react-redux';
 // import { signIn, signOut } from '../store/slices/authSlice';
 import { FiUser } from "react-icons/fi";
 import { IoCallOutline, IoHomeOutline } from 'react-icons/io5';
+
 const PublicNavbar = () => {
-      const [show, setShow] = useState(false);
-      const handleClose = () =>{ setShow(false) ; };
-      const handleShow = () => setShow(true);
-    
-      const navigate = useNavigate();
-      const isSignedIn = useSelector((state) => state.auth.isSignedIn);
-      // const dispatch = useDispatch();
-    
-      // const handleSignIn = () => {
-      //   dispatch(signIn()); // Update Redux state to signed in
-      // };
-    
-      // const handleSignOut = () => {
-      //   dispatch(signOut()); // Update Redux state to signed out
-      // };
+  const [show, setShow] = useState(false);
+  const handleClose = () => { setShow(false); };
+  const handleShow = () => setShow(true);
+  const navigate = useNavigate();
+  const isSignedIn = useSelector((state) => state.auth.isSignedIn);
+
   return (
-   <>
-    <Col lg={7} className='col-2 pe-0'>
-                  <div className='d-flex align-items-center  justify-content-end pt-2 pr-0'>
+    <>
+      <Col lg={7} className='col-2 pe-0'>
+        <div className='d-flex align-items-center  justify-content-end pt-2 pr-0'>
 
-                    <ul className="navbar-menu navbar-nav  mb-lg-0">
-                      <li className="nav-item">
-                        <div className='d-flex align-items-center me-2'>
-                          <div>
-                            <img src={search} alt="" />
-                          </div>
-                          <Link
+          <ul className="navbar-menu navbar-nav  mb-lg-0">
+            <li className="nav-item">
+              <div className='d-flex align-items-center me-2'>
+                <div>
+                  <img src={search} alt="" />
+                </div>
+                <Link
 
-                            to={'/search'}
-                            className="nav-link "
-                            activeclassname="active"
+                  to={'/search'}
+                  className="nav-link "
+                  activeclassname="active"
 
-                          >
-                            Search
-                          </Link>
-                        </div>
-                      </li>
-                      <li className="nav-item ">
-                        <div className='d-flex align-items-center me-2'>
+                >
+                  Search
+                </Link>
+              </div>
+            </li>
+            <li className="nav-item ">
+              <div className='d-flex align-items-center me-2'>
 
-                          <div>
-                            <img src={offer} alt="" />
-                          </div>
-                          <Link to={"/offers"} className="nav-link " activeclassname="active">
-                            Offers
-                          </Link>
-                        </div>
-                      </li>
+                <div>
+                  <img src={offer} alt="" />
+                </div>
+                <Link to={"/offers"} className="nav-link " activeclassname="active">
+                  Offers
+                </Link>
+              </div>
+            </li>
 
-                      <li className="nav-item">
-                        <div className='d-flex align-items-center me-2'>
-                          <div className='item-image '>
-                            <img src={user} alt="" />
-                          </div>
-                          <Link  to={"/login"} className="nav-link " activeclassname="active">
-                            Sign In
-                          </Link>
-                        </div>
-                      </li>
-                      <li className="nav-item ms-1">
-                        <div className='main-div'>
+            <li className="nav-item">
+              <div className='d-flex align-items-center me-2'>
+                <div className='item-image '>
+                  <img src={user} alt="" />
+                </div>
+                <Link to={"/login"} className="nav-link " activeclassname="active">
+                  Sign In
+                </Link>
+              </div>
+            </li>
+            <li className="nav-item ms-1">
+              <div className='main-div'>
 
 
-                          <div className="dropdown-container">
-                            {/* Down Arrow Icon */}
-                            <div className="dropdown-icon" >
-                              <a >
-                                <img src={downarrow} alt="" />
-                              </a>
-                              {/* Dropdown Menu */}
-                              <div className='dropdown-menuu'>
+                <div className="dropdown-container">
+                  {/* Down Arrow Icon */}
+                  <div className="dropdown-icon" >
+                    <a href='/#' onClick={(e) => { e.preventDefault() }}>
+                      <img src={downarrow} alt="" />
+                    </a>
+                    {/* Dropdown Menu */}
+                    <div className='dropdown-menuu'>
 
-                                <Link to={'/support'} onClick={handleClose}>Delivery Support</Link>
-                                <Link to={'/contactus'} >Contact Us</Link>
-                                <Link to={'/aboutus'} >About us</Link>
-                                <Link to={'/help'} >Help</Link>
-                                <Link to={'/terms'} >Term of use</Link>
-                                <Link to={'/privacy'} >Privacy policy</Link>
-                                <Link to={'/refund'} >Refund policy</Link>
+                      <Link to={'/support'} onClick={handleClose}>Delivery Support</Link>
+                      <Link to={'/contactus'} >Contact Us</Link>
+                      <Link to={'/aboutus'} >About us</Link>
+                      <Link to={'/help'} >Help</Link>
+                      <Link to={'/terms'} >Term of use</Link>
+                      <Link to={'/privacy'} >Privacy policy</Link>
+                      <Link to={'/refund'} >Refund policy</Link>
 
-                              </div>
-                            </div>
-                          </div>
+                    </div>
+                  </div>
+                </div>
 
-                        </div>
+              </div>
 
-                      </li>
-                      <li className="nav-item">
-                        <div className='d-flex align-items-center me-2'>
-                          <div>
-                            <img src={shopping} alt="" />
-                          </div>
-                          <NavLink
-                            onClick={() => navigate(isSignedIn ? '/checkout' : '/login')}
+            </li>
+            <li className="nav-item">
+              <div className='d-flex align-items-center me-2'>
+                <div>
+                  <img src={shopping} alt="" />
+                </div>
+                <NavLink
+                  onClick={() => navigate(isSignedIn ? '/checkout' : '/login')}
 
-                            className="nav-link "
-                            activeclassname="active">
-                            Cart
-                          </NavLink>
-                        </div>
-                      </li>
+                  className="nav-link "
+                  activeclassname="active">
+                  Cart
+                </NavLink>
+              </div>
+            </li>
 
-                      <li className="nav-item">
-                        <div className="dropdown d-flex align-items-center text-dark me-2">
-                          <div>
-                            <img src={glob} alt="" />
-                          </div>
-                          <div className='ms-2'>
-                            <button className="language-btn btn  dropdown-toggle ps-0 " type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                              <span className='text-secondary'>
-                                English
-                              </span>
-                            </button>
-                            <ul className="language dropdown-menu m-0 p-0">
-                              <li><a className="dropdown-item m-0  " >English</a></li>
-                              <li><a className="dropdown-item m-0" >Arabic</a></li>
+            <li className="nav-item">
+              <div className="dropdown d-flex align-items-center text-dark me-2">
+                <div>
+                  <img src={glob} alt="" />
+                </div>
+                <div className='ms-2'>
+                  <button className="language-btn btn  dropdown-toggle ps-0 " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span className='text-secondary'>
+                      English
+                    </span>
+                  </button>
+                  <ul className="language dropdown-menu m-0 p-0">
+                    <li><a className="dropdown-item m-0" href='/#' onClick={(e) => { e.preventDefault() }}>English</a></li>
+                    <li><a className="dropdown-item m-0" href='/#' onClick={(e) => { e.preventDefault() }}>Arabic</a></li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <div>
 
-                            </ul>
-                          </div>
-                        </div>
-                      </li>
-
-                      <div>
- 
               <Button onClick={handleShow} className='hemburger-button bg-transparent border-0'>
-                          
-                          <div className={`hamburger1 ${show ? 'open' : ''}`}>
-                            <div className="top"></div>
-                            <div className="meat"></div>
-                            <div className="bottom"></div>
-                          </div>
-                       
-                        </Button>
-                        <Offcanvas show={show} onHide={handleClose}  >
-                          <Offcanvas.Header closeButton >
-                            <Offcanvas.Title className='text-white'>eBasket</Offcanvas.Title>
-                          </Offcanvas.Header>
-                          <Offcanvas.Body className='p-0'>
-                            <div>
-                              <ul className="link-group p-0 ">
+                <div className={`hamburger1 ${show ? 'open' : ''}`}>
+                  <div className="top"></div>
+                  <div className="meat"></div>
+                  <div className="bottom"></div>
+                </div>
+              </Button>
+              <Offcanvas show={show} onHide={handleClose}  >
+                <Offcanvas.Header closeButton >
+                  <Offcanvas.Title className='text-white'>eBasket</Offcanvas.Title>
+                </Offcanvas.Header>
+                <Offcanvas.Body className='p-0'>
 
-                                <li className="list-group-item  border-bottom" onClick={handleClose}>
-                                  <Link to={'/'} className="link1"  >
-                                    <div className='link1-div'>
-                                      <div className='image'>
-                                      <IoHomeOutline className='icon' />
-                                      </div>
-                                      <span>
-
-                                        Home Page
-                                      </span>
-                                    </div>
-                                  </Link>
-                                </li>
-                                <li className="list-group-item border-bottom" onClick={handleClose}>
-                                  <Link className="link1 " to={'/contactus'}  >
-                                    <div className='link1-div'>
-                                      <div className='image'>
-                                      <IoCallOutline />
-                                      </div>
-                                      <span>
-
-                                        Contact Us
-                                      </span>
-                                    </div>
-                                  </Link>
-                                </li>
-                                <li className="list-group-item  border-bottom" onClick={handleClose}>
-                                  <Link to={'/login'} className="link1 "  >
-                                    <div className='link1-div'>
-                                      <div className='image'>
-                                      <FiUser/>
-                                      </div>
-                                      <span>
-
-                                        Login
-                                      </span>
-                                    </div>
-                                  </Link>
-                                </li>
-                                <li className="list-group-item  border-bottom" onClick={handleClose}>
-                                  <Link to={'/signup'} className="link1 "  >
-                                    <div className='link1-div'>
-                                      <div className='image'>
-                                      <FiUser/>
-                                      </div>
-                                      <span>
-
-                                        Register
-                                      </span>
-                                    </div>
-                                  </Link>
-                                </li>
-                                <li className="list-group-item border-bottom" onClick={handleClose}>
-                                  <div className='version py-5'>
-                                    <span >
-                                      <p >V:1.1</p>
-                                    </span>
-                                  </div>
-                                </li>
-                              </ul>
-
-
-                              <ul className='sidebar-bottom d-flex position-absolute bottom-0 border-top w-100  p-0 mb-0'>
-                                <li className="bottom list-group-item text-center w-50 p-2" onClick={handleClose}>
-                                  <Link to={'/'}  className='text-decoration-none  text-secondary text-center' onClick={() => navigate('/')}>
-                                    <div className='bottom-home position-relative'>
-                                      <div className=''>
-                                      <IoHomeOutline className='icon' />
-                                      </div>
-
-                                      <p >
-                                        Home
-                                      </p>
-
-                                    </div>
-                                  </Link>
-                                </li>
-                                <li className="bottom list-group-item text-center w-50 p-2" onClick={handleClose}>
-                                  <Link to={'/help'}  className=" text-decoration-none text-secondary text-center "  >
-
-                                    <div className='position-relative'>
-                                      <div>
-                                         <IoCallOutline />
-                                      </div>
-
-                                      <p>
-                                        Help
-                                      </p>
-
-
-                                    </div>
-                                  </Link>
-                                </li>
-                              </ul>
+                  <div>
+                    <ul className="link-group p-0 ">
+                      <li className="list-group-item  border-bottom" onClick={handleClose}>
+                        <Link to={'/'} className="link1"  >
+                          <div className='link1-div'>
+                            <div className='image'>
+                              <IoHomeOutline className='icon' />
                             </div>
-                          </Offcanvas.Body>
-                        </Offcanvas>
-                      </div>
+                            <span>
+                              Home Page
+                            </span>
+                          </div>
+                        </Link>
+                      </li>
+                      <li className="list-group-item border-bottom" onClick={handleClose}>
+                        <Link className="link1 " to={'/contactus'}  >
+                          <div className='link1-div'>
+                            <div className='image'>
+                              <IoCallOutline />
+                            </div>
+                            <span>
+                              Contact Us
+                            </span>
+                          </div>
+                        </Link>
+                      </li>
+                      <li className="list-group-item  border-bottom" onClick={handleClose}>
+                        <Link to={'/login'} className="link1 "  >
+                          <div className='link1-div'>
+                            <div className='image'>
+                              <FiUser />
+                            </div>
+                            <span>
+                              Login
+                            </span>
+                          </div>
+                        </Link>
+                      </li>
+                      <li className="list-group-item  border-bottom" onClick={handleClose}>
+                        <Link to={'/signup'} className="link1 "  >
+                          <div className='link1-div'>
+                            <div className='image'>
+                              <FiUser />
+                            </div>
+                            <span>
+                              Register
+                            </span>
+                          </div>
+                        </Link>
+                      </li>
+                      <li className="list-group-item border-bottom" onClick={handleClose}>
+                        <div className='version py-5'>
+                          <span >
+                            <p >V:1.1</p>
+                          </span>
+                        </div>
+                      </li>
+                    </ul>
+
+                    <ul className='sidebar-bottom d-flex position-absolute bottom-0 border-top w-100  p-0 mb-0'>
+                      <li className="bottom list-group-item text-center w-50 p-2" onClick={handleClose}>
+                        <Link to={'/'} className='text-decoration-none  text-secondary text-center' onClick={() => navigate('/')}>
+                          <div className='bottom-home position-relative'>
+                            <div className=''>
+                              <IoHomeOutline className='icon' />
+                            </div>
+
+                            <p >
+                              Home
+                            </p>
+
+                          </div>
+                        </Link>
+                      </li>
+                      <li className="bottom list-group-item text-center w-50 p-2" onClick={handleClose}>
+                        <Link to={'/help'} className=" text-decoration-none text-secondary text-center "  >
+
+                          <div className='position-relative'>
+                            <div>
+                              <IoCallOutline />
+                            </div>
+                            <p>
+                              Help
+                            </p>
+                          </div>
+                        </Link>
+                      </li>
                     </ul>
                   </div>
-                </Col>
-   </>
+                </Offcanvas.Body>
+              </Offcanvas>
+            </div>
+          </ul>
+        </div>
+      </Col>
+    </>
   )
 }
 

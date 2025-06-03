@@ -1,4 +1,4 @@
-import React , { useEffect } from "react";
+import React, { useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -6,154 +6,151 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import rice from "../asset/images/Basmati.jpg"
 import left from "../asset/images/left.svg"
 import right from "../asset/images/right.svg"
-import Container from 'react-bootstrap/Container';  
+import Container from 'react-bootstrap/Container';
 import './Slick-Slider.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchItems } from "../store/slices/products-slice";
-import { Badge} from 'react-bootstrap';
+import { Badge } from 'react-bootstrap';
 import useProductNavigation from "../hooks/useProductNavigation";
 import sorry from "../asset/images/no-result copy.png"
 
-const BASE_URL = process.env.REACT_APP_BASE_URL;
-function Slick({category}) 
-{     
+function Slick({ category }) {
   const dispatch = useDispatch();
   const items = useSelector(state => state.items.items);
   const handleCardClick = useProductNavigation();
-   useEffect(() => {
-          dispatch(fetchItems());
-      }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchItems());
+  }, [dispatch]);
 
-      const filteredItems = items.filter(item => {
-        if (!category) {
-            return true;
-        }
-     
-        return item.itemDetails.category && item.itemDetails.category.name.toLowerCase() === category.toLowerCase();
-    });
-    
-    
+  const filteredItems = items.filter(item => {
+    if (!category) {
+      return true;
+    }
+
+    return item.itemDetails.category && item.itemDetails.category.name.toLowerCase() === category.toLowerCase();
+  });
 
 
 
-    const SamplePrevArrow = (props) => {
-        const { className, style, onClick } = props;
-        return(
-            <div onClick={onClick} className={'arrow ${className}'}>
-                <img src={left} alt="" className="arrows position-absolute bottom-50 start-0 translate-middle-x  arrows" 
-                    style={{width:"8%",color:"white", paddingRight:"4%"}}/>
-            </div>  
-        );
-        } ;
 
-        const SampleNextArrow = (props) => {
-            const { className, style, onClick } = props;
-            return(
-                <div onClick={onClick} className={'arrow ${className}'}>
-                    <img src={right} alt="" className="position-absolute bottom-50  start-100 translate-middle-x arrows" 
-                    style={{width:"8%",color:"white", paddingLeft:"4%" }}/>
-                </div>
-            );
-            } ;
-
-
-        var settings = {
-          dots: false,
-          infinite: true,
-          speed: 500,
-          gap: 20,
-          slidesToShow: 4,
-          slidesToScroll: 1,
-          nextArrow: <SampleNextArrow to="next" />,
-          prevArrow: <SamplePrevArrow to="prev" />,
-          responsive: [
-            {
-              breakpoint: 1199,  
-              settings: {
-                slidesToShow: 3, 
-                slidesToScroll: 1,
-              },
-            },
-            {
-              breakpoint: 977,  
-              settings: {
-                slidesToShow: 3, 
-                slidesToScroll: 1,
-                nextArrow:false,
-                prevArrow:false,
-              },
-            },
-            {
-              breakpoint: 768,  
-              settings: {
-                slidesToShow: 2, 
-                slidesToScroll: 1,
-                nextArrow:false,
-                prevArrow:false,
-              },
-            },
-            {
-              breakpoint: 320,  
-              settings: {
-                slidesToShow: 1, 
-                slidesToScroll: 1,
-                nextArrow:false,
-                prevArrow:false,
-              }
-            }]
-
-        };
-    return(
-      <div>
-                    <div className="pb-5" style={{position:'relative'}}>
-                      <Container>
-                      {filteredItems && filteredItems.length > 0 ?(
-                        <Slider {...settings} style={{background:'tranparent'}}>
-                          {filteredItems.map((item) =>  {
-                            if (item.itemDetails.publish)
-                          {
-                              return (<div key={item._id}>
-                                <div  className="Slick-card" onClick={() => handleCardClick(item._id)}>
-                                  <div className="Slick-img-section">
-                                  <div className="member-plan position-absolute">
-                                  {item.itemDetails.discount > 0 && (
-                                                    <Badge  className="badge discount-badge" pill variant="dark">-{item.itemDetails.discount}%</Badge>)
-                                  }
-                                  </div>
-                                    <img
-                                      className="Slick-img img-fluid"
-                                      src={
-                                        item.itemDetails.mediaFiles && item.itemDetails.mediaFiles[0]?.url
-                                          ? `${item.itemDetails.mediaFiles[0].url}`
-                                          : rice
-                                      }
-                                      alt={item.itemDetails.name}
-                                    />
-                                  </div>
-                                  <div className="py-2 slick-content">
-                                    <h6 className="mb-2 pt-2 slick-title">
-                                      <a className="title-link">{item.itemDetails.name}</a>
-                                    </h6>
-                                    <h6 className="mb-1 pt-2 slick-price">
-                                      <span className="actual-price">₹{ ((item.itemDetails.price)-((item.itemDetails.discount*item.itemDetails.price)/100) ?? 0).toFixed(2)}</span>
-                                      {((item.itemDetails.price)-((item.itemDetails.discount*item.itemDetails.price)/100).toFixed(2)) !== item.itemDetails.price && (
-                                      <s className="text-muted">₹{item.itemDetails.price}</s>
-                                      )}
-                                    </h6>
-                                  </div>
-                                </div>
-                                </div>
-                              );
-                            }
-                            return null;
-                          })}
-
-                                </Slider>):(<p className="no-products"><img src={sorry} alt="" /></p>) }
-                
-                      </Container>
-                    </div>
-             </div>
+/* eslint-disable */
+  const SamplePrevArrow = (props) => {
+    const { className, style, onClick } = props;
+    return (
+      <div onClick={onClick} className={'arrow ${className}'}>
+        <img src={left} alt="" className="arrows position-absolute bottom-50 start-0 translate-middle-x  arrows"
+          style={{ width: "8%", color: "white", paddingRight: "4%" }} />
+      </div>
     );
+  };
+
+  const SampleNextArrow = (props) => {
+    const { className, style, onClick } = props;
+    return (
+      <div onClick={onClick} className={'arrow ${className}'}>
+        <img src={right} alt="" className="position-absolute bottom-50  start-100 translate-middle-x arrows"
+          style={{ width: "8%", color: "white", paddingLeft: "4%" }} />
+      </div>
+    );
+  };
+/* eslint-enable */
+
+  var settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    gap: 20,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    nextArrow: <SampleNextArrow to="next" />,
+    prevArrow: <SamplePrevArrow to="prev" />,
+    responsive: [
+      {
+        breakpoint: 1199,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 977,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          nextArrow: false,
+          prevArrow: false,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          nextArrow: false,
+          prevArrow: false,
+        },
+      },
+      {
+        breakpoint: 320,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          nextArrow: false,
+          prevArrow: false,
+        }
+      }]
+
+  };
+  return (
+    <div>
+      <div className="pb-5" style={{ position: 'relative' }}>
+        <Container>
+          {filteredItems && filteredItems.length > 0 ? (
+            <Slider {...settings} style={{ background: 'tranparent' }}>
+              {filteredItems.map((item) => {
+                if (item.itemDetails.publish) {
+                  return (<div key={item._id}>
+                    <div className="Slick-card" onClick={() => handleCardClick(item._id)}>
+                      <div className="Slick-img-section">
+                        <div className="member-plan position-absolute">
+                          {item.itemDetails.discount > 0 && (
+                            <Badge className="badge discount-badge" pill variant="dark">-{item.itemDetails.discount}%</Badge>)
+                          }
+                        </div>
+                        <img
+                          className="Slick-img img-fluid"
+                          src={
+                            item.itemDetails.mediaFiles && item.itemDetails.mediaFiles[0]?.url
+                              ? `${item.itemDetails.mediaFiles[0].url}`
+                              : rice
+                          }
+                          alt={item.itemDetails.name}
+                        />
+                      </div>
+                      <div className="py-2 slick-content">
+                        <h6 className="mb-2 pt-2 slick-title">
+                          <a href="/#" onClick={(e) => {e.preventDefault()}} className="title-link">{item.itemDetails.name}</a>
+                        </h6>
+                        <h6 className="mb-1 pt-2 slick-price">
+                          <span className="actual-price">₹{((item.itemDetails.price) - ((item.itemDetails.discount * item.itemDetails.price) / 100) ?? 0).toFixed(2)}</span>
+                          {((item.itemDetails.price) - ((item.itemDetails.discount * item.itemDetails.price) / 100).toFixed(2)) !== item.itemDetails.price && (
+                            <s className="text-muted">₹{item.itemDetails.price}</s>
+                          )}
+                        </h6>
+                      </div>
+                    </div>
+                  </div>
+                  );
+                }
+                return null;
+              })}
+
+            </Slider>) : (<p className="no-products"><img src={sorry} alt="" /></p>)}
+
+        </Container>
+      </div>
+    </div>
+  );
 }
 
 export default Slick;

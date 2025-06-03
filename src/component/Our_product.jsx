@@ -23,7 +23,7 @@ function Product() {
             onClick={() => handleCategoryClick('rice')}
           >
             <p
-              className={`nav-txt ${selectedCategory === 'rice' ? 'act' : ''}`}
+              className={`nav-txt nav-txt_bf ${selectedCategory === 'rice' ? 'act' : ''}`}
               href="#action1"
             >
               RICE
@@ -34,7 +34,7 @@ function Product() {
             onClick={() => handleCategoryClick('pulses')}
           >
             <p
-              className={`nav-txt ${selectedCategory === 'pulses' ? 'act' : ''}`}
+              className={`nav-txt nav-txt_bf ${selectedCategory === 'pulses' ? 'act' : ''}`}
               href="#action2"
             >
               PULSES
@@ -45,7 +45,7 @@ function Product() {
             onClick={() => handleCategoryClick('flour')}
           >
             <p
-              className={`nav-txt ${selectedCategory === 'flour' ? 'act' : ''}`}
+              className={`nav-txt nav-txt_bf ${selectedCategory === 'flour' ? 'act' : ''}`}
               href="#action3"
             >
               FLOUR
@@ -56,7 +56,7 @@ function Product() {
             onClick={() => handleCategoryClick('Salt & Sugar')}
           >
             <p
-              className={`nav-txt ${selectedCategory === 'Salt & Sugar' ? 'act' : ''}`}
+              className={`nav-txt nav-txt_bf ${selectedCategory === 'Salt & Sugar' ? 'act' : ''}`}
               href="#action4"
             >
               SALT & SUGAR
@@ -67,7 +67,7 @@ function Product() {
             onClick={() => handleCategoryClick('Snacks & Drinks')}
           >
             <p
-              className={`nav-txt ${selectedCategory === 'Snacks & Drinks' ? 'act' : ''}`}
+              className={`nav-txt nav-txt_bf ${selectedCategory === 'Snacks & Drinks' ? 'act' : ''}`}
               href="#action5"
             >
               SNACKS & DRINKS

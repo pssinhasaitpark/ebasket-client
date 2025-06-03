@@ -2,8 +2,6 @@ import { configureStore } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; 
 import { combineReducers } from 'redux';
-// import { getDefaultMiddleware } from '@reduxjs/toolkit';
-
 import categoriesReducer from './slices/categories-slice';
 import brandsReducer from './slices/brands-slice';
 import itemsReducer from './slices/products-slice';
@@ -14,6 +12,8 @@ import addressesReducer from './slices/addressSlice';
 import orderReducer from './slices/orderSlice';
 import usermeReducer from './slices/usermeSlice';
 import totalQuantityReducer from './slices/totalQuantitySlice';
+import orderCreatedReducer from './slices/orderCreatedSlice'; 
+import notificationReducer from './slices/notification';
 
 const persistConfig = {
   key: 'root',  
@@ -33,6 +33,8 @@ const rootReducer = combineReducers({
   Order : orderReducer,
   userMe: usermeReducer,
   totalQuantity: totalQuantityReducer,
+  orderCreated: orderCreatedReducer,
+  notification : notificationReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -45,10 +47,6 @@ const store = configureStore({
     }
   })
 });
-
-// const customizedMiddleware = getDefaultMiddleware({
-//   serializableCheck: false
-// })
 
 const persistor = persistStore(store);
 

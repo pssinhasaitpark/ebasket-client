@@ -315,7 +315,7 @@ const ProductDetailPage = () => {
                           data-toggle="modal"
                           data-target="#socialShare"
                         >
-                          <FaShareAlt className="social-icons" /> Share this product
+                          <FaShareAlt className="social-icons" /> <span>Share this product</span>
                         </p>
                       </div>
                     </div>

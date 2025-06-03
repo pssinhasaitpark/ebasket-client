@@ -5,15 +5,14 @@ const ScrollToTop = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Delay scrolling to top in case of initial render
     const timer = setTimeout(() => {
-      window.scrollTo(0, 0); // Scroll to the top of the page on route change
-    }, 10); // Delay can be adjusted based on need
+      window.scrollTo(0, 0); 
+    }, 150);
 
-    return () => clearTimeout(timer); // Clear timeout on cleanup
-  }, [location]); // This runs whenever the route changes
+    return () => clearTimeout(timer); 
+  }, [location]);
 
-  return null; // This component doesn't render anything visible
+  return null;
 };
 
 export default ScrollToTop;
