@@ -3,11 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import icon from '../../asset/images/icons8-party-popper-96.png'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify'; 
+import { toast, ToastContainer } from 'react-toastify';
+import { resetOrderCreated } from '../../store/slices/orderCreatedSlice'; 
 import 'react-toastify/dist/ReactToastify.css'; 
 
 function Success() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const username = useSelector((state) => state.auth.username);
   const [countdown, setCountdown] = useState(5); 
   useEffect(() => {

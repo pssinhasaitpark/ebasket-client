@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Navigate, Routes } from "react-router-dom";
+import { Route, Navigate, Routes, useNavigate, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 // import Profile from "../pages/profie/Profile";
 import Checkout from "../pages/checkout/Checkout";
@@ -7,9 +7,9 @@ import OrderTabs from "../pages/MyOrders/MyOrder";
 import AddressForm from "../pages/deliveryaddress/DeliveryAddress";
 import PayWallet from "../pages/paywallet/PayWallet";
 import Success from "../pages/success/Success";
-import WishlistPage from "../pages/Favourite/FavoriteItems"; 
+import WishlistPage from "../pages/Favourite/FavoriteItems";
 import Transcation from '../pages/transaction/Transaction'
-// import NotFound from "../pages/NotFound/NotFound";
+import NotFound from "../pages/NotFound/NotFound";
 import Notification from "../pages/notification/notification";
 import Profile from '../pages/profie/Demo'
 import Pending_order from "../pages/Pending-Order/Pending_order";
@@ -31,52 +31,99 @@ import ProductDetailPage from "../component/AddToCart";
 import FaqPage from "../pages/faq-support/Faq";
 import VerifyOTP from "../pages/auth/OtpVerify";
 import Razorpay from "../pages/Razorpay/Razorpay";
+import RequestNotificationPermission from "../component/firebase/RequestNotificationPermission";
+import Header from "../layout/Header";
+import Footer from "../layout/Footer";
 
 const ProtectedRoutes = () => {
-
     const isSignedIn = useSelector((state) => state.auth.isSignedIn ?? false);
-
+    const Order_created = useSelector((state) => state.orderCreated.orderCreated ?? false);
+    const location = useLocation();
+    const validPaths = [
+        '/',
+        '/login',
+        '/signup',
+        '/productlist',
+        '/offers',
+        '/refund',
+        '/privacy',
+        '/terms',
+        '/help',
+        '/aboutus',
+        '/setlocation',
+        '/search',
+        '/contactus',
+        '/support',
+        '/verify-otp',
+        '/profile',
+        '/checkout',
+        '/delivery-address',
+        '/orders',
+        '/transaction',
+        '/pay-wallet',
+        '/success',
+        '/my-order',
+        '/notification',
+        '/favorite-products',
+        '/pay',
+      ];
+ 
+      const dynamicPathsRegex = [
+        /^\/products\/[a-fA-F0-9]{24}$/, 
+        /^\/productDetail\/[a-fA-F0-9]{24}$/, 
+        /^\/categories\/[a-fA-F0-9]{24}$/, 
+        /^\/pending_order\/[a-fA-F0-9]{24}$/, 
+    ];
+    const isValidRoute = validPaths.includes(location.pathname) || dynamicPathsRegex.some(regex => regex.test(location.pathname));
     return (
-        <> 
+        <>
+            {/* Firebase message */}
+            {isSignedIn && <RequestNotificationPermission />}
+            {isValidRoute && <Header />}
             <Routes>
-            {/* Public Routes */}
-            <Route path="/" element={<Home />} />
-            <Route path="/login"  element={isSignedIn ? <Home /> : <Login />} />
-            <Route path="/signup" element={isSignedIn ? <Home /> : <SignUpForm />} />
-            <Route path="/productlist" element={<ProductList />} />
-            <Route path="/products/:id" element={<ProductDetailPage />} />
-            <Route path="/productDetail/:id" element={<ProductDetailPage />} />
-            <Route path="/offers" element={<CouponsList />} />
-            <Route path="/refund" element={<Refund />} />
-            <Route path="/privacy" element={<Privacy />} />
-            <Route path="/terms" element={<Termofuse />} />
-            <Route path="/help" element={<Help />} />
-            <Route path="/aboutus" element={<About />} />
-            <Route path="/setlocation" element={<Setlocation />} />
-            <Route path="/categories/:id" element={<Category />} />
-            <Route path="/search" element={<Search />} />
-            <Route path="/contactus" element={<ContactUs />} />
-            <Route path="/support" element={<FaqPage/>}/>
-            <Route path="/verify-otp" element={<VerifyOTP/>}/>
+                {/* Public Routes */}
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={isSignedIn ? <Home /> : <Login />} />
+                <Route path="/signup" element={isSignedIn ? <Home /> : <SignUpForm />} />
+                <Route path="/productlist" element={<ProductList />} />
+                <Route path="/products/:id" element={<ProductDetailPage />} />
+                <Route path="/productDetail/:id" element={<ProductDetailPage />} />
+                <Route path="/offers" element={<CouponsList />} />
+                <Route path="/refund" element={<Refund />} />
+                <Route path="/privacy" element={<Privacy />} />
+                <Route path="/terms" element={<Termofuse />} />
+                <Route path="/help" element={<Help />} />
+                <Route path="/aboutus" element={<About />} />
+                <Route path="/setlocation" element={<Setlocation />} />
+                <Route path="/categories/:id" element={<Category />} />
+                <Route path="/search" element={<Search />} />
+                <Route path="/contactus" element={<ContactUs />} />
+                <Route path="/support" element={<FaqPage />} />
+                <Route path="/verify-otp" element={<VerifyOTP />} />
 
-            {/* Private Routes */}
-            <Route path="/profile" element={isSignedIn ? <Profile /> : <Navigate to="/login" />}/>
-            <Route path="/checkout" element={isSignedIn ? <Checkout /> : <Navigate to="/login" />}/>
-            <Route path="/delivery-address" element={isSignedIn ? <AddressForm /> : <Navigate to="/login" />}/>
-            <Route path="/orders" element={isSignedIn ? <OrderTabs /> : <Navigate to="/login" />}/>
-            <Route path="/transaction" element={isSignedIn ? <Transcation /> : <Navigate to="/login" />}/>
-            <Route path="/pay-wallet" element={isSignedIn ? <PayWallet /> : <Navigate to="/login" />}/>
-            <Route path="/success" element={isSignedIn ? <Success /> : <Navigate to="/login" />}/>
-            <Route path="/my-order" element={isSignedIn ? <OrderTabs /> : <Navigate to="/login" />}/>
-            <Route path="/notification" element={isSignedIn ? <Notification /> : <Navigate to="/login" />}/>
-            <Route path="/favorite-products" element={isSignedIn ? <WishlistPage /> : <Navigate to="/login" />}/>
-            <Route path="/pending_order/:id" element={isSignedIn ? <Pending_order/> : <Navigate to="/login" />}/>
-            <Route path="/pay" element={isSignedIn ? <Razorpay/> : <Navigate to="/login" />}/>
+                {/* Private Routes */}
+                <Route path="/profile" element={isSignedIn ? <Profile /> : <Navigate to="/login" />} />
+                <Route path="/checkout" element={isSignedIn ? <Checkout /> : <Navigate to="/login" />} />
+                <Route path="/delivery-address" element={isSignedIn ? <AddressForm /> : <Navigate to="/login" />} />
+                <Route path="/orders" element={isSignedIn ? <OrderTabs /> : <Navigate to="/login" />} />
+                <Route path="/transaction" element={isSignedIn ? <Transcation /> : <Navigate to="/login" />} />
+                <Route path="/pay-wallet" element={isSignedIn ? <PayWallet /> : <Navigate to="/login" />} />
+                <Route path="/success"
+                    element={isSignedIn ? (Order_created ? <Success /> : <Navigate to="/" />) : <Navigate to="/login" />}
+                />
+                <Route path="/my-order" element={isSignedIn ? <OrderTabs /> : <Navigate to="/login" />} />
+                <Route path="/notification" element={isSignedIn ? <Notification /> : <Navigate to="/login" />} />
+                <Route path="/favorite-products" element={isSignedIn ? <WishlistPage /> : <Navigate to="/login" />} />
+                <Route path="/pending_order/:id" element={isSignedIn ? <Pending_order /> : <Navigate to="/login" />} />
+                <Route path="/pay" element={isSignedIn ? <Razorpay /> : <Navigate to="/login" />} />
 
-            {/* <Route path="*" element={<NotFound/>} /> */}
+                {/* Wrong Routes */}
+                <Route path="*" element={<NotFound />} />
             </Routes>
+            {isValidRoute && <Footer />}
         </>
     );
 };
+
 
 export default ProtectedRoutes;

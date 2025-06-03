@@ -1,49 +1,87 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import icon from '../../asset/images/icons8-party-popper-96.png'
+import { Container, Row, Col, Card } from 'react-bootstrap';
+import './notification.css';
 import { useDispatch, useSelector } from 'react-redux';
+import { fetchNotification, setSortOrder } from '../../store/slices/notification';
+import Noresult from '../../asset/images/no-result copy.png';
 
 function Notification() {
-  const navigate = useNavigate();
-const username = useSelector((state) => state.auth.username); 
+  const dispatch = useDispatch();
+  const { notifications, sortOrder } = useSelector((state) => state.notification);
+
   useEffect(() => {
-    const timer = setTimeout(() => {
-      navigate('/'); 
-    }, 10000000);
+    dispatch(fetchNotification());
+  }, [dispatch]);
 
-    return () => clearTimeout(timer);
-  }, [navigate]);
+  const handleSortChange = (order) => {
+    dispatch(setSortOrder(order));
+  };
+
   return (
-    <>
-
-    <div className="container mt-5 border h-100">
-      <div className="row">
-        <div className="col-md-6 offset-md-3">
-          <div className="shadow-sm">
-            <div className="card-body " style={{padding:"60px "}}>
-              <h2 className="card-title text-center fw-bolder fs-1">{username || 'Guest'}, Your order has been successful</h2>
-              <p className="card-text text-center">
-                Check your order status in <a href="/my-order" className='text-decoration-none text-success fw-bold '>My Orders</a> about next steps information.
-              </p>
-              <div className="text-center">
-                <img src={icon} alt="Party Hat" width="100" height="100" />
-            
-              </div>
-              <h4 className="card-title text-center mt-3">Preparing your order</h4>
-              <p className="card-text text-center">
-                Your order will be prepared and will come soon
-              </p>
-              <div className="text-center mt-3">
-                <a href="/my-order">
-                 <button className="btn btn-success w-100 p-3" >View Order</button>
-                </a>
-              </div>
-            </div>
-          </div>
+    <div>
+      <Container>
+        <div className='notification-container rounded p-5 mt-4'>
+          <Row className='flex-column'>
+            <Col>
+              <h3 className='font-weight-bold h4 text-light'>
+                Total Notifications: {notifications.length || 0}
+              </h3>
+            </Col>
+          </Row>
         </div>
-      </div>
+        <div className='ms-2 d-flex justify-content-end'>
+          <button
+            className='language-btn btn dropdown-toggle ps-0 '
+            type='button'
+            data-bs-toggle='dropdown'
+            aria-expanded='false'
+          >
+            <span className='text-secondary'>
+              {sortOrder === 'desc' ? 'Newest' : 'Oldest'}
+            </span>
+          </button>
+          <ul className='language dropdown-menu m-0 p-0'>
+            <li>
+              <a
+                href='#'
+                className='dropdown-item m-0'
+                onClick={(e) => {e.preventDefault(); handleSortChange('asc');}}
+              >
+                Oldest
+              </a>
+            </li>
+            <li>
+              <a
+                href='#'
+                className='dropdown-item m-0'
+                onClick={(e) => { e.preventDefault(); handleSortChange('desc');}}
+              >
+                Newest
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          {notifications.length > 0 ? (
+            notifications.map((notification) => (
+              <Card key={notification._id} className='border mb-3'>
+                <Card.Body>
+                  <Card.Title>{notification.subject}</Card.Title>
+                  <Card.Text>{notification.message}</Card.Text>
+                  <Card.Footer className='text-muted'>
+                    Received at: {new Date(notification.createdAt).toLocaleString()}
+                  </Card.Footer>
+                </Card.Body>
+              </Card>
+            ))
+          ) : (
+            <p className='text-center'>
+              <img src={Noresult} alt='No result' />
+            </p>
+          )}
+        </div>
+      </Container>
     </div>
-    </>
   );
 }
 

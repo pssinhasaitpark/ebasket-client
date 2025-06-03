@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getorders } from '../../store/slices/orderSlice';
 import Noresult from '../../asset/images/no-result copy.png';
 import {Clock} from 'react-feather'
+import { resetOrderCreated } from '../../store/slices/orderCreatedSlice';
 import Pending_order from '../Pending-Order/Pending_order';
 
 const OrderTabs = () => {
@@ -18,6 +19,7 @@ const OrderTabs = () => {
 
   useEffect(() => {
     dispatch(getorders());
+    dispatch(resetOrderCreated());
   }, [dispatch]);
 
   if (loading) {
@@ -45,7 +47,7 @@ const OrderTabs = () => {
             </div>
             <div>
               <p className="mb-0 font-weight-bold">
-                <a className="text-dark my_order_name">{orderItems?.items[0]?.itemName}</a>
+                <a href='/#' onClick={(e)=> e.preventDefault()} className="text-dark my_order_name">{orderItems?.items[0]?.itemName}</a>
               </p>
               <p className="mb-0">
                 <FaMapMarker className="mr-2 text-muted" /> {billingDetails?.shippingAddress}

@@ -27,10 +27,11 @@ import { IoCallOutline } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 // import { addToCart, removeFromCart, updateCartQuantity } from '../store/slices/cart-slice';
+import { fetchNotification } from '../store/slices/notification'; 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 
-const PrivateNavbar = () => {
+const PrivateNavbar = ({notification}) => {
   const dispatch = useDispatch();
 /* eslint-disable */
   const username = useSelector((state) => state.auth.username); // Get username from Redux
@@ -45,7 +46,11 @@ const PrivateNavbar = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const { notifications } = useSelector((state) => state.notification);
 
+  useEffect(() => {
+    dispatch(fetchNotification()); 
+  }, [dispatch]);
 
 
   const handleSignOut = () => {
@@ -140,7 +145,7 @@ const PrivateNavbar = () => {
                     {/* Dropdown Menu */}
                     <div className='dropdown-menuu'>
                       <Link to={'/profile'} >My Account</Link>
-                      <Link to={'/notification'} >Notification</Link>
+                      <Link className='d-flex justify-content-between' to={'/notification'} >Notification <span className='text-muted pr-3'>{notifications.length ? notifications.length : 0}</span></Link>
                       <Link to={'/support'} >Delivery Support</Link>
                       <Link to={'/contactus'}  >Contact Us</Link>
                       <Link to={'/aboutus'} >About us</Link>

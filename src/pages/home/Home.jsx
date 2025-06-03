@@ -6,8 +6,10 @@ import Product from "../../component/Our_product";
 import Selling from "../../component/Most_selling";
 import All from "../../component/all-products";
 import {LoadingSpinner} from "../../component/spinner";
+import RequestNotificationPermission from '../../component/firebase/RequestNotificationPermission';
 
 function Home() {
+  // <RequestNotificationPermission/>
     const [loading, setLoading] = useState(true);
   
     useEffect(() => {

@@ -1,0 +1,73 @@
+/* NotificationModal.css */
+.notification-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    z-index: 1000;
+  }
+  
+  .modal-notify-content {
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    max-width: 685px;
+    height: max-content;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 20px 0px 0px 0px;
+    position: relative;
+}
+  
+  .modal-notify-content h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .modal-notify-content p {
+    font-size: 18px;
+    color: #3C7F10;
+    font-weight: 600;
+    margin: 20px 0;
+}
+  
+.close-notify-btn {
+    background-color: transparent;
+    color: black;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 26px;
+    position: absolute;
+    right: 10px;
+    top: 0;
+}
+  .assign-driver-btn {
+    background: green;
+    color: #fff;
+    border: unset;
+    padding: 10px;
+    border-radius: 10px;
+}
+  
+  /* Optional: Add animations */
+  .notification-modal {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  

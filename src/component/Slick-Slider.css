@@ -1,7 +1,7 @@
-.Slick-img {
+/* .Slick-img {
     object-fit: cover !important;
     border-radius: 10px !important;
-}
+} */
 
 .Slick-img {
     object-fit: cover;
@@ -25,7 +25,6 @@
 .slick-title {
     display: block;
     width: 100%;
-
     overflow: hidden;
     line-height: 1;
     letter-spacing: 0.03em;
@@ -93,8 +92,6 @@
     /* Adjust the size of the arrows */
 }
 
-
-
 .slick-arrow {
     display: none !important;
 }
@@ -105,4 +102,10 @@
     margin-bottom: 0%;
     height:324.5px;
 
+}
+
+@media screen and (max-width: 767px) {
+    .Slick-img {
+        object-fit: contain;
+    }
 }

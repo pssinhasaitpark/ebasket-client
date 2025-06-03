@@ -12,6 +12,8 @@ import addressesReducer from './slices/addressSlice';
 import orderReducer from './slices/orderSlice';
 import usermeReducer from './slices/usermeSlice';
 import totalQuantityReducer from './slices/totalQuantitySlice';
+import orderCreatedReducer from './slices/orderCreatedSlice'; 
+import notificationReducer from './slices/notification';
 
 const persistConfig = {
   key: 'root',  
@@ -31,6 +33,8 @@ const rootReducer = combineReducers({
   Order : orderReducer,
   userMe: usermeReducer,
   totalQuantity: totalQuantityReducer,
+  orderCreated: orderCreatedReducer,
+  notification : notificationReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

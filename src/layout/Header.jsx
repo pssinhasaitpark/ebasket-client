@@ -30,7 +30,7 @@ const Header = () => {
   // {console.log('showme' ,addresses?.addresses?.[0]?.address?.areaSectorLocality)}
   const location = useLocation();
   const isHomePage = location.pathname === '/';
-  const selectedAddress = addresses?.addresses?.length > 0 ? addresses?.addresses?.[0]?.address?.areaSectorLocality : userData?.address;
+  const selectedAddress = addresses?.addresses?.length > 0 ? addresses?.addresses?.[0]?.address?.areaSectorLocality : userData?.address.toUpperCase();
   return (
     <>
 
@@ -59,7 +59,7 @@ const Header = () => {
                       
                       <input
                         type="text"
-                        value={(addresses?.addresses?.length > 0 ? addresses?.addresses?.[0]?.address?.areaSectorLocality : userData?.address || "")}
+                        value={(addresses?.addresses?.length > 0 ? addresses?.addresses?.[0]?.address?.areaSectorLocality : userData?.address.toUpperCase() || "")}
                         className="form-control input border-0"
                         placeholder="Enter Your Location"
                         readOnly
